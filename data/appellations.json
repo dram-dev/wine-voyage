@@ -1,0 +1,27 @@
+{
+  "_comment": "Replace with the WINE_DATA structure from wine-voyage.jsx. Top-level shape: countries[].regions[].appellations[]. See README for the expected schema.",
+  "countries": [
+    {
+      "id": "fr",
+      "name": "France",
+      "emoji": "🇫🇷",
+      "color": "#7c3aed",
+      "regions": [
+        {
+          "id": "burgundy",
+          "name": "Burgundy",
+          "appellations": [
+            {
+              "id": "chambolle-musigny",
+              "name": "Chambolle-Musigny",
+              "grapes": ["Pinot Noir"],
+              "style": "Elegant red",
+              "lat": 47.187,
+              "lng": 4.952
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
