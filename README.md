@@ -37,6 +37,7 @@ cp .env.example .env
 # 4. Migrations
 psql winevoyage -f sql/001_schema.sql
 psql winevoyage -f sql/002_indexes.sql
+psql winevoyage -f sql/003_top_rated.sql
 
 # 5. Seed appellations (after editing data/appellations.json)
 python -m scripts.seed_appellations
@@ -45,7 +46,11 @@ python -m scripts.seed_appellations
 python -m scripts.seed_wineries --dry-run   # preview
 python -m scripts.seed_wineries             # real run
 
-# 7. Run the server
+# 7. (Optional) Rank popular AAVs + seed top 40 wineries/varietals/vintages
+python -m scripts.seed_top_rated --dry-run --limit 25   # preview
+python -m scripts.seed_top_rated                        # full pass (1000 AAVs)
+
+# 8. Run the server
 ./run.sh
 ```
 
@@ -83,6 +88,13 @@ All endpoints are under `/api`. CORS is open to `*`.
 - `GET  /api/wineries/{appellation_id}` — curated list from the DB
 - `POST /api/wineries/match` — body: `{appellation_id, taste_profile_ids: int[]}`
   - Generates AI matches against the user's saved taste profile. Cached by hash of `(appellation_id + sorted taste_profile_ids)`.
+
+### Top-rated (popularity-ranked AAVs)
+- `GET /api/top-rated?limit=1000&per_appellation=40`
+  - Returns the world's most popular AAVs (capped at 1000), each with its
+    top-rated wineries and each winery's top-rated varietals and vintages.
+  - `limit` and `per_appellation` clamp to `[1, 1000]` and `[1, 40]` respectively.
+  - Reads from `appellations.popularity_rank` (set by `scripts/seed_top_rated.py`).
 
 ## Seed data shape
 

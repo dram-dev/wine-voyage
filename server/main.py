@@ -10,6 +10,7 @@ from server.routes import (
     journal,
     sommelier,
     taste,
+    top_rated,
     trips,
     wineries,
 )
@@ -46,3 +47,4 @@ app.include_router(trips.router, prefix="/api")
 app.include_router(taste.router, prefix="/api")
 app.include_router(sommelier.router, prefix="/api")
 app.include_router(wineries.router, prefix="/api")
+app.include_router(top_rated.router, prefix="/api")
