@@ -39,6 +39,7 @@ psql winevoyage -f sql/001_schema.sql
 psql winevoyage -f sql/002_indexes.sql
 psql winevoyage -f sql/003_top_rated.sql
 psql winevoyage -f sql/004_votes.sql
+psql winevoyage -f sql/005_geo.sql
 
 # 5. Seed appellations (after editing data/appellations.json)
 python -m scripts.seed_appellations
@@ -51,7 +52,11 @@ python -m scripts.seed_wineries             # real run
 python -m scripts.seed_top_rated --dry-run --limit 25   # preview
 python -m scripts.seed_top_rated                        # full pass (1000 AAVs)
 
-# 8. Run the server
+# 8. (Optional) Backfill lat/lng on wineries for the map
+python -m scripts.seed_winery_geo --dry-run --limit-aavs 25
+python -m scripts.seed_winery_geo
+
+# 9. Run the server
 ./run.sh
 ```
 
@@ -98,6 +103,17 @@ All endpoints are under `/api`. CORS is open to `*`.
   - Reads from `appellations.popularity_rank` (set by `scripts/seed_top_rated.py`).
   - Each winery / varietal / vintage carries a `votes: {up, down, score}` summary;
     when `client_id` is passed, also includes `my_vote: -1 | 1 | null`.
+
+### Geo / map
+- `GET /api/geo/features?north=&south=&east=&west=&zoom=&limit=1500`
+  - Returns a GeoJSON `FeatureCollection` of appellation and winery pins
+    inside the viewport. Level of detail scales with zoom:
+    - `zoom < 7`  — appellations only (continental view).
+    - `7-10`      — appellations + premium wineries (`stars >= 4.5`).
+    - `zoom >= 11` — appellations + all wineries with coordinates.
+  - Bounding boxes that wrap the antimeridian (`west > east`) are handled.
+- `GET /api/geo/appellation/{appellation_id}`
+  - All wineries with coordinates for one AAV, plus the appellation centre.
 
 ### Votes (upvote / downvote based on experience)
 - `POST /api/votes` — body: `{target_type, target_id, value, client_id, experience?}`
