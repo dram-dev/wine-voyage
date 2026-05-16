@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from server.db import close_pool, init_pool
 from server.routes import (
     appellations,
+    geo,
     journal,
     sommelier,
     taste,
@@ -50,3 +51,4 @@ app.include_router(sommelier.router, prefix="/api")
 app.include_router(wineries.router, prefix="/api")
 app.include_router(top_rated.router, prefix="/api")
 app.include_router(votes.router, prefix="/api")
+app.include_router(geo.router, prefix="/api")
