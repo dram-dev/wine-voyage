@@ -1,10 +1,11 @@
 import hashlib
 import json
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 
 from server.db import get_pool
+from server.routes.votes import load_votes_for_targets
 from server.sommelier_client import cache_get, cache_set, call_sommelier
 
 router = APIRouter(tags=["wineries"])
@@ -16,8 +17,12 @@ class MatchRequest(BaseModel):
 
 
 @router.get("/wineries/{appellation_id}")
-async def list_wineries(appellation_id: str) -> list[dict]:
-    rows = await get_pool().fetch(
+async def list_wineries(
+    appellation_id: str,
+    client_id: str | None = Query(default=None, description="Optional client UUID for my_vote enrichment"),
+) -> list[dict]:
+    pool = get_pool()
+    rows = await pool.fetch(
         """
         SELECT id, appellation_id, name, stars, note, source, updated_at
           FROM wineries WHERE appellation_id = $1
@@ -25,8 +30,15 @@ async def list_wineries(appellation_id: str) -> list[dict]:
         """,
         appellation_id,
     )
+    winery_ids = [r["id"] for r in rows]
+    vote_data = await load_votes_for_targets(pool, winery_ids=winery_ids, client_id=client_id)
     return [
-        {**dict(r), "stars": float(r["stars"]) if r["stars"] is not None else None}
+        {
+            **dict(r),
+            "stars": float(r["stars"]) if r["stars"] is not None else None,
+            "votes": vote_data["summary"]["winery"].get(r["id"], {"up": 0, "down": 0, "score": 0}),
+            "my_vote": vote_data["mine"]["winery"].get(r["id"]) if client_id else None,
+        }
         for r in rows
     ]
 

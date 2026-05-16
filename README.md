@@ -38,6 +38,7 @@ cp .env.example .env
 psql winevoyage -f sql/001_schema.sql
 psql winevoyage -f sql/002_indexes.sql
 psql winevoyage -f sql/003_top_rated.sql
+psql winevoyage -f sql/004_votes.sql
 
 # 5. Seed appellations (after editing data/appellations.json)
 python -m scripts.seed_appellations
@@ -90,11 +91,25 @@ All endpoints are under `/api`. CORS is open to `*`.
   - Generates AI matches against the user's saved taste profile. Cached by hash of `(appellation_id + sorted taste_profile_ids)`.
 
 ### Top-rated (popularity-ranked AAVs)
-- `GET /api/top-rated?limit=1000&per_appellation=40`
+- `GET /api/top-rated?limit=1000&per_appellation=40&client_id=<uuid>`
   - Returns the world's most popular AAVs (capped at 1000), each with its
     top-rated wineries and each winery's top-rated varietals and vintages.
   - `limit` and `per_appellation` clamp to `[1, 1000]` and `[1, 40]` respectively.
   - Reads from `appellations.popularity_rank` (set by `scripts/seed_top_rated.py`).
+  - Each winery / varietal / vintage carries a `votes: {up, down, score}` summary;
+    when `client_id` is passed, also includes `my_vote: -1 | 1 | null`.
+
+### Votes (upvote / downvote based on experience)
+- `POST /api/votes` — body: `{target_type, target_id, value, client_id, experience?}`
+  - `target_type` ∈ `winery | varietal | vintage`, `value` ∈ `-1 | 1`.
+  - Upserts the client's vote on the target (re-voting changes direction or note).
+  - `experience` is the optional tasting note that motivated the vote.
+- `DELETE /api/votes` — body: `{target_type, target_id, client_id}` — removes the vote.
+- `GET  /api/votes/summary?target_type=winery&target_ids=1,2,3` — aggregate counts.
+- `GET  /api/votes/mine?client_id=<uuid>&target_type=winery&target_ids=1,2,3`
+  - Returns this client's votes (value + experience) for the listed targets.
+- `GET /api/wineries/{appellation_id}?client_id=<uuid>` — winery listing now
+  carries `votes` and `my_vote` (when `client_id` is passed).
 
 ## Seed data shape
 

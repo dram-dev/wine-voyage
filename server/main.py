@@ -12,6 +12,7 @@ from server.routes import (
     taste,
     top_rated,
     trips,
+    votes,
     wineries,
 )
 
@@ -48,3 +49,4 @@ app.include_router(taste.router, prefix="/api")
 app.include_router(sommelier.router, prefix="/api")
 app.include_router(wineries.router, prefix="/api")
 app.include_router(top_rated.router, prefix="/api")
+app.include_router(votes.router, prefix="/api")
