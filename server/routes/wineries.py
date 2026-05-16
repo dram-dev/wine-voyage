@@ -5,7 +5,7 @@ from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel
 
 from server.db import get_pool
-from server.routes.votes import load_votes_for_targets
+from server.routes.votes import EMPTY_SUMMARY, load_votes_for_targets
 from server.sommelier_client import cache_get, cache_set, call_sommelier
 
 router = APIRouter(tags=["wineries"])
@@ -36,7 +36,7 @@ async def list_wineries(
         {
             **dict(r),
             "stars": float(r["stars"]) if r["stars"] is not None else None,
-            "votes": vote_data["summary"]["winery"].get(r["id"], {"up": 0, "down": 0, "score": 0}),
+            "votes": vote_data["summary"]["winery"].get(r["id"], EMPTY_SUMMARY),
             "my_vote": vote_data["mine"]["winery"].get(r["id"]) if client_id else None,
         }
         for r in rows

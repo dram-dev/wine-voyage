@@ -1,15 +1,14 @@
 """Geo / map endpoint for wineries and AAVs.
 
-`GET /api/geo/features` returns a GeoJSON FeatureCollection for a viewport
+GET /api/geo/features returns a GeoJSON FeatureCollection for a viewport
 (bounding box + zoom). Level of detail scales with zoom:
 
     zoom <  7   - appellations only (continental view)
     7 <= z < 11 - appellations + premium wineries (stars >= 4.5)
     zoom >= 11  - appellations + all wineries with coordinates
 
-The frontend (Leaflet / Mapbox / react-map-gl) drives the actual pan/zoom
-UX; this endpoint just returns the right density of features for the
-current viewport so the map stays responsive at any scale.
+The frontend (Leaflet / Mapbox / react-map-gl) drives the actual pan/zoom UX;
+this endpoint returns the right density of features for the current viewport.
 """
 from __future__ import annotations
 
@@ -19,9 +18,9 @@ from server.db import get_pool
 
 router = APIRouter(tags=["geo"])
 
-ZOOM_APPELLATIONS_ONLY = 7      # below this, only AAV pins
-ZOOM_ALL_WINERIES = 11          # at/above this, every winery with coords
-PREMIUM_STAR_THRESHOLD = 4.5    # mid-zoom shows only wineries at this rating+
+ZOOM_APPELLATIONS_ONLY = 7
+ZOOM_ALL_WINERIES = 11
+PREMIUM_STAR_THRESHOLD = 4.5
 
 DEFAULT_LIMIT = 1500
 MAX_LIMIT = 5000
@@ -40,29 +39,38 @@ async def geo_features(
         raise HTTPException(status_code=400, detail="north must be greater than south")
 
     pool = get_pool()
-    crosses_antimeridian = west > east
+    # west > east means the bounding box wraps the date line — switch the lng
+    # predicate from a BETWEEN range to a disjunction.
+    if west > east:
+        appellation_lng = "(a.lng >= $3 OR a.lng <= $4)"
+        winery_lng = "(w.lng >= $3 OR w.lng <= $4)"
+    else:
+        appellation_lng = "a.lng BETWEEN $3 AND $4"
+        winery_lng = "w.lng BETWEEN $3 AND $4"
+
     features: list[dict] = []
 
     appellation_rows = await pool.fetch(
-        _bbox_query(
-            """
-            SELECT a.id, a.name, a.style, a.grapes, a.popularity_rank,
-                   a.lat, a.lng,
-                   r.id AS region_id, r.name AS region_name,
-                   c.id AS country_id, c.name AS country_name, c.emoji AS country_emoji,
-                   (SELECT COUNT(*) FROM wineries w WHERE w.appellation_id = a.id) AS winery_count
-              FROM appellations a
-              JOIN regions r   ON r.id = a.region_id
-              JOIN countries c ON c.id = r.country_id
-             WHERE a.lat IS NOT NULL AND a.lng IS NOT NULL
-               AND a.lat BETWEEN $1 AND $2
-               AND {lng_clause}
-             ORDER BY a.popularity_rank NULLS LAST, a.name
-             LIMIT $5
-            """,
-            crosses_antimeridian,
-            alias="a",
-        ),
+        f"""
+        SELECT a.id, a.name, a.style, a.grapes, a.popularity_rank,
+               a.lat, a.lng,
+               r.id AS region_id, r.name AS region_name,
+               c.id AS country_id, c.name AS country_name, c.emoji AS country_emoji,
+               COALESCE(wc.cnt, 0) AS winery_count
+          FROM appellations a
+          JOIN regions r   ON r.id = a.region_id
+          JOIN countries c ON c.id = r.country_id
+          LEFT JOIN (
+              SELECT appellation_id, COUNT(*) AS cnt
+                FROM wineries
+               GROUP BY appellation_id
+          ) wc ON wc.appellation_id = a.id
+         WHERE a.lat IS NOT NULL AND a.lng IS NOT NULL
+           AND a.lat BETWEEN $1 AND $2
+           AND {appellation_lng}
+         ORDER BY a.popularity_rank NULLS LAST, a.name
+         LIMIT $5
+        """,
         south, north, west, east, limit,
     )
     for row in appellation_rows:
@@ -93,22 +101,18 @@ async def geo_features(
         if remaining:
             min_stars = None if zoom >= ZOOM_ALL_WINERIES else PREMIUM_STAR_THRESHOLD
             winery_rows = await pool.fetch(
-                _bbox_query(
-                    """
-                    SELECT w.id, w.name, w.stars, w.note, w.lat, w.lng,
-                           w.appellation_id, a.name AS appellation_name
-                      FROM wineries w
-                      JOIN appellations a ON a.id = w.appellation_id
-                     WHERE w.lat IS NOT NULL AND w.lng IS NOT NULL
-                       AND w.lat BETWEEN $1 AND $2
-                       AND {lng_clause}
-                       AND ($6::numeric IS NULL OR w.stars >= $6)
-                     ORDER BY w.stars DESC NULLS LAST, w.name
-                     LIMIT $5
-                    """,
-                    crosses_antimeridian,
-                    alias="w",
-                ),
+                f"""
+                SELECT w.id, w.name, w.stars, w.note, w.lat, w.lng,
+                       w.appellation_id, a.name AS appellation_name
+                  FROM wineries w
+                  JOIN appellations a ON a.id = w.appellation_id
+                 WHERE w.lat IS NOT NULL AND w.lng IS NOT NULL
+                   AND w.lat BETWEEN $1 AND $2
+                   AND {winery_lng}
+                   AND ($6::numeric IS NULL OR w.stars >= $6)
+                 ORDER BY w.stars DESC NULLS LAST, w.name
+                 LIMIT $5
+                """,
                 south, north, west, east, remaining, min_stars,
             )
             for row in winery_rows:
@@ -203,17 +207,3 @@ async def appellation_geo(appellation_id: str) -> dict:
             for r in winery_rows
         ],
     }
-
-
-def _bbox_query(sql: str, crosses_antimeridian: bool, *, alias: str) -> str:
-    """Inject the longitude clause appropriate for whether the bbox crosses 180/-180.
-
-    `alias` is the table alias used for the lng column ("a" for appellations, "w"
-    for wineries). When the bounding box wraps the date line (west > east) the
-    longitude predicate becomes a disjunction rather than a BETWEEN range.
-    """
-    if crosses_antimeridian:
-        clause = f"({alias}.lng >= $3 OR {alias}.lng <= $4)"
-    else:
-        clause = f"{alias}.lng BETWEEN $3 AND $4"
-    return sql.format(lng_clause=clause)

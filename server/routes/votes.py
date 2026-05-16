@@ -7,6 +7,7 @@ the tasting note that motivated the vote.
 """
 from __future__ import annotations
 
+import asyncio
 from typing import Literal, Optional
 
 from fastapi import APIRouter, HTTPException, Query
@@ -22,6 +23,7 @@ TARGET_TABLES: dict[str, str] = {
     "varietal": "winery_varietals",
     "vintage": "winery_vintages",
 }
+EMPTY_SUMMARY: dict[str, int] = {"up": 0, "down": 0, "score": 0}
 
 
 class VoteRequest(BaseModel):
@@ -39,6 +41,8 @@ class VoteDeleteRequest(BaseModel):
 
 
 async def _target_exists(pool, target_type: str, target_id: int) -> bool:
+    # Polymorphic target_id can't carry a real FK, so we check existence
+    # explicitly to return a clean 404 (otherwise we'd insert a dangling vote).
     table = TARGET_TABLES[target_type]
     return await pool.fetchval(f"SELECT EXISTS (SELECT 1 FROM {table} WHERE id = $1)", target_id)
 
@@ -63,23 +67,31 @@ async def cast_vote(req: VoteRequest) -> dict:
     )
     summary = await _summary_for_target(pool, req.target_type, [req.target_id])
     return {
-        "vote": dict(row),
-        "summary": summary.get(req.target_id, {"up": 0, "down": 0, "score": 0}),
+        "vote": {
+            **dict(row),
+            "target_type": req.target_type,
+            "target_id": req.target_id,
+            "client_id": req.client_id,
+        },
+        "summary": summary.get(req.target_id, EMPTY_SUMMARY),
     }
 
 
 @router.delete("/votes")
 async def remove_vote(req: VoteDeleteRequest) -> dict:
     pool = get_pool()
-    result = await pool.execute(
-        "DELETE FROM votes WHERE target_type = $1 AND target_id = $2 AND client_id = $3",
+    deleted_id = await pool.fetchval(
+        """
+        DELETE FROM votes
+         WHERE target_type = $1 AND target_id = $2 AND client_id = $3
+        RETURNING id
+        """,
         req.target_type, req.target_id, req.client_id,
     )
-    deleted = result.endswith(" 1")
     summary = await _summary_for_target(pool, req.target_type, [req.target_id])
     return {
-        "deleted": deleted,
-        "summary": summary.get(req.target_id, {"up": 0, "down": 0, "score": 0}),
+        "deleted": deleted_id is not None,
+        "summary": summary.get(req.target_id, EMPTY_SUMMARY),
     }
 
 
@@ -148,6 +160,19 @@ async def _summary_for_target(pool, target_type: str, ids: list[int]) -> dict[in
     return {r["target_id"]: {"up": r["up"], "down": r["down"], "score": r["score"]} for r in rows}
 
 
+async def _mine_for_target(pool, target_type: str, ids: list[int], client_id: str) -> dict[int, int]:
+    if not ids:
+        return {}
+    rows = await pool.fetch(
+        """
+        SELECT target_id, value FROM votes
+         WHERE client_id = $1 AND target_type = $2 AND target_id = ANY($3::int[])
+        """,
+        client_id, target_type, ids,
+    )
+    return {r["target_id"]: r["value"] for r in rows}
+
+
 async def load_votes_for_targets(
     pool,
     *,
@@ -161,29 +186,23 @@ async def load_votes_for_targets(
     Returns:
         {
             "summary": {"winery": {id: {up, down, score}}, "varietal": {...}, "vintage": {...}},
-            "mine":    {"winery": {id: value}, ...}  # only when client_id is provided
+            "mine":    {"winery": {id: value}, ...}  # only populated when client_id is provided
         }
     """
-    summary: dict[str, dict[int, dict]] = {"winery": {}, "varietal": {}, "vintage": {}}
-    mine: dict[str, dict[int, int]] = {"winery": {}, "varietal": {}, "vintage": {}}
-
     pairs = (
         ("winery", winery_ids or []),
         ("varietal", varietal_ids or []),
         ("vintage", vintage_ids or []),
     )
-    for target_type, ids in pairs:
-        if not ids:
-            continue
-        summary[target_type] = await _summary_for_target(pool, target_type, ids)
-        if client_id:
-            rows = await pool.fetch(
-                """
-                SELECT target_id, value FROM votes
-                 WHERE client_id = $1 AND target_type = $2 AND target_id = ANY($3::int[])
-                """,
-                client_id, target_type, ids,
-            )
-            mine[target_type] = {r["target_id"]: r["value"] for r in rows}
+    tasks = [_summary_for_target(pool, t, ids) for t, ids in pairs]
+    if client_id:
+        tasks.extend(_mine_for_target(pool, t, ids, client_id) for t, ids in pairs)
+    results = await asyncio.gather(*tasks)
 
-    return {"summary": summary, "mine": mine}
+    return {
+        "summary": {t: results[i] for i, (t, _) in enumerate(pairs)},
+        "mine": {
+            t: (results[3 + i] if client_id else {})
+            for i, (t, _) in enumerate(pairs)
+        },
+    }

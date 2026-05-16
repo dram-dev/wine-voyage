@@ -52,16 +52,6 @@ def build_prompt(name: str, region: str, country: str, style: str | None, grapes
     )
 
 
-async def upsert_rank(conn: asyncpg.Connection, appellation_id: str, rank: int) -> bool:
-    """Apply popularity_rank to the appellation. Returns False if the AAV is unknown."""
-    result = await conn.execute(
-        "UPDATE appellations SET popularity_rank = $1 WHERE id = $2",
-        rank, appellation_id,
-    )
-    # asyncpg returns e.g. "UPDATE 1" / "UPDATE 0"
-    return result.endswith(" 1")
-
-
 async def replace_ai_wineries(conn: asyncpg.Connection, appellation_id: str, wineries: list[dict]) -> int:
     """Replace the AI-sourced winery set for this AAV, returning the count inserted."""
     inserted = 0
@@ -157,7 +147,10 @@ async def seed(limit: int | None, dry_run: bool) -> None:
             if dry_run:
                 continue
 
-            await upsert_rank(conn, aid, rank)
+            await conn.execute(
+                "UPDATE appellations SET popularity_rank = $1 WHERE id = $2",
+                rank, aid,
+            )
 
             prompt = build_prompt(
                 row["name"], row["region_name"], row["country_name"],
