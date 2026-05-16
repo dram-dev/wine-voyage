@@ -12,6 +12,7 @@ from __future__ import annotations
 from fastapi import APIRouter, Query
 
 from server.db import get_pool
+from server.routes.votes import load_votes_for_targets
 
 router = APIRouter(tags=["top-rated"])
 
@@ -26,6 +27,7 @@ async def top_rated(
         MAX_PICKS, ge=1, le=MAX_PICKS,
         description="Wineries / varietals / vintages to return per AAV",
     ),
+    client_id: str | None = Query(default=None, description="Optional client UUID for my_vote enrichment"),
 ) -> dict:
     pool = get_pool()
 
@@ -68,7 +70,7 @@ async def top_rated(
     if winery_ids:
         varietal_rows = await pool.fetch(
             """
-            SELECT winery_id, varietal, rating, note,
+            SELECT id, winery_id, varietal, rating, note,
                    row_number() OVER (
                        PARTITION BY winery_id
                        ORDER BY rating DESC NULLS LAST, varietal ASC
@@ -80,7 +82,7 @@ async def top_rated(
         )
         vintage_rows = await pool.fetch(
             """
-            SELECT winery_id, vintage, rating, note,
+            SELECT id, winery_id, vintage, rating, note,
                    row_number() OVER (
                        PARTITION BY winery_id
                        ORDER BY rating DESC NULLS LAST, vintage DESC
@@ -91,24 +93,40 @@ async def top_rated(
             winery_ids,
         )
 
+    top_varietal_rows = [r for r in varietal_rows if r["rn"] <= per_appellation]
+    top_vintage_rows = [r for r in vintage_rows if r["rn"] <= per_appellation]
+    varietal_ids = [r["id"] for r in top_varietal_rows]
+    vintage_ids = [r["id"] for r in top_vintage_rows]
+
+    vote_data = await load_votes_for_targets(
+        pool,
+        winery_ids=winery_ids,
+        varietal_ids=varietal_ids,
+        vintage_ids=vintage_ids,
+        client_id=client_id,
+    )
+    empty_summary = {"up": 0, "down": 0, "score": 0}
+
     varietals_by_winery: dict[int, list[dict]] = {}
-    for r in varietal_rows:
-        if r["rn"] > per_appellation:
-            continue
+    for r in top_varietal_rows:
         varietals_by_winery.setdefault(r["winery_id"], []).append({
+            "id": r["id"],
             "varietal": r["varietal"],
             "rating": float(r["rating"]) if r["rating"] is not None else None,
             "note": r["note"],
+            "votes": vote_data["summary"]["varietal"].get(r["id"], empty_summary),
+            "my_vote": vote_data["mine"]["varietal"].get(r["id"]) if client_id else None,
         })
 
     vintages_by_winery: dict[int, list[dict]] = {}
-    for r in vintage_rows:
-        if r["rn"] > per_appellation:
-            continue
+    for r in top_vintage_rows:
         vintages_by_winery.setdefault(r["winery_id"], []).append({
+            "id": r["id"],
             "vintage": r["vintage"],
             "rating": float(r["rating"]) if r["rating"] is not None else None,
             "note": r["note"],
+            "votes": vote_data["summary"]["vintage"].get(r["id"], empty_summary),
+            "my_vote": vote_data["mine"]["vintage"].get(r["id"]) if client_id else None,
         })
 
     wineries_by_appellation: dict[str, list[dict]] = {}
@@ -118,6 +136,8 @@ async def top_rated(
             "name": r["name"],
             "stars": float(r["stars"]) if r["stars"] is not None else None,
             "note": r["note"],
+            "votes": vote_data["summary"]["winery"].get(r["id"], empty_summary),
+            "my_vote": vote_data["mine"]["winery"].get(r["id"]) if client_id else None,
             "top_varietals": varietals_by_winery.get(r["id"], []),
             "top_vintages": vintages_by_winery.get(r["id"], []),
         })

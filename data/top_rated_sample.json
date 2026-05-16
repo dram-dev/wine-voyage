@@ -1,0 +1,1390 @@
+{
+  "_comment": "Hand-curated sample matching the exact response shape of GET /api/top-rated. Thirteen canonical AAVs, eight top producers each, with up to three top varietals (1-5 star scale) and up to three top vintages (100-point critic scale). Use this as the reference payload while the live seed (scripts/seed_top_rated.py) is offline.",
+  "count": 13,
+  "limit": 13,
+  "per_appellation": 8,
+  "appellations": [
+    {
+      "id": "champagne",
+      "name": "Champagne",
+      "style": "Sparkling",
+      "grapes": ["Chardonnay", "Pinot Noir", "Pinot Meunier"],
+      "popularity_rank": 1,
+      "region": {"id": "champagne", "name": "Champagne"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1001,
+          "name": "Krug",
+          "stars": 5.0,
+          "note": "Multi-vintage Grande Cuvee is the benchmark for prestige NV Champagne.",
+          "top_varietals": [
+            {"varietal": "Grande Cuvee (Pinot-led blend)", "rating": 5.0, "note": "House style: oxidative, oak-aged reserve wines layered for depth."},
+            {"varietal": "Clos du Mesnil (Blanc de Blancs)", "rating": 5.0, "note": "Single-vineyard Chardonnay from a 1.85 ha walled plot."},
+            {"varietal": "Krug Rose", "rating": 4.5, "note": "Pinot-Noir-led rose assembled like Grande Cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2008, "rating": 99.0, "note": "Laser-cut acidity, decades of life ahead."},
+            {"vintage": 2002, "rating": 98.0, "note": "Generous, classically structured."},
+            {"vintage": 1996, "rating": 98.0, "note": "Steely, aging on its acid spine."}
+          ]
+        },
+        {
+          "id": 1002,
+          "name": "Salon",
+          "stars": 5.0,
+          "note": "Vintage-only Blanc de Blancs from Le Mesnil-sur-Oger.",
+          "top_varietals": [
+            {"varietal": "Cuvee S (Blanc de Blancs)", "rating": 5.0, "note": "Released only in declared years; long pre-disgorgement aging."}
+          ],
+          "top_vintages": [
+            {"vintage": 2012, "rating": 98.0, "note": "Tense, mineral, built to age 30+ years."},
+            {"vintage": 2008, "rating": 99.0, "note": "Reference vintage; chiseled and pure."},
+            {"vintage": 2002, "rating": 97.0, "note": "Powerful but precise."}
+          ]
+        },
+        {
+          "id": 1003,
+          "name": "Jacques Selosse",
+          "stars": 5.0,
+          "note": "Anselme Selosse's grower-Champagne house redefined oxidative single-vineyard cuvees.",
+          "top_varietals": [
+            {"varietal": "Substance (solera Blanc de Blancs)", "rating": 5.0, "note": "Solera started 1986; profound depth."},
+            {"varietal": "Initial (BdB)", "rating": 4.5, "note": "Entry into the Selosse style; oxidative, gastronomic."},
+            {"varietal": "Lieux-Dits (single-vineyard series)", "rating": 5.0, "note": "Six single sites expressing terroir."}
+          ],
+          "top_vintages": [
+            {"vintage": 2008, "rating": 97.0, "note": "Millesime: cool-year tension."},
+            {"vintage": 2004, "rating": 96.0, "note": "Powerful, layered."},
+            {"vintage": 2002, "rating": 96.0, "note": "Ripe, expressive."}
+          ]
+        },
+        {
+          "id": 1004,
+          "name": "Louis Roederer",
+          "stars": 5.0,
+          "note": "Cristal is the defining prestige cuvee of modern Champagne.",
+          "top_varietals": [
+            {"varietal": "Cristal", "rating": 5.0, "note": "Pinot-Chardonnay blend, certified biodynamic since 2012."},
+            {"varietal": "Cristal Rose", "rating": 5.0, "note": "Saignee method; only made in great years."},
+            {"varietal": "Collection (NV)", "rating": 4.5, "note": "Replaced Brut Premier; multi-vintage solera approach."}
+          ],
+          "top_vintages": [
+            {"vintage": 2012, "rating": 99.0, "note": "Cristal: era-defining release."},
+            {"vintage": 2008, "rating": 98.0, "note": "Acid-driven, very long-lived."},
+            {"vintage": 2002, "rating": 97.0, "note": "Generous, powerful, fully mature."}
+          ]
+        },
+        {
+          "id": 1005,
+          "name": "Bollinger",
+          "stars": 4.5,
+          "note": "Pinot-driven house; barrel-fermented reserves and long lees aging.",
+          "top_varietals": [
+            {"varietal": "La Grande Annee", "rating": 4.5, "note": "Vintage cuvee in barrel."},
+            {"varietal": "RD (Recemment Degorge)", "rating": 5.0, "note": "Late-disgorged Grande Annee with extra autolysis."},
+            {"varietal": "Vieilles Vignes Francaises", "rating": 5.0, "note": "Ungrafted Pinot Noir from three tiny plots."}
+          ],
+          "top_vintages": [
+            {"vintage": 2012, "rating": 97.0, "note": "La Grande Annee at peak form."},
+            {"vintage": 2007, "rating": 96.0, "note": "RD: refined, complex."},
+            {"vintage": 2002, "rating": 97.0, "note": "Benchmark vintage."}
+          ]
+        },
+        {
+          "id": 1006,
+          "name": "Dom Perignon",
+          "stars": 4.5,
+          "note": "Moet's prestige cuvee; Plenitude releases extend ageability decades.",
+          "top_varietals": [
+            {"varietal": "Vintage Brut", "rating": 4.5, "note": "Roughly 50/50 Chardonnay-Pinot, oak-influenced finesse."},
+            {"varietal": "P2 (Plenitude 2)", "rating": 5.0, "note": "Second-life release after ~16 years on lees."},
+            {"varietal": "Rose", "rating": 4.5, "note": "Pinot-rich, gastronomic."}
+          ],
+          "top_vintages": [
+            {"vintage": 2012, "rating": 97.0, "note": "Classic Dom balance."},
+            {"vintage": 2008, "rating": 98.0, "note": "Tense, structured, very long-lived."},
+            {"vintage": 2002, "rating": 97.0, "note": "Now drinking beautifully."}
+          ]
+        },
+        {
+          "id": 1007,
+          "name": "Pol Roger",
+          "stars": 4.5,
+          "note": "Sir Winston Churchill's house; classically taut Pinot-led style.",
+          "top_varietals": [
+            {"varietal": "Cuvee Sir Winston Churchill", "rating": 5.0, "note": "Vintage prestige cuvee, Pinot-dominant."},
+            {"varietal": "Brut Vintage", "rating": 4.5, "note": "Reliable benchmark vintage Champagne."},
+            {"varietal": "Brut Reserve NV", "rating": 4.0, "note": "House NV with notable consistency."}
+          ],
+          "top_vintages": [
+            {"vintage": 2013, "rating": 96.0, "note": "Churchill: classic precision."},
+            {"vintage": 2009, "rating": 95.0, "note": "Generous and complete."},
+            {"vintage": 2002, "rating": 97.0, "note": "Now in its drinking window."}
+          ]
+        },
+        {
+          "id": 1008,
+          "name": "Egly-Ouriet",
+          "stars": 5.0,
+          "note": "Ambonnay grower; ripe, low-dosage Pinot-driven Champagne.",
+          "top_varietals": [
+            {"varietal": "Les Crayeres VV (BdN)", "rating": 5.0, "note": "Old-vine Pinot Noir from a single plot."},
+            {"varietal": "Brut Tradition Grand Cru", "rating": 4.5, "note": "Reference NV; long lees aging."},
+            {"varietal": "Millesime Grand Cru", "rating": 5.0, "note": "Vintage cuvee, deep and structured."}
+          ],
+          "top_vintages": [
+            {"vintage": 2008, "rating": 97.0, "note": "Acid spine, decades of upside."},
+            {"vintage": 2004, "rating": 96.0, "note": "Mature, complex."},
+            {"vintage": 2002, "rating": 96.0, "note": "Peak form."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pauillac",
+      "name": "Pauillac",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"],
+      "popularity_rank": 44,
+      "region": {"id": "bordeaux", "name": "Bordeaux"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1101, "name": "Chateau Lafite Rothschild", "stars": 5.0,
+          "note": "First Growth; pure Cabernet expression with legendary aging curve.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 5.0, "note": "Roughly 90% Cabernet Sauvignon; ethereal in great years."},
+            {"varietal": "Carruades de Lafite", "rating": 4.5, "note": "Second wine; earlier-drinking expression."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 100.0, "note": "Modern reference; perfect balance."},
+            {"vintage": 2010, "rating": 99.0, "note": "Tannic powerhouse, very long-lived."},
+            {"vintage": 2009, "rating": 99.0, "note": "Hedonistic, opulent."}
+          ]
+        },
+        {
+          "id": 1102, "name": "Chateau Latour", "stars": 5.0,
+          "note": "First Growth; ironclad structure, decades-long aging window.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 5.0, "note": "Cab-dominant, ex-chateau release program since 2012."},
+            {"varietal": "Les Forts de Latour", "rating": 4.5, "note": "Second wine of substance."},
+            {"varietal": "Pauillac de Latour", "rating": 4.0, "note": "Third label; estate-grown."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 100.0, "note": "Era-defining release."},
+            {"vintage": 2010, "rating": 100.0, "note": "Monumental; needs decades."},
+            {"vintage": 2003, "rating": 96.0, "note": "Hot vintage handled with grace."}
+          ]
+        },
+        {
+          "id": 1103, "name": "Chateau Mouton Rothschild", "stars": 5.0,
+          "note": "First Growth (promoted 1973); flamboyant, perfumed Cabernet style.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 5.0, "note": "Artist-label release each vintage."},
+            {"varietal": "Le Petit Mouton", "rating": 4.5, "note": "Second wine; expressive, accessible earlier."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Modern Mouton at its best."},
+            {"vintage": 2010, "rating": 98.0, "note": "Massive structure."},
+            {"vintage": 1986, "rating": 100.0, "note": "Reference vintage of the modern era."}
+          ]
+        },
+        {
+          "id": 1104, "name": "Chateau Pichon-Longueville Comtesse de Lalande", "stars": 4.5,
+          "note": "Super-Second with a Merlot-friendlier, perfumed style.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 4.5, "note": "Silky, aromatic Cab-Merlot blend."},
+            {"varietal": "Reserve de la Comtesse", "rating": 4.0, "note": "Reliable second label."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Stunning release."},
+            {"vintage": 1996, "rating": 96.0, "note": "Cab-led classic, fully mature."},
+            {"vintage": 1982, "rating": 99.0, "note": "Iconic vintage at this estate."}
+          ]
+        },
+        {
+          "id": 1105, "name": "Chateau Pichon Baron", "stars": 4.5,
+          "note": "Super-Second; powerful, structured Cabernet on Pauillac plateau.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 4.5, "note": "Concentrated, classically Pauillac."},
+            {"varietal": "Les Tourelles de Longueville", "rating": 4.0, "note": "Second wine; Merlot-leaning."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Among the best ever made."},
+            {"vintage": 2010, "rating": 97.0, "note": "Powerful, age-worthy."},
+            {"vintage": 1989, "rating": 98.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1106, "name": "Chateau Lynch-Bages", "stars": 4.5,
+          "note": "Fifth Growth that consistently overdelivers; richly fruited.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 4.5, "note": "Dark-fruited, expressive Cab blend."},
+            {"varietal": "Echo de Lynch-Bages", "rating": 4.0, "note": "Second wine."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Best release of the modern era."},
+            {"vintage": 2009, "rating": 96.0, "note": "Hedonistic and complete."},
+            {"vintage": 1989, "rating": 97.0, "note": "Legendary vintage here."}
+          ]
+        },
+        {
+          "id": 1107, "name": "Chateau Pontet-Canet", "stars": 4.5,
+          "note": "Biodynamic Fifth Growth performing at Super-Second level.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 4.5, "note": "Pure, mineral, biodynamic Cabernet."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Classic balance."},
+            {"vintage": 2010, "rating": 100.0, "note": "Among the wines of the vintage."},
+            {"vintage": 2009, "rating": 99.0, "note": "Opulent and structured."}
+          ]
+        },
+        {
+          "id": 1108, "name": "Chateau Grand-Puy-Lacoste", "stars": 4.0,
+          "note": "Fifth Growth; classical, traditional Pauillac at fair pricing.",
+          "top_varietals": [
+            {"varietal": "Grand Vin", "rating": 4.0, "note": "Pure Cab character; built to age."},
+            {"varietal": "Lacoste-Borie", "rating": 3.5, "note": "Approachable second wine."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Excellent value classified growth."},
+            {"vintage": 2010, "rating": 95.0, "note": "Powerful, classical."},
+            {"vintage": 2005, "rating": 94.0, "note": "Approaching its peak."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pomerol",
+      "name": "Pomerol",
+      "style": "Plush red",
+      "grapes": ["Merlot", "Cabernet Franc"],
+      "popularity_rank": 43,
+      "region": {"id": "bordeaux", "name": "Bordeaux"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1201, "name": "Petrus", "stars": 5.0, "note": "100% Merlot on Pomerol's blue clay; the appellation's apex.",
+          "top_varietals": [{"varietal": "Petrus", "rating": 5.0, "note": "Single grand vin; no second wine."}],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Velvety, profound."},
+            {"vintage": 2010, "rating": 99.0, "note": "Towering structure for Merlot."},
+            {"vintage": 1989, "rating": 100.0, "note": "Reference modern release."}
+          ]
+        },
+        {
+          "id": 1202, "name": "Le Pin", "stars": 5.0, "note": "Micro-cuvee garage wine; perfumed Merlot from 2 ha.",
+          "top_varietals": [{"varietal": "Le Pin", "rating": 5.0, "note": "Tiny production; cult status."}],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 99.0, "note": "Sensuous and complete."},
+            {"vintage": 2009, "rating": 99.0, "note": "Hedonistic peak."},
+            {"vintage": 1982, "rating": 100.0, "note": "The wine that made the estate."}
+          ]
+        },
+        {
+          "id": 1203, "name": "Chateau Lafleur", "stars": 5.0, "note": "Old-vine plot blending Merlot and Cabernet Franc to rival Petrus.",
+          "top_varietals": [
+            {"varietal": "Lafleur", "rating": 5.0, "note": "Roughly 50/50 Merlot-Cab Franc."},
+            {"varietal": "Pensees de Lafleur", "rating": 4.5, "note": "Second wine of substance."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Perfumed perfection."},
+            {"vintage": 2010, "rating": 100.0, "note": "Reference vintage here."},
+            {"vintage": 1982, "rating": 100.0, "note": "Legendary."}
+          ]
+        },
+        {
+          "id": 1204, "name": "Vieux Chateau Certan", "stars": 4.5, "note": "Cab-Franc-inflected Pomerol with great precision.",
+          "top_varietals": [{"varietal": "VCC Grand Vin", "rating": 4.5, "note": "Aromatic, structured Pomerol classic."}],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Estate of the vintage candidate."},
+            {"vintage": 2010, "rating": 98.0, "note": "Powerful classic."},
+            {"vintage": 1998, "rating": 96.0, "note": "Mature and beautiful."}
+          ]
+        },
+        {
+          "id": 1205, "name": "Chateau Trotanoy", "stars": 4.5, "note": "Moueix-managed estate; muscular Pomerol.",
+          "top_varietals": [{"varietal": "Trotanoy", "rating": 4.5, "note": "Dense, structured Merlot-led blend."}],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 98.0, "note": "Concentrated, dense."},
+            {"vintage": 1990, "rating": 99.0, "note": "Reference older vintage."},
+            {"vintage": 1989, "rating": 98.0, "note": "Generous and complete."}
+          ]
+        },
+        {
+          "id": 1206, "name": "Chateau l'Eglise-Clinet", "stars": 4.5, "note": "Denis Durantou's old-vine masterpiece.",
+          "top_varietals": [
+            {"varietal": "L'Eglise-Clinet", "rating": 4.5, "note": "Old-vine Merlot with Cab Franc accent."},
+            {"varietal": "La Petite Eglise", "rating": 4.0, "note": "Second wine."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 98.0, "note": "Modern reference."},
+            {"vintage": 2009, "rating": 98.0, "note": "Hedonistic."},
+            {"vintage": 2000, "rating": 97.0, "note": "Long-lived classic."}
+          ]
+        },
+        {
+          "id": 1207, "name": "Chateau La Conseillante", "stars": 4.5, "note": "Silky, perfumed Pomerol style.",
+          "top_varietals": [{"varietal": "La Conseillante", "rating": 4.5, "note": "Floral, elegant Merlot blend."}],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 98.0, "note": "Estate at its best."},
+            {"vintage": 2009, "rating": 97.0, "note": "Plush, complete."},
+            {"vintage": 1989, "rating": 97.0, "note": "Mature and beautiful."}
+          ]
+        },
+        {
+          "id": 1208, "name": "Chateau l'Evangile", "stars": 4.5, "note": "Lafite-Rothschild-owned; concentrated Pomerol with Cab Franc influence.",
+          "top_varietals": [{"varietal": "L'Evangile", "rating": 4.5, "note": "Bold, structured Pomerol."}],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 98.0, "note": "Massive and refined."},
+            {"vintage": 2009, "rating": 97.0, "note": "Opulent."},
+            {"vintage": 1990, "rating": 96.0, "note": "Mature."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "vosne-romanee",
+      "name": "Vosne-Romanee",
+      "style": "Elegant red",
+      "grapes": ["Pinot Noir"],
+      "popularity_rank": 63,
+      "region": {"id": "burgundy", "name": "Burgundy"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1301, "name": "Domaine de la Romanee-Conti (DRC)", "stars": 5.0, "note": "The most legendary estate in wine.",
+          "top_varietals": [
+            {"varietal": "Romanee-Conti Grand Cru (Monopole)", "rating": 5.0, "note": "1.8 ha monopole; ~450 cases/yr."},
+            {"varietal": "La Tache Grand Cru (Monopole)", "rating": 5.0, "note": "6 ha monopole; powerful sibling of RC."},
+            {"varietal": "Richebourg Grand Cru", "rating": 5.0, "note": "Muscular, perfumed Grand Cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 100.0, "note": "Reference modern release."},
+            {"vintage": 2005, "rating": 100.0, "note": "Legendary structured year."},
+            {"vintage": 1990, "rating": 100.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1302, "name": "Domaine Leroy", "stars": 5.0, "note": "Biodynamic Burgundy producer at the very pinnacle.",
+          "top_varietals": [
+            {"varietal": "Musigny Grand Cru", "rating": 5.0, "note": "Tiny production; the rarest red Burgundy."},
+            {"varietal": "Richebourg Grand Cru", "rating": 5.0, "note": "Concentrated, layered."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Stunning across the range."},
+            {"vintage": 2010, "rating": 99.0, "note": "Pure precision."},
+            {"vintage": 1999, "rating": 99.0, "note": "Reference older vintage."}
+          ]
+        },
+        {
+          "id": 1303, "name": "Domaine du Comte Liger-Belair", "stars": 5.0, "note": "Louis-Michel's revived estate with magical Vosne plots.",
+          "top_varietals": [
+            {"varietal": "La Romanee Grand Cru (Monopole)", "rating": 5.0, "note": "0.85 ha monopole; ethereal."},
+            {"varietal": "Vosne-Romanee Aux Reignots 1er Cru", "rating": 4.5, "note": "Premier cru of grand-cru caliber."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Modern reference here."},
+            {"vintage": 2010, "rating": 98.0, "note": "Pure and translucent."},
+            {"vintage": 2005, "rating": 98.0, "note": "Structured classic."}
+          ]
+        },
+        {
+          "id": 1304, "name": "Domaine Emmanuel Rouget", "stars": 5.0, "note": "Henri Jayer's nephew; inherited the legendary Cros Parantoux plot.",
+          "top_varietals": [
+            {"varietal": "Vosne-Romanee Cros Parantoux 1er Cru", "rating": 5.0, "note": "Premier cru, grand cru in all but name."},
+            {"varietal": "Echezeaux Grand Cru", "rating": 5.0, "note": "Powerful, balanced."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Cros Parantoux at the peak."},
+            {"vintage": 2010, "rating": 98.0, "note": "Pure and structured."},
+            {"vintage": 1999, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1305, "name": "Domaine Mejan-Taulier / Mejan", "stars": 4.5, "note": "Tiny family domaine with old-vine Vosne village.",
+          "top_varietals": [
+            {"varietal": "Vosne-Romanee Vieilles Vignes", "rating": 4.5, "note": "Old vines; aromatically pure."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 94.0, "note": "Beautifully balanced."},
+            {"vintage": 2010, "rating": 93.0, "note": "Classic Vosne profile."}
+          ]
+        },
+        {
+          "id": 1306, "name": "Domaine Mongeard-Mugneret", "stars": 4.5, "note": "Reliable Vosne grower with strong Grand Cru holdings.",
+          "top_varietals": [
+            {"varietal": "Grands-Echezeaux Grand Cru", "rating": 4.5, "note": "Structured, age-worthy."},
+            {"varietal": "Echezeaux Grand Cru", "rating": 4.5, "note": "Polished and consistent."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 95.0, "note": "Excellent across the lineup."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classic balance."},
+            {"vintage": 2005, "rating": 94.0, "note": "Aging gracefully."}
+          ]
+        },
+        {
+          "id": 1307, "name": "Domaine Sylvain Cathiard", "stars": 5.0, "note": "Refined, perfumed, very small production.",
+          "top_varietals": [
+            {"varietal": "Vosne-Romanee Aux Malconsorts 1er Cru", "rating": 5.0, "note": "Among the top premier crus of Vosne."},
+            {"varietal": "Romanee-Saint-Vivant Grand Cru", "rating": 5.0, "note": "Floral, layered Grand Cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 98.0, "note": "Definitive."},
+            {"vintage": 2010, "rating": 97.0, "note": "Pure precision."},
+            {"vintage": 2005, "rating": 97.0, "note": "Structured."}
+          ]
+        },
+        {
+          "id": 1308, "name": "Domaine Meo-Camuzet", "stars": 4.5, "note": "Modern Vosne reference with broad Grand Cru reach.",
+          "top_varietals": [
+            {"varietal": "Vosne-Romanee Aux Brulees 1er Cru", "rating": 4.5, "note": "Spicy, dark-fruited premier cru."},
+            {"varietal": "Richebourg Grand Cru", "rating": 5.0, "note": "Power and grace combined."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 97.0, "note": "Reference vintage."},
+            {"vintage": 2010, "rating": 96.0, "note": "Crystalline."},
+            {"vintage": 2002, "rating": 95.0, "note": "Mature classic."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chambolle-musigny",
+      "name": "Chambolle-Musigny",
+      "style": "Elegant red",
+      "grapes": ["Pinot Noir"],
+      "popularity_rank": 61,
+      "region": {"id": "burgundy", "name": "Burgundy"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1401, "name": "Domaine Georges & Christophe Roumier", "stars": 5.0, "note": "Chambolle's most coveted address.",
+          "top_varietals": [
+            {"varietal": "Musigny Grand Cru", "rating": 5.0, "note": "0.1 ha; one of the rarest wines on earth."},
+            {"varietal": "Bonnes-Mares Grand Cru", "rating": 5.0, "note": "Reference Bonnes-Mares."},
+            {"varietal": "Chambolle-Musigny Les Amoureuses 1er Cru", "rating": 5.0, "note": "Premier cru of Grand Cru caliber."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 2010, "rating": 99.0, "note": "Pure precision."},
+            {"vintage": 1999, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1402, "name": "Domaine Comte Georges de Vogue", "stars": 5.0, "note": "Largest holder of Musigny.",
+          "top_varietals": [
+            {"varietal": "Musigny Vieilles Vignes Grand Cru", "rating": 5.0, "note": "7.2 ha of old-vine Musigny."},
+            {"varietal": "Bonnes-Mares Grand Cru", "rating": 4.5, "note": "Structured, age-worthy."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Among the best ever made."},
+            {"vintage": 2005, "rating": 99.0, "note": "Reference vintage."},
+            {"vintage": 1990, "rating": 99.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1403, "name": "Domaine Jacques-Frederic Mugnier", "stars": 5.0, "note": "Perfumed, weightless Chambolle benchmark.",
+          "top_varietals": [
+            {"varietal": "Musigny Grand Cru", "rating": 5.0, "note": "Ethereal."},
+            {"varietal": "Chambolle-Musigny Les Amoureuses 1er Cru", "rating": 5.0, "note": "Floral, transparent."},
+            {"varietal": "Bonnes-Mares Grand Cru", "rating": 4.5, "note": "Until 2003 only; later sold."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 98.0, "note": "Pure precision."},
+            {"vintage": 2010, "rating": 98.0, "note": "Translucent."},
+            {"vintage": 2005, "rating": 98.0, "note": "Structured classic."}
+          ]
+        },
+        {
+          "id": 1404, "name": "Domaine Ghislaine Barthod", "stars": 4.5, "note": "Premier-cru specialist; ten different climats.",
+          "top_varietals": [
+            {"varietal": "Chambolle-Musigny Les Cras 1er Cru", "rating": 4.5, "note": "Floral, structured."},
+            {"varietal": "Chambolle-Musigny Les Veroilles 1er Cru", "rating": 4.5, "note": "Powerful premier cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 95.0, "note": "Whole range singing."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classic Chambolle precision."},
+            {"vintage": 2005, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 1405, "name": "Domaine Anne Gros", "stars": 4.5, "note": "Sumptuous, refined Chambolle.",
+          "top_varietals": [
+            {"varietal": "Clos Vougeot Le Grand Maupertui Grand Cru", "rating": 4.5, "note": "Polished Clos Vougeot."},
+            {"varietal": "Echezeaux Grand Cru", "rating": 4.5, "note": "Floral, gentle."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 1406, "name": "Domaine Hudelot-Noellat", "stars": 4.5, "note": "Floral, perfumed Chambolle profile.",
+          "top_varietals": [
+            {"varietal": "Romanee-Saint-Vivant Grand Cru", "rating": 5.0, "note": "Stunning Grand Cru."},
+            {"varietal": "Richebourg Grand Cru", "rating": 4.5, "note": "Structured."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 96.0, "note": "Top form."},
+            {"vintage": 2010, "rating": 95.0, "note": "Crystalline."}
+          ]
+        },
+        {
+          "id": 1407, "name": "Maison Joseph Drouhin", "stars": 4.5, "note": "Negociant-domaine with notable Chambolle holdings.",
+          "top_varietals": [
+            {"varietal": "Musigny Grand Cru", "rating": 4.5, "note": "Perfumed grand cru."},
+            {"varietal": "Chambolle-Musigny Les Amoureuses 1er Cru", "rating": 4.5, "note": "Classic premier cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 95.0, "note": "Excellent vintage here."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 1408, "name": "Domaine Bertheau-Gerbet", "stars": 4.0, "note": "Younger generation reviving family estate.",
+          "top_varietals": [
+            {"varietal": "Chambolle-Musigny Les Charmes 1er Cru", "rating": 4.0, "note": "Floral premier cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2017, "rating": 93.0, "note": "Light, perfumed."},
+            {"vintage": 2015, "rating": 93.0, "note": "Generous."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "chateauneuf-du-pape",
+      "name": "Chateauneuf-du-Pape",
+      "style": "Powerful red",
+      "grapes": ["Grenache", "Syrah", "Mourvedre", "Cinsault"],
+      "popularity_rank": 27,
+      "region": {"id": "rhone", "name": "Rhone"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1501, "name": "Chateau Rayas", "stars": 5.0, "note": "Sandy-soil 100% Grenache; unlike any other CdP.",
+          "top_varietals": [
+            {"varietal": "Chateauneuf-du-Pape Rouge", "rating": 5.0, "note": "Pale, perfumed, Burgundian Grenache."},
+            {"varietal": "Pignan", "rating": 4.5, "note": "Sibling cuvee from nearby plot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 99.0, "note": "Era-defining release."},
+            {"vintage": 2005, "rating": 98.0, "note": "Structured classic."},
+            {"vintage": 1990, "rating": 100.0, "note": "Legendary."}
+          ]
+        },
+        {
+          "id": 1502, "name": "Domaine du Pegau", "stars": 4.5, "note": "Traditional, foudre-aged, robust style.",
+          "top_varietals": [
+            {"varietal": "Cuvee da Capo", "rating": 5.0, "note": "Only declared in great years."},
+            {"varietal": "Cuvee Reservee", "rating": 4.5, "note": "Reference traditional CdP."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Da Capo: monumental."},
+            {"vintage": 2010, "rating": 99.0, "note": "Da Capo benchmark."},
+            {"vintage": 2007, "rating": 99.0, "note": "Hedonistic peak."}
+          ]
+        },
+        {
+          "id": 1503, "name": "Chateau de Beaucastel", "stars": 4.5, "note": "Perrin family; all 13 permitted varieties, Mourvedre-rich.",
+          "top_varietals": [
+            {"varietal": "Hommage a Jacques Perrin", "rating": 5.0, "note": "Old-vine Mourvedre tete de cuvee."},
+            {"varietal": "Beaucastel Rouge", "rating": 4.5, "note": "Reference blend."},
+            {"varietal": "Beaucastel Blanc Roussanne VV", "rating": 4.5, "note": "Old-vine white."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference modern release."},
+            {"vintage": 2010, "rating": 97.0, "note": "Structured classic."},
+            {"vintage": 1990, "rating": 98.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1504, "name": "Henri Bonneau", "stars": 5.0, "note": "Cellar-aged Grenache; tiny production.",
+          "top_varietals": [
+            {"varietal": "Reserve des Celestins", "rating": 5.0, "note": "Long-aged in cask before release."},
+            {"varietal": "Cuvee Marie Beurrier", "rating": 4.5, "note": "Classical bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 99.0, "note": "Celestins benchmark."},
+            {"vintage": 2007, "rating": 98.0, "note": "Hedonistic."},
+            {"vintage": 1990, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1505, "name": "Clos des Papes", "stars": 4.5, "note": "Vincent Avril; blend of all 13 grapes from many parcels.",
+          "top_varietals": [
+            {"varietal": "Chateauneuf-du-Pape Rouge", "rating": 4.5, "note": "Field-blend style."},
+            {"varietal": "Chateauneuf-du-Pape Blanc", "rating": 4.5, "note": "Among the appellation's top whites."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference release."},
+            {"vintage": 2010, "rating": 98.0, "note": "Powerful classic."},
+            {"vintage": 2005, "rating": 96.0, "note": "Now mature."}
+          ]
+        },
+        {
+          "id": 1506, "name": "Domaine du Vieux Telegraphe", "stars": 4.5, "note": "Brunier brothers; La Crau plateau stones.",
+          "top_varietals": [
+            {"varietal": "La Crau Rouge", "rating": 4.5, "note": "Reference traditional CdP."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Classic balance."},
+            {"vintage": 2010, "rating": 96.0, "note": "Structured."},
+            {"vintage": 1998, "rating": 96.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1507, "name": "Domaine de la Janasse", "stars": 4.5, "note": "Modern style with rich texture.",
+          "top_varietals": [
+            {"varietal": "Cuvee XXL", "rating": 4.5, "note": "Old-vine flagship."},
+            {"varietal": "Vieilles Vignes", "rating": 4.5, "note": "Old-vine cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference VV."},
+            {"vintage": 2010, "rating": 97.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 98.0, "note": "Hedonistic peak."}
+          ]
+        },
+        {
+          "id": 1508, "name": "Le Vieux Donjon", "stars": 4.0, "note": "Classical, traditional CdP at fair pricing.",
+          "top_varietals": [
+            {"varietal": "Chateauneuf-du-Pape Rouge", "rating": 4.0, "note": "Reliable, classical."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Excellent release."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cote-rotie",
+      "name": "Cote-Rotie",
+      "style": "Aromatic red",
+      "grapes": ["Syrah", "Viognier"],
+      "popularity_rank": 25,
+      "region": {"id": "rhone", "name": "Rhone"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1601, "name": "E. Guigal", "stars": 5.0, "note": "La-La trio of single-vineyard cuvees redefined the appellation.",
+          "top_varietals": [
+            {"varietal": "La Landonne", "rating": 5.0, "note": "Pure Syrah from northern Cote Brune."},
+            {"varietal": "La Mouline", "rating": 5.0, "note": "Syrah-Viognier; the most exotic of the trio."},
+            {"varietal": "La Turque", "rating": 5.0, "note": "Single-block Cote Brune."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Era-defining La-La trio."},
+            {"vintage": 2010, "rating": 99.0, "note": "Structured."},
+            {"vintage": 1985, "rating": 100.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1602, "name": "Rene Rostaing", "stars": 4.5, "note": "Single-vineyard purist style.",
+          "top_varietals": [
+            {"varietal": "La Landonne", "rating": 4.5, "note": "Cote Brune power."},
+            {"varietal": "Cote Blonde", "rating": 4.5, "note": "More aromatic, Viognier-influenced."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 97.0, "note": "Reference release."},
+            {"vintage": 2010, "rating": 96.0, "note": "Classic structure."},
+            {"vintage": 2003, "rating": 95.0, "note": "Hot vintage handled well."}
+          ]
+        },
+        {
+          "id": 1603, "name": "Domaine Jamet", "stars": 5.0, "note": "Field-blend Cote-Rotie from 25 parcels.",
+          "top_varietals": [
+            {"varietal": "Cote-Rotie Cote Brune", "rating": 5.0, "note": "Pure Cote Brune cuvee."},
+            {"varietal": "Cote-Rotie (estate)", "rating": 4.5, "note": "Field-blend of all parcels."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 98.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 97.0, "note": "Aromatically pure."},
+            {"vintage": 1999, "rating": 98.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 1604, "name": "Domaine Jasmin", "stars": 4.5, "note": "Classic, perfumed, traditional Cote-Rotie.",
+          "top_varietals": [
+            {"varietal": "Cote-Rotie", "rating": 4.5, "note": "Aromatic Syrah-Viognier classic."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 96.0, "note": "Excellent vintage."},
+            {"vintage": 2010, "rating": 95.0, "note": "Pure."},
+            {"vintage": 1991, "rating": 95.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1605, "name": "Domaine Clusel-Roch", "stars": 4.0, "note": "Biodynamic, light-touch style.",
+          "top_varietals": [
+            {"varietal": "Les Grandes Places", "rating": 4.5, "note": "Old-vine lieu-dit."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 95.0, "note": "Pure and aromatic."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classic balance."}
+          ]
+        },
+        {
+          "id": 1606, "name": "Domaine Bernard Levet", "stars": 4.0, "note": "Whole-cluster traditionalist.",
+          "top_varietals": [
+            {"varietal": "La Chavaroche", "rating": 4.0, "note": "Whole-bunch fermented classic."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 94.0, "note": "Reference release."},
+            {"vintage": 2010, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 1607, "name": "Domaine Stephane Ogier", "stars": 4.5, "note": "Modern producer with single-vineyard precision.",
+          "top_varietals": [
+            {"varietal": "Belle Helene", "rating": 4.5, "note": "Old-vine flagship."},
+            {"varietal": "La Belle Helene Cote Brune", "rating": 4.5, "note": "Single-block."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 97.0, "note": "Era-defining."},
+            {"vintage": 2010, "rating": 96.0, "note": "Pure precision."}
+          ]
+        },
+        {
+          "id": 1608, "name": "Jean-Michel Gerin", "stars": 4.0, "note": "Modern, polished style.",
+          "top_varietals": [
+            {"varietal": "Les Grandes Places", "rating": 4.0, "note": "Single-vineyard old-vine cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 95.0, "note": "Classic balance."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hermitage",
+      "name": "Hermitage",
+      "style": "Powerful red and white",
+      "grapes": ["Syrah", "Marsanne", "Roussanne"],
+      "popularity_rank": 26,
+      "region": {"id": "rhone", "name": "Rhone"},
+      "country": {"id": "fr", "name": "France", "emoji": "FR"},
+      "top_wineries": [
+        {
+          "id": 1701, "name": "Jean-Louis Chave", "stars": 5.0, "note": "Sixteenth-generation Hermitage reference.",
+          "top_varietals": [
+            {"varietal": "Hermitage Rouge", "rating": 5.0, "note": "Field-blend across hill's parcels."},
+            {"varietal": "Hermitage Blanc", "rating": 5.0, "note": "Marsanne-Roussanne; one of France's great whites."},
+            {"varietal": "Cuvee Cathelin", "rating": 5.0, "note": "Single-cuvee from old vines, only declared in great years."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 100.0, "note": "Era-defining Cathelin."},
+            {"vintage": 2010, "rating": 100.0, "note": "Monumental."},
+            {"vintage": 1990, "rating": 100.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1702, "name": "M. Chapoutier", "stars": 4.5, "note": "Biodynamic single-vineyard 'Selection Parcellaire' range.",
+          "top_varietals": [
+            {"varietal": "Hermitage L'Ermite", "rating": 5.0, "note": "Old-vine top of the hill."},
+            {"varietal": "Hermitage Le Pavillon", "rating": 5.0, "note": "Pre-phylloxera plot reference."},
+            {"varietal": "Hermitage Le Meal", "rating": 4.5, "note": "Concentrated single block."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Pavillon: reference."},
+            {"vintage": 2010, "rating": 98.0, "note": "Massive."},
+            {"vintage": 2003, "rating": 96.0, "note": "Hot vintage handled gracefully."}
+          ]
+        },
+        {
+          "id": 1703, "name": "Paul Jaboulet Aine", "stars": 4.0, "note": "La Chapelle Hermitage is a historical reference.",
+          "top_varietals": [
+            {"varietal": "Hermitage La Chapelle", "rating": 4.5, "note": "Historic top cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 96.0, "note": "Return to form."},
+            {"vintage": 1990, "rating": 97.0, "note": "Mature classic."},
+            {"vintage": 1961, "rating": 100.0, "note": "Legendary all-time vintage."}
+          ]
+        },
+        {
+          "id": 1704, "name": "E. Guigal Hermitage", "stars": 4.5, "note": "Guigal's Hermitage range adds depth to Cote-Rotie legacy.",
+          "top_varietals": [
+            {"varietal": "Hermitage Ex-Voto Rouge", "rating": 4.5, "note": "Top cuvee from purchased fruit."},
+            {"varietal": "Hermitage Ex-Voto Blanc", "rating": 4.5, "note": "Marsanne-Roussanne blend, age-worthy."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 97.0, "note": "Reference Ex-Voto."},
+            {"vintage": 2010, "rating": 96.0, "note": "Structured."}
+          ]
+        },
+        {
+          "id": 1705, "name": "Domaine Marc Sorrel", "stars": 4.0, "note": "Traditionalist; Le Greal cuvee a benchmark.",
+          "top_varietals": [
+            {"varietal": "Hermitage Le Greal", "rating": 4.5, "note": "Old-vine flagship."},
+            {"varietal": "Hermitage Blanc Les Rocoules", "rating": 4.5, "note": "Top old-vine white."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 96.0, "note": "Excellent."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classical."},
+            {"vintage": 1991, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 1706, "name": "Bernard Faurie", "stars": 4.0, "note": "Tiny artisanal Hermitage producer.",
+          "top_varietals": [
+            {"varietal": "Hermitage (Bessards / Le Meal)", "rating": 4.0, "note": "Block-specific bottlings."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 94.0, "note": "Pure and traditional."},
+            {"vintage": 2010, "rating": 93.0, "note": "Classic balance."}
+          ]
+        },
+        {
+          "id": 1707, "name": "Domaine Belle", "stars": 3.5, "note": "Crozes-and-Hermitage producer; reliable Hermitage cuvee.",
+          "top_varietals": [
+            {"varietal": "Hermitage", "rating": 3.5, "note": "Solid traditional style."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 92.0, "note": "Reliable release."},
+            {"vintage": 2010, "rating": 91.0, "note": "Balanced."}
+          ]
+        },
+        {
+          "id": 1708, "name": "Tardieu-Laurent", "stars": 4.0, "note": "Negociant specializing in old-vine Rhone cuvees.",
+          "top_varietals": [
+            {"varietal": "Hermitage Vieilles Vignes", "rating": 4.0, "note": "Old-vine bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 94.0, "note": "Reference release."},
+            {"vintage": 2010, "rating": 93.0, "note": "Solid."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barolo",
+      "name": "Barolo",
+      "style": "Powerful red",
+      "grapes": ["Nebbiolo"],
+      "popularity_rank": 7,
+      "region": {"id": "piedmont", "name": "Piedmont"},
+      "country": {"id": "it", "name": "Italy", "emoji": "IT"},
+      "top_wineries": [
+        {
+          "id": 1801, "name": "Giacomo Conterno", "stars": 5.0, "note": "Monfortino is the apex of traditional Barolo.",
+          "top_varietals": [
+            {"varietal": "Barolo Monfortino Riserva", "rating": 5.0, "note": "Long cask aging; released only in great years."},
+            {"varietal": "Barolo Francia", "rating": 5.0, "note": "Single-vineyard Serralunga."},
+            {"varietal": "Barolo Cascina Francia", "rating": 4.5, "note": "Cru bottling pre-2014."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 99.0, "note": "Monfortino: against-the-odds masterpiece."},
+            {"vintage": 2010, "rating": 100.0, "note": "Era-defining Monfortino."},
+            {"vintage": 2004, "rating": 99.0, "note": "Reference."}
+          ]
+        },
+        {
+          "id": 1802, "name": "Bartolo Mascarello", "stars": 5.0, "note": "Traditionalist; blends crus into one cuvee.",
+          "top_varietals": [
+            {"varietal": "Barolo", "rating": 5.0, "note": "Cannubi-Rue-San Lorenzo-Rocche blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Modern reference."},
+            {"vintage": 2010, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 2004, "rating": 98.0, "note": "Classic structure."}
+          ]
+        },
+        {
+          "id": 1803, "name": "Giuseppe Rinaldi", "stars": 5.0, "note": "Two blended-cru bottlings, no single-vineyard releases.",
+          "top_varietals": [
+            {"varietal": "Barolo Brunate", "rating": 5.0, "note": "Brunate blend."},
+            {"varietal": "Barolo Tre Tine", "rating": 5.0, "note": "Ravera-Cannubi-Le Coste blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Pure precision."},
+            {"vintage": 2010, "rating": 98.0, "note": "Reference traditional."},
+            {"vintage": 2001, "rating": 99.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1804, "name": "Bruno Giacosa", "stars": 5.0, "note": "Red Label Riservas legendary in Falletto.",
+          "top_varietals": [
+            {"varietal": "Barolo Falletto Riserva (Red Label)", "rating": 5.0, "note": "Only in great years."},
+            {"varietal": "Barolo Le Rocche del Falletto", "rating": 5.0, "note": "Cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 99.0, "note": "Reference Red Label."},
+            {"vintage": 2004, "rating": 99.0, "note": "Era-defining Red Label."},
+            {"vintage": 2001, "rating": 100.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1805, "name": "Vietti", "stars": 4.5, "note": "Cru-specialist with modern-traditional balance.",
+          "top_varietals": [
+            {"varietal": "Barolo Rocche di Castiglione", "rating": 4.5, "note": "Single-cru reference."},
+            {"varietal": "Barolo Lazzarito", "rating": 4.5, "note": "Serralunga cru."},
+            {"varietal": "Barolo Brunate", "rating": 4.5, "note": "La Morra cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference vintage."},
+            {"vintage": 2010, "rating": 97.0, "note": "Structured classic."}
+          ]
+        },
+        {
+          "id": 1806, "name": "Roberto Voerzio", "stars": 4.5, "note": "Modernist; cru-specialist with concentrated style.",
+          "top_varietals": [
+            {"varietal": "Barolo Cerequio", "rating": 4.5, "note": "La Morra cru."},
+            {"varietal": "Barolo Brunate", "rating": 4.5, "note": "Concentrated reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Excellent."},
+            {"vintage": 2010, "rating": 96.0, "note": "Pure."},
+            {"vintage": 2001, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 1807, "name": "Aldo Conterno", "stars": 4.5, "note": "Bussia specialist with refined modern style.",
+          "top_varietals": [
+            {"varietal": "Barolo Granbussia Riserva", "rating": 5.0, "note": "Released only in declared years."},
+            {"varietal": "Barolo Cicala", "rating": 4.5, "note": "Bussia single block."},
+            {"varietal": "Barolo Romirasco", "rating": 4.5, "note": "Bussia single block."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 98.0, "note": "Granbussia: reference."},
+            {"vintage": 2004, "rating": 98.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 99.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 1808, "name": "Giacomo Borgogno", "stars": 4.0, "note": "Historic estate revived; long-aged Riservas.",
+          "top_varietals": [
+            {"varietal": "Barolo Riserva", "rating": 4.5, "note": "Classical, long-aged."},
+            {"varietal": "Barolo Liste", "rating": 4.0, "note": "Single-cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 95.0, "note": "Classical balance."},
+            {"vintage": 2001, "rating": 95.0, "note": "Mature reference."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barbaresco",
+      "name": "Barbaresco",
+      "style": "Aromatic red",
+      "grapes": ["Nebbiolo"],
+      "popularity_rank": 8,
+      "region": {"id": "piedmont", "name": "Piedmont"},
+      "country": {"id": "it", "name": "Italy", "emoji": "IT"},
+      "top_wineries": [
+        {
+          "id": 1901, "name": "Gaja", "stars": 5.0, "note": "Modern Barbaresco icon; single-vineyard pioneer.",
+          "top_varietals": [
+            {"varietal": "Barbaresco", "rating": 5.0, "note": "Estate blend; now back to DOCG from Langhe Nebbiolo."},
+            {"varietal": "Sori San Lorenzo", "rating": 5.0, "note": "Single-vineyard reference."},
+            {"varietal": "Sori Tildin", "rating": 5.0, "note": "Single-vineyard reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Modern Gaja peak."},
+            {"vintage": 2010, "rating": 98.0, "note": "Pure precision."},
+            {"vintage": 1990, "rating": 99.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1902, "name": "Bruno Giacosa Barbaresco", "stars": 5.0, "note": "Asili and Rabaja Red Label Riservas reference traditional Barbaresco.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Asili Riserva (Red Label)", "rating": 5.0, "note": "Only in great years."},
+            {"varietal": "Barbaresco Rabaja", "rating": 4.5, "note": "Cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 98.0, "note": "Reference Red Label."},
+            {"vintage": 2004, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 1989, "rating": 100.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 1903, "name": "Produttori del Barbaresco", "stars": 4.5, "note": "Cooperative producing single-cru Riservas at remarkable value.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Riserva Asili", "rating": 4.5, "note": "Reference cru bottling."},
+            {"varietal": "Barbaresco Riserva Rabaja", "rating": 4.5, "note": "Structured cru."},
+            {"varietal": "Barbaresco Riserva Montestefano", "rating": 4.5, "note": "Powerful cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Excellent across crus."},
+            {"vintage": 2010, "rating": 96.0, "note": "Classic balance."},
+            {"vintage": 2004, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 1904, "name": "Roagna", "stars": 4.5, "note": "Traditionalist; long maceration and cask aging.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Crichet Paje", "rating": 5.0, "note": "Single-block from Paje cru."},
+            {"varietal": "Barbaresco Asili", "rating": 4.5, "note": "Single-cru."},
+            {"varietal": "Barbaresco Paje", "rating": 4.5, "note": "Old-vine cru."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 97.0, "note": "Reference Crichet Paje."},
+            {"vintage": 2010, "rating": 97.0, "note": "Pure."},
+            {"vintage": 2001, "rating": 98.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 1905, "name": "Marchesi di Gresy", "stars": 4.0, "note": "Martinenga monopole reference.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Martinenga", "rating": 4.0, "note": "Single-vineyard monopole."},
+            {"varietal": "Camp Gros Martinenga Riserva", "rating": 4.5, "note": "Top of the monopole."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Pure aromatics."},
+            {"vintage": 2010, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 1906, "name": "Cantina del Pino", "stars": 4.0, "note": "Ovello-focused traditionalist.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Ovello", "rating": 4.0, "note": "Cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Excellent."},
+            {"vintage": 2013, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 1907, "name": "La Spinetta", "stars": 4.0, "note": "Modernist with single-vineyard ambition.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Starderi", "rating": 4.0, "note": "Single-vineyard cru."},
+            {"varietal": "Barbaresco Gallina", "rating": 4.0, "note": "Cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Polished."},
+            {"vintage": 2010, "rating": 93.0, "note": "Modern."}
+          ]
+        },
+        {
+          "id": 1908, "name": "Ca' del Baio", "stars": 4.0, "note": "Asili-and-Pora specialist at excellent value.",
+          "top_varietals": [
+            {"varietal": "Barbaresco Asili", "rating": 4.0, "note": "Pure cru expression."},
+            {"varietal": "Barbaresco Vallegrande", "rating": 4.0, "note": "Cru bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Excellent."},
+            {"vintage": 2013, "rating": 93.0, "note": "Balanced."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "brunello-di-montalcino",
+      "name": "Brunello di Montalcino",
+      "style": "Powerful red",
+      "grapes": ["Sangiovese"],
+      "popularity_rank": 10,
+      "region": {"id": "tuscany", "name": "Tuscany"},
+      "country": {"id": "it", "name": "Italy", "emoji": "IT"},
+      "top_wineries": [
+        {
+          "id": 2001, "name": "Biondi-Santi", "stars": 5.0, "note": "Originator of Brunello as a category; classical reference.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino Tenuta Greppo", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Brunello di Montalcino Riserva", "rating": 5.0, "note": "Only in declared years; built to age 50+ years."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Riserva."},
+            {"vintage": 2010, "rating": 97.0, "note": "Structured."},
+            {"vintage": 1990, "rating": 98.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2002, "name": "Soldera (Case Basse)", "stars": 5.0, "note": "Cult traditionalist; Toscana IGT after Brunello disputes.",
+          "top_varietals": [
+            {"varietal": "Toscana IGT Sangiovese (formerly Brunello)", "rating": 5.0, "note": "Pure, old-school Sangiovese."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 99.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 99.0, "note": "Pure precision."},
+            {"vintage": 2001, "rating": 99.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 2003, "name": "Poggio di Sotto", "stars": 4.5, "note": "Modern-traditional balance; sourced from southeast slopes.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino", "rating": 4.5, "note": "Polished Brunello reference."},
+            {"varietal": "Brunello Riserva", "rating": 5.0, "note": "Only in great years."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 97.0, "note": "Structured."},
+            {"vintage": 2007, "rating": 96.0, "note": "Hedonistic."}
+          ]
+        },
+        {
+          "id": 2004, "name": "Cerbaiona", "stars": 4.5, "note": "Tiny estate; cult traditionalist.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino", "rating": 4.5, "note": "Pure, traditional style."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 96.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 2005, "name": "Casanova di Neri", "stars": 4.5, "note": "Modern style; Tenuta Nuova cuvee a benchmark.",
+          "top_varietals": [
+            {"varietal": "Tenuta Nuova", "rating": 4.5, "note": "Estate single-vineyard."},
+            {"varietal": "Cerretalto", "rating": 5.0, "note": "Single-vineyard top cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Cerretalto reference."},
+            {"vintage": 2010, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2006, "name": "Il Poggione", "stars": 4.0, "note": "Reliable, classical Brunello at excellent value.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino", "rating": 4.0, "note": "Classical balance."},
+            {"varietal": "Riserva Vigna Paganelli", "rating": 4.5, "note": "Single-vineyard Riserva."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Excellent value."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 2007, "name": "Salvioni La Cerbaiola", "stars": 4.5, "note": "Tiny artisanal estate.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino", "rating": 4.5, "note": "Traditional, layered."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 97.0, "note": "Classical."},
+            {"vintage": 2004, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 2008, "name": "Sesti", "stars": 4.0, "note": "Castello di Argiano estate with traditional outlook.",
+          "top_varietals": [
+            {"varietal": "Brunello di Montalcino", "rating": 4.0, "note": "Reliable classical Brunello."},
+            {"varietal": "Phenomena Brunello Riserva", "rating": 4.5, "note": "Released only when warranted."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 94.0, "note": "Balanced."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "napa-valley",
+      "name": "Napa Valley",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot", "Chardonnay"],
+      "popularity_rank": 3,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 2101, "name": "Screaming Eagle", "stars": 5.0, "note": "Tiny Oakville Cabernet cult; ~600 cases per year.",
+          "top_varietals": [
+            {"varietal": "Cabernet Sauvignon", "rating": 5.0, "note": "Pure Oakville Cab; precise and refined."},
+            {"varietal": "The Flight (second wine)", "rating": 4.5, "note": "Approachable second label."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference modern release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 98.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 2102, "name": "Harlan Estate", "stars": 5.0, "note": "Oakville hillside estate; First Growth ambition.",
+          "top_varietals": [
+            {"varietal": "Harlan Estate Proprietary Red", "rating": 5.0, "note": "Cab-led Bordeaux blend."},
+            {"varietal": "The Maiden", "rating": 4.5, "note": "Second wine of substance."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 100.0, "note": "Monumental."},
+            {"vintage": 2002, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2103, "name": "Dominus Estate", "stars": 5.0, "note": "Christian Moueix's Napanook estate; restrained Bordeaux-style.",
+          "top_varietals": [
+            {"varietal": "Dominus", "rating": 5.0, "note": "Cab-led; classical structure."},
+            {"varietal": "Napanook", "rating": 4.5, "note": "Second wine."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 98.0, "note": "Powerful."},
+            {"vintage": 1991, "rating": 98.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2104, "name": "Opus One", "stars": 4.5, "note": "Mondavi-Rothschild joint venture; benchmark Napa Bordeaux blend.",
+          "top_varietals": [
+            {"varietal": "Opus One", "rating": 4.5, "note": "Cab-led blend with classical aging curve."},
+            {"varietal": "Overture", "rating": 4.0, "note": "NV second wine, declassified vintages blended."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Modern reference."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 2105, "name": "Ridge Vineyards (Monte Bello)", "stars": 5.0, "note": "Santa Cruz Mountains but spiritually Napa peer; long-lived Cab.",
+          "top_varietals": [
+            {"varietal": "Monte Bello", "rating": 5.0, "note": "Single-vineyard Cab-led blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2013, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 2010, "rating": 98.0, "note": "Pure precision."},
+            {"vintage": 1991, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2106, "name": "Spottswoode Estate", "stars": 4.5, "note": "Organically farmed St. Helena estate; refined Cabernet.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Elegant, layered Cab."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.0, "note": "Among Napa's best whites."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 2107, "name": "Shafer Vineyards (Hillside Select)", "stars": 4.5, "note": "Stags Leap District icon.",
+          "top_varietals": [
+            {"varietal": "Hillside Select Cabernet Sauvignon", "rating": 5.0, "note": "Single-vineyard hillside Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Powerful reference."},
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 2002, "rating": 98.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 2108, "name": "Chateau Montelena", "stars": 4.5, "note": "Calistoga Cab and Chardonnay icon; 'Judgment of Paris' winner.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Long-lived classical Cab."},
+            {"varietal": "Chardonnay", "rating": 4.5, "note": "1976 Paris-winning Chardonnay heritage."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1978, "rating": 97.0, "note": "Mature legend."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rioja",
+      "name": "Rioja",
+      "style": "Aged red",
+      "grapes": ["Tempranillo", "Garnacha", "Graciano", "Mazuelo"],
+      "popularity_rank": 11,
+      "region": {"id": "rioja", "name": "Rioja"},
+      "country": {"id": "es", "name": "Spain", "emoji": "ES"},
+      "top_wineries": [
+        {
+          "id": 2201, "name": "R. Lopez de Heredia (Vina Tondonia)", "stars": 5.0, "note": "Last great traditionalist; long oak and bottle aging.",
+          "top_varietals": [
+            {"varietal": "Vina Tondonia Gran Reserva", "rating": 5.0, "note": "Released only after decade-plus aging."},
+            {"varietal": "Vina Bosconia Reserva", "rating": 4.5, "note": "Pinot-Burgundian style."},
+            {"varietal": "Vina Tondonia Blanco Reserva", "rating": 5.0, "note": "Long-aged white; reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 97.0, "note": "Era-defining Gran Reserva."},
+            {"vintage": 2001, "rating": 97.0, "note": "Mature reference."},
+            {"vintage": 1981, "rating": 98.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 2202, "name": "La Rioja Alta", "stars": 4.5, "note": "Classical Reserva and Gran Reserva specialist.",
+          "top_varietals": [
+            {"varietal": "Gran Reserva 904", "rating": 4.5, "note": "Reference traditional Gran Reserva."},
+            {"varietal": "Gran Reserva 890", "rating": 5.0, "note": "Top cuvee; only in great years."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 97.0, "note": "Reference 904."},
+            {"vintage": 2004, "rating": 98.0, "note": "890 reference."},
+            {"vintage": 1995, "rating": 97.0, "note": "Mature 890."}
+          ]
+        },
+        {
+          "id": 2203, "name": "Marques de Murrieta", "stars": 4.5, "note": "Castillo Ygay is a Gran Reserva benchmark.",
+          "top_varietals": [
+            {"varietal": "Castillo Ygay Gran Reserva Especial", "rating": 5.0, "note": "Long-aged top cuvee."},
+            {"varietal": "Dalmau Reserva", "rating": 4.5, "note": "Modern-style top Reserva."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 97.0, "note": "Reference Ygay."},
+            {"vintage": 2001, "rating": 97.0, "note": "Mature."},
+            {"vintage": 1962, "rating": 99.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 2204, "name": "CVNE (Compania Vinicola del Norte de Espana)", "stars": 4.5, "note": "Imperial and Vina Real Riservas reference Rioja.",
+          "top_varietals": [
+            {"varietal": "Imperial Gran Reserva", "rating": 4.5, "note": "Classical Gran Reserva."},
+            {"varietal": "Real de Asua", "rating": 4.5, "note": "Modern-classical top Reserva."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 97.0, "note": "Reference Imperial."},
+            {"vintage": 2001, "rating": 96.0, "note": "Mature."},
+            {"vintage": 1994, "rating": 96.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 2205, "name": "Artadi", "stars": 4.5, "note": "Modernist; left Rioja DOC over zoning disputes.",
+          "top_varietals": [
+            {"varietal": "Vina El Pison", "rating": 5.0, "note": "Single-vineyard Tempranillo; reference."},
+            {"varietal": "Valdegines", "rating": 4.5, "note": "Single-vineyard cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 98.0, "note": "Era-defining El Pison."},
+            {"vintage": 2004, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 2206, "name": "Remirez de Ganuza", "stars": 4.5, "note": "Cluster-selection pioneer; modern-classical balance.",
+          "top_varietals": [
+            {"varietal": "Reserva", "rating": 4.5, "note": "Top of the range."},
+            {"varietal": "Trasnocho", "rating": 4.5, "note": "Old-vine bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2001, "rating": 95.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 2207, "name": "Roda", "stars": 4.0, "note": "Modern Rioja with Cirsion as top cuvee.",
+          "top_varietals": [
+            {"varietal": "Cirsion", "rating": 4.5, "note": "Old-vine flagship."},
+            {"varietal": "Roda I Reserva", "rating": 4.0, "note": "Modern Reserva style."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 95.0, "note": "Cirsion reference."},
+            {"vintage": 2004, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 2208, "name": "Sierra Cantabria (Eguren family)", "stars": 4.5, "note": "Single-vineyard pioneer; San Vicente and El Bosque project.",
+          "top_varietals": [
+            {"varietal": "El Bosque", "rating": 5.0, "note": "Tiny old-vine cuvee."},
+            {"varietal": "Amancio", "rating": 4.5, "note": "Single-vineyard old-vine."},
+            {"varietal": "San Vicente", "rating": 4.5, "note": "Estate flagship from Tempranillo Peludo."}
+          ],
+          "top_vintages": [
+            {"vintage": 2010, "rating": 97.0, "note": "Reference El Bosque."},
+            {"vintage": 2004, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 96.0, "note": "Mature."}
+          ]
+        }
+      ]
+    }
+  ]
+}
