@@ -1,0 +1,1734 @@
+{
+  "_comment": "California top-rated extension. Matches the GET /api/top-rated response shape. Sixteen California AAVs: the six named (Russian River Valley, Sonoma Coast, Paso Robles, Sta. Rita Hills, Calistoga, Napa Valley) plus the next ten most popular California AVAs (Oakville, Rutherford, Stags Leap District, Howell Mountain, Dry Creek Valley, Alexander Valley, Anderson Valley, Santa Cruz Mountains, Los Carneros, Spring Mountain). Eight top producers per AAV with their top varietals (1-5 star scale) and top vintages (100-point critic scale).",
+  "count": 16,
+  "limit": 16,
+  "per_appellation": 8,
+  "appellations": [
+    {
+      "id": "russian-river-valley",
+      "name": "Russian River Valley",
+      "style": "Cool-climate Pinot Noir and Chardonnay",
+      "grapes": ["Pinot Noir", "Chardonnay", "Zinfandel"],
+      "popularity_rank": 15,
+      "region": {"id": "sonoma", "name": "Sonoma"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3001, "name": "Williams Selyem", "stars": 5.0, "note": "Pioneering RRV Pinot house; single-vineyard reference.",
+          "top_varietals": [
+            {"varietal": "Rochioli Riverblock Pinot Noir", "rating": 5.0, "note": "Single-vineyard reference Pinot."},
+            {"varietal": "Westside Road Neighbors Pinot Noir", "rating": 4.5, "note": "Multi-source RRV bottling."},
+            {"varietal": "Bucher Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Modern reference vintage."},
+            {"vintage": 2013, "rating": 96.0, "note": "Concentrated, structured."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3002, "name": "Marcassin", "stars": 5.0, "note": "Helen Turley cult; tiny single-vineyard Chardonnay and Pinot.",
+          "top_varietals": [
+            {"varietal": "Marcassin Vineyard Chardonnay", "rating": 5.0, "note": "Concentrated, ageworthy."},
+            {"varietal": "Three Sisters Pinot Noir", "rating": 4.5, "note": "Single-vineyard cult Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining Chardonnay."},
+            {"vintage": 2010, "rating": 97.0, "note": "Pure, mineral."},
+            {"vintage": 2004, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3003, "name": "Kosta Browne", "stars": 4.5, "note": "Single-vineyard Pinot Noir cult; long mailing-list waitlist.",
+          "top_varietals": [
+            {"varietal": "Keefer Ranch Pinot Noir", "rating": 4.5, "note": "Single-vineyard RRV."},
+            {"varietal": "Russian River Valley Appellation", "rating": 4.5, "note": "Blended RRV reference."},
+            {"varietal": "4-Barrel Pinot Noir", "rating": 5.0, "note": "Top selection from best lots."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference modern release."},
+            {"vintage": 2014, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2012, "rating": 96.0, "note": "Classic balance."}
+          ]
+        },
+        {
+          "id": 3004, "name": "Kistler Vineyards", "stars": 4.5, "note": "Chardonnay specialist; Burgundian style.",
+          "top_varietals": [
+            {"varietal": "Kistler Vineyard Chardonnay", "rating": 4.5, "note": "Single-vineyard reference."},
+            {"varietal": "Cuvee Cathleen Chardonnay", "rating": 5.0, "note": "Old-vine selection."},
+            {"varietal": "Pinot Noir Cuvee Catherine", "rating": 4.5, "note": "Top Pinot selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Cathleen reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Pure, concentrated."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3005, "name": "Rochioli", "stars": 4.5, "note": "Generational growers turned producer; Westside Road benchmark.",
+          "top_varietals": [
+            {"varietal": "West Block Pinot Noir", "rating": 5.0, "note": "Old-vine single-block."},
+            {"varietal": "East Block Pinot Noir", "rating": 4.5, "note": "Old-vine single-block."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.0, "note": "Among California's best SBs."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "West Block reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Structured."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3006, "name": "Merry Edwards", "stars": 4.5, "note": "Pinot Noir and Sauvignon Blanc specialist.",
+          "top_varietals": [
+            {"varietal": "Meredith Estate Pinot Noir", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Klopp Ranch Pinot Noir", "rating": 4.5, "note": "Single-vineyard."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.5, "note": "Reference oaked California SB."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Excellent across the lineup."},
+            {"vintage": 2013, "rating": 95.0, "note": "Classic balance."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3007, "name": "Joseph Swan Vineyards", "stars": 4.5, "note": "Old-school Pinot pioneer.",
+          "top_varietals": [
+            {"varietal": "Trenton Estate Pinot Noir", "rating": 4.5, "note": "Old-vine single-vineyard."},
+            {"varietal": "Zinfandel Trenton Estate", "rating": 4.0, "note": "Old-vine field-blend Zin."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2005, "rating": 95.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3008, "name": "Dehlinger Winery", "stars": 4.5, "note": "Old-vine Pinot reference; family-run.",
+          "top_varietals": [
+            {"varietal": "Goldridge Vineyard Pinot Noir", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Octagon Pinot Noir", "rating": 5.0, "note": "Old-vine selection."},
+            {"varietal": "Estate Syrah", "rating": 4.0, "note": "Cool-climate California Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Octagon reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sonoma-coast",
+      "name": "Sonoma Coast",
+      "style": "Cool-climate Pinot Noir and Chardonnay",
+      "grapes": ["Pinot Noir", "Chardonnay", "Syrah"],
+      "popularity_rank": 17,
+      "region": {"id": "sonoma", "name": "Sonoma"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3101, "name": "Hirsch Vineyards", "stars": 5.0, "note": "True extreme-coast pioneer; iron-rich ridge-top vineyard.",
+          "top_varietals": [
+            {"varietal": "Hirsch Estate Pinot Noir", "rating": 5.0, "note": "Single-vineyard reference."},
+            {"varietal": "San Andreas Fault Pinot Noir", "rating": 4.5, "note": "Single-block selection."},
+            {"varietal": "Reserve Chardonnay", "rating": 4.5, "note": "Cool-climate Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Era-defining release."},
+            {"vintage": 2013, "rating": 96.0, "note": "Structured, pure."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3102, "name": "Peay Vineyards", "stars": 4.5, "note": "Far west Sonoma Coast estate; ocean-influenced wines.",
+          "top_varietals": [
+            {"varietal": "Pomarium Pinot Noir", "rating": 4.5, "note": "Estate flagship Pinot."},
+            {"varietal": "Estate Chardonnay", "rating": 4.5, "note": "Cool-climate reference."},
+            {"varietal": "Les Titans Syrah", "rating": 4.5, "note": "Cool-climate California Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Pomarium reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3103, "name": "Flowers Vineyards & Winery", "stars": 4.5, "note": "Ridge-top Pinot and Chardonnay; reference Camp Meeting Ridge.",
+          "top_varietals": [
+            {"varietal": "Camp Meeting Ridge Chardonnay", "rating": 5.0, "note": "Estate single-vineyard reference."},
+            {"varietal": "Camp Meeting Ridge Pinot Noir", "rating": 4.5, "note": "Estate Pinot reference."},
+            {"varietal": "Sea View Ridge Chardonnay", "rating": 4.5, "note": "Single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 95.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3104, "name": "Failla Wines", "stars": 4.5, "note": "Ehren Jordan project; cool-climate Pinot and Syrah focus.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir Hirsch Vineyard", "rating": 4.5, "note": "Single-vineyard."},
+            {"varietal": "Estate Pinot Noir Keefer Ranch", "rating": 4.5, "note": "Single-vineyard RRV."},
+            {"varietal": "Estate Syrah", "rating": 4.5, "note": "Cool-climate Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3105, "name": "Littorai Wines", "stars": 5.0, "note": "Ted Lemon biodynamic project; restrained Burgundian style.",
+          "top_varietals": [
+            {"varietal": "The Pivot Pinot Noir", "rating": 5.0, "note": "Estate flagship."},
+            {"varietal": "Hirsch Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard."},
+            {"varietal": "Mays Canyon Chardonnay", "rating": 4.5, "note": "RRV reference Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Pure precision."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3106, "name": "Aubert Wines", "stars": 4.5, "note": "Mark Aubert single-vineyard Chardonnay specialist.",
+          "top_varietals": [
+            {"varietal": "Larry Hyde & Sons Chardonnay", "rating": 4.5, "note": "Single-vineyard Carneros."},
+            {"varietal": "Lauren Vineyard Chardonnay", "rating": 5.0, "note": "Estate flagship."},
+            {"varietal": "UV-SL Chardonnay", "rating": 4.5, "note": "Single-vineyard SL."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Reference Lauren."},
+            {"vintage": 2013, "rating": 96.0, "note": "Concentrated."},
+            {"vintage": 2010, "rating": 95.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3107, "name": "Wayfarer Vineyard", "stars": 4.5, "note": "Jayson Pahlmeyer's daughter Cleo's true coastal Pinot project.",
+          "top_varietals": [
+            {"varietal": "Wayfarer Estate Pinot Noir", "rating": 4.5, "note": "Estate single-vineyard."},
+            {"varietal": "The Traveler Pinot Noir", "rating": 4.5, "note": "Top block selection."},
+            {"varietal": "Wayfarer Chardonnay", "rating": 4.5, "note": "Estate Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 3108, "name": "Marcassin Sonoma Coast", "stars": 5.0, "note": "Helen Turley's cult coastal estate vineyard.",
+          "top_varietals": [
+            {"varietal": "Marcassin Vineyard Pinot Noir", "rating": 5.0, "note": "Estate Pinot reference."},
+            {"varietal": "Marcassin Vineyard Chardonnay", "rating": 5.0, "note": "Estate Chardonnay reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 2010, "rating": 97.0, "note": "Pure."},
+            {"vintage": 2004, "rating": 97.0, "note": "Mature."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "paso-robles",
+      "name": "Paso Robles",
+      "style": "Powerful red (Rhone and Cabernet)",
+      "grapes": ["Syrah", "Grenache", "Mourvedre", "Cabernet Sauvignon", "Zinfandel"],
+      "popularity_rank": 24,
+      "region": {"id": "central-coast", "name": "Central Coast"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3201, "name": "Saxum Vineyards", "stars": 5.0, "note": "Justin Smith's Rhone-blend cult; James Berry Vineyard reference.",
+          "top_varietals": [
+            {"varietal": "James Berry Vineyard", "rating": 5.0, "note": "Estate Rhone blend; reference Paso wine."},
+            {"varietal": "Bone Rock Syrah", "rating": 5.0, "note": "Single-block old-vine Syrah."},
+            {"varietal": "Heart Stone Vineyard", "rating": 4.5, "note": "Single-vineyard Rhone blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference James Berry."},
+            {"vintage": 2013, "rating": 98.0, "note": "Bone Rock benchmark."},
+            {"vintage": 2007, "rating": 99.0, "note": "Era-defining James Berry."}
+          ]
+        },
+        {
+          "id": 3202, "name": "Linne Calodo", "stars": 4.5, "note": "Matt Trevisan's Rhone- and Zin-based blends.",
+          "top_varietals": [
+            {"varietal": "Cherry Red", "rating": 4.5, "note": "Zin-based blend reference."},
+            {"varietal": "Outsider", "rating": 4.5, "note": "Rhone-based blend."},
+            {"varietal": "Problem Child", "rating": 4.5, "note": "Mourvedre-based blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Concentrated."},
+            {"vintage": 2010, "rating": 95.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3203, "name": "Tablas Creek Vineyard", "stars": 4.5, "note": "Perrin-Haas partnership; flagship Rhone-variety estate.",
+          "top_varietals": [
+            {"varietal": "Esprit de Tablas Rouge", "rating": 4.5, "note": "Mourvedre-led Rhone blend."},
+            {"varietal": "Esprit de Tablas Blanc", "rating": 4.5, "note": "Roussanne-led white blend."},
+            {"varietal": "Panoplie", "rating": 5.0, "note": "Mourvedre-dominant top cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference Panoplie."},
+            {"vintage": 2013, "rating": 95.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3204, "name": "L'Aventure Winery", "stars": 4.5, "note": "Stephan Asseo's Cab-Syrah blends.",
+          "top_varietals": [
+            {"varietal": "Optimus", "rating": 4.5, "note": "Cab-Syrah-Petit Verdot blend."},
+            {"varietal": "Estate Cuvee", "rating": 5.0, "note": "Top selection from best blocks."},
+            {"varietal": "Cote a Cote", "rating": 4.5, "note": "Rhone-style blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3205, "name": "Booker Vineyard", "stars": 4.5, "note": "Eric Jensen's high-toned Rhone-style wines.",
+          "top_varietals": [
+            {"varietal": "Tempted", "rating": 4.5, "note": "Mourvedre-based blend."},
+            {"varietal": "Fracture Syrah", "rating": 4.5, "note": "Top Syrah."},
+            {"varietal": "Vertigo", "rating": 4.5, "note": "Grenache-led blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Fracture."},
+            {"vintage": 2013, "rating": 95.0, "note": "Concentrated."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3206, "name": "Justin Vineyards", "stars": 4.0, "note": "Isosceles benchmark Bordeaux-style blend.",
+          "top_varietals": [
+            {"varietal": "Isosceles", "rating": 4.5, "note": "Cab-led Bordeaux blend reference."},
+            {"varietal": "Justification", "rating": 4.0, "note": "Cab Franc-Merlot blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Isosceles."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3207, "name": "Daou Vineyards", "stars": 4.0, "note": "Hillside Bordeaux-style producer at scale.",
+          "top_varietals": [
+            {"varietal": "Soul of a Lion", "rating": 4.5, "note": "Cab-led estate flagship."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable estate Cab."},
+            {"varietal": "Patrimony Cabernet Sauvignon", "rating": 4.5, "note": "Top selection bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Soul of a Lion."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3208, "name": "Denner Vineyards", "stars": 4.5, "note": "Westside Paso Rhone-blend specialist.",
+          "top_varietals": [
+            {"varietal": "The Ditch Digger", "rating": 4.5, "note": "Rhone-style flagship."},
+            {"varietal": "Theresa", "rating": 4.5, "note": "Mourvedre-led blend."},
+            {"varietal": "Mother of Exiles Cabernet", "rating": 4.0, "note": "Estate Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Concentrated."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sta-rita-hills",
+      "name": "Sta. Rita Hills",
+      "style": "Cool-climate Pinot Noir and Chardonnay",
+      "grapes": ["Pinot Noir", "Chardonnay", "Syrah"],
+      "popularity_rank": 32,
+      "region": {"id": "santa-barbara", "name": "Santa Barbara"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3301, "name": "Sea Smoke", "stars": 5.0, "note": "Estate-grown southwest-facing slope; Burgundian focus.",
+          "top_varietals": [
+            {"varietal": "Ten Pinot Noir", "rating": 5.0, "note": "Estate flagship Pinot."},
+            {"varietal": "Southing Pinot Noir", "rating": 4.5, "note": "Estate selection."},
+            {"varietal": "Sea Smoke Chardonnay", "rating": 4.5, "note": "Estate Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Reference Ten."},
+            {"vintage": 2014, "rating": 96.0, "note": "Concentrated."},
+            {"vintage": 2010, "rating": 96.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3302, "name": "Sandhi Wines", "stars": 4.5, "note": "Sashi Moorman and Rajat Parr; Burgundian restraint.",
+          "top_varietals": [
+            {"varietal": "Sanford & Benedict Pinot Noir", "rating": 4.5, "note": "Single-vineyard reference."},
+            {"varietal": "Bentrock Vineyard Chardonnay", "rating": 4.5, "note": "Single-vineyard SRH Chardonnay."},
+            {"varietal": "Romance Pinot Noir", "rating": 4.5, "note": "Top selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3303, "name": "Domaine de la Cote", "stars": 5.0, "note": "Sashi Moorman and Raj Parr's coastal estate.",
+          "top_varietals": [
+            {"varietal": "Bloom's Field Pinot Noir", "rating": 5.0, "note": "Single-block reference."},
+            {"varietal": "La Cote Pinot Noir", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Memorious Pinot Noir", "rating": 5.0, "note": "Top selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 95.0, "note": "Pure precision."},
+            {"vintage": 2012, "rating": 95.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 3304, "name": "Sanford Winery", "stars": 4.5, "note": "Sanford & Benedict pioneer; historic SRH estate.",
+          "top_varietals": [
+            {"varietal": "Sanford & Benedict Pinot Noir", "rating": 4.5, "note": "Historic vineyard reference."},
+            {"varietal": "La Rinconada Pinot Noir", "rating": 4.5, "note": "Estate single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3305, "name": "Brewer-Clifton", "stars": 4.5, "note": "Greg Brewer's whole-cluster, single-vineyard style.",
+          "top_varietals": [
+            {"varietal": "3D Pinot Noir", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Mt. Carmel Pinot Noir", "rating": 4.5, "note": "Single-vineyard reference."},
+            {"varietal": "Sta. Rita Hills Chardonnay", "rating": 4.0, "note": "Appellation blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 95.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3306, "name": "Melville Winery", "stars": 4.0, "note": "Estate-grown SRH Pinot pioneer.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir Block M", "rating": 4.5, "note": "Single-block selection."},
+            {"varietal": "Estate Chardonnay Inox", "rating": 4.0, "note": "Unoaked Chardonnay."},
+            {"varietal": "Estate Syrah Donna's", "rating": 4.0, "note": "Cool-climate Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 93.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3307, "name": "Liquid Farm", "stars": 4.0, "note": "Burgundian-style Chardonnay specialist.",
+          "top_varietals": [
+            {"varietal": "White Hill Chardonnay", "rating": 4.5, "note": "Single-vineyard reference."},
+            {"varietal": "Golden Slope Chardonnay", "rating": 4.0, "note": "Estate blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3308, "name": "Tyler Winery", "stars": 4.5, "note": "Justin Willett's Burgundian-Italian sensibility.",
+          "top_varietals": [
+            {"varietal": "Sanford & Benedict Pinot Noir", "rating": 4.5, "note": "Single-vineyard."},
+            {"varietal": "Bentrock Vineyard Chardonnay", "rating": 4.5, "note": "Reference SRH Chardonnay."},
+            {"varietal": "Zotovich Vineyard Pinot Noir", "rating": 4.0, "note": "Single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2012, "rating": 94.0, "note": "Concentrated."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "calistoga",
+      "name": "Calistoga",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Zinfandel", "Petite Sirah"],
+      "popularity_rank": 50,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3401, "name": "Eisele Vineyard Estate", "stars": 5.0, "note": "Formerly Araujo Estate; biodynamic Cabernet reference.",
+          "top_varietals": [
+            {"varietal": "Eisele Vineyard Cabernet Sauvignon", "rating": 5.0, "note": "Estate flagship; pre-phylloxera site since 1971."},
+            {"varietal": "Altagracia", "rating": 4.5, "note": "Second wine of substance."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.5, "note": "Estate-grown."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 2007, "rating": 98.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3402, "name": "Chateau Montelena", "stars": 4.5, "note": "Calistoga icon; 1976 Judgment of Paris winner.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Long-lived classical Cab."},
+            {"varietal": "Chardonnay", "rating": 4.5, "note": "Paris-winning heritage."},
+            {"varietal": "Zinfandel", "rating": 4.0, "note": "Old-vine reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1978, "rating": 97.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 3403, "name": "Larkmead Vineyards", "stars": 4.5, "note": "Historic Calistoga estate; refined classical Cab.",
+          "top_varietals": [
+            {"varietal": "Solari Cabernet Sauvignon", "rating": 4.5, "note": "Single-block estate flagship."},
+            {"varietal": "The Lark Cabernet Sauvignon", "rating": 5.0, "note": "Top selection in great years."},
+            {"varietal": "Firebelle", "rating": 4.5, "note": "Merlot-led Bordeaux blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference The Lark."},
+            {"vintage": 2013, "rating": 97.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3404, "name": "Storybook Mountain Vineyards", "stars": 4.5, "note": "Old-vine Zinfandel specialist on Mayacamas slopes.",
+          "top_varietals": [
+            {"varietal": "Eastern Exposures Zinfandel", "rating": 4.5, "note": "Old-vine single-block."},
+            {"varietal": "Mayacamas Range Zinfandel", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Reserve Zinfandel", "rating": 5.0, "note": "Top selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3405, "name": "Schramsberg Vineyards", "stars": 4.5, "note": "Historic California sparkling reference.",
+          "top_varietals": [
+            {"varietal": "J. Schram Sparkling", "rating": 4.5, "note": "Prestige cuvee."},
+            {"varietal": "Blanc de Blancs", "rating": 4.0, "note": "Chardonnay-led NV."},
+            {"varietal": "Reserve Sparkling", "rating": 4.5, "note": "Long-aged top cuvee."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 95.0, "note": "J. Schram reference."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3406, "name": "Vincent Arroyo Winery", "stars": 4.0, "note": "Old-school Calistoga Petite Sirah specialist.",
+          "top_varietals": [
+            {"varietal": "Estate Petite Sirah", "rating": 4.5, "note": "Reference California Petite."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable estate Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Reference Petite Sirah."},
+            {"vintage": 2013, "rating": 93.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 3407, "name": "Tom Eddy Winery", "stars": 4.0, "note": "Boutique Calistoga Cabernet.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Classical Calistoga Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3408, "name": "Venge Vineyards", "stars": 4.0, "note": "Kirk Venge's Calistoga-Oakville lineup.",
+          "top_varietals": [
+            {"varietal": "Family Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Bone Ash Cabernet", "rating": 4.0, "note": "Estate Cab."},
+            {"varietal": "Scout's Honor", "rating": 4.0, "note": "Zin-Petite Sirah blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Family Reserve."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "napa-valley-ca",
+      "name": "Napa Valley",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot", "Chardonnay"],
+      "popularity_rank": 3,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3501, "name": "Stag's Leap Wine Cellars (S.L.V.)", "stars": 4.5, "note": "1976 Paris Cabernet winner; rocky volcanic soils.",
+          "top_varietals": [
+            {"varietal": "Cask 23", "rating": 5.0, "note": "Top selection from S.L.V. and Fay vineyards."},
+            {"varietal": "S.L.V. Cabernet Sauvignon", "rating": 4.5, "note": "Historic single-vineyard."},
+            {"varietal": "Fay Vineyard Cabernet Sauvignon", "rating": 4.5, "note": "Adjacent estate single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Cask 23."},
+            {"vintage": 2013, "rating": 98.0, "note": "Powerful."},
+            {"vintage": 1973, "rating": 99.0, "note": "Mature Paris-winning legend."}
+          ]
+        },
+        {
+          "id": 3502, "name": "Joseph Phelps Vineyards", "stars": 4.5, "note": "Insignia is one of California's first proprietary Bordeaux blends.",
+          "top_varietals": [
+            {"varietal": "Insignia", "rating": 5.0, "note": "Cab-led Bordeaux blend; reference Napa wine."},
+            {"varietal": "Backus Vineyard Cabernet Sauvignon", "rating": 4.5, "note": "Single-vineyard Oakville."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Insignia."},
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 1997, "rating": 97.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3503, "name": "Heitz Cellar", "stars": 4.5, "note": "Martha's Vineyard is one of California's iconic single-vineyards.",
+          "top_varietals": [
+            {"varietal": "Martha's Vineyard Cabernet Sauvignon", "rating": 5.0, "note": "Historic Oakville single-vineyard."},
+            {"varietal": "Bella Oaks Vineyard Cabernet", "rating": 4.5, "note": "Single-vineyard Rutherford."},
+            {"varietal": "Trailside Vineyard Cabernet", "rating": 4.5, "note": "Single-vineyard Rutherford."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference Martha's."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 1974, "rating": 100.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 3504, "name": "Caymus Vineyards", "stars": 4.0, "note": "Wagner family; Special Selection a hedonistic benchmark.",
+          "top_varietals": [
+            {"varietal": "Special Selection Cabernet Sauvignon", "rating": 4.5, "note": "Top selection bottling."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable Napa Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Special Selection."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1985, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3505, "name": "Beaulieu Vineyard", "stars": 4.5, "note": "Georges de Latour Private Reserve is a historic California benchmark.",
+          "top_varietals": [
+            {"varietal": "Georges de Latour Private Reserve", "rating": 4.5, "note": "Historic Rutherford Cab reference."},
+            {"varietal": "Tapestry Reserve", "rating": 4.0, "note": "Bordeaux-style blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Georges de Latour."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 1970, "rating": 98.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 3506, "name": "Robert Mondavi Winery", "stars": 4.5, "note": "To Kalon Reserve a historic Napa Cab reference.",
+          "top_varietals": [
+            {"varietal": "To Kalon Reserve Cabernet Sauvignon", "rating": 5.0, "note": "Historic Oakville reference."},
+            {"varietal": "To Kalon Fume Blanc", "rating": 4.0, "note": "Oaked Sauvignon Blanc pioneer."},
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top blend selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference To Kalon."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 1991, "rating": 98.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3507, "name": "Silver Oak Cellars", "stars": 4.0, "note": "American oak-aged Cab specialist; Napa and Alexander Valley.",
+          "top_varietals": [
+            {"varietal": "Napa Valley Cabernet Sauvignon", "rating": 4.0, "note": "American oak-aged signature."},
+            {"varietal": "Alexander Valley Cabernet Sauvignon", "rating": 4.0, "note": "Sonoma counterpart."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Napa."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3508, "name": "Far Niente", "stars": 4.5, "note": "Historic Oakville estate; Cab and Chardonnay reference.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Oakville-Coombsville blend."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Reliable Napa Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oakville",
+      "name": "Oakville",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot"],
+      "popularity_rank": 12,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3601, "name": "Screaming Eagle", "stars": 5.0, "note": "Cult Oakville Cab; the apex of Napa scarcity.",
+          "top_varietals": [
+            {"varietal": "Cabernet Sauvignon", "rating": 5.0, "note": "Pure Oakville Cab; precise and refined."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.5, "note": "Tiny estate-grown bottling."},
+            {"varietal": "The Flight (second wine)", "rating": 4.5, "note": "Approachable second label."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference modern release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 98.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3602, "name": "Opus One", "stars": 4.5, "note": "Mondavi-Rothschild flagship; benchmark Bordeaux-style blend.",
+          "top_varietals": [
+            {"varietal": "Opus One", "rating": 4.5, "note": "Cab-led blend with classical aging curve."},
+            {"varietal": "Overture", "rating": 4.0, "note": "NV multi-vintage second wine."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Modern reference."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3603, "name": "Plumpjack Winery", "stars": 4.5, "note": "Estate Cab from Oakville bench; screw-cap pioneer.",
+          "top_varietals": [
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top estate selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable Oakville Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Reserve."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3604, "name": "Groth Vineyards", "stars": 4.0, "note": "Reliable Oakville Cab producer.",
+          "top_varietals": [
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3605, "name": "Dalla Valle Vineyards", "stars": 5.0, "note": "Maya is a long-lived hillside Cab benchmark.",
+          "top_varietals": [
+            {"varietal": "Maya", "rating": 5.0, "note": "Cab-Cab Franc reference."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference Maya."},
+            {"vintage": 2013, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 1994, "rating": 100.0, "note": "Mature reference Maya."}
+          ]
+        },
+        {
+          "id": 3606, "name": "Bond Estates", "stars": 5.0, "note": "Bill Harlan's hillside grand cru project; five single vineyards.",
+          "top_varietals": [
+            {"varietal": "Vecina", "rating": 5.0, "note": "Single-vineyard Cabernet."},
+            {"varietal": "Melbury", "rating": 5.0, "note": "Single-vineyard Cabernet."},
+            {"varietal": "St. Eden", "rating": 5.0, "note": "Single-vineyard Cabernet."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 98.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3607, "name": "Promontory", "stars": 5.0, "note": "Bill Harlan's western-slope project on iron-rich soils.",
+          "top_varietals": [
+            {"varietal": "Promontory", "rating": 5.0, "note": "Single-cuvee estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Era-defining release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 98.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3608, "name": "Silver Oak (Oakville home)", "stars": 4.0, "note": "Napa Valley Cab specialist headquartered in Oakville.",
+          "top_varietals": [
+            {"varietal": "Napa Valley Cabernet Sauvignon", "rating": 4.0, "note": "American oak-aged signature."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rutherford",
+      "name": "Rutherford",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot"],
+      "popularity_rank": 18,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3701, "name": "Inglenook", "stars": 4.5, "note": "Coppola's revived historic estate; Rubicon flagship.",
+          "top_varietals": [
+            {"varietal": "Rubicon", "rating": 4.5, "note": "Cab-led Bordeaux blend reference."},
+            {"varietal": "Cask Cabernet Sauvignon", "rating": 4.0, "note": "Traditional release."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference Rubicon."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1978, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3702, "name": "Beaulieu Vineyard Rutherford", "stars": 4.5, "note": "Georges de Latour Private Reserve is the Rutherford benchmark.",
+          "top_varietals": [
+            {"varietal": "Georges de Latour Private Reserve", "rating": 4.5, "note": "Historic reference Cab."},
+            {"varietal": "Tapestry Reserve", "rating": 4.0, "note": "Bordeaux blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Georges de Latour."},
+            {"vintage": 1970, "rating": 98.0, "note": "Mature legend."},
+            {"vintage": 1951, "rating": 99.0, "note": "Historic reference."}
+          ]
+        },
+        {
+          "id": 3703, "name": "Caymus Vineyards Rutherford", "stars": 4.0, "note": "Wagner family; Special Selection a Rutherford reference.",
+          "top_varietals": [
+            {"varietal": "Special Selection Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable Napa Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1985, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 3704, "name": "Quintessa", "stars": 4.5, "note": "Huneeus family; biodynamic Rutherford estate.",
+          "top_varietals": [
+            {"varietal": "Quintessa", "rating": 4.5, "note": "Bordeaux-style estate flagship."},
+            {"varietal": "Illumination Sauvignon Blanc", "rating": 4.0, "note": "Among Napa's best whites."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 97.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3705, "name": "Frog's Leap", "stars": 4.0, "note": "Organic Rutherford pioneer; classical balance.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Restrained classical Cab."},
+            {"varietal": "Merlot", "rating": 4.0, "note": "Among Napa's best Merlots."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.0, "note": "Reliable white."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 3706, "name": "Cakebread Cellars", "stars": 4.0, "note": "Reliable Rutherford Cab producer.",
+          "top_varietals": [
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Chardonnay", "rating": 4.0, "note": "Reliable Napa Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Reserve."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3707, "name": "Round Pond Estate", "stars": 4.0, "note": "Modern Rutherford estate; refined Cab style.",
+          "top_varietals": [
+            {"varietal": "Kith and Kin Cabernet", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3708, "name": "Sequoia Grove", "stars": 4.0, "note": "Reliable Rutherford Cab specialist.",
+          "top_varietals": [
+            {"varietal": "Cambium", "rating": 4.5, "note": "Top reserve blend."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable Rutherford Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Cambium."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "stags-leap-district",
+      "name": "Stags Leap District",
+      "style": "Powerful red",
+      "grapes": ["Cabernet Sauvignon", "Merlot"],
+      "popularity_rank": 20,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3801, "name": "Shafer Vineyards (Hillside Select)", "stars": 5.0, "note": "Stags Leap District icon; hillside Cab reference.",
+          "top_varietals": [
+            {"varietal": "Hillside Select Cabernet Sauvignon", "rating": 5.0, "note": "Single-vineyard hillside Cab."},
+            {"varietal": "One Point Five Cabernet", "rating": 4.5, "note": "Estate Cab."},
+            {"varietal": "Relentless", "rating": 4.5, "note": "Syrah-Petite Sirah blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Hillside Select reference."},
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 2002, "rating": 98.0, "note": "Mature classic."}
+          ]
+        },
+        {
+          "id": 3802, "name": "Stag's Leap Wine Cellars", "stars": 4.5, "note": "1976 Paris Cabernet winner; rocky volcanic soils.",
+          "top_varietals": [
+            {"varietal": "Cask 23", "rating": 5.0, "note": "Top selection from S.L.V. and Fay."},
+            {"varietal": "S.L.V. Cabernet Sauvignon", "rating": 4.5, "note": "Historic single-vineyard."},
+            {"varietal": "Fay Vineyard Cabernet Sauvignon", "rating": 4.5, "note": "Adjacent estate single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Cask 23."},
+            {"vintage": 2013, "rating": 98.0, "note": "Powerful."},
+            {"vintage": 1973, "rating": 99.0, "note": "Mature Paris-winning legend."}
+          ]
+        },
+        {
+          "id": 3803, "name": "Cliff Lede Vineyards", "stars": 4.5, "note": "Modern Stags Leap producer; refined Cab style.",
+          "top_varietals": [
+            {"varietal": "Poetry Cabernet Sauvignon", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Stags Leap District Cabernet", "rating": 4.5, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Poetry."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 2010, "rating": 95.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3804, "name": "Pine Ridge Vineyards", "stars": 4.0, "note": "Reliable Stags Leap Cab producer.",
+          "top_varietals": [
+            {"varietal": "Fortis Stags Leap District", "rating": 4.5, "note": "Top selection Cab."},
+            {"varietal": "Stags Leap District Cabernet", "rating": 4.0, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Fortis."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3805, "name": "Clos du Val", "stars": 4.0, "note": "Bernard Portet's classical Stags Leap producer.",
+          "top_varietals": [
+            {"varietal": "Hirondelle Estate Cabernet Sauvignon", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Three Graces", "rating": 4.5, "note": "Bordeaux-style blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."},
+            {"vintage": 1972, "rating": 96.0, "note": "Mature Paris-judging entry."}
+          ]
+        },
+        {
+          "id": 3806, "name": "Chimney Rock Winery", "stars": 4.0, "note": "Refined Stags Leap Cab producer; Bordeaux focus.",
+          "top_varietals": [
+            {"varietal": "Tomahawk Vineyard Cabernet", "rating": 4.5, "note": "Single-block top selection."},
+            {"varietal": "Stags Leap District Cabernet", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Elevage", "rating": 4.5, "note": "Bordeaux-style blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Tomahawk."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3807, "name": "Silverado Vineyards", "stars": 4.0, "note": "Solari family estate; reliable Stags Leap Cab.",
+          "top_varietals": [
+            {"varietal": "SOLO Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable Stags Leap Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference SOLO."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3808, "name": "Robinson Family Vineyards", "stars": 4.0, "note": "Boutique Stags Leap family estate.",
+          "top_varietals": [
+            {"varietal": "Stags Leap District Cabernet Sauvignon", "rating": 4.0, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "howell-mountain",
+      "name": "Howell Mountain",
+      "style": "Powerful mountain red",
+      "grapes": ["Cabernet Sauvignon", "Zinfandel"],
+      "popularity_rank": 38,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 3901, "name": "Dunn Vineyards", "stars": 5.0, "note": "Randy Dunn; uncompromising Howell Mountain Cab reference.",
+          "top_varietals": [
+            {"varietal": "Howell Mountain Cabernet Sauvignon", "rating": 5.0, "note": "Estate flagship; built to age 50+ years."},
+            {"varietal": "Napa Valley Cabernet Sauvignon", "rating": 4.5, "note": "Slightly more accessible bottling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Howell."},
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 1991, "rating": 99.0, "note": "Mature legend."}
+          ]
+        },
+        {
+          "id": 3902, "name": "Cade Estate", "stars": 4.5, "note": "Plumpjack sister estate on Howell Mountain.",
+          "top_varietals": [
+            {"varietal": "Howell Mountain Reserve Cabernet", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 3903, "name": "Lail Vineyards", "stars": 4.5, "note": "Robin Daniel Lail revives Inglenook heritage on hillside sites.",
+          "top_varietals": [
+            {"varietal": "J. Daniel Cuvee", "rating": 5.0, "note": "Cab-led Howell-Yountville blend."},
+            {"varietal": "Mole Hill Cabernet Sauvignon", "rating": 5.0, "note": "Single-vineyard Howell Mountain top selection."},
+            {"varietal": "Georgia Sauvignon Blanc", "rating": 4.5, "note": "Among Napa's top whites."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Mole Hill."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3904, "name": "O'Shaughnessy Estate", "stars": 4.5, "note": "Howell Mountain Cab specialist; Bordeaux-style blends.",
+          "top_varietals": [
+            {"varietal": "Howell Mountain Cabernet Sauvignon", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Mount Veeder Cabernet Sauvignon", "rating": 4.5, "note": "Sister vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 3905, "name": "Outpost Wines", "stars": 4.5, "note": "Boutique Howell Mountain Cab producer.",
+          "top_varietals": [
+            {"varietal": "True Vineyard Cabernet Sauvignon", "rating": 4.5, "note": "Single-vineyard estate flagship."},
+            {"varietal": "Howell Mountain Zinfandel", "rating": 4.0, "note": "Old-vine reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3906, "name": "La Jota Vineyard", "stars": 4.0, "note": "Historic Howell Mountain estate.",
+          "top_varietals": [
+            {"varietal": "W.S. Keyes Vineyard Cabernet", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Howell Mountain Cabernet Sauvignon", "rating": 4.0, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3907, "name": "Robert Foley Vineyards", "stars": 4.5, "note": "Foley's Howell Mountain Claret reference.",
+          "top_varietals": [
+            {"varietal": "Claret", "rating": 4.5, "note": "Bordeaux-style flagship blend."},
+            {"varietal": "Cabernet Sauvignon", "rating": 4.5, "note": "Howell Mountain Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Claret."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 3908, "name": "Black Sears Vineyard", "stars": 4.5, "note": "High-elevation old-vine Zinfandel reference.",
+          "top_varietals": [
+            {"varietal": "Estate Zinfandel", "rating": 4.5, "note": "Old-vine Howell Mountain Zin."},
+            {"varietal": "Cabernet Sauvignon", "rating": 4.0, "note": "Estate Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Zin."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "dry-creek-valley",
+      "name": "Dry Creek Valley",
+      "style": "Zinfandel and Bordeaux-style red",
+      "grapes": ["Zinfandel", "Cabernet Sauvignon", "Sauvignon Blanc"],
+      "popularity_rank": 40,
+      "region": {"id": "sonoma", "name": "Sonoma"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4001, "name": "Ridge Vineyards (Lytton Springs)", "stars": 5.0, "note": "Old-vine Zinfandel field-blend reference.",
+          "top_varietals": [
+            {"varietal": "Lytton Springs", "rating": 5.0, "note": "Zin-led field blend; reference DCV wine."},
+            {"varietal": "Geyserville", "rating": 5.0, "note": "Alexander Valley sibling field blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Reference Lytton Springs."},
+            {"vintage": 2013, "rating": 96.0, "note": "Concentrated."},
+            {"vintage": 2001, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4002, "name": "Quivira Vineyards", "stars": 4.0, "note": "Biodynamic Zinfandel-Rhone variety producer.",
+          "top_varietals": [
+            {"varietal": "Black Boar Zinfandel", "rating": 4.5, "note": "Top reserve Zin."},
+            {"varietal": "Sauvignon Blanc", "rating": 4.0, "note": "Estate-grown reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4003, "name": "Bella Vineyards", "stars": 4.0, "note": "Single-vineyard old-vine Zin specialist.",
+          "top_varietals": [
+            {"varietal": "Lily Hill Estate Zinfandel", "rating": 4.5, "note": "Top single-vineyard."},
+            {"varietal": "Big River Ranch Zinfandel", "rating": 4.0, "note": "Old-vine single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Lily Hill."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4004, "name": "Seghesio Family Vineyards", "stars": 4.5, "note": "Historic Italian-American DCV estate; Zin and Sangiovese.",
+          "top_varietals": [
+            {"varietal": "Home Ranch Zinfandel", "rating": 4.5, "note": "Old-vine estate flagship."},
+            {"varietal": "San Lorenzo Zinfandel", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Cortina Zinfandel", "rating": 4.5, "note": "Old-vine single-block."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Home Ranch."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4005, "name": "Mauritson Family Winery", "stars": 4.0, "note": "Rockpile-and-DCV Zinfandel specialist.",
+          "top_varietals": [
+            {"varietal": "Rockpile Zinfandel", "rating": 4.5, "note": "High-elevation single-vineyard."},
+            {"varietal": "Cemetery Vineyard Zinfandel", "rating": 4.5, "note": "Old-vine single-vineyard."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Rockpile."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4006, "name": "Dry Creek Vineyard", "stars": 4.0, "note": "Historic DCV pioneer; classical Zin and Cab.",
+          "top_varietals": [
+            {"varietal": "Heritage Vines Zinfandel", "rating": 4.0, "note": "Old-vine field-blend."},
+            {"varietal": "Fume Blanc", "rating": 4.0, "note": "Reliable oaked SB."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 4007, "name": "Preston Vineyards", "stars": 4.0, "note": "Organic mixed-variety estate; old-vine Zin and field whites.",
+          "top_varietals": [
+            {"varietal": "Estate Zinfandel", "rating": 4.0, "note": "Old-vine field blend."},
+            {"varietal": "Madam Preston (white blend)", "rating": 4.0, "note": "Rhone-style estate white."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 4008, "name": "Lambert Bridge Winery", "stars": 4.0, "note": "Refined DCV Bordeaux-style and Zin producer.",
+          "top_varietals": [
+            {"varietal": "Crane Creek Cuvee", "rating": 4.5, "note": "Bordeaux-style blend."},
+            {"varietal": "Estate Zinfandel", "rating": 4.0, "note": "Estate flagship Zin."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Crane Creek."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "alexander-valley",
+      "name": "Alexander Valley",
+      "style": "Bordeaux-style red",
+      "grapes": ["Cabernet Sauvignon", "Merlot", "Chardonnay"],
+      "popularity_rank": 36,
+      "region": {"id": "sonoma", "name": "Sonoma"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4101, "name": "Silver Oak Alexander Valley", "stars": 4.5, "note": "American-oak-aged Cab specialist.",
+          "top_varietals": [
+            {"varietal": "Alexander Valley Cabernet Sauvignon", "rating": 4.5, "note": "Estate flagship; signature American oak."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2007, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4102, "name": "Jordan Vineyard & Winery", "stars": 4.5, "note": "Bordeaux-style Cab and Chardonnay producer.",
+          "top_varietals": [
+            {"varietal": "Cabernet Sauvignon", "rating": 4.5, "note": "Refined classical Cab."},
+            {"varietal": "Chardonnay", "rating": 4.0, "note": "Restrained Russian River Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 95.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4103, "name": "Stonestreet Estate", "stars": 4.5, "note": "Mountain-grown Cab and Chardonnay reference.",
+          "top_varietals": [
+            {"varietal": "Christopher's Cabernet Sauvignon", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Monument Ridge Cabernet Sauvignon", "rating": 4.5, "note": "Single-vineyard top Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Christopher's."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4104, "name": "Lancaster Estate", "stars": 4.0, "note": "Refined Cab and Bordeaux blend producer.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Sophia's Hillside Cuvee", "rating": 4.5, "note": "Top selection blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4105, "name": "Hanna Winery", "stars": 4.0, "note": "Reliable Bordeaux-style Cab producer.",
+          "top_varietals": [
+            {"varietal": "Bismark Cabernet Sauvignon", "rating": 4.5, "note": "Top reserve."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Reliable estate Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4106, "name": "Robert Young Estate", "stars": 4.0, "note": "Single-vineyard Cab and Chardonnay producer.",
+          "top_varietals": [
+            {"varietal": "Scion Cabernet Sauvignon", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Reliable Alexander Valley Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Scion."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4107, "name": "Verite", "stars": 5.0, "note": "Pierre Seillan's Jess Jackson-funded Bordeaux-style estate.",
+          "top_varietals": [
+            {"varietal": "La Muse", "rating": 5.0, "note": "Merlot-led Pomerol-style blend."},
+            {"varietal": "La Joie", "rating": 5.0, "note": "Cab-led Bordeaux blend."},
+            {"varietal": "Le Desir", "rating": 5.0, "note": "Cab Franc-led St-Emilion style."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 99.0, "note": "Reference release."},
+            {"vintage": 2013, "rating": 99.0, "note": "Era-defining."},
+            {"vintage": 2007, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4108, "name": "Trentadue Winery", "stars": 4.0, "note": "Old-vine Sangiovese and Petite Sirah specialist.",
+          "top_varietals": [
+            {"varietal": "La Storia Petite Sirah", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Old Patch Red", "rating": 4.0, "note": "Old-vine field blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Concentrated."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anderson-valley",
+      "name": "Anderson Valley",
+      "style": "Cool-climate Pinot Noir, sparkling, and aromatic whites",
+      "grapes": ["Pinot Noir", "Chardonnay", "Gewurztraminer", "Riesling"],
+      "popularity_rank": 46,
+      "region": {"id": "mendocino", "name": "Mendocino"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4201, "name": "Roederer Estate", "stars": 4.5, "note": "Louis Roederer's California sparkling outpost.",
+          "top_varietals": [
+            {"varietal": "L'Ermitage Brut", "rating": 4.5, "note": "Prestige cuvee sparkling."},
+            {"varietal": "L'Ermitage Rose", "rating": 4.5, "note": "Top rose sparkling."},
+            {"varietal": "Brut NV", "rating": 4.0, "note": "Reliable house NV."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 95.0, "note": "Reference L'Ermitage."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4202, "name": "Goldeneye (Duckhorn)", "stars": 4.0, "note": "Duckhorn's Anderson Valley Pinot project.",
+          "top_varietals": [
+            {"varietal": "Ten Degrees Pinot Noir", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Confluence Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Reliable estate Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Ten Degrees."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2012, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4203, "name": "Drew Family Cellars", "stars": 4.5, "note": "Cool-climate Pinot Noir and Syrah specialist.",
+          "top_varietals": [
+            {"varietal": "Field Selections Pinot Noir", "rating": 4.5, "note": "Estate flagship."},
+            {"varietal": "Faite Pinot Noir", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Valenti Vineyard Syrah", "rating": 4.5, "note": "Cool-climate Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2012, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4204, "name": "Copain Wines", "stars": 4.0, "note": "Wells Guthrie's restrained, Burgundian-Rhone style.",
+          "top_varietals": [
+            {"varietal": "Tous Ensemble Pinot Noir", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Kiser Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Syrah", "rating": 4.0, "note": "Cool-climate AV Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Kiser."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 4205, "name": "Navarro Vineyards", "stars": 4.5, "note": "Aromatic-white specialist; reference California Gewurz and Riesling.",
+          "top_varietals": [
+            {"varietal": "Estate Gewurztraminer", "rating": 4.5, "note": "Reference California Gewurz."},
+            {"varietal": "Cluster Select Late Harvest Riesling", "rating": 4.5, "note": "Reference dessert Riesling."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Restrained estate Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Gewurz."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure aromatics."},
+            {"vintage": 2010, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4206, "name": "Williams Selyem (Anderson Valley)", "stars": 4.5, "note": "RRV Pinot icon with notable AV cuvees.",
+          "top_varietals": [
+            {"varietal": "Ferrington Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard AV reference."},
+            {"varietal": "Weir Vineyard Pinot Noir", "rating": 4.5, "note": "Single-vineyard AV."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Ferrington."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4207, "name": "Black Kite Cellars", "stars": 4.0, "note": "Boutique single-vineyard Pinot producer.",
+          "top_varietals": [
+            {"varietal": "Kite's Rest Pinot Noir", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "River Turn Pinot Noir", "rating": 4.5, "note": "Top single-block selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4208, "name": "Lichen Estate", "stars": 4.0, "note": "Biodynamic cool-climate Pinot and aromatic-white producer.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Restrained estate Pinot."},
+            {"varietal": "Sparkling Brut Rose", "rating": 4.0, "note": "Estate sparkling."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 93.0, "note": "Pure."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "santa-cruz-mountains",
+      "name": "Santa Cruz Mountains",
+      "style": "Cool-mountain Cabernet, Pinot, and Chardonnay",
+      "grapes": ["Cabernet Sauvignon", "Pinot Noir", "Chardonnay"],
+      "popularity_rank": 42,
+      "region": {"id": "central-coast", "name": "Central Coast"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4301, "name": "Ridge Vineyards (Monte Bello)", "stars": 5.0, "note": "Long-lived Cab-led Bordeaux blend; '76 Paris contender and '06 rematch winner.",
+          "top_varietals": [
+            {"varietal": "Monte Bello", "rating": 5.0, "note": "Single-vineyard Cab-led blend."},
+            {"varietal": "Estate Chardonnay", "rating": 4.5, "note": "Estate-grown old-vine Chardonnay."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Second-tier estate Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2013, "rating": 99.0, "note": "Era-defining Monte Bello."},
+            {"vintage": 2010, "rating": 98.0, "note": "Pure precision."},
+            {"vintage": 1991, "rating": 99.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4302, "name": "Mount Eden Vineyards", "stars": 4.5, "note": "Historic Martin Ray-founded estate; classical hillside Pinot and Cab.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.5, "note": "Old-vine hillside Pinot."},
+            {"varietal": "Estate Chardonnay", "rating": 4.5, "note": "Old-vine reference."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 96.0, "note": "Powerful."},
+            {"vintage": 1991, "rating": 97.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4303, "name": "Rhys Vineyards", "stars": 5.0, "note": "Kevin Harvey's Burgundian estate; tiny single-vineyard Pinots and Chardonnay.",
+          "top_varietals": [
+            {"varietal": "Alpine Vineyard Pinot Noir", "rating": 5.0, "note": "Estate flagship Pinot."},
+            {"varietal": "Skyline Vineyard Pinot Noir", "rating": 5.0, "note": "Single-vineyard top selection."},
+            {"varietal": "Horseshoe Vineyard Chardonnay", "rating": 5.0, "note": "Single-vineyard reference Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 97.0, "note": "Reference Alpine."},
+            {"vintage": 2014, "rating": 96.0, "note": "Pure precision."},
+            {"vintage": 2010, "rating": 96.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4304, "name": "Bonny Doon Vineyard", "stars": 4.0, "note": "Randall Grahm's Rhone-and-Italian-variety pioneer.",
+          "top_varietals": [
+            {"varietal": "Le Cigare Volant", "rating": 4.0, "note": "Cotes du Rhone-style flagship blend."},
+            {"varietal": "Vin Gris de Cigare", "rating": 4.0, "note": "Provence-style rose."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference Cigare."},
+            {"vintage": 2013, "rating": 93.0, "note": "Classical."}
+          ]
+        },
+        {
+          "id": 4305, "name": "Thomas Fogarty Winery", "stars": 4.0, "note": "Hillside Pinot and Chardonnay specialist.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Hillside estate flagship."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Estate-grown reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2014, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4306, "name": "David Bruce Winery", "stars": 4.0, "note": "Historic SCM Pinot pioneer.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Hillside flagship."},
+            {"varietal": "Old Vine Zinfandel", "rating": 4.0, "note": "Old-vine reference."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2010, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4307, "name": "Big Basin Vineyards", "stars": 4.5, "note": "Cool-climate Syrah and Pinot specialist.",
+          "top_varietals": [
+            {"varietal": "Rattlesnake Rock Syrah", "rating": 4.5, "note": "Estate single-vineyard Syrah."},
+            {"varietal": "Coastview Pinot Noir", "rating": 4.5, "note": "Top single-vineyard Pinot."},
+            {"varietal": "Old Corral Mourvedre", "rating": 4.0, "note": "Estate Rhone variety."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Rattlesnake."},
+            {"vintage": 2013, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4308, "name": "Varner Wine / Foxglove", "stars": 4.0, "note": "Spring Ridge Vineyard Chardonnay specialist.",
+          "top_varietals": [
+            {"varietal": "Spring Ridge Bee Block Chardonnay", "rating": 4.5, "note": "Single-block reference."},
+            {"varietal": "Spring Ridge Pinot Noir", "rating": 4.0, "note": "Estate flagship Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Bee Block."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "los-carneros",
+      "name": "Los Carneros",
+      "style": "Cool-climate Pinot Noir, Chardonnay, and sparkling",
+      "grapes": ["Pinot Noir", "Chardonnay"],
+      "popularity_rank": 30,
+      "region": {"id": "napa-sonoma", "name": "Napa-Sonoma (shared)"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4401, "name": "Domaine Carneros (by Taittinger)", "stars": 4.5, "note": "Champagne-style sparkling outpost; Carneros pioneer.",
+          "top_varietals": [
+            {"varietal": "Le Reve Blanc de Blancs", "rating": 4.5, "note": "Prestige cuvee sparkling."},
+            {"varietal": "Brut Rose", "rating": 4.0, "note": "Reliable house rose sparkling."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Estate still Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2014, "rating": 95.0, "note": "Reference Le Reve."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4402, "name": "Saintsbury", "stars": 4.0, "note": "Historic Carneros Pinot pioneer.",
+          "top_varietals": [
+            {"varietal": "Brown Ranch Pinot Noir", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Reliable estate Pinot."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Cool-climate Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Brown Ranch."},
+            {"vintage": 2013, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2007, "rating": 94.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4403, "name": "Acacia Vineyard", "stars": 4.0, "note": "Historic Carneros Pinot producer; single-vineyard pioneer.",
+          "top_varietals": [
+            {"varietal": "Beckstoffer Las Amigas Pinot Noir", "rating": 4.5, "note": "Single-vineyard top selection."},
+            {"varietal": "Carneros Chardonnay", "rating": 4.0, "note": "Reliable appellation Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4404, "name": "Bouchaine Vineyards", "stars": 4.0, "note": "Historic Carneros estate; Burgundian style.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Reliable estate flagship."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Cool-climate Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4405, "name": "Cuvaison Estate", "stars": 4.0, "note": "Carneros Chardonnay specialist.",
+          "top_varietals": [
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Reserve Chardonnay", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Reliable Pinot."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Reserve."},
+            {"vintage": 2013, "rating": 94.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4406, "name": "Etude Wines", "stars": 4.5, "note": "Tony Soter heritage; Burgundian Pinot specialist.",
+          "top_varietals": [
+            {"varietal": "Heirloom Pinot Noir", "rating": 4.5, "note": "Top selection."},
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Reliable estate Pinot."},
+            {"varietal": "Grace Benoist Ranch Pinot Noir", "rating": 4.5, "note": "Single-vineyard top selection."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 95.0, "note": "Reference Heirloom."},
+            {"vintage": 2014, "rating": 94.0, "note": "Pure."},
+            {"vintage": 2010, "rating": 94.0, "note": "Concentrated."}
+          ]
+        },
+        {
+          "id": 4407, "name": "Truchard Vineyards", "stars": 4.0, "note": "Diverse-variety Carneros estate.",
+          "top_varietals": [
+            {"varietal": "Estate Pinot Noir", "rating": 4.0, "note": "Estate flagship."},
+            {"varietal": "Estate Roussanne", "rating": 4.0, "note": "Rhone-style Carneros white."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Hillside Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 94.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 93.0, "note": "Pure."}
+          ]
+        },
+        {
+          "id": 4408, "name": "Hyde Vineyards", "stars": 4.5, "note": "Larry Hyde's storied grower-now-producer; HdV joint venture with de Villaine.",
+          "top_varietals": [
+            {"varietal": "Hyde de Villaine (HdV) Chardonnay", "rating": 4.5, "note": "Burgundian collaboration with Aubert de Villaine."},
+            {"varietal": "HdV Pinot Noir", "rating": 4.5, "note": "Estate Pinot collaboration."},
+            {"varietal": "HdV Syrah", "rating": 4.0, "note": "Cool-climate Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2018, "rating": 96.0, "note": "Reference Chardonnay."},
+            {"vintage": 2014, "rating": 95.0, "note": "Pure precision."},
+            {"vintage": 2010, "rating": 95.0, "note": "Concentrated."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "spring-mountain",
+      "name": "Spring Mountain District",
+      "style": "Mountain Cabernet and Bordeaux-style red",
+      "grapes": ["Cabernet Sauvignon", "Cabernet Franc", "Merlot"],
+      "popularity_rank": 55,
+      "region": {"id": "napa", "name": "Napa"},
+      "country": {"id": "us", "name": "United States", "emoji": "US"},
+      "top_wineries": [
+        {
+          "id": 4501, "name": "Pride Mountain Vineyards", "stars": 4.5, "note": "Straddles Napa-Sonoma border atop Spring Mountain; refined hillside Cab.",
+          "top_varietals": [
+            {"varietal": "Reserve Cabernet Sauvignon", "rating": 5.0, "note": "Top selection from best blocks."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside flagship."},
+            {"varietal": "Reserve Claret", "rating": 4.5, "note": "Cab Franc-led Bordeaux blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 98.0, "note": "Reference Reserve Cab."},
+            {"vintage": 2013, "rating": 98.0, "note": "Era-defining."},
+            {"vintage": 2007, "rating": 96.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4502, "name": "Cain Vineyard & Winery", "stars": 4.5, "note": "Cain Five is a hillside Bordeaux-blend reference.",
+          "top_varietals": [
+            {"varietal": "Cain Five", "rating": 4.5, "note": "Five-grape estate flagship."},
+            {"varietal": "Cain Concept", "rating": 4.5, "note": "Mountain-floor blend."},
+            {"varietal": "Cain Cuvee NV", "rating": 4.0, "note": "Multi-vintage blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2015, "rating": 97.0, "note": "Reference Cain Five."},
+            {"vintage": 2013, "rating": 97.0, "note": "Powerful."},
+            {"vintage": 2001, "rating": 96.0, "note": "Mature."}
+          ]
+        },
+        {
+          "id": 4503, "name": "Spring Mountain Vineyard", "stars": 4.5, "note": "Estate flagship Elivette is a Cab-led mountain reference.",
+          "top_varietals": [
+            {"varietal": "Elivette", "rating": 4.5, "note": "Cab-led estate flagship."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside Cab."},
+            {"varietal": "Syrah", "rating": 4.0, "note": "Mountain-grown Syrah."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 96.0, "note": "Reference Elivette."},
+            {"vintage": 2013, "rating": 95.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4504, "name": "Stony Hill Vineyard", "stars": 4.5, "note": "Historic hillside Chardonnay producer.",
+          "top_varietals": [
+            {"varietal": "Estate Chardonnay", "rating": 4.5, "note": "Restrained classical Chardonnay reference."},
+            {"varietal": "Estate Riesling", "rating": 4.0, "note": "Hillside Riesling."},
+            {"varietal": "Gewurztraminer", "rating": 4.0, "note": "Estate Gewurz."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Chardonnay."},
+            {"vintage": 2010, "rating": 94.0, "note": "Pure."},
+            {"vintage": 1985, "rating": 96.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4505, "name": "Schweiger Vineyards", "stars": 4.0, "note": "Family hillside Cab and Bordeaux blend.",
+          "top_varietals": [
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside flagship."},
+            {"varietal": "Dedication Reserve", "rating": 4.5, "note": "Top selection blend."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4506, "name": "Smith-Madrone Vineyards", "stars": 4.5, "note": "Dry-farmed hillside Riesling and Cab pioneer.",
+          "top_varietals": [
+            {"varietal": "Estate Riesling", "rating": 4.5, "note": "Reference dry California Riesling."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.5, "note": "Hillside Cab."},
+            {"varietal": "Estate Chardonnay", "rating": 4.0, "note": "Old-vine Chardonnay."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Cab."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."},
+            {"vintage": 1985, "rating": 95.0, "note": "Mature reference."}
+          ]
+        },
+        {
+          "id": 4507, "name": "Newton Vineyard", "stars": 4.0, "note": "Historic hillside Bordeaux-style producer; Unfiltered Chardonnay pioneer.",
+          "top_varietals": [
+            {"varietal": "Unfiltered Chardonnay", "rating": 4.5, "note": "Reference unfiltered California Chardonnay."},
+            {"varietal": "Puzzle", "rating": 4.5, "note": "Top Bordeaux blend."},
+            {"varietal": "Estate Cabernet Sauvignon", "rating": 4.0, "note": "Hillside Cab."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Puzzle."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        },
+        {
+          "id": 4508, "name": "Barnett Vineyards", "stars": 4.0, "note": "Hillside Cab specialist with single-vineyard focus.",
+          "top_varietals": [
+            {"varietal": "Rattlesnake Hill Cabernet Sauvignon", "rating": 4.5, "note": "Single-block top selection."},
+            {"varietal": "Spring Mountain Cabernet Sauvignon", "rating": 4.0, "note": "Estate flagship."}
+          ],
+          "top_vintages": [
+            {"vintage": 2016, "rating": 95.0, "note": "Reference Rattlesnake."},
+            {"vintage": 2013, "rating": 94.0, "note": "Powerful."}
+          ]
+        }
+      ]
+    }
+  ]
+}
