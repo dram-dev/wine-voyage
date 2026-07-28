@@ -57,11 +57,15 @@ python -m scripts.seed_top_rated                        # full pass (1000 AAVs)
 python -m scripts.seed_winery_geo --dry-run --limit-aavs 25
 python -m scripts.seed_winery_geo
 
-# 9. Run the server
+# 9. Build the frontend (uvicorn serves it alongside the API)
+cd web && npm install && npm run build && cd ..
+
+# 10. Run the server
 ./run.sh
 ```
 
-The server listens on `0.0.0.0:8420` by default. Override with `PORT` in `.env`.
+The server listens on `0.0.0.0:8420` by default and serves both the API and
+the app from that one port. Override with `PORT` in `.env`.
 
 ## Frontend (`web/`)
 
@@ -86,15 +90,16 @@ browser never sees the key.
 
 - **Dev** — nothing to configure; `vite.config.js` proxies `/api` to
   `localhost:8420`. Override the target with `VITE_DEV_API`.
-- **Production** — set `VITE_API_BASE` to the API root at build time:
+- **Served by the API** (the default, see below) — also nothing to configure.
+  The app and `/api` share an origin, so the relative path just works.
+- **Hosted separately** — set `VITE_API_BASE` to the API root at build time:
 
 ```bash
 VITE_API_BASE=http://mac-mini.tail-xxxx.ts.net:8420 npm run build
 ```
 
-Left unset, the build calls `/api` on its own origin. If nothing answers there,
-the deep dives show "No sommelier API reachable" and the rest of the app is
-unaffected.
+If nothing answers at `/api`, the deep dives show "No sommelier API reachable"
+and the rest of the app is unaffected.
 
 ## API
 
@@ -210,15 +215,28 @@ For autostart on boot, create a launchd plist that runs `./run.sh`, or use `pm2 
 
 ## Deploying the frontend
 
-`web/dist` is a plain static bundle — any static host serves it. `netlify.toml`
-at the repo root is preconfigured (base `web`, publish `dist`, SPA redirect); set
-`VITE_API_BASE` as a build environment variable there.
+`server/static.py` mounts `web/dist` onto the API process, so a single uvicorn
+serves both the app and `/api` on port 8420:
 
-One caveat if you host the frontend publicly while the API stays on Tailscale:
-the **browser** makes the `/api/sommelier` call, not the static host, so a public
-page cannot reach a tailnet-only backend. Either keep both on the tailnet, or
-expose the API (`tailscale funnel`, or any tunnel) and point `VITE_API_BASE` at
-that public URL. Everything else in the app is local-first and works either way.
+```bash
+cd web && npm install && npm run build && cd ..
+./run.sh
+```
+
+Then open `http://mac-mini.tail-xxxx.ts.net:8420/` from any device on the
+tailnet. App and API share an origin, so there is no CORS to configure and
+`VITE_API_BASE` stays unset — sommelier calls go to the relative
+`/api/sommelier`, and the Anthropic key never leaves the Mac mini.
+
+Two things worth knowing:
+
+- `mount_frontend(app)` is called **last** in `server/main.py`. The SPA
+  fallback is a catch-all, so every API router has to be registered before it.
+  Unmatched `/api/*` paths still return JSON 404s, not the app shell.
+- If `web/dist` is missing the server logs a hint and runs API-only, so a
+  backend-only deploy is unaffected. Rebuild and restart uvicorn to pick up
+  frontend changes — `run.sh` uses `--reload`, which watches Python, not the
+  bundle.
 
 ## Verification
 

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from server.db import close_pool, init_pool
+from server.static import mount_frontend
 from server.routes import (
     appellations,
     geo,
@@ -52,3 +53,6 @@ app.include_router(wineries.router, prefix="/api")
 app.include_router(top_rated.router, prefix="/api")
 app.include_router(votes.router, prefix="/api")
 app.include_router(geo.router, prefix="/api")
+
+# Last: the SPA fallback is a catch-all, so every API route must precede it.
+mount_frontend(app)
