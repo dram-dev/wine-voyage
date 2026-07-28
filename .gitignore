@@ -12,6 +12,14 @@ env/
 .mypy_cache/
 .ruff_cache/
 data/cache/
+
+# frontend
+node_modules/
+web/dist/
+web/.env
+web/.env.local
+.netlify/
+
 .DS_Store
 *.swp
 *.swo

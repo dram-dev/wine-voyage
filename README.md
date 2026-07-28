@@ -15,6 +15,7 @@ server/        FastAPI app and routers
 sql/           Schema + indexes
 scripts/       One-shot seed scripts
 data/          Seed JSON (you edit this)
+web/           React frontend (Vite)
 ```
 
 ## Setup
@@ -61,6 +62,39 @@ python -m scripts.seed_winery_geo
 ```
 
 The server listens on `0.0.0.0:8420` by default. Override with `PORT` in `.env`.
+
+## Frontend (`web/`)
+
+The React app — atlas, cellar, tasting journal and voyage planner — lives in `web/`.
+It is a Vite build with no server of its own: bottles, tastings, trips and taste
+profile persist to `localStorage`, so every tab except the sommelier deep dives
+works with the API offline.
+
+```bash
+cd web
+npm install
+npm run dev        # http://localhost:5173, proxies /api to localhost:8420
+npm run build      # static bundle in web/dist
+```
+
+### Pointing it at the API
+
+The sommelier sections (insider guides, notable wineries, food pairings,
+destination briefs, appellation comparisons) call `POST /api/sommelier`, which
+holds the Anthropic key server-side and caches responses in `ai_cache`. The
+browser never sees the key.
+
+- **Dev** — nothing to configure; `vite.config.js` proxies `/api` to
+  `localhost:8420`. Override the target with `VITE_DEV_API`.
+- **Production** — set `VITE_API_BASE` to the API root at build time:
+
+```bash
+VITE_API_BASE=http://mac-mini.tail-xxxx.ts.net:8420 npm run build
+```
+
+Left unset, the build calls `/api` on its own origin. If nothing answers there,
+the deep dives show "No sommelier API reachable" and the rest of the app is
+unaffected.
 
 ## API
 
@@ -173,6 +207,18 @@ http://mac-mini.tail-xxxx.ts.net:8420/api
 No DNS or TLS setup required — Tailscale handles auth at the network layer. Open the firewall on port 8420 only on the `tailscale0` interface if you want to be strict about it.
 
 For autostart on boot, create a launchd plist that runs `./run.sh`, or use `pm2 start ./run.sh --name winevoyage`.
+
+## Deploying the frontend
+
+`web/dist` is a plain static bundle — any static host serves it. `netlify.toml`
+at the repo root is preconfigured (base `web`, publish `dist`, SPA redirect); set
+`VITE_API_BASE` as a build environment variable there.
+
+One caveat if you host the frontend publicly while the API stays on Tailscale:
+the **browser** makes the `/api/sommelier` call, not the static host, so a public
+page cannot reach a tailnet-only backend. Either keep both on the tailnet, or
+expose the API (`tailscale funnel`, or any tunnel) and point `VITE_API_BASE` at
+that public URL. Everything else in the app is local-first and works either way.
 
 ## Verification
 
