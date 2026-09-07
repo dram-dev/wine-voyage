@@ -109,10 +109,13 @@ _DEMOTE = {EXACT: STRONG, STRONG: PARTIAL, PARTIAL: WEAK, WEAK: None}
 
 
 def _identity(entry: dict) -> str:
-    """What an entry claims about a wine's origin. Two producers that resolve to
-    the same appellation are interchangeable for our purposes; two that do not
-    are a genuine ambiguity."""
-    return entry.get("appellation") or entry.get("name") or ""
+    """What an entry claims. Two producers resolving to the same appellation are
+    interchangeable for our purposes; two that do not are a genuine ambiguity.
+    Bottlings carry neither, and are distinct whenever their names are — a bare
+    "Cabernet Sauvignon" typed against Stag's Leap matches both the S.L.V. and
+    the Fay bottling equally well, and picking one would be a coin toss stated
+    as a fact."""
+    return entry.get("appellation") or entry.get("name") or entry.get("wine_name") or ""
 
 
 def _best(query: Optional[str], table: dict) -> tuple[Optional[dict], Optional[str]]:
@@ -214,8 +217,10 @@ def find_bottling(producer_entry: Optional[dict], wine_name: Optional[str]) -> O
     if not bottlings:
         return None
     table = {normalize(b["wine_name"]): b for b in bottlings if b.get("wine_name")}
-    entry, _ = _best(wine_name, table)
-    return entry
+    entry, quality = _best(wine_name, table)
+    # An uncertain cuvée match would state one wine's grapes for another's.
+    # Saying nothing is better: the grape reader still works on the name.
+    return entry if quality in (EXACT, STRONG) else None
 
 
 def find_producer(name: Optional[str]) -> tuple[Optional[dict], Optional[str]]:

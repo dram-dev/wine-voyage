@@ -273,6 +273,30 @@ python -m scripts.build_reference            # writes data/ and web/data/
 python -m scripts.check_reference_coverage   # regression gate, floor 90%
 ```
 
+**Reconciling against a rated-wine list.** `scripts/reconcile_cuvees.py` says how
+far the cuvée table actually reaches, by checking it against a list of wines
+somebody else thought worth rating:
+
+```bash
+python -m scripts.reconcile_cuvees                 # against the repo's own top-rated lists
+python -m scripts.reconcile_cuvees critics.csv     # against a supplied list
+python -m scripts.reconcile_cuvees critics.csv --emit
+```
+
+It takes CSV/TSV with `producer` and `wine` columns, JSON objects with those
+keys (or the shape of `data/top_rated*.json`), or plain lines of
+`Producer — Wine`. Results come in four buckets, because they need different
+work: an unknown producer, a producer with no cuvées at all, a producer we cover
+but this wine missing, and corroborated. Unknown producers that *nearly* matched
+are named with their near miss, since those are usually the same house under
+another name and want an `ALIASES` entry.
+
+`--emit` writes `data/cuvee_additions.json`, which `build_reference.py` folds in
+beside the curated table. **It writes names and notes only, never grapes.** A
+name that states its grape is read at resolve time; a proprietary name that does
+not is better saying nothing than saying something plausible. The curated table
+wins on a conflict, because its entries were checked by hand and carry grapes.
+
 **Importing an external list.** `scripts/import_producers.py` folds a merchant
 archive, cellar export or spreadsheet into the reference without retyping it:
 
