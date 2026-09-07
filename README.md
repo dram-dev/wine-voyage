@@ -385,6 +385,53 @@ fallback. Until then, scores and valuations are **model estimates**, stored with
 disclaimer everywhere they appear. They are a starting point, not a citation,
 and should not be used to insure or sell a bottle.
 
+### Prices from public retailer feeds
+
+Wine-Searcher and Vivino are the obvious price sources and neither is open: no
+free public API, and terms that forbid scraping. What *is* public by design,
+without a key, are the storefront product feeds e-commerce platforms serve to
+their own shop pages:
+
+| platform | endpoint |
+|---|---|
+| Shopify | `https://<store>/products.json?limit=250&page=N` |
+| WooCommerce | `https://<store>/wp-json/wc/store/v1/products?per_page=100&page=N` |
+
+Both are documented, unauthenticated, and meant to be read by clients. A great
+many independent wine merchants run one or the other, and the prices are real,
+current and per-format.
+
+```bash
+python -m scripts.fetch_prices https://example-wines.com --dry-run
+python -m scripts.fetch_prices https://example-wines.com --write
+python -m scripts.fetch_prices saved-feed.json other-shop.csv --write
+```
+
+`server/wine_titles.py` reads a listing title as a wine — "2021 Denner Vineyards
+Ditch Digger Paso Robles 750ml" becomes producer *Denner*, vintage *2021*, cuvée
+*Ditch Digger*, size *750*. It leans on the same reference the autofill uses, and
+a title whose producer the reference does not recognise is **reported, not
+guessed at**: a price on the wrong wine is worse than no price, because the value
+tracker reports it as that bottle's worth and computes a gain against what was
+actually paid.
+
+Other things it is careful about:
+
+- **Formats are priced apart.** A magnum is not a 750 at twice the price, so
+  anything that is not 750ml is skipped unless `--all-sizes` is passed.
+- **Listings across shops become one observation** — low, median, high, and how
+  many listings it saw.
+- **`--write` only prices wines already in the database.** The point is valuing
+  the bottles someone holds, not accumulating prices for wines nobody owns.
+- Each price is stored as `market` with the shop's hostname and the time it was
+  read, so `manual > market > ai_estimate` ranks it correctly and the staleness
+  window ages it out.
+
+Be a good citizen. The script paginates with a delay and identifies itself; check
+a shop's robots.txt and terms before pointing it at them. "Publicly reachable"
+and "yours to bulk-collect" are not the same thing, and one polite pass a week is
+a very different proposition from a scraper.
+
 ### Value tracker
 
 Cellar value is worth nothing if nothing populates it, so this is the piece that
