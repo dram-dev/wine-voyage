@@ -19,6 +19,14 @@ function readStore(key, fallback = null) {
   }
 }
 
+// The API is an origin: paths already carry `/api`. Pasting the full
+// `https://host/api` — which is what a copied curl line looks like — would
+// otherwise 404 every call, so trim it back to the origin here rather than
+// leaving the user to find it.
+function normalizeApiBase(value) {
+  return (value || '').trim().replace(/\/+$/, '').replace(/\/api$/i, '');
+}
+
 function writeStore(key, value) {
   try {
     if (value === null || value === undefined || value === '') localStorage.removeItem(key);
@@ -40,7 +48,7 @@ function consumeQueryOverrides() {
   const account = url.searchParams.get('account');
   let touched = false;
 
-  if (api !== null) { writeStore(KEY_API, api.trim().replace(/\/+$/, '')); url.searchParams.delete('api'); touched = true; }
+  if (api !== null) { writeStore(KEY_API, normalizeApiBase(api)); url.searchParams.delete('api'); touched = true; }
   if (demo !== null) { writeStore(KEY_DEMO, demo === '1' || demo === 'true' ? '1' : ''); url.searchParams.delete('demo'); touched = true; }
   if (account !== null && account.trim()) { writeStore(KEY_ACCOUNT, account.trim()); url.searchParams.delete('account'); touched = true; }
 
@@ -51,7 +59,7 @@ consumeQueryOverrides();
 
 export const config = {
   get apiBase() { return readStore(KEY_API, ''); },
-  set apiBase(value) { writeStore(KEY_API, (value || '').trim().replace(/\/+$/, '')); },
+  set apiBase(value) { writeStore(KEY_API, normalizeApiBase(value)); },
 
   get accountId() {
     let id = readStore(KEY_ACCOUNT, '');

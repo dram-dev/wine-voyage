@@ -26,7 +26,6 @@ web/           Static cellar frontend (deployed to GitHub Pages)
 # 1. Postgres
 brew install postgresql@16
 brew services start postgresql@16
-createdb winevoyage
 
 # 2. Python env
 python3.12 -m venv .venv
@@ -35,37 +34,49 @@ pip install -r requirements.txt
 
 # 3. Config
 cp .env.example .env
-# edit .env — set ANTHROPIC_API_KEY
+# edit .env — set ANTHROPIC_API_KEY, and DATABASE_URL if Postgres is not local
 
-# 4. Migrations
-psql winevoyage -f sql/001_schema.sql
-psql winevoyage -f sql/002_indexes.sql
-psql winevoyage -f sql/003_top_rated.sql
-psql winevoyage -f sql/004_votes.sql
-psql winevoyage -f sql/005_geo.sql
-psql winevoyage -f sql/006_cellars.sql
-psql winevoyage -f sql/007_value_tracking.sql
+# 4. Database: creates it, applies every migration, seeds appellations
+python -m scripts.bootstrap_db
 
-# 5. Seed appellations (after editing data/appellations.json)
-python -m scripts.seed_appellations
-
-# 6. (Optional) Seed wineries via AI — costs ~$2-3
-python -m scripts.seed_wineries --dry-run   # preview
-python -m scripts.seed_wineries             # real run
-
-# 7. (Optional) Rank popular AAVs + seed top 40 wineries/varietals/vintages
-python -m scripts.seed_top_rated --dry-run --limit 25   # preview
-python -m scripts.seed_top_rated                        # full pass (1000 AAVs)
-
-# 8. (Optional) Backfill lat/lng on wineries for the map
-python -m scripts.seed_winery_geo --dry-run --limit-aavs 25
-python -m scripts.seed_winery_geo
-
-# 9. Run the server
+# 5. Run
 ./run.sh
 ```
 
+That is the whole setup. `scripts/bootstrap_db.py` is idempotent — it records what
+it has applied in `schema_migrations` and skips it next time, so re-running after a
+`git pull` applies only what is new. It also adopts a database that was migrated by
+hand, because every file in `sql/` is written with `IF NOT EXISTS`.
+
+```bash
+python -m scripts.bootstrap_db --check   # report status, change nothing
+```
+
+It talks to Postgres through asyncpg rather than shelling out to `psql`, so the same
+command works against a hosted database — Neon, Supabase, RDS — by pointing
+`DATABASE_URL` at it. Where the provider will not let you create databases over a
+connection, create it in their console first; the script says so if that is the case.
+
 The server listens on `0.0.0.0:8420` by default. Override with `PORT` in `.env`.
+
+### Optional seeding
+
+None of this is needed to start recording bottles — autofill resolves producers from
+`data/wine_reference.json`, which ships in the repo and needs no database.
+
+```bash
+# Wineries via AI — costs ~$2-3
+python -m scripts.seed_wineries --dry-run   # preview
+python -m scripts.seed_wineries
+
+# Rank popular AAVs + seed top 40 wineries/varietals/vintages
+python -m scripts.seed_top_rated --dry-run --limit 25
+python -m scripts.seed_top_rated
+
+# Backfill lat/lng on wineries for the map
+python -m scripts.seed_winery_geo --dry-run --limit-aavs 25
+python -m scripts.seed_winery_geo
+```
 
 ## API
 
@@ -406,7 +417,9 @@ GitHub Pages serves static files only, so the site holds no data and no secrets
 build constant:
 
 - Open **Settings** in the app and enter your API base (e.g.
-  `http://mac-mini.tail-xxxx.ts.net:8420`), then **Test connection**.
+  `https://mac-mini.tail-xxxx.ts.net`), then **Test connection**. It is an origin,
+  not a path: the app appends `/api` itself, and strips a trailing `/api` if you
+  paste one.
 - Or open the site with `?api=<url>&account=<id>` once — it is stored and the
   parameters are stripped from the URL. The Settings page generates that link,
   which is the quickest way to set a phone up.
@@ -414,9 +427,11 @@ build constant:
   the page is explorable rather than blank. Changes there are not saved.
 
 **Mixed content.** The Pages site is served over HTTPS, so browsers block calls
-to a plain `http://` API. A Tailscale HTTPS hostname (`tailscale cert`), a
-reverse proxy with a certificate, or serving `web/` locally all avoid this. This
-is a browser rule, not something the app can work around.
+to a plain `http://` API — Safari even for `localhost`, which is what an iPhone
+will do. `tailscale serve --bg --https=443 http://127.0.0.1:8420`, a reverse proxy
+with a certificate, or serving `web/` locally all avoid this. It is a browser rule,
+not something the app can work around. Settings names this as the likely cause when
+a connection test fails against an http:// address.
 
 **Account ids are bearer tokens.** Anyone with the id can read and change that
 account's cellars. Share the setup link only with people you want in your cellar.
@@ -492,23 +507,70 @@ buttons and navigation and never encodes data.
 
 The seed script uses `ON CONFLICT DO UPDATE` — running it twice is safe.
 
-## Tailscale deployment
+## Connecting the published site to your database
 
-Tailscale exposes the Mac mini as `mac-mini.tail-xxxx.ts.net` automatically. Point the React frontend at:
+The site at `https://dram-dev.github.io/wine-voyage/` is static files. It holds no
+data. Everything you record goes to the FastAPI server you run, into your Postgres —
+nothing about your cellar passes through GitHub.
+
+Until an API base URL is set, the app answers from an in-browser sample cellar so the
+published page is explorable rather than blank. That sample is generated in the tab
+and written nowhere — no database, no local storage. There is nothing to delete: set
+a working API base URL and it is gone.
+
+### The one real obstacle: HTTPS
+
+GitHub Pages serves over HTTPS, and a browser will not let an HTTPS page call a plain
+`http://` API. Chrome and Firefox make an exception for `localhost`. **Safari does
+not**, so an iPhone — the device you actually photograph labels with — will refuse a
+plain-http server every time.
+
+Tailscale solves it in one command. It gives the machine a real Let's Encrypt
+certificate on a `ts.net` name, reachable only from your own tailnet:
+
+```bash
+tailscale serve --bg --https=443 http://127.0.0.1:8420
+tailscale serve status          # prints the https://…ts.net name
+```
+
+Then in the app's Settings, set:
 
 ```
-http://mac-mini.tail-xxxx.ts.net:8420/api
+API base URL:  https://your-machine.your-tailnet.ts.net
 ```
 
-No DNS or TLS setup required — Tailscale handles auth at the network layer. Open the firewall on port 8420 only on the `tailscale0` interface if you want to be strict about it.
+No port, no path — the app appends `/api` itself. (It strips a trailing `/api` if you
+paste one, since that is what a copied `curl` line looks like.)
 
-For autostart on boot, create a launchd plist that runs `./run.sh`, or use `pm2 start ./run.sh --name winevoyage`.
+Alternatives, if you would rather not use Tailscale: put the server behind any reverse
+proxy with a certificate (Caddy gets one automatically), or serve `web/` from your own
+machine over http so the page and the API share a scheme:
+
+```bash
+python -m http.server 8000 --directory web    # then http://localhost:8000
+```
+
+### A second device
+
+Settings shows a link containing the API base URL and account id. Open it on the phone
+and both are set in one step. It carries your account id, which is the only credential
+this app has — anyone holding it can read and change your cellar, so treat it like a
+password and share it only with people you want in there.
+
+### Autostart
+
+For the server to be up when you reach for your phone, keep it running: a launchd plist
+that runs `./run.sh`, or `pm2 start ./run.sh --name winevoyage`. `tailscale serve --bg`
+already persists across reboots.
 
 ## Verification
 
 ```bash
-# tables exist
-psql winevoyage -c "\dt"
+# schema state, table counts, and whether the API key is set
+python -m scripts.bootstrap_db --check
+
+# the server is up
+curl -s localhost:8420/health
 
 # appellation count
 curl -s localhost:8420/api/appellations | jq length
@@ -578,9 +640,12 @@ fail.
 
 ## Troubleshooting
 
-- **`asyncpg.exceptions.InvalidCatalogNameError`** — run `createdb winevoyage`.
+- **`asyncpg.exceptions.InvalidCatalogNameError`** — the database does not exist. Run `python -m scripts.bootstrap_db`.
+- **The site shows "Sample data" after setting an API URL** — the save did not stick, or the *Always use the sample cellar* box in Settings is ticked. Hit **Test connection** first; it reports the real reason.
+- **"Can't reach the API" from a phone but not a laptop** — mixed content. See *The one real obstacle: HTTPS* above.
+- **404 on every call** — the API base URL has a path on it. It should be an origin, `https://host`, with no `/api`.
 - **`401` from Claude** — `ANTHROPIC_API_KEY` is missing or wrong in `.env`.
 - **`{"error": "invalid_json", ...}` from sommelier** — the model returned non-JSON. The raw text is in the `raw` field; tighten the prompt.
-- **Port 8420 in use** — set `PORT` in `.env` and update the frontend.
+- **Port 8420 in use** — set `PORT` in `.env`, and update the API base URL in Settings (and `tailscale serve`, if used).
 - **CORS errors in browser** — server allows `*`; check the URL the frontend is hitting.
 - **Wineries seed dies partway** — re-running it appends duplicates (no upsert key). Delete rows for affected appellation_ids before retrying.
