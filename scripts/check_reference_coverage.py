@@ -56,14 +56,41 @@ SAMPLE = [
     "Boekenhoutskloof", "Meerlust", "Chateau Musar", "Royal Tokaji",
 ]
 
+# California specifically: small-production labels of the kind flash-sale
+# merchants (Last Bottle and its like) actually move, plus the names people
+# type as a bare surname.
+CALIFORNIA_SAMPLE = [
+    "Three Sticks", "Denner", "Denner Vineyards", "Arista", "Arista Winery",
+    "Bevan Cellars", "Carter Cellars", "Myriad Cellars", "Blankiet Estate",
+    "Vineyard 29", "Melka Wines", "Memento Mori Winery", "Tor Kenward Family",
+    "Larkin Wines", "Hourglass", "Kongsgaard", "Favia", "Accendo Cellars",
+    "Realm Cellars", "Schrader", "Scarecrow", "Continuum", "Ovid Napa Valley",
+    "Dana Estates", "Kenzo Estate", "Lewis Cellars", "Pahlmeyer", "Darioush",
+    "Bedrock Wine Co.", "Carlisle Winery", "Limerick Lane", "Kamen Estate",
+    "Aperture Cellars", "Cobb Wines", "Kutch Wines", "Auteur", "Benovia",
+    "Martinelli", "Mauritson Wines", "Hamel Family", "Senses Wines",
+    "Saxum Vineyards", "Linne Calodo", "Torrin", "Law Estate", "Booker Vineyard",
+    "Herman Story", "McPrice Myers", "Villa Creek", "Jada Vineyard",
+    "Alta Colina", "Caliza Winery", "Turtle Rock", "Terry Hoage",
+    "Sea Smoke Cellars", "Jonata", "Stolpman Vineyards", "Tyler Winery",
+    "The Hilt", "Dragonette Cellars", "Peake Ranch", "Racines", "Chanin Wine",
+    "Calera", "Roar Wines", "Big Basin Vineyards", "Rhys Vineyards",
+    "Michael David Winery", "Klinker Brick", "Bokisch Vineyards", "Turley Lodi",
+    "Terre Rouge", "Skinner Vineyards", "Wente Vineyards", "Steven Kent",
+    # Bare surnames, which is how people type them.
+    "Bevan", "Carter", "Myriad", "Melka", "Saxum", "Stolpman", "Carlisle",
+    "Bedrock", "Schrader", "Favia", "Torrin", "Jonata",
+]
+
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--misses", action="store_true", help="List only what failed")
     args = parser.parse_args()
 
+    everything = SAMPLE + CALIFORNIA_SAMPLE
     hits, misses = [], []
-    for name in SAMPLE:
+    for name in everything:
         result = resolve(producer=name, vintage=2019)
         wine = result["wine"]
         if result["producer_match"] in ("exact", "strong") and wine.get("country"):
@@ -71,7 +98,7 @@ def main() -> int:
         else:
             misses.append(name)
 
-    rate = len(hits) / len(SAMPLE)
+    rate = len(hits) / len(everything)
     if not args.misses:
         for name, wine in hits:
             place = wine.get("appellation") or wine.get("region") or "—"
@@ -79,7 +106,10 @@ def main() -> int:
     for name in misses:
         print(f"  MISS  {name}")
 
-    print(f"\n{len(hits)}/{len(SAMPLE)} resolved ({rate:.0%}); floor is {FLOOR:.0%}")
+    california = sum(1 for name in CALIFORNIA_SAMPLE
+                     if resolve(producer=name, vintage=2019)["producer_match"] in ("exact", "strong"))
+    print(f"\n{len(hits)}/{len(everything)} resolved ({rate:.0%}); floor is {FLOOR:.0%}")
+    print(f"California subset: {california}/{len(CALIFORNIA_SAMPLE)}")
     if rate < FLOOR:
         print("Coverage is below the floor — add the missing producers to "
               "scripts/build_reference.py and regenerate.")
