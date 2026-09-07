@@ -278,10 +278,14 @@ event rather than hardcoded, so renaming the default (to `main`, say) does not
 silently stop publishing. Pushes to other branches still run the syntax check;
 they just don't publish.
 
-Pages itself is turned on by the first run — `configure-pages` is set to
-`enablement: true`, so it enables Pages over the API with the workflow's own
-`pages: write` token. The only requirement is that `web/` is on the **default
-branch**.
+**Enable Pages once, by hand:** Settings → Pages → Build and deployment →
+Source: **GitHub Actions**. This is the one step a workflow cannot do for itself
+— `configure-pages` accepts `enablement: true`, but *creating* a Pages site needs
+admin rights the workflow's `GITHUB_TOKEN` does not carry, and fails with
+"Resource not accessible by integration". Deploying afterwards works fine on the
+same token.
+
+`web/` also has to be on the **default branch**, which the deploy job gates on.
 
 It publishes to `https://<owner>.github.io/<repo>/` — for this repository,
 **https://dram-dev.github.io/wine-voyage/**. Check Actions → "Deploy Pages" for
