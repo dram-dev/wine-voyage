@@ -12,6 +12,16 @@ import { config } from '../config.js';
 import { state } from '../state.js';
 import { debounce, el, empty, field, loading, money, mount, select, toast } from '../ui.js';
 import { routeQuery, navigate } from '../app.js';
+import { placeNames, resolveLocally } from '../reference.js';
+
+// Offered as one-tap chips when a producer is not recognized. Chosen for how
+// often they turn up in a cellar, not for prestige.
+const COMMON_PLACES = [
+  'Napa Valley', 'Sonoma County', 'Russian River Valley', 'Paso Robles',
+  'Willamette Valley', 'Columbia Valley', 'Bordeaux', 'Burgundy', 'Champagne',
+  'Chateauneuf-du-Pape', 'Chianti Classico', 'Barolo', 'Rioja', 'Douro',
+  'Mosel', 'Barossa Valley', 'Marlborough', 'Mendoza', 'Stellenbosch',
+];
 
 const MAX_EDGE = 1600;
 const JPEG_QUALITY = 0.85;
@@ -157,9 +167,21 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     [['', '—'], ['red', 'Red'], ['white', 'White'], ['rose', 'Rosé'], ['sparkling', 'Sparkling'],
      ['dessert', 'Dessert'], ['fortified', 'Fortified'], ['other', 'Other']],
     prefill.wine_type || '');
-  const country = el('input', { value: prefill.country || '', placeholder: 'France' });
-  const region = el('input', { value: prefill.region || '', placeholder: 'Bordeaux' });
-  const appellation = el('input', { value: prefill.appellation || '', placeholder: 'Margaux' });
+  // The place fields autocomplete from the reference. Naming a region is the
+  // single most useful thing a user can add when a producer is unrecognized —
+  // it is what turns "no match" into a filled country, grape set and window.
+  const country = el('input', { value: prefill.country || '', placeholder: 'France', list: 'wv-countries', autocomplete: 'off' });
+  const region = el('input', { value: prefill.region || '', placeholder: 'Bordeaux', list: 'wv-regions', autocomplete: 'off' });
+  const appellation = el('input', { value: prefill.appellation || '', placeholder: 'Margaux', list: 'wv-appellations', autocomplete: 'off' });
+  const placeLists = el('div', { hidden: true });
+
+  placeNames().then(({ appellations, regions, countries }) => {
+    const list = (id, values) => el('datalist', { id }, ...values.map((v) => el('option', { value: v })));
+    placeLists.replaceChildren(
+      list('wv-appellations', appellations),
+      list('wv-regions', regions),
+      list('wv-countries', countries));
+  }).catch(() => { /* autocomplete is a convenience; the fields work without it */ });
   const sizeMl = el('input', { type: 'number', min: '50', max: '30000', value: prefill.bottle_size_ml || 750 });
   const abv = el('input', { type: 'number', step: '0.1', min: '0', max: '100', value: prefill.abv ?? '' });
   const drinkFrom = el('input', { type: 'number', min: '1800', max: '2200', value: prefill.drink_from ?? '' });
@@ -228,9 +250,9 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
       return;
     }
 
-    const query = `${name}|${year}|${cuvee}`;
-    if (!manual && query === lastQuery) return;
-    lastQuery = query;
+    const signature = [name, year, cuvee, region.value.trim(), appellation.value.trim()].join('|');
+    if (!manual && signature === lastQuery) return;
+    lastQuery = signature;
 
     const ticket = ++inFlight;
     status.hidden = false;
@@ -243,25 +265,60 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     valueHint.hidden = true;
     valueHint.replaceChildren();
 
+    // Everything the user has typed goes in — the more context, the better the
+    // match, and a region alone is enough to fill a country and grape set.
+    const params = {
+      producer: name,
+      vintage: year ? Number(year) : null,
+      wine_name: cuvee || null,
+      varietal: varietals.value.split(',')[0].trim() || null,
+      country: country.value.trim() || null,
+      region: region.value.trim() || null,
+      appellation: appellation.value.trim() || null,
+    };
+
     let result;
     try {
-      result = await api.lookupWine({
-        producer: name,
-        vintage: year ? Number(year) : null,
-        wine_name: cuvee || null,
-        varietal: varietals.value.split(',')[0].trim() || null,
-      });
+      result = await api.lookupWine(params);
     } catch (error) {
-      // A stale reply must not clobber a newer one.
+      // The backend is unreachable — resolve from the built-in reference rather
+      // than leaving the user with nothing.
       if (ticket !== inFlight) return;
-      status.replaceChildren(el('span', { class: 'lookup-warn' }, `Couldn't look that up: ${error.message}`));
-      return;
+      result = await offlineResult(params, error.message);
     }
     if (ticket !== inFlight) return;
 
     if (!result.found) {
-      status.replaceChildren(el('span', { class: 'lookup-warn' },
-        `No match for “${name}”. Fill the rest in by hand — everything still saves normally.`));
+      status.replaceChildren(
+        el('span', { class: 'lookup-warn' }, `No match for “${name}”.`),
+        // The backend explains itself — surface that rather than a bare "no match".
+        result.notes ? el('div', { class: 'hint' }, result.notes) : null,
+        el('div', { class: 'hint' },
+          'Everything still saves normally — fill in what you know.'),
+        // A curated reference always has a long tail. Naming the place is the
+        // way out of it, so make that one tap rather than one more thing to type.
+        (!region.value.trim() && !appellation.value.trim())
+          ? el('div', { style: 'margin-top:.6rem' },
+              el('div', { class: 'hint' }, 'Where is it from? One tap fills the country, grapes and drinking window:'),
+              el('div', { class: 'chip-row', style: 'margin-top:.35rem' },
+                ...COMMON_PLACES.map((place) => el('button', {
+                  class: 'chip', type: 'button',
+                  onClick: () => {
+                    appellation.value = place;
+                    appellation.dataset.autofilled = '1';
+                    appellation.classList.add('autofilled');
+                    lastQuery = '';
+                    runLookup({ manual: true });
+                  },
+                }, place)),
+                el('button', {
+                  class: 'chip', type: 'button',
+                  onClick: () => {
+                    region.scrollIntoView({ block: 'center', behavior: 'smooth' });
+                    region.focus();
+                  },
+                }, 'Somewhere else…')))
+          : null);
       bottlingRow.hidden = true;
       return;
     }
@@ -284,11 +341,23 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     const shaky = Object.entries(result.field_confidence || {})
       .filter(([, value]) => Number(value) < 0.6).map(([key]) => key.replace(/_/g, ' '));
 
+    // Say plainly when the wine was placed by its region rather than recognized
+    // by name — those fields are a regional norm, not a fact about this bottle.
+    const placedByRegion = !result.reference_match && result.reference_place;
+
     status.replaceChildren(
-      el('span', { class: 'lookup-ok' }, `✓ Filled ${filled} field${filled === 1 ? '' : 's'}.`),
+      el('span', { class: filled ? 'lookup-ok' : 'lookup-warn' },
+        filled ? `✓ Filled ${filled} field${filled === 1 ? '' : 's'}.` : 'Nothing left to fill.'),
+      placedByRegion
+        ? el('div', { class: 'hint' },
+            `Placed from ${result.reference_place.name}, not from the producer — `
+            + 'these are typical for the region, so check them against the bottle.')
+        : null,
       result.vintage_note ? el('div', { class: 'hint' }, result.vintage_note) : null,
       shaky.length ? el('div', { class: 'hint' }, `Worth checking: ${shaky.join(', ')}.`) : null,
-      result.notes ? el('div', { class: 'hint' }, result.notes) : null,
+      result.model_error
+        ? el('div', { class: 'hint' }, `Lookup service unreachable, so this is the offline reference only (${result.model_error}).`)
+        : result.notes ? el('div', { class: 'hint' }, result.notes) : null,
       el('div', { class: 'hint' }, 'Autofilled fields are marked — edit any of them freely.'));
 
     // Offer the producer's range so the user can name the bottling.
@@ -312,9 +381,31 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     }
   }
 
+  /** Resolve from the built-in reference when the API cannot be reached. */
+  async function offlineResult(query, reason) {
+    const local = await resolveLocally(query);
+    const wine = { ...local.wine, bottle_size_ml: 750 };
+    wine.producer = local.producer_name || query.producer;
+    const found = Boolean(wine.country || wine.region);
+    return {
+      found, wine, sources: local.sources, bottlings: [], estimated_value: null,
+      confidence: null,
+      field_confidence: Object.fromEntries((local.typical || []).map((f) => [f, 0.55])),
+      vintage_note: null,
+      notes: found ? null : `Couldn't reach the lookup service (${reason}), and the producer is not in the built-in reference.`,
+      reference_match: local.producer_match, reference_place: local.place,
+      model_error: found ? reason : null, needs_review: true,
+    };
+  }
+
   const scheduleLookup = debounce(() => runLookup(), 700);
   producer.addEventListener('input', scheduleLookup);
   vintage.addEventListener('input', scheduleLookup);
+  // Typing a region is new evidence, so re-ask — that is how an unrecognized
+  // producer still gets a country, a grape set and a drinking window.
+  for (const input of [region, appellation]) {
+    input.addEventListener('change', () => { lastQuery = ''; runLookup(); });
+  }
   producer.addEventListener('input', () => { if (producer.value.trim()) userEdited.add('producer'); });
 
   const lookupButton = el('button', {
@@ -401,6 +492,7 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     field('Varietals', varietals, 'Comma-separated.'),
     el('div', { class: 'field-grid' },
       field('Country', country), field('Region', region), field('Appellation', appellation)),
+    placeLists,
     el('div', { class: 'field-grid' },
       field('Size (ml)', sizeMl), field('ABV %', abv),
       field('Drink from', drinkFrom), field('Drink to', drinkTo)),

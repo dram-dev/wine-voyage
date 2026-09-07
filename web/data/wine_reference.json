@@ -1,0 +1,7167 @@
+{
+ "_comment": "Offline wine reference for autofill. Regenerate with `python -m scripts.build_reference`. Appellation facts drive most of the form; the producer table maps a name to its appellation.",
+ "aliases": {
+  "alexander valley ava": "alexander valley",
+  "amarone": "amarone della valpolicella",
+  "barbera": "barbera d alba",
+  "barossa": "barossa valley",
+  "carneros district": "carneros",
+  "casablanca": "casablanca valley",
+  "chambolle musigny": "chambolle musigny",
+  "chassagne montrachet": "chassagne montrachet",
+  "chateauneuf du pape": "chateauneuf du pape",
+  "colchagua": "colchagua valley",
+  "columbia valley ava": "columbia valley",
+  "cote de nuits": "nuits saint georges",
+  "cote rotie": "cote rotie",
+  "cotes de nuits": "nuits saint georges",
+  "cotes du rhone": "cotes du rhone",
+  "dolcetto": "dolcetto d alba",
+  "dry creek": "dry creek valley",
+  "etna bianco": "etna",
+  "etna rosso": "etna",
+  "gevrey chambertin": "gevrey chambertin",
+  "hawkes bay": "hawke s bay",
+  "jerez xeres sherry": "jerez",
+  "los carneros": "carneros",
+  "maipo": "maipo valley",
+  "montalcino": "brunello di montalcino",
+  "morey saint denis": "morey saint denis",
+  "morey st denis": "morey saint denis",
+  "mosel saar ruwer": "mosel",
+  "napa": "napa valley",
+  "nuits saint georges": "nuits saint georges",
+  "nuits st georges": "nuits saint georges",
+  "oporto": "porto",
+  "port": "porto",
+  "provence": "cotes de provence",
+  "puligny montrachet": "puligny montrachet",
+  "rioja alavesa": "rioja",
+  "rioja alta": "rioja",
+  "russian river": "russian river valley",
+  "saint helena": "st helena",
+  "santa rita hills": "sta rita hills",
+  "sherry": "jerez",
+  "st emilion": "saint emilion",
+  "st estephe": "saint estephe",
+  "st helena": "st helena",
+  "st joseph": "saint joseph",
+  "st julien": "saint julien",
+  "sta rita hills": "sta rita hills",
+  "stag s leap district": "stags leap district",
+  "stags leap": "stags leap district",
+  "uco": "uco valley",
+  "valpolicella classico": "valpolicella",
+  "vosne romanee": "vosne romanee",
+  "walla walla": "walla walla valley",
+  "willamette": "willamette valley"
+ },
+ "appellations": {
+  "alexander valley": {
+   "age": [
+    4,
+    20
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Alexander Valley",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "alsace": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Riesling",
+    "Gewurztraminer",
+    "Pinot Gris"
+   ],
+   "name": "Alsace",
+   "region": "Alsace",
+   "type": "white"
+  },
+  "alto adige": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Pinot Grigio",
+    "Gewurztraminer"
+   ],
+   "name": "Alto Adige",
+   "region": "Alto Adige",
+   "type": "white"
+  },
+  "amarone della valpolicella": {
+   "age": [
+    6,
+    30
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Corvina",
+    "Rondinella"
+   ],
+   "name": "Amarone della Valpolicella",
+   "region": "Veneto",
+   "type": "red"
+  },
+  "anderson valley": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Anderson Valley",
+   "region": "Mendocino",
+   "type": "red"
+  },
+  "baden": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Baden",
+   "region": "Baden",
+   "type": "red"
+  },
+  "bandol": {
+   "age": [
+    5,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Mourvedre",
+    "Grenache"
+   ],
+   "name": "Bandol",
+   "region": "Provence",
+   "type": "red"
+  },
+  "barbaresco": {
+   "age": [
+    6,
+    30
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nebbiolo"
+   ],
+   "name": "Barbaresco",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "barbera d alba": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Barbera"
+   ],
+   "name": "Barbera d'Alba",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "barbera d asti": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Barbera"
+   ],
+   "name": "Barbera d'Asti",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "barolo": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nebbiolo"
+   ],
+   "name": "Barolo",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "barossa valley": {
+   "age": [
+    4,
+    25
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Shiraz",
+    "Grenache"
+   ],
+   "name": "Barossa Valley",
+   "region": "South Australia",
+   "type": "red"
+  },
+  "beaujolais": {
+   "age": [
+    1,
+    5
+   ],
+   "country": "France",
+   "grapes": [
+    "Gamay"
+   ],
+   "name": "Beaujolais",
+   "region": "Beaujolais",
+   "type": "red"
+  },
+  "beaune": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Beaune",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "bekaa valley": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "Lebanon",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Cinsault",
+    "Carignan"
+   ],
+   "name": "Bekaa Valley",
+   "region": "Bekaa",
+   "type": "red"
+  },
+  "bolgheri": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot",
+    "Cabernet Franc"
+   ],
+   "name": "Bolgheri",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "bordeaux": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Merlot",
+    "Cabernet Sauvignon",
+    "Cabernet Franc"
+   ],
+   "name": "Bordeaux",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "bourgogne": {
+   "age": [
+    2,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Bourgogne",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "bourgueil": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Franc"
+   ],
+   "name": "Bourgueil",
+   "region": "Loire",
+   "type": "red"
+  },
+  "brunello di montalcino": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Brunello di Montalcino",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "burgenland": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Blaufrankisch"
+   ],
+   "name": "Burgenland",
+   "region": "Burgenland",
+   "type": "red"
+  },
+  "cahors": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Malbec"
+   ],
+   "name": "Cahors",
+   "region": "South West France",
+   "type": "red"
+  },
+  "calistoga": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Calistoga",
+   "region": "Napa",
+   "type": "red"
+  },
+  "carneros": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Carneros",
+   "region": "Napa",
+   "type": "red"
+  },
+  "casablanca valley": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Sauvignon Blanc",
+    "Chardonnay"
+   ],
+   "name": "Casablanca Valley",
+   "region": "Casablanca",
+   "type": "white"
+  },
+  "cava": {
+   "age": [
+    0,
+    5
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Macabeo",
+    "Xarel-lo",
+    "Parellada"
+   ],
+   "name": "Cava",
+   "region": "Catalonia",
+   "type": "sparkling"
+  },
+  "central otago": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Central Otago",
+   "region": "Central Otago",
+   "type": "red"
+  },
+  "chablis": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Chablis",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "chalk hill": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "United States",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Chalk Hill",
+   "region": "Sonoma",
+   "type": "white"
+  },
+  "chambolle musigny": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Chambolle-Musigny",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "champagne": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay",
+    "Pinot Noir",
+    "Pinot Meunier"
+   ],
+   "name": "Champagne",
+   "region": "Champagne",
+   "type": "sparkling"
+  },
+  "chassagne montrachet": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Chassagne-Montrachet",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "chateauneuf du pape": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Syrah",
+    "Mourvedre"
+   ],
+   "name": "Chateauneuf-du-Pape",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "chianti": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Chianti",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "chianti classico": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Chianti Classico",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "chinon": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Franc"
+   ],
+   "name": "Chinon",
+   "region": "Loire",
+   "type": "red"
+  },
+  "clare valley": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Clare Valley",
+   "region": "South Australia",
+   "type": "white"
+  },
+  "colchagua valley": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Carmenere"
+   ],
+   "name": "Colchagua Valley",
+   "region": "Colchagua",
+   "type": "red"
+  },
+  "columbia valley": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot",
+    "Syrah"
+   ],
+   "name": "Columbia Valley",
+   "region": "Washington",
+   "type": "red"
+  },
+  "condrieu": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Viognier"
+   ],
+   "name": "Condrieu",
+   "region": "Rhone",
+   "type": "white"
+  },
+  "coonawarra": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Coonawarra",
+   "region": "South Australia",
+   "type": "red"
+  },
+  "corbieres": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "France",
+   "grapes": [
+    "Carignan",
+    "Grenache",
+    "Syrah"
+   ],
+   "name": "Corbieres",
+   "region": "Languedoc-Roussillon",
+   "type": "red"
+  },
+  "cornas": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah"
+   ],
+   "name": "Cornas",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "cote rotie": {
+   "age": [
+    7,
+    30
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah",
+    "Viognier"
+   ],
+   "name": "Cote-Rotie",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "cotes de provence": {
+   "age": [
+    0,
+    3
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Cinsault",
+    "Syrah"
+   ],
+   "name": "Cotes de Provence",
+   "region": "Provence",
+   "type": "rose"
+  },
+  "cotes du rhone": {
+   "age": [
+    1,
+    7
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Syrah",
+    "Mourvedre"
+   ],
+   "name": "Cotes du Rhone",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "crozes hermitage": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah"
+   ],
+   "name": "Crozes-Hermitage",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "dao": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Touriga Nacional"
+   ],
+   "name": "Dao",
+   "region": "Dao",
+   "type": "red"
+  },
+  "diamond mountain district": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Diamond Mountain District",
+   "region": "Napa",
+   "type": "red"
+  },
+  "dolcetto d alba": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Dolcetto"
+   ],
+   "name": "Dolcetto d'Alba",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "douro": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Touriga Nacional",
+    "Touriga Franca"
+   ],
+   "name": "Douro",
+   "region": "Douro",
+   "type": "red"
+  },
+  "dry creek valley": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Zinfandel"
+   ],
+   "name": "Dry Creek Valley",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "dundee hills": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Dundee Hills",
+   "region": "Oregon",
+   "type": "red"
+  },
+  "eden valley": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Eden Valley",
+   "region": "South Australia",
+   "type": "white"
+  },
+  "edna valley": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "United States",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Edna Valley",
+   "region": "Central Coast",
+   "type": "white"
+  },
+  "etna": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nerello Mascalese"
+   ],
+   "name": "Etna",
+   "region": "Sicily",
+   "type": "red"
+  },
+  "finger lakes": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "United States",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Finger Lakes",
+   "region": "New York",
+   "type": "white"
+  },
+  "fleurie": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "France",
+   "grapes": [
+    "Gamay"
+   ],
+   "name": "Fleurie",
+   "region": "Beaujolais",
+   "type": "red"
+  },
+  "franciacorta": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Chardonnay",
+    "Pinot Noir"
+   ],
+   "name": "Franciacorta",
+   "region": "Lombardy",
+   "type": "sparkling"
+  },
+  "friuli": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Friulano",
+    "Pinot Grigio"
+   ],
+   "name": "Friuli",
+   "region": "Friuli",
+   "type": "white"
+  },
+  "gavi": {
+   "age": [
+    1,
+    5
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Cortese"
+   ],
+   "name": "Gavi",
+   "region": "Piedmont",
+   "type": "white"
+  },
+  "gevrey chambertin": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Gevrey-Chambertin",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "gigondas": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Syrah",
+    "Mourvedre"
+   ],
+   "name": "Gigondas",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "graves": {
+   "age": [
+    5,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Merlot",
+    "Cabernet Sauvignon"
+   ],
+   "name": "Graves",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "haut medoc": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Haut-Medoc",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "hawke s bay": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Merlot",
+    "Cabernet Sauvignon",
+    "Syrah"
+   ],
+   "name": "Hawke's Bay",
+   "region": "Hawke's Bay",
+   "type": "red"
+  },
+  "hermitage": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah"
+   ],
+   "name": "Hermitage",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "howell mountain": {
+   "age": [
+    7,
+    30
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Howell Mountain",
+   "region": "Napa",
+   "type": "red"
+  },
+  "hunter valley": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Semillon"
+   ],
+   "name": "Hunter Valley",
+   "region": "New South Wales",
+   "type": "white"
+  },
+  "jerez": {
+   "age": [
+    0,
+    20
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Palomino"
+   ],
+   "name": "Jerez",
+   "region": "Andalusia",
+   "type": "fortified"
+  },
+  "kamptal": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Gruner Veltliner",
+    "Riesling"
+   ],
+   "name": "Kamptal",
+   "region": "Kamptal",
+   "type": "white"
+  },
+  "knights valley": {
+   "age": [
+    4,
+    20
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Knights Valley",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "langhe": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nebbiolo"
+   ],
+   "name": "Langhe",
+   "region": "Piedmont",
+   "type": "red"
+  },
+  "languedoc": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah",
+    "Grenache",
+    "Carignan"
+   ],
+   "name": "Languedoc",
+   "region": "Languedoc-Roussillon",
+   "type": "red"
+  },
+  "macon": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Macon",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "madeira": {
+   "age": [
+    0,
+    100
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Sercial",
+    "Verdelho",
+    "Bual",
+    "Malmsey"
+   ],
+   "name": "Madeira",
+   "region": "Madeira",
+   "type": "fortified"
+  },
+  "madiran": {
+   "age": [
+    5,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Tannat"
+   ],
+   "name": "Madiran",
+   "region": "South West France",
+   "type": "red"
+  },
+  "maipo valley": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Maipo Valley",
+   "region": "Maipo",
+   "type": "red"
+  },
+  "maremma": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese",
+    "Cabernet Sauvignon"
+   ],
+   "name": "Maremma",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "margaret river": {
+   "age": [
+    4,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Chardonnay"
+   ],
+   "name": "Margaret River",
+   "region": "Western Australia",
+   "type": "red"
+  },
+  "margaux": {
+   "age": [
+    8,
+    40
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot",
+    "Petit Verdot"
+   ],
+   "name": "Margaux",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "marlborough": {
+   "age": [
+    0,
+    5
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Sauvignon Blanc"
+   ],
+   "name": "Marlborough",
+   "region": "Marlborough",
+   "type": "white"
+  },
+  "mclaren vale": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Shiraz",
+    "Grenache"
+   ],
+   "name": "McLaren Vale",
+   "region": "South Australia",
+   "type": "red"
+  },
+  "medoc": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Medoc",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "mendoza": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Argentina",
+   "grapes": [
+    "Malbec"
+   ],
+   "name": "Mendoza",
+   "region": "Mendoza",
+   "type": "red"
+  },
+  "meursault": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Meursault",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "montepulciano d abruzzo": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Montepulciano"
+   ],
+   "name": "Montepulciano d'Abruzzo",
+   "region": "Abruzzo",
+   "type": "red"
+  },
+  "morey saint denis": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Morey-Saint-Denis",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "morgon": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "France",
+   "grapes": [
+    "Gamay"
+   ],
+   "name": "Morgon",
+   "region": "Beaujolais",
+   "type": "red"
+  },
+  "mosel": {
+   "age": [
+    2,
+    25
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Mosel",
+   "region": "Mosel",
+   "type": "white"
+  },
+  "mount veeder": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Mount Veeder",
+   "region": "Napa",
+   "type": "red"
+  },
+  "muscadet": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Melon de Bourgogne"
+   ],
+   "name": "Muscadet",
+   "region": "Loire",
+   "type": "white"
+  },
+  "nahe": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Nahe",
+   "region": "Nahe",
+   "type": "white"
+  },
+  "napa valley": {
+   "age": [
+    4,
+    22
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Napa Valley",
+   "region": "Napa",
+   "type": "red"
+  },
+  "nemea": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Greece",
+   "grapes": [
+    "Agiorgitiko"
+   ],
+   "name": "Nemea",
+   "region": "Peloponnese",
+   "type": "red"
+  },
+  "nuits saint georges": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Nuits-Saint-Georges",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "oakville": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Oakville",
+   "region": "Napa",
+   "type": "red"
+  },
+  "paso robles": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Syrah",
+    "Zinfandel"
+   ],
+   "name": "Paso Robles",
+   "region": "Central Coast",
+   "type": "red"
+  },
+  "pauillac": {
+   "age": [
+    10,
+    45
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Pauillac",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "pessac leognan": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Pessac-Leognan",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "pfalz": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Pfalz",
+   "region": "Pfalz",
+   "type": "white"
+  },
+  "pomerol": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "France",
+   "grapes": [
+    "Merlot",
+    "Cabernet Franc"
+   ],
+   "name": "Pomerol",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "pommard": {
+   "age": [
+    6,
+    22
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Pommard",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "porto": {
+   "age": [
+    10,
+    50
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Touriga Nacional",
+    "Touriga Franca"
+   ],
+   "name": "Porto",
+   "region": "Douro",
+   "type": "fortified"
+  },
+  "pouilly fuisse": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Pouilly-Fuisse",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "pouilly fume": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Sauvignon Blanc"
+   ],
+   "name": "Pouilly-Fume",
+   "region": "Loire",
+   "type": "white"
+  },
+  "priorat": {
+   "age": [
+    5,
+    22
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Garnacha",
+    "Carinena"
+   ],
+   "name": "Priorat",
+   "region": "Catalonia",
+   "type": "red"
+  },
+  "prosecco": {
+   "age": [
+    0,
+    3
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Glera"
+   ],
+   "name": "Prosecco",
+   "region": "Veneto",
+   "type": "sparkling"
+  },
+  "puligny montrachet": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay"
+   ],
+   "name": "Puligny-Montrachet",
+   "region": "Burgundy",
+   "type": "white"
+  },
+  "red mountain": {
+   "age": [
+    5,
+    22
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Red Mountain",
+   "region": "Washington",
+   "type": "red"
+  },
+  "rheingau": {
+   "age": [
+    2,
+    25
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Rheingau",
+   "region": "Rheingau",
+   "type": "white"
+  },
+  "rheinhessen": {
+   "age": [
+    2,
+    18
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Rheinhessen",
+   "region": "Rheinhessen",
+   "type": "white"
+  },
+  "rias baixas": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Albarino"
+   ],
+   "name": "Rias Baixas",
+   "region": "Galicia",
+   "type": "white"
+  },
+  "ribera del duero": {
+   "age": [
+    4,
+    22
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Tempranillo"
+   ],
+   "name": "Ribera del Duero",
+   "region": "Castilla y Leon",
+   "type": "red"
+  },
+  "rioja": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Tempranillo",
+    "Garnacha"
+   ],
+   "name": "Rioja",
+   "region": "Rioja",
+   "type": "red"
+  },
+  "rosso di montalcino": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Rosso di Montalcino",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "rueda": {
+   "age": [
+    1,
+    5
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Verdejo"
+   ],
+   "name": "Rueda",
+   "region": "Castilla y Leon",
+   "type": "white"
+  },
+  "russian river valley": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Russian River Valley",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "rutherford": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Rutherford",
+   "region": "Napa",
+   "type": "red"
+  },
+  "saint emilion": {
+   "age": [
+    7,
+    30
+   ],
+   "country": "France",
+   "grapes": [
+    "Merlot",
+    "Cabernet Franc"
+   ],
+   "name": "Saint-Emilion",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "saint estephe": {
+   "age": [
+    10,
+    40
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Saint-Estephe",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "saint joseph": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah"
+   ],
+   "name": "Saint-Joseph",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "saint julien": {
+   "age": [
+    8,
+    40
+   ],
+   "country": "France",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Saint-Julien",
+   "region": "Bordeaux",
+   "type": "red"
+  },
+  "sancerre": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Sauvignon Blanc"
+   ],
+   "name": "Sancerre",
+   "region": "Loire",
+   "type": "white"
+  },
+  "santa barbara county": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Santa Barbara County",
+   "region": "Central Coast",
+   "type": "red"
+  },
+  "santa cruz mountains": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Pinot Noir"
+   ],
+   "name": "Santa Cruz Mountains",
+   "region": "Central Coast",
+   "type": "red"
+  },
+  "santa lucia highlands": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Santa Lucia Highlands",
+   "region": "Central Coast",
+   "type": "red"
+  },
+  "santorini": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Greece",
+   "grapes": [
+    "Assyrtiko"
+   ],
+   "name": "Santorini",
+   "region": "Santorini",
+   "type": "white"
+  },
+  "sauternes": {
+   "age": [
+    5,
+    50
+   ],
+   "country": "France",
+   "grapes": [
+    "Semillon",
+    "Sauvignon Blanc"
+   ],
+   "name": "Sauternes",
+   "region": "Bordeaux",
+   "type": "dessert"
+  },
+  "savennieres": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Chenin Blanc"
+   ],
+   "name": "Savennieres",
+   "region": "Loire",
+   "type": "white"
+  },
+  "sicilia": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nero d'Avola"
+   ],
+   "name": "Sicilia",
+   "region": "Sicily",
+   "type": "red"
+  },
+  "soave": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Garganega"
+   ],
+   "name": "Soave",
+   "region": "Veneto",
+   "type": "white"
+  },
+  "sonoma coast": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Sonoma Coast",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "sonoma county": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Zinfandel"
+   ],
+   "name": "Sonoma County",
+   "region": "Sonoma",
+   "type": "red"
+  },
+  "spring mountain district": {
+   "age": [
+    6,
+    28
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Spring Mountain District",
+   "region": "Napa",
+   "type": "red"
+  },
+  "st helena": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "St. Helena",
+   "region": "Napa",
+   "type": "red"
+  },
+  "sta rita hills": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Sta. Rita Hills",
+   "region": "Central Coast",
+   "type": "red"
+  },
+  "stags leap district": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Stags Leap District",
+   "region": "Napa",
+   "type": "red"
+  },
+  "stellenbosch": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "South Africa",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Syrah"
+   ],
+   "name": "Stellenbosch",
+   "region": "Western Cape",
+   "type": "red"
+  },
+  "swartland": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "South Africa",
+   "grapes": [
+    "Syrah",
+    "Chenin Blanc"
+   ],
+   "name": "Swartland",
+   "region": "Western Cape",
+   "type": "red"
+  },
+  "taurasi": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Aglianico"
+   ],
+   "name": "Taurasi",
+   "region": "Campania",
+   "type": "red"
+  },
+  "tavel": {
+   "age": [
+    0,
+    4
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Cinsault"
+   ],
+   "name": "Tavel",
+   "region": "Rhone",
+   "type": "rose"
+  },
+  "tokaj": {
+   "age": [
+    5,
+    40
+   ],
+   "country": "Hungary",
+   "grapes": [
+    "Furmint",
+    "Harslevelu"
+   ],
+   "name": "Tokaj",
+   "region": "Tokaj",
+   "type": "dessert"
+  },
+  "toro": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Tempranillo"
+   ],
+   "name": "Toro",
+   "region": "Castilla y Leon",
+   "type": "red"
+  },
+  "uco valley": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "Argentina",
+   "grapes": [
+    "Malbec"
+   ],
+   "name": "Uco Valley",
+   "region": "Mendoza",
+   "type": "red"
+  },
+  "vacqueyras": {
+   "age": [
+    3,
+    14
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Syrah"
+   ],
+   "name": "Vacqueyras",
+   "region": "Rhone",
+   "type": "red"
+  },
+  "valpolicella": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Corvina",
+    "Rondinella"
+   ],
+   "name": "Valpolicella",
+   "region": "Veneto",
+   "type": "red"
+  },
+  "vinho verde": {
+   "age": [
+    0,
+    3
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Alvarinho",
+    "Loureiro"
+   ],
+   "name": "Vinho Verde",
+   "region": "Minho",
+   "type": "white"
+  },
+  "vino nobile di montepulciano": {
+   "age": [
+    4,
+    18
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Vino Nobile di Montepulciano",
+   "region": "Tuscany",
+   "type": "red"
+  },
+  "volnay": {
+   "age": [
+    5,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Volnay",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "vosne romanee": {
+   "age": [
+    7,
+    30
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Vosne-Romanee",
+   "region": "Burgundy",
+   "type": "red"
+  },
+  "vouvray": {
+   "age": [
+    2,
+    25
+   ],
+   "country": "France",
+   "grapes": [
+    "Chenin Blanc"
+   ],
+   "name": "Vouvray",
+   "region": "Loire",
+   "type": "white"
+  },
+  "wachau": {
+   "age": [
+    2,
+    18
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Gruner Veltliner",
+    "Riesling"
+   ],
+   "name": "Wachau",
+   "region": "Wachau",
+   "type": "white"
+  },
+  "walla walla valley": {
+   "age": [
+    4,
+    20
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Syrah"
+   ],
+   "name": "Walla Walla Valley",
+   "region": "Washington",
+   "type": "red"
+  },
+  "willamette valley": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Willamette Valley",
+   "region": "Oregon",
+   "type": "red"
+  },
+  "yarra valley": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Yarra Valley",
+   "region": "Victoria",
+   "type": "red"
+  },
+  "yountville": {
+   "age": [
+    5,
+    24
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Yountville",
+   "region": "Napa",
+   "type": "red"
+  }
+ },
+ "countries": {
+  "argentina": {
+   "name": "Argentina"
+  },
+  "australia": {
+   "name": "Australia"
+  },
+  "austria": {
+   "name": "Austria"
+  },
+  "chile": {
+   "name": "Chile"
+  },
+  "france": {
+   "name": "France"
+  },
+  "germany": {
+   "name": "Germany"
+  },
+  "greece": {
+   "name": "Greece"
+  },
+  "hungary": {
+   "name": "Hungary"
+  },
+  "italy": {
+   "name": "Italy"
+  },
+  "lebanon": {
+   "name": "Lebanon"
+  },
+  "new zealand": {
+   "name": "New Zealand"
+  },
+  "portugal": {
+   "name": "Portugal"
+  },
+  "south africa": {
+   "name": "South Africa"
+  },
+  "spain": {
+   "name": "Spain"
+  },
+  "united states": {
+   "name": "United States"
+  }
+ },
+ "noise_words": [
+  "and",
+  "bodega",
+  "bodegas",
+  "castello",
+  "cellar",
+  "cellars",
+  "chateau",
+  "cie",
+  "co",
+  "company",
+  "de",
+  "del",
+  "della",
+  "des",
+  "di",
+  "domaine",
+  "du",
+  "el",
+  "estate",
+  "estates",
+  "et",
+  "family",
+  "la",
+  "le",
+  "quinta",
+  "tenuta",
+  "the",
+  "vineyard",
+  "vineyards",
+  "weingut",
+  "wine",
+  "wineries",
+  "winery",
+  "wines",
+  "y"
+ ],
+ "producers": {
+  "a a badenhorst": {
+   "appellation": "Swartland",
+   "name": "A.A. Badenhorst"
+  },
+  "a rafanelli": {
+   "appellation": "Dry Creek Valley",
+   "name": "A. Rafanelli"
+  },
+  "aalto": {
+   "appellation": "Ribera del Duero",
+   "name": "Aalto"
+  },
+  "abadia retuerta": {
+   "appellation": "Ribera del Duero",
+   "name": "Abadia Retuerta"
+  },
+  "acacia vineyard": {
+   "appellation": "Carneros",
+   "name": "Acacia Vineyard"
+  },
+  "achaval ferrer": {
+   "appellation": "Mendoza",
+   "name": "Achaval-Ferrer"
+  },
+  "adelsheim": {
+   "appellation": "Willamette Valley",
+   "name": "Adelsheim"
+  },
+  "agrapart": {
+   "appellation": "Champagne",
+   "name": "Agrapart"
+  },
+  "alban vineyards": {
+   "appellation": "Edna Valley",
+   "name": "Alban Vineyards"
+  },
+  "albarino de fefinanes": {
+   "appellation": "Rias Baixas",
+   "name": "Albarino de Fefinanes"
+  },
+  "albino rocca": {
+   "appellation": "Barbaresco",
+   "name": "Albino Rocca"
+  },
+  "aldo conterno": {
+   "appellation": "Barolo",
+   "name": "Aldo Conterno"
+  },
+  "alion": {
+   "appellation": "Ribera del Duero",
+   "name": "Alion"
+  },
+  "allegrini": {
+   "appellation": "Valpolicella",
+   "name": "Allegrini"
+  },
+  "almaviva": {
+   "appellation": "Maipo Valley",
+   "name": "Almaviva"
+  },
+  "alois lageder": {
+   "appellation": "Alto Adige",
+   "name": "Alois Lageder"
+  },
+  "alpha omega": {
+   "appellation": "Rutherford",
+   "name": "Alpha Omega"
+  },
+  "alta vista": {
+   "appellation": "Mendoza",
+   "name": "Alta Vista"
+  },
+  "altesino": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Altesino"
+  },
+  "alvaro palacios": {
+   "appellation": "Priorat",
+   "name": "Alvaro Palacios"
+  },
+  "alzinger": {
+   "appellation": "Wachau",
+   "name": "Alzinger"
+  },
+  "andrew will": {
+   "appellation": "Columbia Valley",
+   "name": "Andrew Will"
+  },
+  "anomaly": {
+   "appellation": "St. Helena",
+   "name": "Anomaly"
+  },
+  "antica terra": {
+   "appellation": "Willamette Valley",
+   "name": "Antica Terra"
+  },
+  "antinori": {
+   "appellation": "Chianti Classico",
+   "bottlings": [
+    {
+     "note": "The Super Tuscan.",
+     "wine_name": "Tignanello"
+    },
+    {
+     "note": "Cabernet-led Super Tuscan.",
+     "wine_name": "Solaia"
+    },
+    {
+     "note": "Estate Chianti.",
+     "wine_name": "Peppoli Chianti Classico"
+    }
+   ],
+   "name": "Antinori"
+  },
+  "archery summit": {
+   "appellation": "Dundee Hills",
+   "name": "Archery Summit"
+  },
+  "argiano": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Argiano"
+  },
+  "argyle": {
+   "appellation": "Willamette Valley",
+   "name": "Argyle"
+  },
+  "arrowood": {
+   "appellation": "Sonoma County",
+   "name": "Arrowood"
+  },
+  "artadi": {
+   "appellation": "Rioja",
+   "name": "Artadi"
+  },
+  "artesa": {
+   "appellation": "Carneros",
+   "name": "Artesa"
+  },
+  "astrolabe": {
+   "appellation": "Marlborough",
+   "name": "Astrolabe"
+  },
+  "au bon climat": {
+   "appellation": "Santa Barbara County",
+   "name": "Au Bon Climat"
+  },
+  "aubert wines": {
+   "appellation": "Sonoma Coast",
+   "name": "Aubert Wines"
+  },
+  "ayala": {
+   "appellation": "Champagne",
+   "name": "Ayala"
+  },
+  "badia a coltibuono": {
+   "appellation": "Chianti Classico",
+   "name": "Badia a Coltibuono"
+  },
+  "baldacci": {
+   "appellation": "Stags Leap District",
+   "name": "Baldacci"
+  },
+  "balletto": {
+   "appellation": "Russian River Valley",
+   "name": "Balletto"
+  },
+  "balnaves": {
+   "appellation": "Coonawarra",
+   "name": "Balnaves"
+  },
+  "banfi": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Banfi"
+  },
+  "barbadillo": {
+   "appellation": "Jerez",
+   "name": "Barbadillo"
+  },
+  "barbeito": {
+   "appellation": "Madeira",
+   "name": "Barbeito"
+  },
+  "barca velha": {
+   "appellation": "Douro",
+   "name": "Barca Velha"
+  },
+  "barnett vineyards": {
+   "appellation": "Spring Mountain District",
+   "name": "Barnett Vineyards"
+  },
+  "bartolo mascarello": {
+   "appellation": "Barolo",
+   "name": "Bartolo Mascarello"
+  },
+  "bassermann jordan": {
+   "appellation": "Pfalz",
+   "name": "Bassermann-Jordan"
+  },
+  "battenfeld spanier": {
+   "appellation": "Rheinhessen",
+   "name": "Battenfeld-Spanier"
+  },
+  "beaulieu vineyard": {
+   "appellation": "Rutherford",
+   "name": "Beaulieu Vineyard"
+  },
+  "beaulieu vineyard rutherford": {
+   "appellation": "Rutherford",
+   "name": "Beaulieu Vineyard Rutherford"
+  },
+  "beaux freres": {
+   "appellation": "Willamette Valley",
+   "name": "Beaux Freres"
+  },
+  "bell wine cellars": {
+   "appellation": "Yountville",
+   "name": "Bell Wine Cellars"
+  },
+  "bella vineyards": {
+   "appellation": "Dry Creek Valley",
+   "name": "Bella Vineyards"
+  },
+  "bellavista": {
+   "appellation": "Franciacorta",
+   "name": "Bellavista"
+  },
+  "benanti": {
+   "appellation": "Etna",
+   "name": "Benanti"
+  },
+  "benziger": {
+   "appellation": "Sonoma County",
+   "name": "Benziger"
+  },
+  "beringer": {
+   "appellation": "Napa Valley",
+   "name": "Beringer"
+  },
+  "bernard faurie": {
+   "appellation": "Hermitage",
+   "name": "Bernard Faurie"
+  },
+  "bernhard huber": {
+   "appellation": "Baden",
+   "name": "Bernhard Huber"
+  },
+  "beronia": {
+   "appellation": "Rioja",
+   "name": "Beronia"
+  },
+  "bertani": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Bertani"
+  },
+  "bethel heights": {
+   "appellation": "Willamette Valley",
+   "name": "Bethel Heights"
+  },
+  "betz family": {
+   "appellation": "Columbia Valley",
+   "name": "Betz Family"
+  },
+  "bien nacido": {
+   "appellation": "Santa Barbara County",
+   "name": "Bien Nacido"
+  },
+  "big basin vineyards": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Big Basin Vineyards"
+  },
+  "billecart salmon": {
+   "appellation": "Champagne",
+   "name": "Billecart-Salmon"
+  },
+  "biondi santi": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Biondi-Santi"
+  },
+  "bisol": {
+   "appellation": "Prosecco",
+   "name": "Bisol"
+  },
+  "black kite cellars": {
+   "appellation": "Anderson Valley",
+   "name": "Black Kite Cellars"
+  },
+  "black sears vineyard": {
+   "appellation": "Howell Mountain",
+   "name": "Black Sears Vineyard"
+  },
+  "blandy s": {
+   "appellation": "Madeira",
+   "name": "Blandy's"
+  },
+  "bodega catena zapata": {
+   "appellation": "Mendoza",
+   "name": "Bodega Catena Zapata"
+  },
+  "bodega colome": {
+   "appellation": "Mendoza",
+   "name": "Bodega Colome"
+  },
+  "bodega norton": {
+   "appellation": "Mendoza",
+   "name": "Bodega Norton"
+  },
+  "bodegas bilbainas": {
+   "appellation": "Rioja",
+   "name": "Bodegas Bilbainas"
+  },
+  "bodegas lan": {
+   "appellation": "Rioja",
+   "name": "Bodegas Lan"
+  },
+  "bodegas muga": {
+   "appellation": "Rioja",
+   "bottlings": [
+    {
+     "note": "The classic Rioja Reserva.",
+     "wine_name": "Reserva"
+    },
+    {
+     "note": "Long-aged Gran Reserva.",
+     "wine_name": "Prado Enea Gran Reserva"
+    },
+    {
+     "note": "Modern-styled cuvée.",
+     "wine_name": "Torre Muga"
+    }
+   ],
+   "name": "Bodegas Muga"
+  },
+  "bodegas portia": {
+   "appellation": "Ribera del Duero",
+   "name": "Bodegas Portia"
+  },
+  "bodegas roda": {
+   "appellation": "Rioja",
+   "name": "Bodegas Roda"
+  },
+  "bodegas terras gauda": {
+   "appellation": "Rias Baixas",
+   "name": "Bodegas Terras Gauda"
+  },
+  "boekenhoutskloof": {
+   "appellation": "Stellenbosch",
+   "name": "Boekenhoutskloof"
+  },
+  "bollinger": {
+   "appellation": "Champagne",
+   "name": "Bollinger"
+  },
+  "bond estates": {
+   "appellation": "Napa Valley",
+   "name": "Bond Estates"
+  },
+  "bonny doon": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Bonny Doon"
+  },
+  "bonny doon vineyard": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Bonny Doon Vineyard"
+  },
+  "booker": {
+   "appellation": "Paso Robles",
+   "name": "Booker"
+  },
+  "booker vineyard": {
+   "appellation": "Paso Robles",
+   "name": "Booker Vineyard"
+  },
+  "bouchaine": {
+   "appellation": "Carneros",
+   "name": "Bouchaine"
+  },
+  "bouchaine vineyards": {
+   "appellation": "Carneros",
+   "name": "Bouchaine Vineyards"
+  },
+  "bouchard pere et fils": {
+   "appellation": "Beaune",
+   "name": "Bouchard Pere et Fils"
+  },
+  "braida": {
+   "appellation": "Barbera d'Asti",
+   "name": "Braida"
+  },
+  "brancott estate": {
+   "appellation": "Marlborough",
+   "name": "Brancott Estate"
+  },
+  "brewer clifton": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Brewer-Clifton"
+  },
+  "broadbent": {
+   "appellation": "Madeira",
+   "name": "Broadbent"
+  },
+  "brokenwood": {
+   "appellation": "Hunter Valley",
+   "name": "Brokenwood"
+  },
+  "brovia": {
+   "appellation": "Barolo",
+   "name": "Brovia"
+  },
+  "brundlmayer": {
+   "appellation": "Kamptal",
+   "name": "Brundlmayer"
+  },
+  "bruno giacosa": {
+   "appellation": "Barbaresco",
+   "name": "Bruno Giacosa"
+  },
+  "bruno giacosa barbaresco": {
+   "appellation": "Barbaresco",
+   "name": "Bruno Giacosa Barbaresco"
+  },
+  "bruno paillard": {
+   "appellation": "Champagne",
+   "name": "Bruno Paillard"
+  },
+  "bryant family": {
+   "appellation": "Napa Valley",
+   "name": "Bryant Family"
+  },
+  "buena vista": {
+   "appellation": "Sonoma County",
+   "name": "Buena Vista"
+  },
+  "burn cottage": {
+   "appellation": "Central Otago",
+   "name": "Burn Cottage"
+  },
+  "ca del baio": {
+   "appellation": "Barbaresco",
+   "name": "Ca' del Baio"
+  },
+  "ca del bosco": {
+   "appellation": "Franciacorta",
+   "name": "Ca' del Bosco"
+  },
+  "cade": {
+   "appellation": "Howell Mountain",
+   "name": "Cade"
+  },
+  "cade estate": {
+   "appellation": "Howell Mountain",
+   "name": "Cade Estate"
+  },
+  "cain vineyard": {
+   "appellation": "Spring Mountain District",
+   "name": "Cain Vineyard"
+  },
+  "cain vineyard winery": {
+   "appellation": "Spring Mountain District",
+   "name": "Cain Vineyard & Winery"
+  },
+  "cakebread cellars": {
+   "appellation": "Napa Valley",
+   "name": "Cakebread Cellars"
+  },
+  "campo viejo": {
+   "appellation": "Rioja",
+   "name": "Campo Viejo"
+  },
+  "cantina del pino": {
+   "appellation": "Barbaresco",
+   "name": "Cantina del Pino"
+  },
+  "cape mentelle": {
+   "appellation": "Margaret River",
+   "name": "Cape Mentelle"
+  },
+  "casa ferreirinha": {
+   "appellation": "Douro",
+   "name": "Casa Ferreirinha"
+  },
+  "casa lapostolle": {
+   "appellation": "Colchagua Valley",
+   "name": "Casa Lapostolle"
+  },
+  "casanova di neri": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Casanova di Neri"
+  },
+  "castello di ama": {
+   "appellation": "Chianti Classico",
+   "name": "Castello di Ama"
+  },
+  "castello di fonterutoli": {
+   "appellation": "Chianti Classico",
+   "name": "Castello di Fonterutoli"
+  },
+  "catena zapata": {
+   "appellation": "Mendoza",
+   "bottlings": [
+    {
+     "note": "Flagship Malbec.",
+     "wine_name": "Malbec Argentino"
+    },
+    {
+     "note": "Cabernet-Malbec.",
+     "wine_name": "Nicolas Catena Zapata"
+    },
+    {
+     "note": "Estate Malbec.",
+     "wine_name": "Alta Malbec"
+    }
+   ],
+   "name": "Catena Zapata"
+  },
+  "cavallotto": {
+   "appellation": "Barolo",
+   "name": "Cavallotto"
+  },
+  "caymus vineyards": {
+   "appellation": "Napa Valley",
+   "bottlings": [
+    {
+     "note": "The core bottling.",
+     "wine_name": "Napa Valley Cabernet Sauvignon"
+    },
+    {
+     "note": "Reserve Cabernet.",
+     "wine_name": "Special Selection"
+    }
+   ],
+   "name": "Caymus Vineyards"
+  },
+  "caymus vineyards rutherford": {
+   "appellation": "Rutherford",
+   "name": "Caymus Vineyards Rutherford"
+  },
+  "cayuse vineyards": {
+   "appellation": "Walla Walla Valley",
+   "name": "Cayuse Vineyards"
+  },
+  "cedric bouchard": {
+   "appellation": "Champagne",
+   "name": "Cedric Bouchard"
+  },
+  "center of effort": {
+   "appellation": "Edna Valley",
+   "name": "Center of Effort"
+  },
+  "cerbaiona": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Cerbaiona"
+  },
+  "ceretto": {
+   "appellation": "Barbaresco",
+   "name": "Ceretto"
+  },
+  "ceritas": {
+   "appellation": "Sonoma Coast",
+   "name": "Ceritas"
+  },
+  "chamisal": {
+   "appellation": "Edna Valley",
+   "name": "Chamisal"
+  },
+  "chapel hill": {
+   "appellation": "McLaren Vale",
+   "name": "Chapel Hill"
+  },
+  "chappellet": {
+   "appellation": "Napa Valley",
+   "name": "Chappellet"
+  },
+  "charles heidsieck": {
+   "appellation": "Champagne",
+   "name": "Charles Heidsieck"
+  },
+  "charles joguet": {
+   "appellation": "Chinon",
+   "name": "Charles Joguet"
+  },
+  "charles krug": {
+   "appellation": "St. Helena",
+   "name": "Charles Krug"
+  },
+  "charles melton": {
+   "appellation": "Barossa Valley",
+   "name": "Charles Melton"
+  },
+  "charles smith": {
+   "appellation": "Columbia Valley",
+   "name": "Charles Smith"
+  },
+  "chartogne taillet": {
+   "appellation": "Champagne",
+   "name": "Chartogne-Taillet"
+  },
+  "chateau angelus": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Angelus"
+  },
+  "chateau ausone": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Ausone"
+  },
+  "chateau batailley": {
+   "appellation": "Pauillac",
+   "name": "Chateau Batailley"
+  },
+  "chateau beausejour": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Beausejour"
+  },
+  "chateau beychevelle": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Beychevelle"
+  },
+  "chateau boswell": {
+   "appellation": "St. Helena",
+   "name": "Chateau Boswell"
+  },
+  "chateau branaire ducru": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Branaire-Ducru"
+  },
+  "chateau brane cantenac": {
+   "appellation": "Margaux",
+   "name": "Chateau Brane-Cantenac"
+  },
+  "chateau calon segur": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Calon-Segur"
+  },
+  "chateau canon": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Canon"
+  },
+  "chateau cantemerle": {
+   "appellation": "Haut-Medoc",
+   "name": "Chateau Cantemerle"
+  },
+  "chateau carbonnieux": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Carbonnieux"
+  },
+  "chateau chasse spleen": {
+   "appellation": "Haut-Medoc",
+   "name": "Chateau Chasse-Spleen"
+  },
+  "chateau cheval blanc": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Cheval Blanc"
+  },
+  "chateau clerc milon": {
+   "appellation": "Pauillac",
+   "name": "Chateau Clerc Milon"
+  },
+  "chateau climens": {
+   "appellation": "Sauternes",
+   "name": "Chateau Climens"
+  },
+  "chateau clinet": {
+   "appellation": "Pomerol",
+   "name": "Chateau Clinet"
+  },
+  "chateau cos d estournel": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Cos d'Estournel"
+  },
+  "chateau coutet": {
+   "appellation": "Sauternes",
+   "name": "Chateau Coutet"
+  },
+  "chateau d armailhac": {
+   "appellation": "Pauillac",
+   "name": "Chateau d'Armailhac"
+  },
+  "chateau d esclans": {
+   "appellation": "Cotes de Provence",
+   "name": "Chateau d'Esclans"
+  },
+  "chateau d issan": {
+   "appellation": "Margaux",
+   "name": "Chateau d'Issan"
+  },
+  "chateau d yquem": {
+   "appellation": "Sauternes",
+   "name": "Chateau d'Yquem"
+  },
+  "chateau de beaucastel": {
+   "appellation": "Chateauneuf-du-Pape",
+   "bottlings": [
+    {
+     "note": "The estate red.",
+     "wine_name": "Chateauneuf-du-Pape"
+    },
+    {
+     "note": "Mourvedre-led tete de cuvee.",
+     "wine_name": "Hommage a Jacques Perrin"
+    },
+    {
+     "note": "The white.",
+     "wine_name": "Chateauneuf-du-Pape Blanc"
+    }
+   ],
+   "name": "Chateau de Beaucastel"
+  },
+  "chateau de pibarnon": {
+   "appellation": "Bandol",
+   "name": "Chateau de Pibarnon"
+  },
+  "chateau de saint cosme": {
+   "appellation": "Gigondas",
+   "name": "Chateau de Saint Cosme"
+  },
+  "chateau ducru beaucaillou": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Ducru-Beaucaillou"
+  },
+  "chateau duhart milon": {
+   "appellation": "Pauillac",
+   "name": "Chateau Duhart-Milon"
+  },
+  "chateau figeac": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Figeac"
+  },
+  "chateau gazin": {
+   "appellation": "Pomerol",
+   "name": "Chateau Gazin"
+  },
+  "chateau giscours": {
+   "appellation": "Margaux",
+   "name": "Chateau Giscours"
+  },
+  "chateau grand puy lacoste": {
+   "appellation": "Pauillac",
+   "name": "Chateau Grand-Puy-Lacoste"
+  },
+  "chateau gruaud larose": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Gruaud-Larose"
+  },
+  "chateau guiraud": {
+   "appellation": "Sauternes",
+   "name": "Chateau Guiraud"
+  },
+  "chateau haut bailly": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Haut-Bailly"
+  },
+  "chateau haut batailley": {
+   "appellation": "Pauillac",
+   "name": "Chateau Haut-Batailley"
+  },
+  "chateau haut brion": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Haut-Brion"
+  },
+  "chateau l eglise clinet": {
+   "appellation": "Pomerol",
+   "name": "Chateau l'Eglise-Clinet"
+  },
+  "chateau l evangile": {
+   "appellation": "Pomerol",
+   "name": "Chateau L'Evangile"
+  },
+  "chateau la conseillante": {
+   "appellation": "Pomerol",
+   "name": "Chateau La Conseillante"
+  },
+  "chateau la lagune": {
+   "appellation": "Haut-Medoc",
+   "name": "Chateau La Lagune"
+  },
+  "chateau la mission haut brion": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau La Mission Haut-Brion"
+  },
+  "chateau la nerthe": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Chateau La Nerthe"
+  },
+  "chateau la tour blanche": {
+   "appellation": "Sauternes",
+   "name": "Chateau La Tour Blanche"
+  },
+  "chateau lafite rothschild": {
+   "appellation": "Pauillac",
+   "name": "Chateau Lafite Rothschild"
+  },
+  "chateau lafleur": {
+   "appellation": "Pomerol",
+   "name": "Chateau Lafleur"
+  },
+  "chateau lafon rochet": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Lafon-Rochet"
+  },
+  "chateau lagrange": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Lagrange"
+  },
+  "chateau langoa barton": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Langoa Barton"
+  },
+  "chateau latour": {
+   "appellation": "Pauillac",
+   "name": "Chateau Latour"
+  },
+  "chateau le pin": {
+   "appellation": "Pomerol",
+   "name": "Chateau Le Pin"
+  },
+  "chateau leoville barton": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Leoville Barton"
+  },
+  "chateau leoville las cases": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Leoville-Las Cases"
+  },
+  "chateau lynch bages": {
+   "appellation": "Pauillac",
+   "name": "Chateau Lynch-Bages"
+  },
+  "chateau malartic lagraviere": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Malartic-Lagraviere"
+  },
+  "chateau margaux": {
+   "appellation": "Margaux",
+   "bottlings": [
+    {
+     "note": "The first wine.",
+     "wine_name": "Grand Vin"
+    },
+    {
+     "note": "Second wine.",
+     "wine_name": "Pavillon Rouge"
+    },
+    {
+     "note": "Sauvignon Blanc.",
+     "wine_name": "Pavillon Blanc"
+    }
+   ],
+   "name": "Chateau Margaux"
+  },
+  "chateau miraval": {
+   "appellation": "Cotes de Provence",
+   "name": "Chateau Miraval"
+  },
+  "chateau montelena": {
+   "appellation": "Calistoga",
+   "name": "Chateau Montelena"
+  },
+  "chateau montrose": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Montrose"
+  },
+  "chateau mouton rothschild": {
+   "appellation": "Pauillac",
+   "name": "Chateau Mouton Rothschild"
+  },
+  "chateau musar": {
+   "appellation": "Bekaa Valley",
+   "bottlings": [
+    {
+     "note": "The Bekaa red.",
+     "wine_name": "Red"
+    },
+    {
+     "note": "Obaideh and Merwah.",
+     "wine_name": "White"
+    },
+    {
+     "note": "Younger, unoaked range.",
+     "wine_name": "Jeune"
+    }
+   ],
+   "name": "Chateau Musar"
+  },
+  "chateau nenin": {
+   "appellation": "Pomerol",
+   "name": "Chateau Nenin"
+  },
+  "chateau ormes de pez": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Ormes de Pez"
+  },
+  "chateau palmer": {
+   "appellation": "Margaux",
+   "name": "Chateau Palmer"
+  },
+  "chateau pape clement": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Pape Clement"
+  },
+  "chateau pavie": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Pavie"
+  },
+  "chateau pavie macquin": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Pavie-Macquin"
+  },
+  "chateau phelan segur": {
+   "appellation": "Saint-Estephe",
+   "name": "Chateau Phelan Segur"
+  },
+  "chateau pichon baron": {
+   "appellation": "Pauillac",
+   "name": "Chateau Pichon Baron"
+  },
+  "chateau pichon lalande": {
+   "appellation": "Pauillac",
+   "name": "Chateau Pichon Lalande"
+  },
+  "chateau pichon longueville comtesse de lalande": {
+   "appellation": "Pauillac",
+   "name": "Chateau Pichon-Longueville Comtesse de Lalande"
+  },
+  "chateau pontet canet": {
+   "appellation": "Pauillac",
+   "name": "Chateau Pontet-Canet"
+  },
+  "chateau poujeaux": {
+   "appellation": "Haut-Medoc",
+   "name": "Chateau Poujeaux"
+  },
+  "chateau rauzan segla": {
+   "appellation": "Margaux",
+   "name": "Chateau Rauzan-Segla"
+  },
+  "chateau rayas": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Chateau Rayas"
+  },
+  "chateau rieussec": {
+   "appellation": "Sauternes",
+   "name": "Chateau Rieussec"
+  },
+  "chateau smith haut lafitte": {
+   "appellation": "Pessac-Leognan",
+   "name": "Chateau Smith Haut Lafitte"
+  },
+  "chateau sociando mallet": {
+   "appellation": "Haut-Medoc",
+   "name": "Chateau Sociando-Mallet"
+  },
+  "chateau st jean": {
+   "appellation": "Sonoma County",
+   "name": "Chateau St. Jean"
+  },
+  "chateau ste michelle": {
+   "appellation": "Columbia Valley",
+   "bottlings": [
+    {
+     "note": "The volume Riesling.",
+     "wine_name": "Columbia Valley Riesling"
+    },
+    {
+     "note": "Warm-site Cabernet.",
+     "wine_name": "Indian Wells Cabernet Sauvignon"
+    },
+    {
+     "note": "Single vineyard.",
+     "wine_name": "Cold Creek Vineyard Cabernet"
+    }
+   ],
+   "name": "Chateau Ste. Michelle"
+  },
+  "chateau suduiraut": {
+   "appellation": "Sauternes",
+   "name": "Chateau Suduiraut"
+  },
+  "chateau talbot": {
+   "appellation": "Saint-Julien",
+   "name": "Chateau Talbot"
+  },
+  "chateau tanunda": {
+   "appellation": "Barossa Valley",
+   "name": "Chateau Tanunda"
+  },
+  "chateau thivin": {
+   "appellation": "Beaujolais",
+   "name": "Chateau Thivin"
+  },
+  "chateau troplong mondot": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Troplong Mondot"
+  },
+  "chateau trotanoy": {
+   "appellation": "Pomerol",
+   "name": "Chateau Trotanoy"
+  },
+  "chateau valandraud": {
+   "appellation": "Saint-Emilion",
+   "name": "Chateau Valandraud"
+  },
+  "cheval des andes": {
+   "appellation": "Mendoza",
+   "name": "Cheval des Andes"
+  },
+  "chimney rock": {
+   "appellation": "Stags Leap District",
+   "name": "Chimney Rock"
+  },
+  "chimney rock winery": {
+   "appellation": "Stags Leap District",
+   "name": "Chimney Rock Winery"
+  },
+  "christmann": {
+   "appellation": "Pfalz",
+   "name": "Christmann"
+  },
+  "clarendon hills": {
+   "appellation": "McLaren Vale",
+   "name": "Clarendon Hills"
+  },
+  "cliff lede": {
+   "appellation": "Stags Leap District",
+   "name": "Cliff Lede"
+  },
+  "cliff lede vineyards": {
+   "appellation": "Stags Leap District",
+   "name": "Cliff Lede Vineyards"
+  },
+  "clos apalta": {
+   "appellation": "Colchagua Valley",
+   "name": "Clos Apalta"
+  },
+  "clos des papes": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Clos des Papes"
+  },
+  "clos du val": {
+   "appellation": "Stags Leap District",
+   "name": "Clos Du Val"
+  },
+  "clos erasmus": {
+   "appellation": "Priorat",
+   "name": "Clos Erasmus"
+  },
+  "clos mogador": {
+   "appellation": "Priorat",
+   "name": "Clos Mogador"
+  },
+  "clos pegase": {
+   "appellation": "Calistoga",
+   "name": "Clos Pegase"
+  },
+  "cloudy bay": {
+   "appellation": "Marlborough",
+   "bottlings": [
+    {
+     "note": "The Marlborough benchmark.",
+     "wine_name": "Sauvignon Blanc"
+    },
+    {
+     "note": "Barrel-fermented Sauvignon.",
+     "wine_name": "Te Koko"
+    },
+    {
+     "note": "Estate Chardonnay.",
+     "wine_name": "Chardonnay"
+    }
+   ],
+   "name": "Cloudy Bay"
+  },
+  "codorniu": {
+   "appellation": "Cava",
+   "name": "Codorniu"
+  },
+  "col solare": {
+   "appellation": "Red Mountain",
+   "name": "Col Solare"
+  },
+  "colgin": {
+   "appellation": "Napa Valley",
+   "name": "Colgin"
+  },
+  "columbia crest": {
+   "appellation": "Columbia Valley",
+   "name": "Columbia Crest"
+  },
+  "concha y toro": {
+   "appellation": "Maipo Valley",
+   "name": "Concha y Toro"
+  },
+  "conterno fantino": {
+   "appellation": "Barolo",
+   "name": "Conterno Fantino"
+  },
+  "contino": {
+   "appellation": "Rioja",
+   "name": "Contino"
+  },
+  "continuum": {
+   "appellation": "Napa Valley",
+   "name": "Continuum"
+  },
+  "copain": {
+   "appellation": "Anderson Valley",
+   "name": "Copain"
+  },
+  "copain wines": {
+   "appellation": "Anderson Valley",
+   "name": "Copain Wines"
+  },
+  "corison": {
+   "appellation": "St. Helena",
+   "name": "Corison"
+  },
+  "cousino macul": {
+   "appellation": "Maipo Valley",
+   "name": "Cousino-Macul"
+  },
+  "craggy range": {
+   "appellation": "Hawke's Bay",
+   "name": "Craggy Range"
+  },
+  "cristom": {
+   "appellation": "Willamette Valley",
+   "name": "Cristom"
+  },
+  "croft": {
+   "appellation": "Porto",
+   "name": "Croft"
+  },
+  "cullen wines": {
+   "appellation": "Margaret River",
+   "name": "Cullen Wines"
+  },
+  "cuvaison": {
+   "appellation": "Carneros",
+   "name": "Cuvaison"
+  },
+  "cuvaison estate": {
+   "appellation": "Carneros",
+   "name": "Cuvaison Estate"
+  },
+  "cvne": {
+   "appellation": "Rioja",
+   "name": "CVNE"
+  },
+  "cvne compania vinicola del norte de espana": {
+   "appellation": "Rioja",
+   "name": "CVNE (Compania Vinicola del Norte de Espana)"
+  },
+  "d arenberg": {
+   "appellation": "McLaren Vale",
+   "name": "d'Arenberg"
+  },
+  "dal forno romano": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Dal Forno Romano"
+  },
+  "dalla valle": {
+   "appellation": "Oakville",
+   "name": "Dalla Valle"
+  },
+  "dalla valle vineyards": {
+   "appellation": "Oakville",
+   "name": "Dalla Valle Vineyards"
+  },
+  "daou": {
+   "appellation": "Paso Robles",
+   "name": "Daou"
+  },
+  "daou vineyards": {
+   "appellation": "Paso Robles",
+   "name": "Daou Vineyards"
+  },
+  "david bruce winery": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "David Bruce Winery"
+  },
+  "de bortoli": {
+   "appellation": "Yarra Valley",
+   "name": "De Bortoli"
+  },
+  "dehlinger winery": {
+   "appellation": "Russian River Valley",
+   "name": "Dehlinger Winery"
+  },
+  "del dotto": {
+   "appellation": "Napa Valley",
+   "name": "Del Dotto"
+  },
+  "delaire graff": {
+   "appellation": "Stellenbosch",
+   "name": "Delaire Graff"
+  },
+  "delas freres": {
+   "appellation": "Hermitage",
+   "name": "Delas Freres"
+  },
+  "delille cellars": {
+   "appellation": "Columbia Valley",
+   "name": "DeLille Cellars"
+  },
+  "denner": {
+   "appellation": "Paso Robles",
+   "name": "Denner"
+  },
+  "denner vineyards": {
+   "appellation": "Paso Robles",
+   "name": "Denner Vineyards"
+  },
+  "deutz": {
+   "appellation": "Champagne",
+   "name": "Deutz"
+  },
+  "diamond creek": {
+   "appellation": "Diamond Mountain District",
+   "name": "Diamond Creek"
+  },
+  "didier dagueneau": {
+   "appellation": "Pouilly-Fume",
+   "name": "Didier Dagueneau"
+  },
+  "disznoko": {
+   "appellation": "Tokaj",
+   "name": "Disznoko"
+  },
+  "dog point": {
+   "appellation": "Marlborough",
+   "name": "Dog Point"
+  },
+  "dom perignon": {
+   "appellation": "Champagne",
+   "name": "Dom Perignon"
+  },
+  "domaine alain graillot": {
+   "appellation": "Crozes-Hermitage",
+   "name": "Domaine Alain Graillot"
+  },
+  "domaine alain voge": {
+   "appellation": "Cornas",
+   "name": "Domaine Alain Voge"
+  },
+  "domaine alphonse mellot": {
+   "appellation": "Sancerre",
+   "name": "Domaine Alphonse Mellot"
+  },
+  "domaine anne gros": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Anne Gros"
+  },
+  "domaine armand rousseau": {
+   "appellation": "Gevrey-Chambertin",
+   "name": "Domaine Armand Rousseau"
+  },
+  "domaine arnaud ente": {
+   "appellation": "Meursault",
+   "name": "Domaine Arnaud Ente"
+  },
+  "domaine auguste clape": {
+   "appellation": "Cornas",
+   "name": "Domaine Auguste Clape"
+  },
+  "domaine belle": {
+   "appellation": "Hermitage",
+   "name": "Domaine Belle"
+  },
+  "domaine bernard baudry": {
+   "appellation": "Chinon",
+   "name": "Domaine Bernard Baudry"
+  },
+  "domaine bernard levet": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Bernard Levet"
+  },
+  "domaine bernard moreau": {
+   "appellation": "Chassagne-Montrachet",
+   "name": "Domaine Bernard Moreau"
+  },
+  "domaine bertheau gerbet": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Bertheau-Gerbet"
+  },
+  "domaine billaud simon": {
+   "appellation": "Chablis",
+   "name": "Domaine Billaud-Simon"
+  },
+  "domaine bosquet des papes": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Domaine Bosquet des Papes"
+  },
+  "domaine carneros": {
+   "appellation": "Carneros",
+   "name": "Domaine Carneros"
+  },
+  "domaine carneros by taittinger": {
+   "appellation": "Carneros",
+   "name": "Domaine Carneros (by Taittinger)"
+  },
+  "domaine chandon": {
+   "appellation": "Yountville",
+   "name": "Domaine Chandon"
+  },
+  "domaine charvin": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Domaine Charvin"
+  },
+  "domaine christian moreau": {
+   "appellation": "Chablis",
+   "name": "Domaine Christian Moreau"
+  },
+  "domaine claude dugat": {
+   "appellation": "Gevrey-Chambertin",
+   "name": "Domaine Claude Dugat"
+  },
+  "domaine clos de tart": {
+   "appellation": "Morey-Saint-Denis",
+   "name": "Domaine Clos de Tart"
+  },
+  "domaine clusel roch": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Clusel-Roch"
+  },
+  "domaine coche dury": {
+   "appellation": "Meursault",
+   "name": "Domaine Coche-Dury"
+  },
+  "domaine comte armand": {
+   "appellation": "Pommard",
+   "name": "Domaine Comte Armand"
+  },
+  "domaine comte georges de vogue": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Comte Georges de Vogue"
+  },
+  "domaine de chevalier": {
+   "appellation": "Pessac-Leognan",
+   "name": "Domaine de Chevalier"
+  },
+  "domaine de la cote": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Domaine de la Cote"
+  },
+  "domaine de la janasse": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Domaine de la Janasse"
+  },
+  "domaine de la romanee conti": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine de la Romanee-Conti"
+  },
+  "domaine de la romanee conti drc": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine de la Romanee-Conti (DRC)"
+  },
+  "domaine de montille": {
+   "appellation": "Volnay",
+   "name": "Domaine de Montille"
+  },
+  "domaine denis mortet": {
+   "appellation": "Gevrey-Chambertin",
+   "name": "Domaine Denis Mortet"
+  },
+  "domaine des baumard": {
+   "appellation": "Savennieres",
+   "name": "Domaine des Baumard"
+  },
+  "domaine des comtes lafon": {
+   "appellation": "Meursault",
+   "name": "Domaine des Comtes Lafon"
+  },
+  "domaine des lambrays": {
+   "appellation": "Morey-Saint-Denis",
+   "name": "Domaine des Lambrays"
+  },
+  "domaine drouhin oregon": {
+   "appellation": "Dundee Hills",
+   "name": "Domaine Drouhin Oregon"
+  },
+  "domaine du comte liger belair": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine du Comte Liger-Belair"
+  },
+  "domaine du pegau": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Domaine du Pegau"
+  },
+  "domaine du vieux telegraphe": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Domaine du Vieux Telegraphe"
+  },
+  "domaine dujac": {
+   "appellation": "Morey-Saint-Denis",
+   "name": "Domaine Dujac"
+  },
+  "domaine emmanuel rouget": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Emmanuel Rouget"
+  },
+  "domaine etienne sauzet": {
+   "appellation": "Puligny-Montrachet",
+   "name": "Domaine Etienne Sauzet"
+  },
+  "domaine fourrier": {
+   "appellation": "Gevrey-Chambertin",
+   "name": "Domaine Fourrier"
+  },
+  "domaine francois cotat": {
+   "appellation": "Sancerre",
+   "name": "Domaine Francois Cotat"
+  },
+  "domaine georges christophe roumier": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Georges & Christophe Roumier"
+  },
+  "domaine georges roumier": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Georges Roumier"
+  },
+  "domaine ghislaine barthod": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Ghislaine Barthod"
+  },
+  "domaine henri gouges": {
+   "appellation": "Nuits-Saint-Georges",
+   "name": "Domaine Henri Gouges"
+  },
+  "domaine hudelot noellat": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Hudelot-Noellat"
+  },
+  "domaine huet": {
+   "appellation": "Vouvray",
+   "name": "Domaine Huet"
+  },
+  "domaine jacques frederic mugnier": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Domaine Jacques-Frederic Mugnier"
+  },
+  "domaine jamet": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Jamet"
+  },
+  "domaine jasmin": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Jasmin"
+  },
+  "domaine jean foillard": {
+   "appellation": "Morgon",
+   "name": "Domaine Jean Foillard"
+  },
+  "domaine jean grivot": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Jean Grivot"
+  },
+  "domaine jean louis chave": {
+   "appellation": "Hermitage",
+   "name": "Domaine Jean-Louis Chave"
+  },
+  "domaine jean luc colombo": {
+   "appellation": "Cornas",
+   "name": "Domaine Jean-Luc Colombo"
+  },
+  "domaine jean marc boillot": {
+   "appellation": "Puligny-Montrachet",
+   "name": "Domaine Jean-Marc Boillot"
+  },
+  "domaine laroche": {
+   "appellation": "Chablis",
+   "name": "Domaine Laroche"
+  },
+  "domaine leflaive": {
+   "appellation": "Puligny-Montrachet",
+   "bottlings": [
+    {
+     "note": "Village white.",
+     "wine_name": "Puligny-Montrachet"
+    },
+    {
+     "note": "1er Cru.",
+     "wine_name": "Les Pucelles"
+    },
+    {
+     "note": "Grand Cru.",
+     "wine_name": "Chevalier-Montrachet"
+    }
+   ],
+   "name": "Domaine Leflaive"
+  },
+  "domaine leroy": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Leroy"
+  },
+  "domaine long depaquit": {
+   "appellation": "Chablis",
+   "name": "Domaine Long-Depaquit"
+  },
+  "domaine lucien crochet": {
+   "appellation": "Sancerre",
+   "name": "Domaine Lucien Crochet"
+  },
+  "domaine marc sorrel": {
+   "appellation": "Hermitage",
+   "name": "Domaine Marc Sorrel"
+  },
+  "domaine marcel deiss": {
+   "appellation": "Alsace",
+   "name": "Domaine Marcel Deiss"
+  },
+  "domaine marcel lapierre": {
+   "appellation": "Morgon",
+   "name": "Domaine Marcel Lapierre"
+  },
+  "domaine marquis d angerville": {
+   "appellation": "Volnay",
+   "name": "Domaine Marquis d'Angerville"
+  },
+  "domaine mejan taulier mejan": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Mejan-Taulier / Mejan"
+  },
+  "domaine meo camuzet": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Meo-Camuzet"
+  },
+  "domaine michel lafarge": {
+   "appellation": "Volnay",
+   "name": "Domaine Michel Lafarge"
+  },
+  "domaine mongeard mugneret": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Mongeard-Mugneret"
+  },
+  "domaine mugneret gibourg": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Mugneret-Gibourg"
+  },
+  "domaine ogier": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Ogier"
+  },
+  "domaine ostertag": {
+   "appellation": "Alsace",
+   "name": "Domaine Ostertag"
+  },
+  "domaine ott": {
+   "appellation": "Cotes de Provence",
+   "name": "Domaine Ott"
+  },
+  "domaine philippe foreau": {
+   "appellation": "Vouvray",
+   "name": "Domaine Philippe Foreau"
+  },
+  "domaine pibarnon": {
+   "appellation": "Bandol",
+   "name": "Domaine Pibarnon"
+  },
+  "domaine pierre yves colin morey": {
+   "appellation": "Chassagne-Montrachet",
+   "name": "Domaine Pierre-Yves Colin-Morey"
+  },
+  "domaine ponsot": {
+   "appellation": "Morey-Saint-Denis",
+   "name": "Domaine Ponsot"
+  },
+  "domaine ramonet": {
+   "appellation": "Chassagne-Montrachet",
+   "name": "Domaine Ramonet"
+  },
+  "domaine raveneau": {
+   "appellation": "Chablis",
+   "name": "Domaine Raveneau"
+  },
+  "domaine robert chevillon": {
+   "appellation": "Nuits-Saint-Georges",
+   "name": "Domaine Robert Chevillon"
+  },
+  "domaine roulot": {
+   "appellation": "Meursault",
+   "name": "Domaine Roulot"
+  },
+  "domaine santa duc": {
+   "appellation": "Gigondas",
+   "name": "Domaine Santa Duc"
+  },
+  "domaine schlumberger": {
+   "appellation": "Alsace",
+   "name": "Domaine Schlumberger"
+  },
+  "domaine serene": {
+   "appellation": "Dundee Hills",
+   "name": "Domaine Serene"
+  },
+  "domaine sigalas": {
+   "appellation": "Santorini",
+   "name": "Domaine Sigalas"
+  },
+  "domaine stephane ogier": {
+   "appellation": "Cote-Rotie",
+   "name": "Domaine Stephane Ogier"
+  },
+  "domaine sylvain cathiard": {
+   "appellation": "Vosne-Romanee",
+   "name": "Domaine Sylvain Cathiard"
+  },
+  "domaine tempier": {
+   "appellation": "Bandol",
+   "name": "Domaine Tempier"
+  },
+  "domaine trapet": {
+   "appellation": "Gevrey-Chambertin",
+   "name": "Domaine Trapet"
+  },
+  "domaine vacheron": {
+   "appellation": "Sancerre",
+   "name": "Domaine Vacheron"
+  },
+  "domaine vincent dauvissat": {
+   "appellation": "Chablis",
+   "name": "Domaine Vincent Dauvissat"
+  },
+  "domaine weinbach": {
+   "appellation": "Alsace",
+   "name": "Domaine Weinbach"
+  },
+  "domaine zind humbrecht": {
+   "appellation": "Alsace",
+   "name": "Domaine Zind-Humbrecht"
+  },
+  "domenico clerico": {
+   "appellation": "Barolo",
+   "name": "Domenico Clerico"
+  },
+  "dominio de pingus": {
+   "appellation": "Ribera del Duero",
+   "name": "Dominio de Pingus"
+  },
+  "dominus estate": {
+   "appellation": "Yountville",
+   "name": "Dominus Estate"
+  },
+  "don melchor": {
+   "appellation": "Maipo Valley",
+   "name": "Don Melchor"
+  },
+  "donnafugata": {
+   "appellation": "Sicilia",
+   "name": "Donnafugata"
+  },
+  "donnhoff": {
+   "appellation": "Nahe",
+   "name": "Donnhoff"
+  },
+  "dow s": {
+   "appellation": "Porto",
+   "name": "Dow's"
+  },
+  "dr burklin wolf": {
+   "appellation": "Pfalz",
+   "name": "Dr. Burklin-Wolf"
+  },
+  "dr konstantin frank": {
+   "appellation": "Finger Lakes",
+   "name": "Dr. Konstantin Frank"
+  },
+  "dr loosen": {
+   "appellation": "Mosel",
+   "bottlings": [
+    {
+     "note": "Classic off-dry Kabinett.",
+     "wine_name": "Wehlener Sonnenuhr Riesling Kabinett"
+    },
+    {
+     "note": "Red-slate site, spicier.",
+     "wine_name": "Urziger Wurzgarten Riesling Spatlese"
+    },
+    {
+     "note": "Estate entry Riesling.",
+     "wine_name": "Blue Slate Riesling Kabinett"
+    }
+   ],
+   "name": "Dr. Loosen"
+  },
+  "drew family": {
+   "appellation": "Anderson Valley",
+   "name": "Drew Family"
+  },
+  "drew family cellars": {
+   "appellation": "Anderson Valley",
+   "name": "Drew Family Cellars"
+  },
+  "dry creek vineyard": {
+   "appellation": "Dry Creek Valley",
+   "name": "Dry Creek Vineyard"
+  },
+  "duckhorn": {
+   "appellation": "Napa Valley",
+   "name": "Duckhorn"
+  },
+  "duckhorn napa": {
+   "appellation": "Napa Valley",
+   "name": "Duckhorn Napa"
+  },
+  "duckhorn vineyards": {
+   "appellation": "Napa Valley",
+   "bottlings": [
+    {
+     "note": "The signature Merlot.",
+     "wine_name": "Napa Valley Merlot"
+    },
+    {
+     "note": "Single-vineyard Merlot.",
+     "wine_name": "Three Palms Vineyard Merlot"
+    },
+    {
+     "note": "Estate Cabernet.",
+     "wine_name": "Napa Valley Cabernet Sauvignon"
+    }
+   ],
+   "name": "Duckhorn Vineyards"
+  },
+  "duckhorn wine company": {
+   "appellation": "Napa Valley",
+   "name": "Duckhorn Wine Company"
+  },
+  "dumol": {
+   "appellation": "Russian River Valley",
+   "name": "DuMOL"
+  },
+  "dunn vineyards": {
+   "appellation": "Howell Mountain",
+   "name": "Dunn Vineyards"
+  },
+  "dutton goldfield": {
+   "appellation": "Russian River Valley",
+   "name": "Dutton-Goldfield"
+  },
+  "e guigal": {
+   "appellation": "Cote-Rotie",
+   "bottlings": [
+    {
+     "note": "Cote-Rotie cuvee.",
+     "wine_name": "Chateau d'Ampuis"
+    },
+    {
+     "note": "La La single vineyard.",
+     "wine_name": "La Mouline"
+    },
+    {
+     "note": "La La single vineyard.",
+     "wine_name": "La Turque"
+    },
+    {
+     "note": "La La single vineyard.",
+     "wine_name": "La Landonne"
+    }
+   ],
+   "name": "E. Guigal"
+  },
+  "e guigal hermitage": {
+   "appellation": "Hermitage",
+   "name": "E. Guigal Hermitage"
+  },
+  "eberle": {
+   "appellation": "Paso Robles",
+   "name": "Eberle"
+  },
+  "egly ouriet": {
+   "appellation": "Champagne",
+   "name": "Egly-Ouriet"
+  },
+  "egon muller": {
+   "appellation": "Mosel",
+   "name": "Egon Muller"
+  },
+  "eisele vineyard estate": {
+   "appellation": "Calistoga",
+   "name": "Eisele Vineyard Estate"
+  },
+  "elderton": {
+   "appellation": "Barossa Valley",
+   "name": "Elderton"
+  },
+  "elena walch": {
+   "appellation": "Alto Adige",
+   "name": "Elena Walch"
+  },
+  "elio grasso": {
+   "appellation": "Barolo",
+   "name": "Elio Grasso"
+  },
+  "elk cove": {
+   "appellation": "Willamette Valley",
+   "name": "Elk Cove"
+  },
+  "emeritus": {
+   "appellation": "Russian River Valley",
+   "name": "Emeritus"
+  },
+  "emidio pepe": {
+   "appellation": "Montepulciano d'Abruzzo",
+   "name": "Emidio Pepe"
+  },
+  "emilio moro": {
+   "appellation": "Ribera del Duero",
+   "name": "Emilio Moro"
+  },
+  "emrich schonleber": {
+   "appellation": "Nahe",
+   "name": "Emrich-Schonleber"
+  },
+  "epoch estate": {
+   "appellation": "Paso Robles",
+   "name": "Epoch Estate"
+  },
+  "equipo navazos": {
+   "appellation": "Jerez",
+   "name": "Equipo Navazos"
+  },
+  "erath": {
+   "appellation": "Dundee Hills",
+   "name": "Erath"
+  },
+  "errazuriz": {
+   "appellation": "Colchagua Valley",
+   "name": "Errazuriz"
+  },
+  "etude": {
+   "appellation": "Carneros",
+   "name": "Etude"
+  },
+  "etude wines": {
+   "appellation": "Carneros",
+   "name": "Etude Wines"
+  },
+  "evening land": {
+   "appellation": "Willamette Valley",
+   "name": "Evening Land"
+  },
+  "f x pichler": {
+   "appellation": "Wachau",
+   "name": "F.X. Pichler"
+  },
+  "failla": {
+   "appellation": "Sonoma Coast",
+   "name": "Failla"
+  },
+  "failla wines": {
+   "appellation": "Sonoma Coast",
+   "name": "Failla Wines"
+  },
+  "faiveley": {
+   "appellation": "Nuits-Saint-Georges",
+   "name": "Faiveley"
+  },
+  "far niente": {
+   "appellation": "Oakville",
+   "name": "Far Niente"
+  },
+  "faust": {
+   "appellation": "Napa Valley",
+   "name": "Faust"
+  },
+  "faustino": {
+   "appellation": "Rioja",
+   "name": "Faustino"
+  },
+  "felsina": {
+   "appellation": "Chianti Classico",
+   "name": "Felsina"
+  },
+  "felton road": {
+   "appellation": "Central Otago",
+   "bottlings": [
+    {
+     "note": "Estate blend.",
+     "wine_name": "Bannockburn Pinot Noir"
+    },
+    {
+     "note": "Single block.",
+     "wine_name": "Block 3 Pinot Noir"
+    },
+    {
+     "note": "Single block.",
+     "wine_name": "Block 5 Pinot Noir"
+    }
+   ],
+   "name": "Felton Road"
+  },
+  "ferrari": {
+   "appellation": "Franciacorta",
+   "name": "Ferrari"
+  },
+  "ferrari carano": {
+   "appellation": "Dry Creek Valley",
+   "name": "Ferrari-Carano"
+  },
+  "fess parker": {
+   "appellation": "Santa Barbara County",
+   "name": "Fess Parker"
+  },
+  "feudi di san gregorio": {
+   "appellation": "Taurasi",
+   "name": "Feudi di San Gregorio"
+  },
+  "flora springs": {
+   "appellation": "St. Helena",
+   "name": "Flora Springs"
+  },
+  "flowers": {
+   "appellation": "Sonoma Coast",
+   "name": "Flowers"
+  },
+  "flowers vineyards winery": {
+   "appellation": "Sonoma Coast",
+   "name": "Flowers Vineyards & Winery"
+  },
+  "fonseca": {
+   "appellation": "Porto",
+   "name": "Fonseca"
+  },
+  "fontanafredda": {
+   "appellation": "Barolo",
+   "name": "Fontanafredda"
+  },
+  "fontodi": {
+   "appellation": "Chianti Classico",
+   "name": "Fontodi"
+  },
+  "foxen": {
+   "appellation": "Santa Barbara County",
+   "name": "Foxen"
+  },
+  "francesco rinaldi": {
+   "appellation": "Barolo",
+   "name": "Francesco Rinaldi"
+  },
+  "franciscan": {
+   "appellation": "Napa Valley",
+   "name": "Franciscan"
+  },
+  "frank cornelissen": {
+   "appellation": "Etna",
+   "name": "Frank Cornelissen"
+  },
+  "frank family": {
+   "appellation": "Calistoga",
+   "name": "Frank Family"
+  },
+  "freeman": {
+   "appellation": "Sonoma Coast",
+   "name": "Freeman"
+  },
+  "freemark abbey": {
+   "appellation": "St. Helena",
+   "name": "Freemark Abbey"
+  },
+  "freixenet": {
+   "appellation": "Cava",
+   "name": "Freixenet"
+  },
+  "frescobaldi": {
+   "appellation": "Chianti Classico",
+   "name": "Frescobaldi"
+  },
+  "fritz haag": {
+   "appellation": "Mosel",
+   "name": "Fritz Haag"
+  },
+  "frog s leap": {
+   "appellation": "Rutherford",
+   "name": "Frog's Leap"
+  },
+  "fuligni": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Fuligni"
+  },
+  "futo": {
+   "appellation": "Oakville",
+   "name": "Futo"
+  },
+  "g d vajra": {
+   "appellation": "Barolo",
+   "name": "G.D. Vajra"
+  },
+  "gaia wines": {
+   "appellation": "Santorini",
+   "name": "Gaia Wines"
+  },
+  "gaja": {
+   "appellation": "Barbaresco",
+   "bottlings": [
+    {
+     "note": "The classic Barbaresco.",
+     "wine_name": "Barbaresco"
+    },
+    {
+     "note": "Single vineyard.",
+     "wine_name": "Sori Tildin"
+    },
+    {
+     "note": "Single vineyard.",
+     "wine_name": "Costa Russi"
+    },
+    {
+     "note": "Barolo-sourced.",
+     "wine_name": "Sperss"
+    }
+   ],
+   "name": "Gaja"
+  },
+  "gary farrell": {
+   "appellation": "Russian River Valley",
+   "name": "Gary Farrell"
+  },
+  "georg breuer": {
+   "appellation": "Rheingau",
+   "name": "Georg Breuer"
+  },
+  "georges duboeuf": {
+   "appellation": "Beaujolais",
+   "name": "Georges Duboeuf"
+  },
+  "georges vernay": {
+   "appellation": "Condrieu",
+   "name": "Georges Vernay"
+  },
+  "giacomo borgogno": {
+   "appellation": "Barolo",
+   "name": "Giacomo Borgogno"
+  },
+  "giacomo conterno": {
+   "appellation": "Barolo",
+   "bottlings": [
+    {
+     "note": "Estate Barolo.",
+     "wine_name": "Barolo Cascina Francia"
+    },
+    {
+     "note": "The long-aged riserva.",
+     "wine_name": "Barolo Monfortino Riserva"
+    },
+    {
+     "note": "Estate Barbera.",
+     "wine_name": "Barbera d'Alba Cascina Francia"
+    }
+   ],
+   "name": "Giacomo Conterno"
+  },
+  "giant steps": {
+   "appellation": "Yarra Valley",
+   "name": "Giant Steps"
+  },
+  "giuseppe mascarello": {
+   "appellation": "Barolo",
+   "name": "Giuseppe Mascarello"
+  },
+  "giuseppe quintarelli": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Giuseppe Quintarelli"
+  },
+  "giuseppe rinaldi": {
+   "appellation": "Barolo",
+   "name": "Giuseppe Rinaldi"
+  },
+  "goldeneye": {
+   "appellation": "Anderson Valley",
+   "name": "Goldeneye"
+  },
+  "goldeneye duckhorn": {
+   "appellation": "Anderson Valley",
+   "name": "Goldeneye (Duckhorn)"
+  },
+  "gonzalez byass": {
+   "appellation": "Jerez",
+   "name": "Gonzalez Byass"
+  },
+  "goosecross": {
+   "appellation": "Yountville",
+   "name": "Goosecross"
+  },
+  "gosset": {
+   "appellation": "Champagne",
+   "name": "Gosset"
+  },
+  "graham s": {
+   "appellation": "Porto",
+   "name": "Graham's"
+  },
+  "gramercy cellars": {
+   "appellation": "Walla Walla Valley",
+   "name": "Gramercy Cellars"
+  },
+  "gramona": {
+   "appellation": "Cava",
+   "name": "Gramona"
+  },
+  "grattamacco": {
+   "appellation": "Bolgheri",
+   "name": "Grattamacco"
+  },
+  "gravner": {
+   "appellation": "Friuli",
+   "name": "Gravner"
+  },
+  "greywacke": {
+   "appellation": "Marlborough",
+   "name": "Greywacke"
+  },
+  "grgich hills": {
+   "appellation": "Rutherford",
+   "name": "Grgich Hills"
+  },
+  "grieve family": {
+   "appellation": "Napa Valley",
+   "name": "Grieve Family"
+  },
+  "grosset": {
+   "appellation": "Clare Valley",
+   "name": "Grosset"
+  },
+  "groth": {
+   "appellation": "Oakville",
+   "name": "Groth"
+  },
+  "groth vineyards": {
+   "appellation": "Oakville",
+   "name": "Groth Vineyards"
+  },
+  "guado al tasso": {
+   "appellation": "Bolgheri",
+   "name": "Guado al Tasso"
+  },
+  "guigal cotes du rhone": {
+   "appellation": "Cotes du Rhone",
+   "name": "Guigal Cotes du Rhone"
+  },
+  "gunderloch": {
+   "appellation": "Rheinhessen",
+   "name": "Gunderloch"
+  },
+  "gundlach bundschu": {
+   "appellation": "Sonoma County",
+   "name": "Gundlach Bundschu"
+  },
+  "hahn": {
+   "appellation": "Santa Lucia Highlands",
+   "name": "Hahn"
+  },
+  "hall wines": {
+   "appellation": "St. Helena",
+   "name": "Hall Wines"
+  },
+  "halter ranch": {
+   "appellation": "Paso Robles",
+   "name": "Halter Ranch"
+  },
+  "handley cellars": {
+   "appellation": "Anderson Valley",
+   "name": "Handley Cellars"
+  },
+  "hanna winery": {
+   "appellation": "Alexander Valley",
+   "name": "Hanna Winery"
+  },
+  "hanzell": {
+   "appellation": "Sonoma County",
+   "name": "Hanzell"
+  },
+  "harlan estate": {
+   "appellation": "Oakville",
+   "name": "Harlan Estate"
+  },
+  "hedges": {
+   "appellation": "Red Mountain",
+   "name": "Hedges"
+  },
+  "heitz cellar": {
+   "appellation": "Napa Valley",
+   "name": "Heitz Cellar"
+  },
+  "henri bonneau": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Henri Bonneau"
+  },
+  "henri bourgeois": {
+   "appellation": "Sancerre",
+   "name": "Henri Bourgeois"
+  },
+  "henriot": {
+   "appellation": "Champagne",
+   "name": "Henriot"
+  },
+  "henriques henriques": {
+   "appellation": "Madeira",
+   "name": "Henriques & Henriques"
+  },
+  "henschke": {
+   "appellation": "Eden Valley",
+   "bottlings": [
+    {
+     "note": "Old-vine Shiraz.",
+     "wine_name": "Hill of Grace"
+    },
+    {
+     "note": "Single-vineyard Shiraz.",
+     "wine_name": "Mount Edelstone"
+    }
+   ],
+   "name": "Henschke"
+  },
+  "hermann j wiemer": {
+   "appellation": "Finger Lakes",
+   "name": "Hermann J. Wiemer"
+  },
+  "hess collection": {
+   "appellation": "Mount Veeder",
+   "name": "Hess Collection"
+  },
+  "hilliard bruce": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Hilliard Bruce"
+  },
+  "hirsch": {
+   "appellation": "Kamptal",
+   "name": "Hirsch"
+  },
+  "hirsch vineyards": {
+   "appellation": "Sonoma Coast",
+   "name": "Hirsch Vineyards"
+  },
+  "hirtzberger": {
+   "appellation": "Wachau",
+   "name": "Hirtzberger"
+  },
+  "honig": {
+   "appellation": "Rutherford",
+   "name": "Honig"
+  },
+  "hugel": {
+   "appellation": "Alsace",
+   "name": "Hugel"
+  },
+  "hundred acre": {
+   "appellation": "Napa Valley",
+   "name": "Hundred Acre"
+  },
+  "hyde de villaine": {
+   "appellation": "Carneros",
+   "name": "Hyde de Villaine"
+  },
+  "hyde vineyards": {
+   "appellation": "Carneros",
+   "name": "Hyde Vineyards"
+  },
+  "il poggione": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Il Poggione"
+  },
+  "inama": {
+   "appellation": "Soave",
+   "name": "Inama"
+  },
+  "inglenook": {
+   "appellation": "Rutherford",
+   "name": "Inglenook"
+  },
+  "iron horse vineyards": {
+   "appellation": "Russian River Valley",
+   "name": "Iron Horse Vineyards"
+  },
+  "isole e olena": {
+   "appellation": "Chianti Classico",
+   "name": "Isole e Olena"
+  },
+  "j j prum": {
+   "appellation": "Mosel",
+   "name": "J.J. Prum"
+  },
+  "j vineyards": {
+   "appellation": "Russian River Valley",
+   "name": "J Vineyards"
+  },
+  "jackson estate": {
+   "appellation": "Marlborough",
+   "name": "Jackson Estate"
+  },
+  "jacques selosse": {
+   "appellation": "Champagne",
+   "name": "Jacques Selosse"
+  },
+  "jean louis chave": {
+   "appellation": "Hermitage",
+   "name": "Jean-Louis Chave"
+  },
+  "jean michel gerin": {
+   "appellation": "Cote-Rotie",
+   "name": "Jean-Michel Gerin"
+  },
+  "jermann": {
+   "appellation": "Friuli",
+   "name": "Jermann"
+  },
+  "jim barry": {
+   "appellation": "Clare Valley",
+   "name": "Jim Barry"
+  },
+  "joh jos prum": {
+   "appellation": "Mosel",
+   "name": "Joh. Jos. Prum"
+  },
+  "jordan": {
+   "appellation": "Alexander Valley",
+   "name": "Jordan"
+  },
+  "jordan vineyard winery": {
+   "appellation": "Alexander Valley",
+   "name": "Jordan Vineyard & Winery"
+  },
+  "jose pariente": {
+   "appellation": "Rueda",
+   "name": "Jose Pariente"
+  },
+  "joseph drouhin": {
+   "appellation": "Beaune",
+   "name": "Joseph Drouhin"
+  },
+  "joseph phelps": {
+   "appellation": "Napa Valley",
+   "name": "Joseph Phelps"
+  },
+  "joseph phelps vineyards": {
+   "appellation": "Napa Valley",
+   "name": "Joseph Phelps Vineyards"
+  },
+  "joseph swan vineyards": {
+   "appellation": "Russian River Valley",
+   "name": "Joseph Swan Vineyards"
+  },
+  "josmeyer": {
+   "appellation": "Alsace",
+   "name": "Josmeyer"
+  },
+  "justin vineyards": {
+   "appellation": "Paso Robles",
+   "name": "Justin Vineyards"
+  },
+  "k vintners": {
+   "appellation": "Walla Walla Valley",
+   "name": "K Vintners"
+  },
+  "kaesler": {
+   "appellation": "Barossa Valley",
+   "name": "Kaesler"
+  },
+  "kanonkop": {
+   "appellation": "Stellenbosch",
+   "name": "Kanonkop"
+  },
+  "kapcsandy": {
+   "appellation": "Yountville",
+   "name": "Kapcsandy"
+  },
+  "karthauserhof": {
+   "appellation": "Mosel",
+   "name": "Karthauserhof"
+  },
+  "katnook": {
+   "appellation": "Coonawarra",
+   "name": "Katnook"
+  },
+  "keller": {
+   "appellation": "Rheinhessen",
+   "name": "Keller"
+  },
+  "kendall jackson": {
+   "appellation": "Sonoma County",
+   "name": "Kendall-Jackson"
+  },
+  "kilikanoon": {
+   "appellation": "Clare Valley",
+   "name": "Kilikanoon"
+  },
+  "kim crawford": {
+   "appellation": "Marlborough",
+   "name": "Kim Crawford"
+  },
+  "king estate": {
+   "appellation": "Willamette Valley",
+   "name": "King Estate"
+  },
+  "kistler vineyards": {
+   "appellation": "Russian River Valley",
+   "name": "Kistler Vineyards"
+  },
+  "klein constantia": {
+   "appellation": "Stellenbosch",
+   "name": "Klein Constantia"
+  },
+  "knoll": {
+   "appellation": "Wachau",
+   "name": "Knoll"
+  },
+  "kosta browne": {
+   "appellation": "Russian River Valley",
+   "name": "Kosta Browne"
+  },
+  "kracher": {
+   "appellation": "Burgenland",
+   "name": "Kracher"
+  },
+  "krug": {
+   "appellation": "Champagne",
+   "bottlings": [
+    {
+     "note": "The multi-vintage blend.",
+     "wine_name": "Grande Cuvee"
+    },
+    {
+     "note": "The rosé bottling.",
+     "wine_name": "Rose"
+    },
+    {
+     "note": "Single-vineyard Blanc de Blancs.",
+     "wine_name": "Clos du Mesnil"
+    }
+   ],
+   "name": "Krug"
+  },
+  "kunde": {
+   "appellation": "Sonoma County",
+   "name": "Kunde"
+  },
+  "kunstler": {
+   "appellation": "Rheingau",
+   "name": "Kunstler"
+  },
+  "l aventure": {
+   "appellation": "Paso Robles",
+   "name": "L'Aventure"
+  },
+  "l aventure winery": {
+   "appellation": "Paso Robles",
+   "name": "L'Aventure Winery"
+  },
+  "l ecole no 41": {
+   "appellation": "Walla Walla Valley",
+   "name": "L'Ecole No 41"
+  },
+  "la crema": {
+   "appellation": "Sonoma Coast",
+   "name": "La Crema"
+  },
+  "la jota vineyard": {
+   "appellation": "Howell Mountain",
+   "name": "La Jota Vineyard"
+  },
+  "la rioja alta": {
+   "appellation": "Rioja",
+   "name": "La Rioja Alta"
+  },
+  "la spinetta": {
+   "appellation": "Barbaresco",
+   "name": "La Spinetta"
+  },
+  "ladera": {
+   "appellation": "Howell Mountain",
+   "name": "Ladera"
+  },
+  "lail vineyards": {
+   "appellation": "Howell Mountain",
+   "name": "Lail Vineyards"
+  },
+  "lambert bridge winery": {
+   "appellation": "Dry Creek Valley",
+   "name": "Lambert Bridge Winery"
+  },
+  "lancaster estate": {
+   "appellation": "Alexander Valley",
+   "name": "Lancaster Estate"
+  },
+  "lanson": {
+   "appellation": "Champagne",
+   "name": "Lanson"
+  },
+  "larkmead": {
+   "appellation": "Calistoga",
+   "name": "Larkmead"
+  },
+  "larkmead vineyards": {
+   "appellation": "Calistoga",
+   "name": "Larkmead Vineyards"
+  },
+  "larmandier bernier": {
+   "appellation": "Champagne",
+   "name": "Larmandier-Bernier"
+  },
+  "laurel glen": {
+   "appellation": "Sonoma County",
+   "name": "Laurel Glen"
+  },
+  "laurent perrier": {
+   "appellation": "Champagne",
+   "name": "Laurent-Perrier"
+  },
+  "le macchiole": {
+   "appellation": "Bolgheri",
+   "name": "Le Macchiole"
+  },
+  "le pin": {
+   "appellation": "Pomerol",
+   "name": "Le Pin"
+  },
+  "le vieux donjon": {
+   "appellation": "Chateauneuf-du-Pape",
+   "name": "Le Vieux Donjon"
+  },
+  "leeuwin estate": {
+   "appellation": "Margaret River",
+   "name": "Leeuwin Estate"
+  },
+  "leitz": {
+   "appellation": "Rheingau",
+   "name": "Leitz"
+  },
+  "leonetti cellar": {
+   "appellation": "Walla Walla Valley",
+   "name": "Leonetti Cellar"
+  },
+  "lichen estate": {
+   "appellation": "Anderson Valley",
+   "name": "Lichen Estate"
+  },
+  "linne calodo": {
+   "appellation": "Paso Robles",
+   "name": "Linne Calodo"
+  },
+  "liquid farm": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Liquid Farm"
+  },
+  "littorai": {
+   "appellation": "Sonoma Coast",
+   "name": "Littorai"
+  },
+  "littorai wines": {
+   "appellation": "Sonoma Coast",
+   "name": "Littorai Wines"
+  },
+  "livio felluga": {
+   "appellation": "Friuli",
+   "name": "Livio Felluga"
+  },
+  "lokoya": {
+   "appellation": "Mount Veeder",
+   "name": "Lokoya"
+  },
+  "lopez de heredia": {
+   "appellation": "Rioja",
+   "name": "Lopez de Heredia"
+  },
+  "louis jadot": {
+   "appellation": "Beaune",
+   "name": "Louis Jadot"
+  },
+  "louis latour": {
+   "appellation": "Beaune",
+   "name": "Louis Latour"
+  },
+  "louis m martini": {
+   "appellation": "Napa Valley",
+   "name": "Louis M. Martini"
+  },
+  "louis roederer": {
+   "appellation": "Champagne",
+   "name": "Louis Roederer"
+  },
+  "lucia": {
+   "appellation": "Santa Lucia Highlands",
+   "name": "Lucia"
+  },
+  "luciano sandrone": {
+   "appellation": "Barolo",
+   "name": "Luciano Sandrone"
+  },
+  "luigi bosca": {
+   "appellation": "Mendoza",
+   "name": "Luigi Bosca"
+  },
+  "lustau": {
+   "appellation": "Jerez",
+   "name": "Lustau"
+  },
+  "lynmar estate": {
+   "appellation": "Russian River Valley",
+   "name": "Lynmar Estate"
+  },
+  "m chapoutier": {
+   "appellation": "Hermitage",
+   "name": "M. Chapoutier"
+  },
+  "macrostie": {
+   "appellation": "Russian River Valley",
+   "name": "MacRostie"
+  },
+  "maison joseph drouhin": {
+   "appellation": "Chambolle-Musigny",
+   "name": "Maison Joseph Drouhin"
+  },
+  "maison joseph faiveley": {
+   "appellation": "Nuits-Saint-Georges",
+   "name": "Maison Joseph Faiveley"
+  },
+  "majella": {
+   "appellation": "Coonawarra",
+   "name": "Majella"
+  },
+  "marcassin": {
+   "appellation": "Sonoma Coast",
+   "name": "Marcassin"
+  },
+  "marcassin sonoma coast": {
+   "appellation": "Sonoma Coast",
+   "name": "Marcassin Sonoma Coast"
+  },
+  "marchesi di barolo": {
+   "appellation": "Barolo",
+   "name": "Marchesi di Barolo"
+  },
+  "marchesi di gresy": {
+   "appellation": "Barbaresco",
+   "name": "Marchesi di Gresy"
+  },
+  "marie courtin": {
+   "appellation": "Champagne",
+   "name": "Marie-Courtin"
+  },
+  "markham": {
+   "appellation": "Napa Valley",
+   "name": "Markham"
+  },
+  "markus molitor": {
+   "appellation": "Mosel",
+   "name": "Markus Molitor"
+  },
+  "marques de murrieta": {
+   "appellation": "Rioja",
+   "name": "Marques de Murrieta"
+  },
+  "marques de riscal": {
+   "appellation": "Rioja",
+   "name": "Marques de Riscal"
+  },
+  "martin codax": {
+   "appellation": "Rias Baixas",
+   "name": "Martin Codax"
+  },
+  "mas doix": {
+   "appellation": "Priorat",
+   "name": "Mas Doix"
+  },
+  "masi": {
+   "appellation": "Valpolicella",
+   "name": "Masi"
+  },
+  "massaya": {
+   "appellation": "Bekaa Valley",
+   "name": "Massaya"
+  },
+  "massolino": {
+   "appellation": "Barolo",
+   "name": "Massolino"
+  },
+  "mastroberardino": {
+   "appellation": "Taurasi",
+   "name": "Mastroberardino"
+  },
+  "matanzas creek": {
+   "appellation": "Sonoma County",
+   "name": "Matanzas Creek"
+  },
+  "mauritson": {
+   "appellation": "Dry Creek Valley",
+   "name": "Mauritson"
+  },
+  "mauritson family winery": {
+   "appellation": "Dry Creek Valley",
+   "name": "Mauritson Family Winery"
+  },
+  "mayacamas": {
+   "appellation": "Mount Veeder",
+   "name": "Mayacamas"
+  },
+  "maybach": {
+   "appellation": "Napa Valley",
+   "name": "Maybach"
+  },
+  "meerlust": {
+   "appellation": "Stellenbosch",
+   "name": "Meerlust"
+  },
+  "melville": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Melville"
+  },
+  "melville winery": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Melville Winery"
+  },
+  "merry edwards": {
+   "appellation": "Russian River Valley",
+   "name": "Merry Edwards"
+  },
+  "michele satta": {
+   "appellation": "Bolgheri",
+   "name": "Michele Satta"
+  },
+  "migration": {
+   "appellation": "Napa Valley",
+   "name": "Migration"
+  },
+  "miner family": {
+   "appellation": "Oakville",
+   "name": "Miner Family"
+  },
+  "moet chandon": {
+   "appellation": "Champagne",
+   "name": "Moet & Chandon"
+  },
+  "mollydooker": {
+   "appellation": "McLaren Vale",
+   "name": "Mollydooker"
+  },
+  "montes": {
+   "appellation": "Colchagua Valley",
+   "name": "Montes"
+  },
+  "morgan": {
+   "appellation": "Santa Lucia Highlands",
+   "name": "Morgan"
+  },
+  "moss wood": {
+   "appellation": "Margaret River",
+   "name": "Moss Wood"
+  },
+  "mount difficulty": {
+   "appellation": "Central Otago",
+   "name": "Mount Difficulty"
+  },
+  "mount eden vineyards": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Mount Eden Vineyards"
+  },
+  "mount horrocks": {
+   "appellation": "Clare Valley",
+   "name": "Mount Horrocks"
+  },
+  "mount mary": {
+   "appellation": "Yarra Valley",
+   "name": "Mount Mary"
+  },
+  "mount pleasant": {
+   "appellation": "Hunter Valley",
+   "name": "Mount Pleasant"
+  },
+  "muga": {
+   "appellation": "Rioja",
+   "name": "Muga"
+  },
+  "muller catoir": {
+   "appellation": "Pfalz",
+   "name": "Muller-Catoir"
+  },
+  "mullineux": {
+   "appellation": "Swartland",
+   "name": "Mullineux"
+  },
+  "mumm": {
+   "appellation": "Champagne",
+   "name": "Mumm"
+  },
+  "mumm napa": {
+   "appellation": "Rutherford",
+   "name": "Mumm Napa"
+  },
+  "napa cellars": {
+   "appellation": "Napa Valley",
+   "name": "Napa Cellars"
+  },
+  "nautilus": {
+   "appellation": "Marlborough",
+   "name": "Nautilus"
+  },
+  "navarro vineyards": {
+   "appellation": "Anderson Valley",
+   "name": "Navarro Vineyards"
+  },
+  "newton vineyard": {
+   "appellation": "Spring Mountain District",
+   "name": "Newton Vineyard"
+  },
+  "nickel nickel": {
+   "appellation": "Oakville",
+   "name": "Nickel & Nickel"
+  },
+  "nicolas feuillatte": {
+   "appellation": "Champagne",
+   "name": "Nicolas Feuillatte"
+  },
+  "nicolas joly": {
+   "appellation": "Savennieres",
+   "name": "Nicolas Joly"
+  },
+  "niepoort": {
+   "appellation": "Douro",
+   "name": "Niepoort"
+  },
+  "nigl": {
+   "appellation": "Kamptal",
+   "name": "Nigl"
+  },
+  "nino franco": {
+   "appellation": "Prosecco",
+   "name": "Nino Franco"
+  },
+  "nozzole": {
+   "appellation": "Chianti Classico",
+   "name": "Nozzole"
+  },
+  "numanthia": {
+   "appellation": "Toro",
+   "name": "Numanthia"
+  },
+  "o shaughnessy": {
+   "appellation": "Howell Mountain",
+   "name": "O'Shaughnessy"
+  },
+  "o shaughnessy estate": {
+   "appellation": "Howell Mountain",
+   "name": "O'Shaughnessy Estate"
+  },
+  "occidental": {
+   "appellation": "Sonoma Coast",
+   "name": "Occidental"
+  },
+  "oddero": {
+   "appellation": "Barolo",
+   "name": "Oddero"
+  },
+  "odette": {
+   "appellation": "Stags Leap District",
+   "name": "Odette"
+  },
+  "olivier leflaive": {
+   "appellation": "Puligny-Montrachet",
+   "name": "Olivier Leflaive"
+  },
+  "opus one": {
+   "appellation": "Oakville",
+   "bottlings": [
+    {
+     "note": "The single grand vin.",
+     "wine_name": "Opus One"
+    },
+    {
+     "note": "Non-vintage second wine.",
+     "wine_name": "Overture"
+    }
+   ],
+   "name": "Opus One"
+  },
+  "orin swift": {
+   "appellation": "Napa Valley",
+   "bottlings": [
+    {
+     "note": "Bordeaux blend.",
+     "wine_name": "Papillon"
+    },
+    {
+     "note": "Grenache-led red.",
+     "wine_name": "Abstract"
+    },
+    {
+     "note": "Syrah-led red.",
+     "wine_name": "Machete"
+    },
+    {
+     "note": "Napa Cabernet.",
+     "wine_name": "Mercury Head"
+    }
+   ],
+   "name": "Orin Swift"
+  },
+  "ornellaia": {
+   "appellation": "Bolgheri",
+   "name": "Ornellaia"
+  },
+  "outpost wines": {
+   "appellation": "Howell Mountain",
+   "name": "Outpost Wines"
+  },
+  "ovid": {
+   "appellation": "Napa Valley",
+   "name": "Ovid"
+  },
+  "oyster bay": {
+   "appellation": "Marlborough",
+   "name": "Oyster Bay"
+  },
+  "paolo scavino": {
+   "appellation": "Barolo",
+   "name": "Paolo Scavino"
+  },
+  "papapietro perry": {
+   "appellation": "Russian River Valley",
+   "name": "Papapietro Perry"
+  },
+  "paraduxx": {
+   "appellation": "Napa Valley",
+   "name": "Paraduxx"
+  },
+  "passopisciaro": {
+   "appellation": "Etna",
+   "name": "Passopisciaro"
+  },
+  "patz hall": {
+   "appellation": "Sonoma Coast",
+   "name": "Patz & Hall"
+  },
+  "paul hobbs": {
+   "appellation": "Russian River Valley",
+   "name": "Paul Hobbs"
+  },
+  "paul jaboulet aine": {
+   "appellation": "Hermitage",
+   "name": "Paul Jaboulet Aine"
+  },
+  "pazo senorans": {
+   "appellation": "Rias Baixas",
+   "name": "Pazo Senorans"
+  },
+  "peay vineyards": {
+   "appellation": "Sonoma Coast",
+   "name": "Peay Vineyards"
+  },
+  "peju": {
+   "appellation": "Rutherford",
+   "name": "Peju"
+  },
+  "penfolds": {
+   "appellation": "Barossa Valley",
+   "bottlings": [
+    {
+     "note": "The flagship Shiraz.",
+     "wine_name": "Grange"
+    },
+    {
+     "note": "Cabernet Sauvignon.",
+     "wine_name": "Bin 707"
+    },
+    {
+     "note": "Shiraz, no new oak.",
+     "wine_name": "St Henri"
+    },
+    {
+     "note": "Cabernet Shiraz.",
+     "wine_name": "Bin 389"
+    }
+   ],
+   "name": "Penfolds"
+  },
+  "perrier jouet": {
+   "appellation": "Champagne",
+   "name": "Perrier-Jouet"
+  },
+  "perrin et fils": {
+   "appellation": "Cotes du Rhone",
+   "name": "Perrin et Fils"
+  },
+  "peter jakob kuhn": {
+   "appellation": "Rheingau",
+   "name": "Peter Jakob Kuhn"
+  },
+  "peter lehmann": {
+   "appellation": "Barossa Valley",
+   "name": "Peter Lehmann"
+  },
+  "petrus": {
+   "appellation": "Pomerol",
+   "name": "Petrus"
+  },
+  "pewsey vale": {
+   "appellation": "Eden Valley",
+   "name": "Pewsey Vale"
+  },
+  "philipponnat": {
+   "appellation": "Champagne",
+   "name": "Philipponnat"
+  },
+  "pieropan": {
+   "appellation": "Soave",
+   "name": "Pieropan"
+  },
+  "pierre peters": {
+   "appellation": "Champagne",
+   "name": "Pierre Peters"
+  },
+  "pierro": {
+   "appellation": "Margaret River",
+   "name": "Pierro"
+  },
+  "pikes": {
+   "appellation": "Clare Valley",
+   "name": "Pikes"
+  },
+  "pine ridge": {
+   "appellation": "Stags Leap District",
+   "name": "Pine Ridge"
+  },
+  "pine ridge vineyards": {
+   "appellation": "Stags Leap District",
+   "name": "Pine Ridge Vineyards"
+  },
+  "pingus": {
+   "appellation": "Ribera del Duero",
+   "name": "Pingus"
+  },
+  "pio cesare": {
+   "appellation": "Barolo",
+   "name": "Pio Cesare"
+  },
+  "piper heidsieck": {
+   "appellation": "Champagne",
+   "name": "Piper-Heidsieck"
+  },
+  "pisoni": {
+   "appellation": "Santa Lucia Highlands",
+   "name": "Pisoni"
+  },
+  "planeta": {
+   "appellation": "Sicilia",
+   "name": "Planeta"
+  },
+  "plumpjack": {
+   "appellation": "Oakville",
+   "name": "Plumpjack"
+  },
+  "plumpjack winery": {
+   "appellation": "Oakville",
+   "name": "Plumpjack Winery"
+  },
+  "poggio di sotto": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Poggio di Sotto"
+  },
+  "pol roger": {
+   "appellation": "Champagne",
+   "name": "Pol Roger"
+  },
+  "ponzi vineyards": {
+   "appellation": "Willamette Valley",
+   "name": "Ponzi Vineyards"
+  },
+  "porseleinberg": {
+   "appellation": "Swartland",
+   "name": "Porseleinberg"
+  },
+  "prager": {
+   "appellation": "Wachau",
+   "name": "Prager"
+  },
+  "preston vineyards": {
+   "appellation": "Dry Creek Valley",
+   "name": "Preston Vineyards"
+  },
+  "pride mountain vineyards": {
+   "appellation": "Spring Mountain District",
+   "name": "Pride Mountain Vineyards"
+  },
+  "prisoner wine company": {
+   "appellation": "Napa Valley",
+   "name": "Prisoner Wine Company"
+  },
+  "produttori del barbaresco": {
+   "appellation": "Barbaresco",
+   "name": "Produttori del Barbaresco"
+  },
+  "promontory": {
+   "appellation": "Oakville",
+   "name": "Promontory"
+  },
+  "protos": {
+   "appellation": "Ribera del Duero",
+   "name": "Protos"
+  },
+  "quartz reef": {
+   "appellation": "Central Otago",
+   "name": "Quartz Reef"
+  },
+  "querciabella": {
+   "appellation": "Chianti Classico",
+   "name": "Querciabella"
+  },
+  "quilceda creek": {
+   "appellation": "Columbia Valley",
+   "name": "Quilceda Creek"
+  },
+  "quinta do crasto": {
+   "appellation": "Douro",
+   "name": "Quinta do Crasto"
+  },
+  "quinta do noval": {
+   "appellation": "Porto",
+   "bottlings": [
+    {
+     "note": "Declared vintage.",
+     "wine_name": "Vintage Port"
+    },
+    {
+     "note": "Ungrafted vines.",
+     "wine_name": "Nacional"
+    },
+    {
+     "note": "Late bottled vintage.",
+     "wine_name": "LBV"
+    }
+   ],
+   "name": "Quinta do Noval"
+  },
+  "quinta do vale meao": {
+   "appellation": "Douro",
+   "name": "Quinta do Vale Meao"
+  },
+  "quinta do vesuvio": {
+   "appellation": "Porto",
+   "name": "Quinta do Vesuvio"
+  },
+  "quintarelli": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Quintarelli"
+  },
+  "quintessa": {
+   "appellation": "Rutherford",
+   "name": "Quintessa"
+  },
+  "quivira": {
+   "appellation": "Dry Creek Valley",
+   "name": "Quivira"
+  },
+  "quivira vineyards": {
+   "appellation": "Dry Creek Valley",
+   "name": "Quivira Vineyards"
+  },
+  "r lopez de heredia": {
+   "appellation": "Rioja",
+   "name": "R. Lopez de Heredia"
+  },
+  "r lopez de heredia vina tondonia": {
+   "appellation": "Rioja",
+   "name": "R. Lopez de Heredia (Vina Tondonia)"
+  },
+  "radikon": {
+   "appellation": "Friuli",
+   "name": "Radikon"
+  },
+  "ramey wine cellars": {
+   "appellation": "Russian River Valley",
+   "name": "Ramey Wine Cellars"
+  },
+  "ramon bilbao": {
+   "appellation": "Rioja",
+   "name": "Ramon Bilbao"
+  },
+  "ramos pinto": {
+   "appellation": "Porto",
+   "name": "Ramos Pinto"
+  },
+  "ravenswood": {
+   "appellation": "Sonoma County",
+   "name": "Ravenswood"
+  },
+  "ravenswood lodi": {
+   "appellation": "Sonoma County",
+   "name": "Ravenswood Lodi"
+  },
+  "ravenswood winery": {
+   "appellation": "Sonoma County",
+   "name": "Ravenswood Winery"
+  },
+  "ravines": {
+   "appellation": "Finger Lakes",
+   "name": "Ravines"
+  },
+  "raymond vineyards": {
+   "appellation": "St. Helena",
+   "name": "Raymond Vineyards"
+  },
+  "realm cellars": {
+   "appellation": "Napa Valley",
+   "name": "Realm Cellars"
+  },
+  "recaredo": {
+   "appellation": "Cava",
+   "name": "Recaredo"
+  },
+  "red car": {
+   "appellation": "Sonoma Coast",
+   "name": "Red Car"
+  },
+  "remelluri": {
+   "appellation": "Rioja",
+   "name": "Remelluri"
+  },
+  "remirez de ganuza": {
+   "appellation": "Rioja",
+   "name": "Remirez de Ganuza"
+  },
+  "rene rostaing": {
+   "appellation": "Cote-Rotie",
+   "name": "Rene Rostaing"
+  },
+  "rex hill": {
+   "appellation": "Willamette Valley",
+   "name": "Rex Hill"
+  },
+  "reynvaan": {
+   "appellation": "Walla Walla Valley",
+   "name": "Reynvaan"
+  },
+  "rhys vineyards": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Rhys Vineyards"
+  },
+  "ridge lytton springs": {
+   "appellation": "Dry Creek Valley",
+   "name": "Ridge Lytton Springs"
+  },
+  "ridge monte bello": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Ridge Monte Bello"
+  },
+  "ridge paso": {
+   "appellation": "Paso Robles",
+   "name": "Ridge Paso"
+  },
+  "ridge vineyards": {
+   "appellation": "Santa Cruz Mountains",
+   "bottlings": [
+    {
+     "note": "The flagship Cabernet.",
+     "wine_name": "Monte Bello"
+    },
+    {
+     "note": "Zinfandel blend, Dry Creek.",
+     "wine_name": "Lytton Springs"
+    },
+    {
+     "note": "Zinfandel blend, Alexander Valley.",
+     "wine_name": "Geyserville"
+    },
+    {
+     "note": "Santa Cruz Mountains estate.",
+     "wine_name": "Estate Cabernet Sauvignon"
+    }
+   ],
+   "name": "Ridge Vineyards"
+  },
+  "ridge vineyards lytton springs": {
+   "appellation": "Dry Creek Valley",
+   "name": "Ridge Vineyards (Lytton Springs)"
+  },
+  "ridge vineyards monte bello": {
+   "appellation": "Napa Valley",
+   "name": "Ridge Vineyards (Monte Bello)"
+  },
+  "rippon": {
+   "appellation": "Central Otago",
+   "name": "Rippon"
+  },
+  "roagna": {
+   "appellation": "Barbaresco",
+   "name": "Roagna"
+  },
+  "robert craig": {
+   "appellation": "Howell Mountain",
+   "name": "Robert Craig"
+  },
+  "robert foley vineyards": {
+   "appellation": "Howell Mountain",
+   "name": "Robert Foley Vineyards"
+  },
+  "robert mondavi winery": {
+   "appellation": "Oakville",
+   "name": "Robert Mondavi Winery"
+  },
+  "robert sinskey vineyards": {
+   "appellation": "Carneros",
+   "name": "Robert Sinskey Vineyards"
+  },
+  "robert weil": {
+   "appellation": "Rheingau",
+   "name": "Robert Weil"
+  },
+  "robert young estate": {
+   "appellation": "Alexander Valley",
+   "name": "Robert Young Estate"
+  },
+  "roberto voerzio": {
+   "appellation": "Barolo",
+   "name": "Roberto Voerzio"
+  },
+  "robinson family vineyards": {
+   "appellation": "Stags Leap District",
+   "name": "Robinson Family Vineyards"
+  },
+  "rocca delle macie": {
+   "appellation": "Chianti Classico",
+   "name": "Rocca delle Macie"
+  },
+  "rochioli": {
+   "appellation": "Russian River Valley",
+   "name": "Rochioli"
+  },
+  "rockford": {
+   "appellation": "Barossa Valley",
+   "name": "Rockford"
+  },
+  "roda": {
+   "appellation": "Rioja",
+   "name": "Roda"
+  },
+  "rodney strong": {
+   "appellation": "Sonoma County",
+   "name": "Rodney Strong"
+  },
+  "roederer estate": {
+   "appellation": "Anderson Valley",
+   "name": "Roederer Estate"
+  },
+  "rombauer vineyards": {
+   "appellation": "Napa Valley",
+   "name": "Rombauer Vineyards"
+  },
+  "rombauer vineyards carneros": {
+   "appellation": "Carneros",
+   "name": "Rombauer Vineyards Carneros"
+  },
+  "round pond": {
+   "appellation": "Rutherford",
+   "name": "Round Pond"
+  },
+  "round pond estate": {
+   "appellation": "Rutherford",
+   "name": "Round Pond Estate"
+  },
+  "royal tokaji": {
+   "appellation": "Tokaj",
+   "name": "Royal Tokaji"
+  },
+  "rudd": {
+   "appellation": "Oakville",
+   "name": "Rudd"
+  },
+  "ruffino": {
+   "appellation": "Chianti Classico",
+   "name": "Ruffino"
+  },
+  "ruinart": {
+   "appellation": "Champagne",
+   "name": "Ruinart"
+  },
+  "rust en vrede": {
+   "appellation": "Stellenbosch",
+   "name": "Rust en Vrede"
+  },
+  "rutherford hill": {
+   "appellation": "Rutherford",
+   "name": "Rutherford Hill"
+  },
+  "saddleback cellars": {
+   "appellation": "Oakville",
+   "name": "Saddleback Cellars"
+  },
+  "sadie family": {
+   "appellation": "Swartland",
+   "name": "Sadie Family"
+  },
+  "saint clair": {
+   "appellation": "Marlborough",
+   "name": "Saint Clair"
+  },
+  "saintsbury": {
+   "appellation": "Carneros",
+   "name": "Saintsbury"
+  },
+  "salentein": {
+   "appellation": "Uco Valley",
+   "name": "Salentein"
+  },
+  "salon": {
+   "appellation": "Champagne",
+   "name": "Salon"
+  },
+  "salvioni la cerbaiola": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Salvioni La Cerbaiola"
+  },
+  "san felice": {
+   "appellation": "Chianti Classico",
+   "name": "San Felice"
+  },
+  "sandeman": {
+   "appellation": "Porto",
+   "name": "Sandeman"
+  },
+  "sandhi": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Sandhi"
+  },
+  "sandhi wines": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Sandhi Wines"
+  },
+  "sanford": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Sanford"
+  },
+  "sanford winery": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Sanford Winery"
+  },
+  "santa rita": {
+   "appellation": "Maipo Valley",
+   "name": "Santa Rita"
+  },
+  "sassicaia": {
+   "appellation": "Bolgheri",
+   "name": "Sassicaia"
+  },
+  "saxum": {
+   "appellation": "Paso Robles",
+   "name": "Saxum"
+  },
+  "saxum vineyards": {
+   "appellation": "Paso Robles",
+   "name": "Saxum Vineyards"
+  },
+  "scarecrow": {
+   "appellation": "Rutherford",
+   "name": "Scarecrow"
+  },
+  "schafer frohlich": {
+   "appellation": "Nahe",
+   "name": "Schafer-Frohlich"
+  },
+  "schloss gobelsburg": {
+   "appellation": "Kamptal",
+   "name": "Schloss Gobelsburg"
+  },
+  "schloss johannisberg": {
+   "appellation": "Rheingau",
+   "name": "Schloss Johannisberg"
+  },
+  "schrader cellars": {
+   "appellation": "Oakville",
+   "name": "Schrader Cellars"
+  },
+  "schramsberg": {
+   "appellation": "Calistoga",
+   "name": "Schramsberg"
+  },
+  "schramsberg vineyards": {
+   "appellation": "Calistoga",
+   "name": "Schramsberg Vineyards"
+  },
+  "schweiger vineyards": {
+   "appellation": "Spring Mountain District",
+   "name": "Schweiger Vineyards"
+  },
+  "screaming eagle": {
+   "appellation": "Oakville",
+   "name": "Screaming Eagle"
+  },
+  "screaming eagle winery": {
+   "appellation": "Oakville",
+   "name": "Screaming Eagle Winery"
+  },
+  "sea smoke": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Sea Smoke"
+  },
+  "seghesio": {
+   "appellation": "Dry Creek Valley",
+   "name": "Seghesio"
+  },
+  "seghesio family vineyards": {
+   "appellation": "Dry Creek Valley",
+   "name": "Seghesio Family Vineyards"
+  },
+  "selbach oster": {
+   "appellation": "Mosel",
+   "name": "Selbach-Oster"
+  },
+  "seppeltsfield": {
+   "appellation": "Barossa Valley",
+   "name": "Seppeltsfield"
+  },
+  "sequoia grove": {
+   "appellation": "Rutherford",
+   "name": "Sequoia Grove"
+  },
+  "seresin": {
+   "appellation": "Marlborough",
+   "name": "Seresin"
+  },
+  "sesti": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Sesti"
+  },
+  "sextant": {
+   "appellation": "Paso Robles",
+   "name": "Sextant"
+  },
+  "shafer vineyards": {
+   "appellation": "Stags Leap District",
+   "name": "Shafer Vineyards"
+  },
+  "shafer vineyards hillside select": {
+   "appellation": "Napa Valley",
+   "name": "Shafer Vineyards (Hillside Select)"
+  },
+  "siduri": {
+   "appellation": "Russian River Valley",
+   "name": "Siduri"
+  },
+  "sierra cantabria": {
+   "appellation": "Rioja",
+   "name": "Sierra Cantabria"
+  },
+  "sierra cantabria eguren family": {
+   "appellation": "Rioja",
+   "name": "Sierra Cantabria (Eguren family)"
+  },
+  "silver oak": {
+   "appellation": "Alexander Valley",
+   "bottlings": [
+    {
+     "note": "The Sonoma bottling.",
+     "wine_name": "Alexander Valley Cabernet Sauvignon"
+    },
+    {
+     "note": "The Napa bottling.",
+     "wine_name": "Napa Valley Cabernet Sauvignon"
+    }
+   ],
+   "name": "Silver Oak"
+  },
+  "silver oak alexander valley": {
+   "appellation": "Alexander Valley",
+   "name": "Silver Oak Alexander Valley"
+  },
+  "silver oak cellars": {
+   "appellation": "Napa Valley",
+   "name": "Silver Oak Cellars"
+  },
+  "silver oak oakville home": {
+   "appellation": "Oakville",
+   "name": "Silver Oak (Oakville home)"
+  },
+  "silver trident": {
+   "appellation": "Yountville",
+   "name": "Silver Trident"
+  },
+  "silverado trail": {
+   "appellation": "Napa Valley",
+   "name": "Silverado Trail"
+  },
+  "silverado vineyards": {
+   "appellation": "Stags Leap District",
+   "name": "Silverado Vineyards"
+  },
+  "simi": {
+   "appellation": "Alexander Valley",
+   "name": "Simi"
+  },
+  "sinskey": {
+   "appellation": "Carneros",
+   "name": "Sinskey"
+  },
+  "smith madrone": {
+   "appellation": "Spring Mountain District",
+   "name": "Smith-Madrone"
+  },
+  "smith madrone vineyards": {
+   "appellation": "Spring Mountain District",
+   "name": "Smith-Madrone Vineyards"
+  },
+  "sojourn cellars": {
+   "appellation": "Sonoma Coast",
+   "name": "Sojourn Cellars"
+  },
+  "sokol blosser": {
+   "appellation": "Dundee Hills",
+   "name": "Sokol Blosser"
+  },
+  "soldera": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Soldera"
+  },
+  "soldera case basse": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Soldera (Case Basse)"
+  },
+  "sonoma cutrer": {
+   "appellation": "Russian River Valley",
+   "name": "Sonoma-Cutrer"
+  },
+  "sottimano": {
+   "appellation": "Barbaresco",
+   "name": "Sottimano"
+  },
+  "spottswoode": {
+   "appellation": "St. Helena",
+   "name": "Spottswoode"
+  },
+  "spottswoode estate": {
+   "appellation": "Napa Valley",
+   "name": "Spottswoode Estate"
+  },
+  "spring mountain vineyard": {
+   "appellation": "Spring Mountain District",
+   "name": "Spring Mountain Vineyard"
+  },
+  "st francis": {
+   "appellation": "Sonoma County",
+   "name": "St. Francis"
+  },
+  "st hallett": {
+   "appellation": "Barossa Valley",
+   "name": "St Hallett"
+  },
+  "st supery": {
+   "appellation": "Rutherford",
+   "name": "St. Supery"
+  },
+  "stag s leap wine cellars": {
+   "appellation": "Stags Leap District",
+   "name": "Stag's Leap Wine Cellars"
+  },
+  "stag s leap wine cellars s l v": {
+   "appellation": "Napa Valley",
+   "name": "Stag's Leap Wine Cellars (S.L.V.)"
+  },
+  "stag s leap winery": {
+   "appellation": "Stags Leap District",
+   "name": "Stag's Leap Winery"
+  },
+  "standish": {
+   "appellation": "Barossa Valley",
+   "name": "Standish"
+  },
+  "sterling vineyards": {
+   "appellation": "Calistoga",
+   "name": "Sterling Vineyards"
+  },
+  "stonestreet": {
+   "appellation": "Alexander Valley",
+   "name": "Stonestreet"
+  },
+  "stonestreet estate": {
+   "appellation": "Alexander Valley",
+   "name": "Stonestreet Estate"
+  },
+  "stony hill": {
+   "appellation": "Napa Valley",
+   "name": "Stony Hill"
+  },
+  "stony hill vineyard": {
+   "appellation": "Spring Mountain District",
+   "name": "Stony Hill Vineyard"
+  },
+  "storybook mountain": {
+   "appellation": "Calistoga",
+   "name": "Storybook Mountain"
+  },
+  "storybook mountain vineyards": {
+   "appellation": "Calistoga",
+   "name": "Storybook Mountain Vineyards"
+  },
+  "susana balbo": {
+   "appellation": "Mendoza",
+   "name": "Susana Balbo"
+  },
+  "tablas creek": {
+   "appellation": "Paso Robles",
+   "name": "Tablas Creek"
+  },
+  "tablas creek vineyard": {
+   "appellation": "Paso Robles",
+   "name": "Tablas Creek Vineyard"
+  },
+  "taittinger": {
+   "appellation": "Champagne",
+   "name": "Taittinger"
+  },
+  "talley vineyards": {
+   "appellation": "Edna Valley",
+   "name": "Talley Vineyards"
+  },
+  "tamber bey": {
+   "appellation": "Calistoga",
+   "name": "Tamber Bey"
+  },
+  "tardieu laurent": {
+   "appellation": "Hermitage",
+   "name": "Tardieu-Laurent"
+  },
+  "tasca d almerita": {
+   "appellation": "Sicilia",
+   "name": "Tasca d'Almerita"
+  },
+  "taylor fladgate": {
+   "appellation": "Porto",
+   "name": "Taylor Fladgate"
+  },
+  "te mata": {
+   "appellation": "Hawke's Bay",
+   "name": "Te Mata"
+  },
+  "tenuta dell ornellaia": {
+   "appellation": "Bolgheri",
+   "name": "Tenuta dell'Ornellaia"
+  },
+  "tenuta delle terre nere": {
+   "appellation": "Etna",
+   "name": "Tenuta delle Terre Nere"
+  },
+  "tenuta san guido": {
+   "appellation": "Bolgheri",
+   "bottlings": [
+    {
+     "note": "The original Super Tuscan.",
+     "wine_name": "Sassicaia"
+    },
+    {
+     "note": "Second wine.",
+     "wine_name": "Guidalberto"
+    },
+    {
+     "note": "Entry bottling.",
+     "wine_name": "Le Difese"
+    }
+   ],
+   "name": "Tenuta San Guido"
+  },
+  "terlano": {
+   "appellation": "Alto Adige",
+   "name": "Terlano"
+  },
+  "terrazas de los andes": {
+   "appellation": "Mendoza",
+   "name": "Terrazas de los Andes"
+  },
+  "terroir al limit": {
+   "appellation": "Priorat",
+   "name": "Terroir al Limit"
+  },
+  "testarossa": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Testarossa"
+  },
+  "the eyrie vineyards": {
+   "appellation": "Dundee Hills",
+   "name": "The Eyrie Vineyards"
+  },
+  "thelema": {
+   "appellation": "Stellenbosch",
+   "name": "Thelema"
+  },
+  "thomas fogarty": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Thomas Fogarty"
+  },
+  "thomas fogarty winery": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Thomas Fogarty Winery"
+  },
+  "three sticks": {
+   "appellation": "Sonoma Coast",
+   "name": "Three Sticks"
+  },
+  "tinto pesquera": {
+   "appellation": "Ribera del Duero",
+   "name": "Tinto Pesquera"
+  },
+  "tom eddy winery": {
+   "appellation": "Calistoga",
+   "name": "Tom Eddy Winery"
+  },
+  "tommasi": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Tommasi"
+  },
+  "torbreck": {
+   "appellation": "Barossa Valley",
+   "name": "Torbreck"
+  },
+  "tramin": {
+   "appellation": "Alto Adige",
+   "name": "Tramin"
+  },
+  "trapiche": {
+   "appellation": "Mendoza",
+   "name": "Trapiche"
+  },
+  "trefethen": {
+   "appellation": "Napa Valley",
+   "name": "Trefethen"
+  },
+  "trentadue winery": {
+   "appellation": "Alexander Valley",
+   "name": "Trentadue Winery"
+  },
+  "trimbach": {
+   "appellation": "Alsace",
+   "name": "Trimbach"
+  },
+  "trinchero": {
+   "appellation": "Napa Valley",
+   "name": "Trinchero"
+  },
+  "trinity hill": {
+   "appellation": "Hawke's Bay",
+   "name": "Trinity Hill"
+  },
+  "truchard": {
+   "appellation": "Carneros",
+   "name": "Truchard"
+  },
+  "truchard vineyards": {
+   "appellation": "Carneros",
+   "name": "Truchard Vineyards"
+  },
+  "truett hurst": {
+   "appellation": "Dry Creek Valley",
+   "name": "Truett-Hurst"
+  },
+  "turley wine cellars": {
+   "appellation": "Napa Valley",
+   "name": "Turley Wine Cellars"
+  },
+  "turnbull": {
+   "appellation": "Oakville",
+   "name": "Turnbull"
+  },
+  "two hands": {
+   "appellation": "Barossa Valley",
+   "name": "Two Hands"
+  },
+  "two paddocks": {
+   "appellation": "Central Otago",
+   "name": "Two Paddocks"
+  },
+  "tyler winery": {
+   "appellation": "Sta. Rita Hills",
+   "name": "Tyler Winery"
+  },
+  "tyrrell s": {
+   "appellation": "Hunter Valley",
+   "name": "Tyrrell's"
+  },
+  "umathum": {
+   "appellation": "Burgenland",
+   "name": "Umathum"
+  },
+  "undurraga": {
+   "appellation": "Maipo Valley",
+   "name": "Undurraga"
+  },
+  "valdespino": {
+   "appellation": "Jerez",
+   "name": "Valdespino"
+  },
+  "valdicava": {
+   "appellation": "Brunello di Montalcino",
+   "name": "Valdicava"
+  },
+  "valentini": {
+   "appellation": "Montepulciano d'Abruzzo",
+   "name": "Valentini"
+  },
+  "varner wine foxglove": {
+   "appellation": "Santa Cruz Mountains",
+   "name": "Varner Wine / Foxglove"
+  },
+  "vasse felix": {
+   "appellation": "Margaret River",
+   "name": "Vasse Felix"
+  },
+  "vega sicilia": {
+   "appellation": "Ribera del Duero",
+   "bottlings": [
+    {
+     "note": "The flagship.",
+     "wine_name": "Unico"
+    },
+    {
+     "note": "Younger release.",
+     "wine_name": "Valbuena 5"
+    }
+   ],
+   "name": "Vega Sicilia"
+  },
+  "venge vineyards": {
+   "appellation": "Napa Valley",
+   "bottlings": [
+    {
+     "note": "Proprietary red blend.",
+     "wine_name": "Scout's Honor"
+    },
+    {
+     "note": "Napa Valley Cabernet.",
+     "wine_name": "Silencieux Cabernet Sauvignon"
+    },
+    {
+     "note": "Estate Cabernet.",
+     "wine_name": "Bone Ash Cabernet Sauvignon"
+    },
+    {
+     "note": "Top Cabernet bottling.",
+     "wine_name": "Family Reserve Cabernet Sauvignon"
+    }
+   ],
+   "name": "Venge Vineyards"
+  },
+  "verite": {
+   "appellation": "Alexander Valley",
+   "name": "Verite"
+  },
+  "veuve clicquot": {
+   "appellation": "Champagne",
+   "name": "Veuve Clicquot"
+  },
+  "veyder malberg": {
+   "appellation": "Wachau",
+   "name": "Veyder-Malberg"
+  },
+  "vietti": {
+   "appellation": "Barolo",
+   "name": "Vietti"
+  },
+  "vietti barbera": {
+   "appellation": "Barbera d'Alba",
+   "name": "Vietti Barbera"
+  },
+  "vieux chateau certan": {
+   "appellation": "Pomerol",
+   "name": "Vieux Chateau Certan"
+  },
+  "vik": {
+   "appellation": "Colchagua Valley",
+   "name": "Vik"
+  },
+  "vilafonte": {
+   "appellation": "Stellenbosch",
+   "name": "Vilafonte"
+  },
+  "villa maria": {
+   "appellation": "Marlborough",
+   "name": "Villa Maria"
+  },
+  "vilmart cie": {
+   "appellation": "Champagne",
+   "name": "Vilmart & Cie"
+  },
+  "vina carmen": {
+   "appellation": "Maipo Valley",
+   "name": "Vina Carmen"
+  },
+  "vina cobos": {
+   "appellation": "Mendoza",
+   "name": "Vina Cobos"
+  },
+  "vina sena": {
+   "appellation": "Colchagua Valley",
+   "name": "Vina Seña"
+  },
+  "vincent arroyo winery": {
+   "appellation": "Calistoga",
+   "name": "Vincent Arroyo Winery"
+  },
+  "vine hill ranch": {
+   "appellation": "Oakville",
+   "name": "Vine Hill Ranch"
+  },
+  "volpaia": {
+   "appellation": "Chianti Classico",
+   "name": "Volpaia"
+  },
+  "von schubert": {
+   "appellation": "Mosel",
+   "name": "Von Schubert"
+  },
+  "von strasser": {
+   "appellation": "Diamond Mountain District",
+   "name": "Von Strasser"
+  },
+  "von winning": {
+   "appellation": "Pfalz",
+   "name": "Von Winning"
+  },
+  "voyager estate": {
+   "appellation": "Margaret River",
+   "name": "Voyager Estate"
+  },
+  "warre s": {
+   "appellation": "Porto",
+   "name": "Warre's"
+  },
+  "warwick estate": {
+   "appellation": "Stellenbosch",
+   "name": "Warwick Estate"
+  },
+  "wayfarer vineyard": {
+   "appellation": "Sonoma Coast",
+   "name": "Wayfarer Vineyard"
+  },
+  "weingut clemens busch": {
+   "appellation": "Mosel",
+   "name": "Weingut Clemens Busch"
+  },
+  "whitehall lane": {
+   "appellation": "Rutherford",
+   "name": "Whitehall Lane"
+  },
+  "whitehaven": {
+   "appellation": "Marlborough",
+   "name": "Whitehaven"
+  },
+  "wild horse": {
+   "appellation": "Paso Robles",
+   "name": "Wild Horse"
+  },
+  "willamette valley vineyards": {
+   "appellation": "Willamette Valley",
+   "name": "Willamette Valley Vineyards"
+  },
+  "willi schaefer": {
+   "appellation": "Mosel",
+   "name": "Willi Schaefer"
+  },
+  "william fevre": {
+   "appellation": "Chablis",
+   "name": "William Fevre"
+  },
+  "williams selyem": {
+   "appellation": "Russian River Valley",
+   "name": "Williams Selyem"
+  },
+  "williams selyem anderson valley": {
+   "appellation": "Anderson Valley",
+   "name": "Williams Selyem (Anderson Valley)"
+  },
+  "wine soul": {
+   "appellation": "Douro",
+   "name": "Wine & Soul"
+  },
+  "wirra wirra": {
+   "appellation": "McLaren Vale",
+   "name": "Wirra Wirra"
+  },
+  "wittmann": {
+   "appellation": "Rheinhessen",
+   "name": "Wittmann"
+  },
+  "wolf blass": {
+   "appellation": "Barossa Valley",
+   "name": "Wolf Blass"
+  },
+  "woodlands": {
+   "appellation": "Margaret River",
+   "name": "Woodlands"
+  },
+  "woodward canyon": {
+   "appellation": "Walla Walla Valley",
+   "name": "Woodward Canyon"
+  },
+  "wynns coonawarra estate": {
+   "appellation": "Coonawarra",
+   "name": "Wynns Coonawarra Estate"
+  },
+  "xanadu": {
+   "appellation": "Margaret River",
+   "name": "Xanadu"
+  },
+  "yalumba": {
+   "appellation": "Barossa Valley",
+   "name": "Yalumba"
+  },
+  "yangarra": {
+   "appellation": "McLaren Vale",
+   "name": "Yangarra"
+  },
+  "yarra yering": {
+   "appellation": "Yarra Valley",
+   "name": "Yarra Yering"
+  },
+  "yeringberg": {
+   "appellation": "Yarra Valley",
+   "name": "Yeringberg"
+  },
+  "yves cuilleron": {
+   "appellation": "Condrieu",
+   "name": "Yves Cuilleron"
+  },
+  "zaca mesa": {
+   "appellation": "Santa Barbara County",
+   "name": "Zaca Mesa"
+  },
+  "zd wines": {
+   "appellation": "Napa Valley",
+   "name": "ZD Wines"
+  },
+  "zenato": {
+   "appellation": "Amarone della Valpolicella",
+   "name": "Zenato"
+  },
+  "zilliken": {
+   "appellation": "Mosel",
+   "name": "Zilliken"
+  },
+  "zuccardi": {
+   "appellation": "Uco Valley",
+   "name": "Zuccardi"
+  }
+ },
+ "regions": {
+  "abruzzo": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Montepulciano"
+   ],
+   "name": "Abruzzo",
+   "type": "red"
+  },
+  "alsace": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Riesling",
+    "Gewurztraminer",
+    "Pinot Gris"
+   ],
+   "name": "Alsace",
+   "type": "white"
+  },
+  "alto adige": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Pinot Grigio",
+    "Gewurztraminer"
+   ],
+   "name": "Alto Adige",
+   "type": "white"
+  },
+  "andalusia": {
+   "age": [
+    0,
+    20
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Palomino"
+   ],
+   "name": "Andalusia",
+   "type": "fortified"
+  },
+  "baden": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Baden",
+   "type": "red"
+  },
+  "beaujolais": {
+   "age": [
+    1,
+    5
+   ],
+   "country": "France",
+   "grapes": [
+    "Gamay"
+   ],
+   "name": "Beaujolais",
+   "type": "red"
+  },
+  "bekaa": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "Lebanon",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Cinsault",
+    "Carignan"
+   ],
+   "name": "Bekaa",
+   "type": "red"
+  },
+  "bordeaux": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Merlot",
+    "Cabernet Sauvignon",
+    "Cabernet Franc"
+   ],
+   "name": "Bordeaux",
+   "type": "red"
+  },
+  "burgenland": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Blaufrankisch"
+   ],
+   "name": "Burgenland",
+   "type": "red"
+  },
+  "burgundy": {
+   "age": [
+    2,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Burgundy",
+   "type": "red"
+  },
+  "campania": {
+   "age": [
+    6,
+    25
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Aglianico"
+   ],
+   "name": "Campania",
+   "type": "red"
+  },
+  "casablanca": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Sauvignon Blanc",
+    "Chardonnay"
+   ],
+   "name": "Casablanca",
+   "type": "white"
+  },
+  "castilla y leon": {
+   "age": [
+    4,
+    22
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Tempranillo"
+   ],
+   "name": "Castilla y Leon",
+   "type": "red"
+  },
+  "catalonia": {
+   "age": [
+    5,
+    22
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Garnacha",
+    "Carinena"
+   ],
+   "name": "Catalonia",
+   "type": "red"
+  },
+  "central coast": {
+   "age": [
+    5,
+    25
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Pinot Noir"
+   ],
+   "name": "Central Coast",
+   "type": "red"
+  },
+  "central otago": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Central Otago",
+   "type": "red"
+  },
+  "champagne": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "France",
+   "grapes": [
+    "Chardonnay",
+    "Pinot Noir",
+    "Pinot Meunier"
+   ],
+   "name": "Champagne",
+   "type": "sparkling"
+  },
+  "colchagua": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Carmenere"
+   ],
+   "name": "Colchagua",
+   "type": "red"
+  },
+  "dao": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Touriga Nacional"
+   ],
+   "name": "Dao",
+   "type": "red"
+  },
+  "douro": {
+   "age": [
+    10,
+    50
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Touriga Nacional",
+    "Touriga Franca"
+   ],
+   "name": "Douro",
+   "type": "fortified"
+  },
+  "friuli": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Friulano",
+    "Pinot Grigio"
+   ],
+   "name": "Friuli",
+   "type": "white"
+  },
+  "galicia": {
+   "age": [
+    1,
+    6
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Albarino"
+   ],
+   "name": "Galicia",
+   "type": "white"
+  },
+  "hawke s bay": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Merlot",
+    "Cabernet Sauvignon",
+    "Syrah"
+   ],
+   "name": "Hawke's Bay",
+   "type": "red"
+  },
+  "kamptal": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Gruner Veltliner",
+    "Riesling"
+   ],
+   "name": "Kamptal",
+   "type": "white"
+  },
+  "languedoc roussillon": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah",
+    "Grenache",
+    "Carignan"
+   ],
+   "name": "Languedoc-Roussillon",
+   "type": "red"
+  },
+  "loire": {
+   "age": [
+    1,
+    8
+   ],
+   "country": "France",
+   "grapes": [
+    "Sauvignon Blanc"
+   ],
+   "name": "Loire",
+   "type": "white"
+  },
+  "lombardy": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Chardonnay",
+    "Pinot Noir"
+   ],
+   "name": "Lombardy",
+   "type": "sparkling"
+  },
+  "madeira": {
+   "age": [
+    0,
+    100
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Sercial",
+    "Verdelho",
+    "Bual",
+    "Malmsey"
+   ],
+   "name": "Madeira",
+   "type": "fortified"
+  },
+  "maipo": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Chile",
+   "grapes": [
+    "Cabernet Sauvignon"
+   ],
+   "name": "Maipo",
+   "type": "red"
+  },
+  "marlborough": {
+   "age": [
+    0,
+    5
+   ],
+   "country": "New Zealand",
+   "grapes": [
+    "Sauvignon Blanc"
+   ],
+   "name": "Marlborough",
+   "type": "white"
+  },
+  "mendocino": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Mendocino",
+   "type": "red"
+  },
+  "mendoza": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Argentina",
+   "grapes": [
+    "Malbec"
+   ],
+   "name": "Mendoza",
+   "type": "red"
+  },
+  "minho": {
+   "age": [
+    0,
+    3
+   ],
+   "country": "Portugal",
+   "grapes": [
+    "Alvarinho",
+    "Loureiro"
+   ],
+   "name": "Minho",
+   "type": "white"
+  },
+  "mosel": {
+   "age": [
+    2,
+    25
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Mosel",
+   "type": "white"
+  },
+  "nahe": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Nahe",
+   "type": "white"
+  },
+  "napa": {
+   "age": [
+    4,
+    22
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot"
+   ],
+   "name": "Napa",
+   "type": "red"
+  },
+  "new south wales": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Semillon"
+   ],
+   "name": "New South Wales",
+   "type": "white"
+  },
+  "new york": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "United States",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "New York",
+   "type": "white"
+  },
+  "oregon": {
+   "age": [
+    3,
+    16
+   ],
+   "country": "United States",
+   "grapes": [
+    "Pinot Noir"
+   ],
+   "name": "Oregon",
+   "type": "red"
+  },
+  "peloponnese": {
+   "age": [
+    2,
+    12
+   ],
+   "country": "Greece",
+   "grapes": [
+    "Agiorgitiko"
+   ],
+   "name": "Peloponnese",
+   "type": "red"
+  },
+  "pfalz": {
+   "age": [
+    2,
+    20
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Pfalz",
+   "type": "white"
+  },
+  "piedmont": {
+   "age": [
+    8,
+    35
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nebbiolo"
+   ],
+   "name": "Piedmont",
+   "type": "red"
+  },
+  "provence": {
+   "age": [
+    0,
+    3
+   ],
+   "country": "France",
+   "grapes": [
+    "Grenache",
+    "Cinsault",
+    "Syrah"
+   ],
+   "name": "Provence",
+   "type": "rose"
+  },
+  "rheingau": {
+   "age": [
+    2,
+    25
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Rheingau",
+   "type": "white"
+  },
+  "rheinhessen": {
+   "age": [
+    2,
+    18
+   ],
+   "country": "Germany",
+   "grapes": [
+    "Riesling"
+   ],
+   "name": "Rheinhessen",
+   "type": "white"
+  },
+  "rhone": {
+   "age": [
+    7,
+    30
+   ],
+   "country": "France",
+   "grapes": [
+    "Syrah",
+    "Viognier"
+   ],
+   "name": "Rhone",
+   "type": "red"
+  },
+  "rioja": {
+   "age": [
+    3,
+    20
+   ],
+   "country": "Spain",
+   "grapes": [
+    "Tempranillo",
+    "Garnacha"
+   ],
+   "name": "Rioja",
+   "type": "red"
+  },
+  "santorini": {
+   "age": [
+    2,
+    15
+   ],
+   "country": "Greece",
+   "grapes": [
+    "Assyrtiko"
+   ],
+   "name": "Santorini",
+   "type": "white"
+  },
+  "sicily": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Nerello Mascalese"
+   ],
+   "name": "Sicily",
+   "type": "red"
+  },
+  "sonoma": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Zinfandel"
+   ],
+   "name": "Sonoma",
+   "type": "red"
+  },
+  "south australia": {
+   "age": [
+    4,
+    25
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Shiraz",
+    "Grenache"
+   ],
+   "name": "South Australia",
+   "type": "red"
+  },
+  "south west france": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "France",
+   "grapes": [
+    "Malbec"
+   ],
+   "name": "South West France",
+   "type": "red"
+  },
+  "tokaj": {
+   "age": [
+    5,
+    40
+   ],
+   "country": "Hungary",
+   "grapes": [
+    "Furmint",
+    "Harslevelu"
+   ],
+   "name": "Tokaj",
+   "type": "dessert"
+  },
+  "tuscany": {
+   "age": [
+    2,
+    10
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Sangiovese"
+   ],
+   "name": "Tuscany",
+   "type": "red"
+  },
+  "veneto": {
+   "age": [
+    6,
+    30
+   ],
+   "country": "Italy",
+   "grapes": [
+    "Corvina",
+    "Rondinella"
+   ],
+   "name": "Veneto",
+   "type": "red"
+  },
+  "victoria": {
+   "age": [
+    3,
+    15
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Pinot Noir",
+    "Chardonnay"
+   ],
+   "name": "Victoria",
+   "type": "red"
+  },
+  "wachau": {
+   "age": [
+    2,
+    18
+   ],
+   "country": "Austria",
+   "grapes": [
+    "Gruner Veltliner",
+    "Riesling"
+   ],
+   "name": "Wachau",
+   "type": "white"
+  },
+  "washington": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "United States",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Merlot",
+    "Syrah"
+   ],
+   "name": "Washington",
+   "type": "red"
+  },
+  "western australia": {
+   "age": [
+    4,
+    20
+   ],
+   "country": "Australia",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Chardonnay"
+   ],
+   "name": "Western Australia",
+   "type": "red"
+  },
+  "western cape": {
+   "age": [
+    3,
+    18
+   ],
+   "country": "South Africa",
+   "grapes": [
+    "Cabernet Sauvignon",
+    "Syrah"
+   ],
+   "name": "Western Cape",
+   "type": "red"
+  }
+ },
+ "unmatched_sample_appellations": []
+}

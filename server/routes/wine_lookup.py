@@ -24,6 +24,7 @@ from pydantic import BaseModel, Field, model_validator
 from server.db import get_pool
 from server.sommelier_client import cache_get, cache_set, call_sommelier
 from server.wine_identity import normalize
+from server.wine_reference import resolve as resolve_local, stats as reference_stats
 from server.wine_parse import (
     WINE_TYPES,
     as_enum,
@@ -54,6 +55,12 @@ class LookupRequest(BaseModel):
     vintage: Optional[int] = Field(default=None, ge=1800, le=2100)
     wine_name: Optional[str] = Field(default=None, max_length=300)
     varietal: Optional[str] = Field(default=None, max_length=200)
+    # Place hints. The more the user has typed, the better the answer — an
+    # unrecognized producer alongside "Napa Valley" still resolves a country,
+    # a grape set and a drinking window.
+    country: Optional[str] = Field(default=None, max_length=120)
+    region: Optional[str] = Field(default=None, max_length=200)
+    appellation: Optional[str] = Field(default=None, max_length=200)
     refresh: bool = Field(default=False, description="Bypass the cached answer")
 
     @model_validator(mode="after")
@@ -65,18 +72,34 @@ class LookupRequest(BaseModel):
 
 @router.post("/wines/lookup")
 async def lookup_wine(req: LookupRequest) -> dict:
-    """Resolve a producer (+ vintage, cuvée, varietal) into full wine fields."""
+    """Resolve a producer (+ vintage, cuvée, place hints) into full wine fields.
+
+    Two sources, in this order:
+
+      1. The offline reference (data/wine_reference.json) — deterministic, free,
+         and authoritative about *where* a producer works.
+      2. The model — broader, and better on a specific cuvée's grapes and window.
+
+    They compound rather than compete: the reference sets the place, the model
+    fills what the reference cannot, and either one alone still produces a
+    usable answer. A model outage degrades the result, it does not fail it.
+    """
     pool = get_pool()
 
-    # Cache on the normalized query so "Ch. Margaux" and "Chateau Margaux "
-    # share an answer.
+    # Cheap, deterministic, and always available — do it first so there is
+    # something to return even if the model call goes wrong.
+    local = resolve_local(
+        producer=req.producer, vintage=req.vintage, appellation=req.appellation,
+        region=req.region, country=req.country,
+    )
+
     digest = hashlib.sha256(
         json.dumps(
             {
-                "p": normalize(req.producer),
-                "v": req.vintage,
-                "n": normalize(req.wine_name),
-                "g": normalize(req.varietal),
+                "p": normalize(req.producer), "v": req.vintage,
+                "n": normalize(req.wine_name), "g": normalize(req.varietal),
+                "c": normalize(req.country), "r": normalize(req.region),
+                "a": normalize(req.appellation),
             },
             sort_keys=True,
         ).encode()
@@ -88,17 +111,24 @@ async def lookup_wine(req: LookupRequest) -> dict:
         if cached is not None:
             return {"cached": True, **cached}
 
-    response = await call_sommelier(_prompt(req), max_tokens=2000, system=LOOKUP_SYSTEM_PROMPT)
-    if "error" in response:
-        raise HTTPException(status_code=502, detail=f"lookup failed: {response['error']}")
+    response = await call_sommelier(_prompt(req, local), max_tokens=2000, system=LOOKUP_SYSTEM_PROMPT)
+    model_error = response.get("error") if isinstance(response, dict) else "bad response"
 
-    result = _normalize(response, req)
-    if result["found"]:
+    result = _merge(local, {} if model_error else response, req, model_error)
+
+    # Only a complete answer is worth caching, and never a failed model call.
+    if result["found"] and not model_error:
         await cache_set(pool, cache_key, result)
     return {"cached": False, **result}
 
 
-def _prompt(req: LookupRequest) -> str:
+@router.get("/wines/reference")
+async def reference_info() -> dict:
+    """What the offline reference covers — so the UI can say what it knows."""
+    return {"reference": reference_stats()}
+
+
+def _prompt(req: LookupRequest, local: dict) -> str:
     known = [f"Producer: {req.producer.strip()}"]
     if req.vintage:
         known.append(f"Vintage: {req.vintage}")
@@ -106,6 +136,19 @@ def _prompt(req: LookupRequest) -> str:
         known.append(f"Cuvée / bottling: {req.wine_name.strip()}")
     if req.varietal:
         known.append(f"Varietal the user named: {req.varietal.strip()}")
+    for label, value in (("Country", req.country), ("Region", req.region),
+                         ("Appellation", req.appellation)):
+        if value:
+            known.append(f"{label} the user gave: {value.strip()}")
+
+    # Telling the model what the reference already established keeps it from
+    # contradicting a known fact, and focuses it on what is actually missing.
+    if local.get("place"):
+        known.append(
+            f"(Our reference places this in {local['place']['name']}"
+            f" — {local['wine'].get('region')}, {local['wine'].get('country')}."
+            " Correct it only if you are confident it is wrong.)"
+        )
 
     # With no cuvée named, the producer's range is the useful answer: the user
     # picks a bottling and the form re-asks with it.
@@ -164,17 +207,68 @@ def _prompt(req: LookupRequest) -> str:
     )
 
 
-def _normalize(response: dict, req: LookupRequest) -> dict:
-    wine = wine_fields(response.get("wine") or {})
+# Fields the reference states as the *place's* norm rather than this wine's
+# fact. A specific cuvée can differ — Ridge's Lytton Springs is Zinfandel from a
+# Cabernet appellation — so a confident model answer wins on these. Place is the
+# other way round: the reference is authoritative about where a producer works.
+TYPICAL_FIELDS = {"varietals", "wine_type", "drink_from", "drink_to"}
+PLACE_FIELDS = {"country", "region", "appellation"}
 
-    # The user's own typing always wins over the model's version of it.
-    wine["producer"] = wine["producer"] or req.producer.strip()
+
+def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optional[str]) -> dict:
+    """Combine the reference and the model into one answer, tracking provenance.
+
+    Precedence, highest first:
+      the user's own typing  >  reference (place)  >  model  >  reference (typical)
+    """
+    model_wine = wine_fields(response.get("wine") or {}) if response else {}
+    local_wine = local.get("wine") or {}
+    wine: dict = {}
+    sources: dict[str, str] = {}
+
+    def put(field: str, value, source: str) -> None:
+        if value in (None, "", []) or field in wine:
+            return
+        wine[field] = value
+        sources[field] = source
+
+    # 1. The reference owns the place when it recognized the producer or the
+    #    user named somewhere real.
+    for field in PLACE_FIELDS:
+        put(field, local_wine.get(field), "reference")
+    # 2. The model owns the specifics, and fills any place the reference missed.
+    for field, value in model_wine.items():
+        if field in ("producer", "wine_name", "vintage"):
+            continue
+        put(field, value, "model")
+    # 3. The reference's typical values are the floor.
+    for field in TYPICAL_FIELDS:
+        put(field, local_wine.get(field), "reference-typical")
+    # 4. Anything left the model knows.
+    for field, value in model_wine.items():
+        put(field, value, "model")
+
+    wine.setdefault("bottle_size_ml", 750)
+
+    # The user's own typing always wins, and the reference's spelling of a
+    # producer beats the model's.
+    wine["producer"] = (
+        local.get("producer_name")
+        if local.get("producer_match") in ("exact", "strong")
+        else model_wine.get("producer") or req.producer.strip()
+    )
+    sources["producer"] = "reference" if local.get("producer_match") in ("exact", "strong") else "user"
     if req.wine_name:
-        wine["wine_name"] = req.wine_name.strip()
+        wine["wine_name"] = req.wine_name.strip(); sources["wine_name"] = "user"
+    elif model_wine.get("wine_name"):
+        wine["wine_name"] = model_wine["wine_name"]; sources["wine_name"] = "model"
     if req.vintage:
-        wine["vintage"] = req.vintage
-    if req.varietal and not wine["varietals"]:
-        wine["varietals"] = [req.varietal.strip()]
+        wine["vintage"] = req.vintage; sources["vintage"] = "user"
+    if req.varietal:
+        wine["varietals"] = [req.varietal.strip()]; sources["varietals"] = "user"
+
+    if wine.get("drink_from") and wine.get("drink_to") and wine["drink_from"] > wine["drink_to"]:
+        wine["drink_from"], wine["drink_to"] = wine["drink_to"], wine["drink_from"]
 
     bottlings = []
     for entry in (response.get("bottlings") or [])[:MAX_BOTTLINGS]:
@@ -191,21 +285,55 @@ def _normalize(response: dict, req: LookupRequest) -> dict:
         })
 
     field_confidence = response.get("field_confidence")
-    filled = [key for key, value in wine.items() if value not in (None, [], "")]
+    filled = [k for k, v in wine.items() if v not in (None, [], "") and k != "bottle_size_ml"]
+
+    # "Found" means we produced something usable, from either source — not that
+    # the model recognized the name. A reference hit alone is a good answer.
+    found = bool(wine.get("country") or wine.get("region"))
 
     return {
-        # A reply with no country and no region has told us nothing usable,
-        # whatever it claims about `found`.
-        "found": bool(response.get("found", True)) and bool(wine["country"] or wine["region"]),
+        "found": found,
         "wine": wine,
+        "sources": sources,
         "bottlings": bottlings,
-        "estimated_value": value_estimate(response.get("estimated_value")),
-        "confidence": as_float(response.get("confidence"), 0, 1),
+        "estimated_value": value_estimate(response.get("estimated_value")) if response else None,
+        "confidence": as_float(response.get("confidence"), 0, 1) if response else None,
         "field_confidence": field_confidence if isinstance(field_confidence, dict) else {},
-        "vintage_note": as_str(response.get("vintage_note")),
-        "notes": as_str(response.get("notes")),
+        "vintage_note": as_str(response.get("vintage_note")) if response else None,
+        "notes": _explain(local, req, found, model_error),
         "filled_fields": filled,
-        # Model-derived, like a label scan: the form is pre-filled for the user
-        # to confirm, never saved on its own.
+        "reference_match": local.get("producer_match"),
+        "reference_place": local.get("place"),
+        # Model or reference, this is still derived data: the form is pre-filled
+        # for the user to confirm, never saved on its own.
         "needs_review": True,
+        "model_error": model_error,
     }
+
+
+def _explain(local: dict, req: LookupRequest, found: bool, model_error: Optional[str]) -> Optional[str]:
+    """A sentence saying where the answer came from, or why there isn't one."""
+    if model_error and not found:
+        return (
+            f"The producer isn't in the offline reference and the lookup service "
+            f"could not be reached ({model_error}). Fill the rest in by hand — "
+            "everything still saves normally."
+        )
+    if model_error:
+        return (
+            "Filled from the offline reference; the lookup service could not be "
+            f"reached for the rest ({model_error})."
+        )
+    if not found:
+        # The UI heading already names the producer; say what to do instead.
+        if req.region or req.appellation:
+            return "Not in the reference, and the place you gave wasn't recognized either."
+        return (
+            "Not in the reference. Naming a region or appellation usually resolves "
+            "it — the country, grapes and drinking window all follow from the place."
+        )
+    if local.get("producer_match") in ("exact", "strong"):
+        return None
+    if local.get("place"):
+        return f"Placed from “{local['place']['name']}” rather than the producer — check the region."
+    return None
