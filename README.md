@@ -278,13 +278,12 @@ event rather than hardcoded, so renaming the default (to `main`, say) does not
 silently stop publishing. Pushes to other branches still run the syntax check;
 they just don't publish.
 
-**Two things are needed before the site is live:**
+Pages itself is turned on by the first run — `configure-pages` is set to
+`enablement: true`, so it enables Pages over the API with the workflow's own
+`pages: write` token. The only requirement is that `web/` is on the **default
+branch**.
 
-1. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
-2. `web/` has to be on the default branch — merge the branch carrying it, or
-   point the repository's default branch at it.
-
-It then publishes to `https://<owner>.github.io/<repo>/` — for this repository,
+It publishes to `https://<owner>.github.io/<repo>/` — for this repository,
 **https://dram-dev.github.io/wine-voyage/**. Check Actions → "Deploy Pages" for
 the run and the resulting URL.
 

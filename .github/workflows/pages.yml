@@ -4,8 +4,8 @@
 # copy. The backend is not deployed here — the site talks to whatever API the
 # user configures in Settings.
 #
-# One-time setup in the repository: Settings → Pages → Build and deployment →
-# Source: "GitHub Actions".
+# The first run enables Pages itself (configure-pages `enablement: true`), so no
+# manual Settings → Pages step is needed.
 #
 # The deploy is gated on the repository's *default* branch rather than a branch
 # named here, so it keeps working if the default is later renamed (to `main`,
@@ -52,7 +52,12 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # enablement: turns Pages on via the API if it isn't already, using this
+      # workflow's `pages: write` token — so the repository needs no manual
+      # Settings → Pages step before the first deploy.
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - uses: actions/upload-pages-artifact@v3
         with:
           path: web
