@@ -10,7 +10,7 @@
 import { api } from '../api.js';
 import { config } from '../config.js';
 import { state } from '../state.js';
-import { el, empty, field, loading, money, mount, select, toast } from '../ui.js';
+import { debounce, el, empty, field, loading, money, mount, select, toast } from '../ui.js';
 import { routeQuery, navigate } from '../app.js';
 
 const MAX_EDGE = 1600;
@@ -165,13 +165,173 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
   const drinkFrom = el('input', { type: 'number', min: '1800', max: '2200', value: prefill.drink_from ?? '' });
   const drinkTo = el('input', { type: 'number', min: '1800', max: '2200', value: prefill.drink_to ?? '' });
 
+  // ---- autofill -------------------------------------------------------
+  // Producer and vintage imply most of the rest, so once both are present we
+  // ask the backend and fill in the fields the user has left empty. Anything
+  // they typed themselves is never overwritten.
+
+  const AUTOFILLABLE = [
+    ['wine_name', wineName], ['varietals', varietals], ['wine_type', wineType],
+    ['country', country], ['region', region], ['appellation', appellation],
+    ['abv', abv], ['drink_from', drinkFrom], ['drink_to', drinkTo],
+  ];
+
+  const status = el('div', { class: 'lookup-status', hidden: true });
+  const bottlingRow = el('div', { class: 'lookup-bottlings', hidden: true });
+  const valueHint = el('div', { class: 'hint value-hint', hidden: true });
+
+  // Fields the user has typed in are off-limits; ones we filled stay fair game
+  // so a later, sharper lookup can correct them.
+  const userEdited = new Set();
+  for (const [key, input] of AUTOFILLABLE) {
+    input.addEventListener('input', () => {
+      if (input.dataset.autofilled === '1') {
+        delete input.dataset.autofilled;
+        input.classList.remove('autofilled');
+      }
+      if (input.value.trim()) userEdited.add(key); else userEdited.delete(key);
+    });
+  }
+
+  let lastQuery = '';
+  let inFlight = 0;
+
+  /** Offer a market estimate beside the price field — never write it in.
+   *  "Price each" is what you paid, and the value tracker's gain is computed
+   *  against exactly that number. */
+  function showValueHint(estimate) {
+    if (!estimate?.mid) return;
+    valueHint.hidden = false;
+    valueHint.replaceChildren(
+      `Market estimate ${money(estimate.low ?? estimate.mid, estimate.currency)}–${money(estimate.high ?? estimate.mid, estimate.currency)} per bottle. `,
+      el('button', {
+        type: 'button', class: 'linkish',
+        onClick: () => { price.value = estimate.mid; },
+      }, `Use ${money(estimate.mid, estimate.currency)}`),
+      ' — only if that is what you actually paid.');
+  }
+
+  const setField = (key, input, value) => {
+    if (userEdited.has(key) || value === null || value === undefined || value === '') return false;
+    input.value = value;
+    input.dataset.autofilled = '1';
+    input.classList.add('autofilled');
+    return true;
+  };
+
+  async function runLookup({ manual = false } = {}) {
+    const name = producer.value.trim();
+    const year = vintage.value.trim();
+    const cuvee = wineName.value.trim();
+    if (name.length < 3) {
+      if (manual) toast('Enter a producer first', 'error');
+      return;
+    }
+
+    const query = `${name}|${year}|${cuvee}`;
+    if (!manual && query === lastQuery) return;
+    lastQuery = query;
+
+    const ticket = ++inFlight;
+    status.hidden = false;
+    status.replaceChildren(el('span', { class: 'spinner' }), ` Looking up ${name}${year ? ' ' + year : ''}…`);
+    // Drop the previous producer's suggestions the moment a new lookup starts —
+    // otherwise they stay clickable and a stale cuvée can be picked for a wine
+    // it does not belong to.
+    bottlingRow.hidden = true;
+    bottlingRow.replaceChildren();
+    valueHint.hidden = true;
+    valueHint.replaceChildren();
+
+    let result;
+    try {
+      result = await api.lookupWine({
+        producer: name,
+        vintage: year ? Number(year) : null,
+        wine_name: cuvee || null,
+        varietal: varietals.value.split(',')[0].trim() || null,
+      });
+    } catch (error) {
+      // A stale reply must not clobber a newer one.
+      if (ticket !== inFlight) return;
+      status.replaceChildren(el('span', { class: 'lookup-warn' }, `Couldn't look that up: ${error.message}`));
+      return;
+    }
+    if (ticket !== inFlight) return;
+
+    if (!result.found) {
+      status.replaceChildren(el('span', { class: 'lookup-warn' },
+        `No match for “${name}”. Fill the rest in by hand — everything still saves normally.`));
+      bottlingRow.hidden = true;
+      return;
+    }
+
+    const wine = result.wine || {};
+    let filled = 0;
+    for (const [key, input] of AUTOFILLABLE) {
+      const value = key === 'varietals' ? (wine.varietals || []).join(', ') : wine[key];
+      if (setField(key, input, value)) filled += 1;
+    }
+    if (!userEdited.has('producer') && wine.producer && wine.producer !== name) {
+      producer.value = wine.producer;   // spelling correction
+    }
+    if (!sizeMl.value || sizeMl.value === '750') {
+      sizeMl.value = wine.bottle_size_ml || 750;
+    }
+
+    showValueHint(result.estimated_value);
+
+    const shaky = Object.entries(result.field_confidence || {})
+      .filter(([, value]) => Number(value) < 0.6).map(([key]) => key.replace(/_/g, ' '));
+
+    status.replaceChildren(
+      el('span', { class: 'lookup-ok' }, `✓ Filled ${filled} field${filled === 1 ? '' : 's'}.`),
+      result.vintage_note ? el('div', { class: 'hint' }, result.vintage_note) : null,
+      shaky.length ? el('div', { class: 'hint' }, `Worth checking: ${shaky.join(', ')}.`) : null,
+      result.notes ? el('div', { class: 'hint' }, result.notes) : null,
+      el('div', { class: 'hint' }, 'Autofilled fields are marked — edit any of them freely.'));
+
+    // Offer the producer's range so the user can name the bottling.
+    const bottlings = (result.bottlings || []).filter((b) => b.wine_name);
+    if (bottlings.length && !wineName.value.trim()) {
+      bottlingRow.hidden = false;
+      bottlingRow.replaceChildren(
+        el('div', { class: 'hint' }, 'Which bottling? Picking one sharpens the rest.'),
+        el('div', { class: 'chip-row' }, ...bottlings.map((bottling) => el('button', {
+          class: 'chip', type: 'button', title: bottling.note || '',
+          onClick: () => {
+            wineName.value = bottling.wine_name;
+            wineName.dataset.autofilled = '1';
+            wineName.classList.add('autofilled');
+            bottlingRow.hidden = true;
+            runLookup({ manual: true });
+          },
+        }, bottling.wine_name))));
+    } else {
+      bottlingRow.hidden = true;
+    }
+  }
+
+  const scheduleLookup = debounce(() => runLookup(), 700);
+  producer.addEventListener('input', scheduleLookup);
+  vintage.addEventListener('input', scheduleLookup);
+  producer.addEventListener('input', () => { if (producer.value.trim()) userEdited.add('producer'); });
+
+  const lookupButton = el('button', {
+    type: 'button', class: 'btn-sm',
+    onClick: () => runLookup({ manual: true, refresh: true }),
+  }, '✨ Autofill from producer + year');
+
   const cellarSelect = select(cellars.map((c) => [c.id, c.name]),
     cellars.find((c) => c.id === config.activeCellarId)?.id ?? cellars[0].id);
   const quantity = el('input', { type: 'number', min: '1', value: '1' });
   const bin = el('input', { placeholder: 'A-04' });
+  // Purchase price is what you PAID. Pre-filling it with a market estimate
+  // would quietly corrupt the cost basis, and the value tracker's gain is
+  // computed against exactly that. The estimate is offered beside the field
+  // instead, one click away.
   const price = el('input', {
     type: 'number', step: '0.01', min: '0',
-    value: estimatedValue?.mid ? String(estimatedValue.mid) : '',
     placeholder: 'What you paid per bottle',
   });
   const purchased = el('input', { type: 'date', value: new Date().toISOString().slice(0, 10) });
@@ -179,6 +339,12 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
   const notes = el('textarea', { placeholder: 'Anything worth remembering.' });
 
   const save = el('button', { class: 'btn-primary', type: 'submit' }, 'Add to cellar');
+
+  showValueHint(estimatedValue);
+
+  // A label rarely states region, ABV or a drinking window; a lookup on what it
+  // did show fills those in without a second round of typing.
+  if (prefill.producer) setTimeout(() => runLookup(), 100);
 
   const form = el('form', {
     onSubmit: async (event) => {
@@ -223,12 +389,15 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     el('h2', {}, prefill.producer ? 'Confirm and save' : 'Add a bottle'),
     el('p', { class: 'hint' }, prefill.producer
       ? 'Read off the label — correct anything that looks wrong before saving.'
-      : 'Everything except the producer is optional.'),
+      : 'Type the producer and the vintage; the rest fills itself in. Everything except the producer is optional.'),
     el('div', { class: 'field-grid' },
       field('Producer *', producer),
       field('Cuvée / name', wineName),
       field('Vintage', vintage),
       field('Type', wineType)),
+    el('div', { class: 'btn-row', style: 'margin:-.2rem 0 .6rem' }, lookupButton),
+    status,
+    bottlingRow,
     field('Varietals', varietals, 'Comma-separated.'),
     el('div', { class: 'field-grid' },
       field('Country', country), field('Region', region), field('Appellation', appellation)),
@@ -240,6 +409,7 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
       field('Cellar', cellarSelect), field('Quantity', quantity), field('Bin', bin)),
     el('div', { class: 'field-grid' },
       field('Price each', price), field('Purchased', purchased)),
+    valueHint,
     field('Bought from', source),
     field('Notes', notes),
     el('div', { class: 'btn-row' }, save,
