@@ -18,6 +18,14 @@ SOMMELIER_SYSTEM_PROMPT = (
     "No markdown, no preamble, no caveats."
 )
 
+LABEL_SYSTEM_PROMPT = (
+    "You read wine bottle labels from photographs. Report only what you can "
+    "actually see or confidently infer from the label; use null for anything "
+    "you cannot read. Never invent a vintage or producer. "
+    "Respond ONLY with valid JSON matching the user's requested structure. "
+    "No markdown, no preamble, no caveats."
+)
+
 # Default model for AI calls. Update if Anthropic releases a newer Sonnet.
 SOMMELIER_MODEL = "claude-sonnet-4-5-20250929"
 
@@ -69,16 +77,18 @@ def _strip_json(text: str) -> str:
     return text.strip()
 
 
-async def call_sommelier(prompt: str, max_tokens: int = 2048) -> dict[str, Any]:
-    """Call Claude with the sommelier system prompt and parse JSON. Returns
+async def _call_claude(
+    content: list[dict[str, Any]], system: str, max_tokens: int
+) -> dict[str, Any]:
+    """Send content blocks to Claude and parse the JSON reply. Returns
     {"error": "..."} on any failure rather than raising."""
     try:
         client = get_anthropic()
         message = await client.messages.create(
             model=SOMMELIER_MODEL,
             max_tokens=max_tokens,
-            system=SOMMELIER_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": prompt}],
+            system=system,
+            messages=[{"role": "user", "content": content}],
         )
         text = "".join(b.text for b in message.content if getattr(b, "type", None) == "text")
         try:
@@ -89,3 +99,32 @@ async def call_sommelier(prompt: str, max_tokens: int = 2048) -> dict[str, Any]:
     except Exception as exc:
         logger.exception("Sommelier API call failed")
         return {"error": str(exc)}
+
+
+async def call_sommelier(
+    prompt: str, max_tokens: int = 2048, system: str = SOMMELIER_SYSTEM_PROMPT
+) -> dict[str, Any]:
+    return await _call_claude([{"type": "text", "text": prompt}], system, max_tokens)
+
+
+async def call_sommelier_vision(
+    prompt: str,
+    images: list[tuple[str, str]],
+    max_tokens: int = 2048,
+    system: str = LABEL_SYSTEM_PROMPT,
+) -> dict[str, Any]:
+    """Same contract as call_sommelier, with images attached.
+
+    `images` is a list of (media_type, base64_data) pairs — the image blocks go
+    first so the model reads the label before the instructions, which is what
+    Anthropic recommends for image-led prompts.
+    """
+    content: list[dict[str, Any]] = [
+        {
+            "type": "image",
+            "source": {"type": "base64", "media_type": media_type, "data": data},
+        }
+        for media_type, data in images
+    ]
+    content.append({"type": "text", "text": prompt})
+    return await _call_claude(content, system, max_tokens)
