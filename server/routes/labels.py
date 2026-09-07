@@ -23,6 +23,7 @@ from pydantic import BaseModel, Field
 
 from server.db import get_pool
 from server.sommelier_client import call_sommelier_vision
+from server.wine_parse import as_float, as_str, value_estimate, wine_fields
 
 router = APIRouter(tags=["labels"])
 logger = logging.getLogger(__name__)
@@ -136,91 +137,19 @@ def _split_image(image: str, media_type: Optional[str]) -> tuple[str, str]:
 
 
 def _normalize(response: dict) -> dict:
-    """Coerce the model's reply into the shape the add-bottle form expects.
-
-    The model is told the schema but a stray string where a number belongs
-    shouldn't 500 the scan — anything unparseable becomes null and the field
-    just goes unfilled.
-    """
-    wine = {
-        "producer": _str(response.get("producer")),
-        "wine_name": _str(response.get("wine_name")),
-        "vintage": _int(response.get("vintage"), 1800, 2100),
-        "varietals": _str_list(response.get("varietals"))[:12],
-        "wine_type": _enum(
-            response.get("wine_type"),
-            {"red", "white", "rose", "sparkling", "dessert", "fortified", "other"},
-        ),
-        "country": _str(response.get("country")),
-        "region": _str(response.get("region")),
-        "appellation": _str(response.get("appellation")),
-        "bottle_size_ml": _int(response.get("bottle_size_ml"), 50, 30000) or 750,
-        "abv": _float(response.get("abv"), 0, 100),
-        "drink_from": _int(response.get("drink_from"), 1800, 2200),
-        "drink_to": _int(response.get("drink_to"), 1800, 2200),
-    }
-    if wine["drink_from"] and wine["drink_to"] and wine["drink_from"] > wine["drink_to"]:
-        wine["drink_from"], wine["drink_to"] = wine["drink_to"], wine["drink_from"]
-
-    value = response.get("estimated_value") or {}
-    estimated_value = (
-        {
-            "low": _float(value.get("low"), 0, 10_000_000),
-            "mid": _float(value.get("mid"), 0, 10_000_000),
-            "high": _float(value.get("high"), 0, 10_000_000),
-            "currency": (_str(value.get("currency")) or "USD")[:3].upper(),
-            "estimated": True,
-        }
-        if isinstance(value, dict) and value.get("mid") is not None
-        else None
-    )
-
+    """Coerce the model's reply into the shape the add-bottle form expects."""
     field_confidence = response.get("field_confidence")
+    wine = wine_fields(response)
     return {
         "wine": wine,
+        # A reply with no producer is not a reading of a label, whatever the
+        # model says about `readable`.
         "readable": bool(response.get("readable", True)) and bool(wine["producer"]),
-        "confidence": _float(response.get("confidence"), 0, 1),
+        "confidence": as_float(response.get("confidence"), 0, 1),
         "field_confidence": field_confidence if isinstance(field_confidence, dict) else {},
-        "estimated_value": estimated_value,
-        "notes": _str(response.get("notes")),
+        "estimated_value": value_estimate(response.get("estimated_value")),
+        "notes": as_str(response.get("notes")),
         # Everything here is read off a photo by a model. The UI shows the form
         # pre-filled for the user to confirm, never saved silently.
         "needs_review": True,
     }
-
-
-_NULLISH = {"", "null", "none", "n/a", "unknown", "not visible", "illegible"}
-
-
-def _str(value) -> Optional[str]:
-    if value is None or isinstance(value, (dict, list, bool)):
-        return None
-    text = str(value).strip()
-    return None if text.lower() in _NULLISH else text
-
-
-def _str_list(value) -> list[str]:
-    if not isinstance(value, list):
-        return []
-    return [s for s in (_str(v) for v in value) if s]
-
-
-def _int(value, low: int, high: int) -> Optional[int]:
-    try:
-        number = int(float(value))
-    except (TypeError, ValueError):
-        return None
-    return number if low <= number <= high else None
-
-
-def _float(value, low: float, high: float) -> Optional[float]:
-    try:
-        number = float(value)
-    except (TypeError, ValueError):
-        return None
-    return round(number, 2) if low <= number <= high else None
-
-
-def _enum(value, allowed: set[str]) -> Optional[str]:
-    text = _str(value)
-    return text.lower() if text and text.lower() in allowed else None

@@ -90,6 +90,9 @@ export const api = {
     timeout: 90000,
   }),
 
+  // -- autofill --
+  lookupWine: (data) => request('POST', '/api/wines/lookup', { body: data, timeout: 90000 }),
+
   // -- value tracker --
   cellarValue: (id) => request('GET', `/api/cellars/${id}/value`, { query: { account_id: account() } }),
   revalue: (id, data) => request('POST', `/api/cellars/${id}/revalue`, { body: { account_id: account(), ...data }, timeout: 240000 }),

@@ -191,6 +191,39 @@ one row, so scores and valuations are fetched once and shared. Re-scanning a
 label fills in fields the stored row is missing rather than overwriting what is
 already known.
 
+### Autofill (producer + vintage → the rest)
+
+Typing a bottle in by hand is eight fields, most of which follow from two.
+
+- `POST /api/wines/lookup` — body: `{producer, vintage?, wine_name?, varietal?, refresh?}`
+  - Returns `wine` (country, region, appellation, varietals, type, ABV, bottle
+    size, drinking window), an `estimated_value`, `confidence` plus per-field
+    `field_confidence`, a `vintage_note`, and `filled_fields`.
+  - Given a producer and vintage but no cuvée, it also returns that producer's
+    `bottlings` for the year, so the form can ask "which one?" instead of
+    guessing. Naming a cuvée sharpens everything else and returns no bottlings.
+  - `found: false` when the producer is not recognized — and it is forced to
+    false if the reply carries neither a country nor a region, so a model that
+    answers confidently about a winery that does not exist still reads as "no
+    match" rather than inventing a region.
+  - Whatever the user typed wins: their vintage, cuvée and varietal are never
+    replaced by the model's. The producer is the one exception — an obvious
+    misspelling is corrected.
+  - Cached in `ai_cache` by the *normalized* query, so "Ch. Margaux" and
+    "chateau margaux " share one answer across every user of the instance.
+
+In the UI this runs automatically once a producer and vintage are present (700ms
+debounce), or on the "Autofill" button. It only fills fields left **empty** —
+anything typed by hand is never overwritten, and editing an autofilled field
+releases it so a later, sharper lookup will not clobber the edit. Filled fields
+carry a marker, and the status line says how many were filled and which the
+model was least sure about.
+
+**Price is deliberately excluded.** "Price each" is what you *paid*, and the
+value tracker computes unrealized gain against exactly that number, so
+pre-filling it with a market estimate would quietly corrupt the cost basis. The
+estimate is offered beside the field with a one-click "use this" instead.
+
 ### Label recognition
 
 - `POST /api/labels/identify` — body: `{image_base64, media_type?, account_id?, refresh?}`
@@ -341,6 +374,9 @@ buttons and navigation and never encodes data.
 - **Bottle sheet** — the wine's facts, score comparison across sources, value
   range, "you may also like", full event history, and the actions: drink, move
   between cellars, edit, remove.
+- **Add a bottle** — type the producer and the vintage and the rest fills
+  itself in: region, appellation, varietals, type, ABV, and a drinking window,
+  with the producer's bottlings offered as chips when no cuvée is named.
 - **Scan** — photograph a label (camera on mobile, file picker or live
   viewfinder on desktop). The image is downscaled in-browser to a 1600px JPEG
   before upload, then the add-bottle form arrives pre-filled with confidence
@@ -444,7 +480,19 @@ it costs nothing and needs no Anthropic key.
 DATABASE_URL=postgresql://localhost/winevoyage python -m scripts.smoke_value
 ```
 
-Both scripts print a PASS/FAIL line per check and exit non-zero if any fail.
+### Autofill smoke test
+
+`scripts/smoke_lookup.py` covers the lookup coercion and its guardrails: type
+coercion, a backwards drinking window, malformed bottling entries, cache-key
+normalization, user input winning over the model's, unknown producers, and a
+model failure degrading to a 502 rather than a 500. The model call is stubbed,
+so it costs nothing.
+
+```bash
+DATABASE_URL=postgresql://localhost/winevoyage python -m scripts.smoke_lookup
+```
+
+All three scripts print a PASS/FAIL line per check and exit non-zero if any fail.
 
 ## Troubleshooting
 

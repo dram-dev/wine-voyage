@@ -336,6 +336,10 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
     if (method === 'DELETE') { bottles = bottles.filter((b) => b.id !== id); return null; }
   }
 
+  if (path === '/api/wines/lookup') {
+    return demoLookup(body || {});
+  }
+
   if (path === '/api/labels/identify') {
     return {
       cached: false, image_sha256: 'demo',
@@ -407,6 +411,77 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
   }
 
   throw new Error(`Demo mode does not implement ${method} ${path}`);
+}
+
+// A tiny offline reference so the sample site demonstrates autofill. A real
+// backend answers from the model and knows far more than these few houses.
+const LOOKUP_BOOK = [
+  { match: 'margaux', producer: 'Château Margaux', country: 'France', region: 'Bordeaux',
+    appellation: 'Margaux', wine_type: 'red', varietals: ['Cabernet Sauvignon', 'Merlot', 'Petit Verdot'],
+    abv: 13.5, window: [13, 40], value: 850,
+    bottlings: [{ wine_name: 'Grand Vin', note: 'The first wine.' },
+                { wine_name: 'Pavillon Rouge', note: 'Second wine.' },
+                { wine_name: 'Pavillon Blanc', note: 'Sauvignon Blanc.' }] },
+  { match: 'ridge', producer: 'Ridge Vineyards', country: 'United States', region: 'California',
+    appellation: 'Santa Cruz Mountains', wine_type: 'red', varietals: ['Cabernet Sauvignon', 'Merlot'],
+    abv: 13.4, window: [8, 30], value: 210,
+    bottlings: [{ wine_name: 'Monte Bello', note: 'The flagship Cabernet.' },
+                { wine_name: 'Lytton Springs', note: 'Zinfandel blend, Dry Creek.' },
+                { wine_name: 'Geyserville', note: 'Zinfandel blend, Alexander Valley.' }] },
+  { match: 'conterno', producer: 'Giacomo Conterno', country: 'Italy', region: 'Piedmont',
+    appellation: 'Barolo', wine_type: 'red', varietals: ['Nebbiolo'],
+    abv: 14.5, window: [14, 45], value: 260,
+    bottlings: [{ wine_name: 'Barolo Cascina Francia', note: 'Estate Barolo.' },
+                { wine_name: 'Barolo Monfortino Riserva', note: 'The long-aged riserva.' }] },
+  { match: 'loosen', producer: 'Dr. Loosen', country: 'Germany', region: 'Mosel',
+    appellation: 'Mosel', wine_type: 'white', varietals: ['Riesling'],
+    abv: 8.5, window: [3, 20], value: 28,
+    bottlings: [{ wine_name: 'Wehlener Sonnenuhr Riesling Kabinett', note: 'Classic off-dry Kabinett.' },
+                { wine_name: 'Ürziger Würzgarten Riesling Spätlese', note: 'Spicier red-slate site.' }] },
+  { match: 'krug', producer: 'Krug', country: 'France', region: 'Champagne',
+    appellation: 'Champagne', wine_type: 'sparkling', varietals: ['Chardonnay', 'Pinot Noir', 'Pinot Meunier'],
+    abv: 12.0, window: [0, 25], value: 195,
+    bottlings: [{ wine_name: 'Grande Cuvée', note: 'The multi-vintage blend.' },
+                { wine_name: 'Rosé', note: 'The rosé bottling.' }] },
+];
+
+function demoLookup(body) {
+  const producer = String(body.producer || '').toLowerCase();
+  const entry = LOOKUP_BOOK.find((row) => producer.includes(row.match));
+  if (!entry) {
+    return { cached: false, found: false, wine: {}, bottlings: [], estimated_value: null,
+             confidence: 0, field_confidence: {}, vintage_note: null,
+             notes: 'Demo mode knows only a handful of producers. Connect your API for real lookups.',
+             filled_fields: [], needs_review: true };
+  }
+  const vintage = body.vintage || null;
+  const named = body.wine_name
+    ? entry.bottlings.find((b) => b.wine_name.toLowerCase() === String(body.wine_name).toLowerCase())
+    : null;
+  return {
+    cached: false, found: true,
+    wine: {
+      producer: entry.producer,
+      wine_name: named ? named.wine_name : (body.wine_name || null),
+      vintage,
+      varietals: entry.varietals,
+      wine_type: entry.wine_type,
+      country: entry.country, region: entry.region, appellation: entry.appellation,
+      bottle_size_ml: 750, abv: entry.abv,
+      drink_from: vintage ? vintage + entry.window[0] : null,
+      drink_to: vintage ? vintage + entry.window[1] : null,
+    },
+    bottlings: body.wine_name ? [] : entry.bottlings.map((b) => ({
+      wine_name: b.wine_name, varietals: entry.varietals, wine_type: entry.wine_type, note: b.note })),
+    estimated_value: { low: entry.value * 0.8, mid: entry.value, high: entry.value * 1.3,
+                       currency: 'USD', estimated: true },
+    confidence: 0.9,
+    field_confidence: { region: 0.95, varietals: 0.85, drink_from: 0.55 },
+    vintage_note: vintage ? `Demo mode: a stand-in note for the ${vintage} vintage.` : null,
+    notes: 'Demo mode uses a small built-in reference. Connect your API for real lookups.',
+    filled_fields: ['country', 'region', 'appellation', 'varietals', 'wine_type', 'abv'],
+    needs_review: true,
+  };
 }
 
 /** Value report over the sample cellar, including a synthesised 90-day history

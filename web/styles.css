@@ -366,3 +366,35 @@ table.plain th { color: var(--ink-faint); font-weight: 500; font-size: .78rem; t
 .mover-bar { position: absolute; top: 0; bottom: 0; border-radius: 3px; min-width: 2px; }
 .mover-value { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
 .mover-value small { font-weight: 400; opacity: .8; }
+
+/* ---------- autofill ---------- */
+
+/* A filled-in field reads as provisional until the user touches it: same text
+   colour, a tinted rail on the left. Never colour alone — the status line above
+   the form says how many fields were filled and what to double-check. */
+input.autofilled, select.autofilled {
+  border-left: 3px solid var(--gold);
+  background: linear-gradient(90deg, rgba(216, 169, 74, .07), transparent 60%), var(--bg-sunk);
+}
+
+.lookup-status {
+  font-size: .85rem; margin: 0 0 .8rem;
+  padding: .55rem .7rem; border-radius: var(--radius-sm);
+  background: var(--bg-sunk); border: 1px solid var(--line-soft);
+}
+.lookup-status .hint { margin-top: .25rem; }
+.lookup-ok { color: var(--green); }
+.lookup-warn { color: var(--amber); }
+
+.lookup-bottlings { margin: 0 0 .9rem; }
+.lookup-bottlings .hint { margin-bottom: .35rem; }
+
+/* An inline action that reads as a link but is a real button. */
+.linkish {
+  background: none; border: none; padding: 0; font: inherit;
+  color: var(--gold); text-decoration: underline; cursor: pointer;
+}
+.linkish:hover { border: none; color: var(--ink); }
+
+/* The market-estimate line sits between two fields; give it room to breathe. */
+.value-hint { margin: -.35rem 0 .9rem; }
