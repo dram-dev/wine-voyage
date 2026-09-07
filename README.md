@@ -270,12 +270,23 @@ even for wines whose current valuation has since been replaced.
 ## The cellar frontend (GitHub Pages)
 
 `web/` is a static site — plain HTML, CSS, and ES modules, no build step, no
-dependencies. `.github/workflows/pages.yml` publishes it on every push to `main`
-that touches `web/`.
+dependencies. `.github/workflows/pages.yml` publishes it on every push that
+touches `web/`.
 
-**One-time repo setup:** Settings → Pages → Build and deployment → Source:
-**GitHub Actions**. The first push to `main` then publishes to
-`https://<owner>.github.io/<repo>/`.
+The deploy job is gated on the repository's **default branch**, read from the
+event rather than hardcoded, so renaming the default (to `main`, say) does not
+silently stop publishing. Pushes to other branches still run the syntax check;
+they just don't publish.
+
+**Two things are needed before the site is live:**
+
+1. Settings → Pages → Build and deployment → Source: **GitHub Actions**.
+2. `web/` has to be on the default branch — merge the branch carrying it, or
+   point the repository's default branch at it.
+
+It then publishes to `https://<owner>.github.io/<repo>/` — for this repository,
+**https://dram-dev.github.io/wine-voyage/**. Check Actions → "Deploy Pages" for
+the run and the resulting URL.
 
 To work on it locally, any static server will do:
 
