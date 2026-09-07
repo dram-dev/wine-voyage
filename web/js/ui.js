@@ -22,6 +22,13 @@ export function el(tag, attrs = {}, ...children) {
   return node;
 }
 
+// `el()` drops null/undefined/false children; the raw DOM APIs stringify them
+// into the text "nullundefinedfalse". Filter before handing a conditional list
+// to replaceChildren/append.
+export function nodes(...children) {
+  return children.flat().filter((child) => child !== null && child !== undefined && child !== false);
+}
+
 export function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); return node; }
 
 export function mount(...nodes) {

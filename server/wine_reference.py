@@ -71,14 +71,24 @@ def _score(query: str, candidate_key: str) -> Optional[str]:
     if query == candidate_key:
         return EXACT
 
-    query_tokens, candidate_tokens = set(tokens(query)), set(tokens(candidate_key))
+    query_order = tokens(query)
+    query_tokens, candidate_tokens = set(query_order), set(tokens(candidate_key))
     if not query_tokens or not candidate_tokens:
         return None
     if query_tokens == candidate_tokens:
         return EXACT
-    # "Caymus" finds "Caymus Vineyards"; "Chateau Margaux 1er" finds "Chateau Margaux".
-    if query_tokens <= candidate_tokens or candidate_tokens <= query_tokens:
+    # "Caymus" finds "Caymus Vineyards" — the user typed part of a longer name.
+    if query_tokens <= candidate_tokens:
         return STRONG
+    # The other direction is not the same thing. Here the user typed words the
+    # candidate does not have, and those words belong to *something*. When they
+    # trail the name they are qualifiers and the match holds ("Chateau Margaux
+    # 1er" is still Chateau Margaux); when they lead it, the name being typed is
+    # a different one ("Sonoma Ridge Cellars" is not Ridge Vineyards). A winery
+    # is named front-first, so the query's first significant word has to be part
+    # of the match.
+    if candidate_tokens <= query_tokens:
+        return STRONG if query_order[0] in candidate_tokens else PARTIAL
 
     overlap = query_tokens & candidate_tokens
     if not overlap:
@@ -95,24 +105,50 @@ def _score(query: str, candidate_key: str) -> Optional[str]:
 _RANK = {EXACT: 0, STRONG: 1, PARTIAL: 2, WEAK: 3}
 
 
+_DEMOTE = {EXACT: STRONG, STRONG: PARTIAL, PARTIAL: WEAK, WEAK: None}
+
+
+def _identity(entry: dict) -> str:
+    """What an entry claims about a wine's origin. Two producers that resolve to
+    the same appellation are interchangeable for our purposes; two that do not
+    are a genuine ambiguity."""
+    return entry.get("appellation") or entry.get("name") or ""
+
+
 def _best(query: Optional[str], table: dict) -> tuple[Optional[dict], Optional[str]]:
-    """Best entry in a table for a query, with its match quality."""
+    """Best entry in a table for a query, with its match quality.
+
+    Where several entries tie at the best quality, the tie is only harmless if
+    they agree on where the wine is from. "Mondavi" hits both `Robert Mondavi
+    Winery` and `Mondavi Reserve`, and both say Napa Valley — either answer is
+    the same answer. "Smith" hits six producers spread over Washington,
+    Bordeaux, Napa and Sonoma, and picking whichever one the dict happened to
+    yield first would state a place we cannot back. That is demoted a level, so
+    the caller stops treating it as authoritative."""
     key = normalize(query)
     if not key or not table:
         return None, None
     if key in table:
         return table[key], EXACT
 
-    best_entry, best_quality = None, None
+    best_quality: Optional[str] = None
+    tied: list[dict] = []
     for candidate_key, entry in table.items():
         quality = _score(key, candidate_key)
         if quality is None:
             continue
         if best_quality is None or _RANK[quality] < _RANK[best_quality]:
-            best_entry, best_quality = entry, quality
-            if quality == EXACT:
-                break
-    return best_entry, best_quality
+            best_quality, tied = quality, [entry]
+        elif quality == best_quality:
+            tied.append(entry)
+
+    if best_quality is None:
+        return None, None
+    if len({_identity(e) for e in tied}) > 1:
+        best_quality = _DEMOTE[best_quality]
+        if best_quality is None:
+            return None, None
+    return tied[0], best_quality
 
 
 def find_producer(name: Optional[str]) -> tuple[Optional[dict], Optional[str]]:
@@ -140,6 +176,11 @@ def find_country(name: Optional[str]) -> tuple[Optional[dict], Optional[str]]:
     return _best(name, reference().get("countries", {}))
 
 
+def _region_of(place: dict, kind: Optional[str]) -> str:
+    """The region a place sits in, whichever kind of place it is."""
+    return place["region"] if kind == "appellation" else place["name"]
+
+
 def resolve(
     *,
     producer: Optional[str] = None,
@@ -165,31 +206,41 @@ def resolve(
 
     producer_entry, producer_match = find_producer(producer)
 
-    # An appellation the user typed is stronger evidence than one inferred from
-    # a producer name that only partly matched.
+    # Where the user says the wine is from.
     # People do not respect field boundaries — "Napa Valley" gets typed into
     # the region box as often as the appellation one — so every place-ish field
     # is tried against the appellation table before falling back to regions.
-    place, place_kind = None, None
+    user_place, user_kind = None, None
     for candidate in (appellation, region):
         entry, _ = find_appellation(candidate)
         if entry:
-            place, place_kind = entry, "appellation"
+            user_place, user_kind = entry, "appellation"
             break
-    if place is None and producer_entry and producer_match in (EXACT, STRONG):
-        entry, _ = find_appellation(producer_entry["appellation"])
-        if entry:
-            place, place_kind = entry, "appellation"
-    if place is None:
+    if user_place is None:
         for candidate in (region, appellation):
             entry, _ = find_region(candidate)
             if entry:
-                place, place_kind = entry, "region"
+                user_place, user_kind = entry, "region"
                 break
-    if place is None and producer_entry:
-        entry, _ = find_appellation(producer_entry["appellation"])
-        if entry:
-            place, place_kind = entry, "appellation"
+
+    # Where the producer says it is from. Only a confident producer match gets
+    # to speak: an uncertain one naming an appellation is how a cellar record
+    # acquires a plausible lie.
+    producer_place = None
+    if producer_entry and producer_match in (EXACT, STRONG):
+        producer_place, _ = find_appellation(producer_entry["appellation"])
+
+    if user_place is None:
+        place, place_kind = producer_place, ("appellation" if producer_place else None)
+    elif producer_place and _region_of(producer_place, "appellation") == _region_of(user_place, user_kind):
+        # They agree on the region and the producer knows the sub-appellation:
+        # "Venge Vineyards" plus a typed "Napa" is Calistoga, not Napa Valley.
+        place, place_kind = producer_place, "appellation"
+    else:
+        # They disagree. The user is holding the bottle; the producer table is
+        # a guess about a name. Trust the user, and do not quietly relocate the
+        # wine to wherever the producer index happened to point.
+        place, place_kind = user_place, user_kind
 
     if producer_entry and producer_match in (EXACT, STRONG):
         wine["producer"] = producer_entry["name"]

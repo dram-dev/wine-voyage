@@ -102,7 +102,7 @@ function breakdown(title, rows, filterKey) {
 
 function demoBanner() {
   return el('div', { class: 'banner warn' },
-    'You are looking at a sample cellar. ',
-    el('a', { href: '#/settings' }, 'Point the app at your API'),
-    ' to see your own bottles — nothing you change here is saved.');
+    'These are sample wines — nothing you change here is saved. ',
+    el('a', { href: '#/settings' }, 'Connect your cellar'),
+    ' to see your own bottles.');
 }

@@ -424,10 +424,15 @@ async function demoLookup(body) {
   });
 
   const wine = { ...local.wine, bottle_size_ml: 750 };
-  wine.producer = local.producer_name || String(body.producer || '').trim();
+  // Only a confident match may correct the spelling of what was typed —
+  // otherwise "Smith Family Vineyards" comes back as "Charles Smith".
+  const confident = local.producer_match === 'exact' || local.producer_match === 'strong';
+  wine.producer = (confident && local.producer_name) || String(body.producer || '').trim();
   if (body.wine_name) wine.wine_name = String(body.wine_name).trim();
   if (body.vintage) wine.vintage = body.vintage;
-  if (body.varietal) wine.varietals = [String(body.varietal).trim()];
+  // One grape sent as a search hint fills a gap; it never overwrites a blend
+  // the reference resolved.
+  if (body.varietal && !wine.varietals?.length) wine.varietals = [String(body.varietal).trim()];
 
   const found = Boolean(wine.country || wine.region);
   const entry = await producerEntry(body.producer);

@@ -10,7 +10,7 @@
 import { api } from '../api.js';
 import { config } from '../config.js';
 import { state } from '../state.js';
-import { debounce, el, empty, field, loading, money, mount, select, toast } from '../ui.js';
+import { debounce, el, empty, field, loading, money, mount, nodes, select, toast } from '../ui.js';
 import { routeQuery, navigate } from '../app.js';
 import { placeNames, resolveLocally } from '../reference.js';
 
@@ -271,7 +271,10 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
       producer: name,
       vintage: year ? Number(year) : null,
       wine_name: cuvee || null,
-      varietal: varietals.value.split(',')[0].trim() || null,
+      // One grape, as a hint for the search. Only ever the user's own — sending
+      // back the first entry of a list autofill wrote would ask the server to
+      // treat a blend's lead grape as a stated fact.
+      varietal: userEdited.has('varietals') ? varietals.value.split(',')[0].trim() || null : null,
       country: country.value.trim() || null,
       region: region.value.trim() || null,
       appellation: appellation.value.trim() || null,
@@ -289,7 +292,7 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     if (ticket !== inFlight) return;
 
     if (!result.found) {
-      status.replaceChildren(
+      status.replaceChildren(...nodes(
         el('span', { class: 'lookup-warn' }, `No match for “${name}”.`),
         // The backend explains itself — surface that rather than a bare "no match".
         result.notes ? el('div', { class: 'hint' }, result.notes) : null,
@@ -318,7 +321,7 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
                     region.focus();
                   },
                 }, 'Somewhere else…')))
-          : null);
+          : null));
       bottlingRow.hidden = true;
       return;
     }
@@ -343,9 +346,13 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
 
     // Say plainly when the wine was placed by its region rather than recognized
     // by name — those fields are a regional norm, not a fact about this bottle.
-    const placedByRegion = !result.reference_match && result.reference_place;
+    // A partial or weak producer match counts as "not recognized": those are
+    // precisely the results that most need the caveat, and gating on the mere
+    // presence of a match hid it from them.
+    const recognized = result.reference_match === 'exact' || result.reference_match === 'strong';
+    const placedByRegion = !recognized && result.reference_place;
 
-    status.replaceChildren(
+    status.replaceChildren(...nodes(
       el('span', { class: filled ? 'lookup-ok' : 'lookup-warn' },
         filled ? `✓ Filled ${filled} field${filled === 1 ? '' : 's'}.` : 'Nothing left to fill.'),
       placedByRegion
@@ -358,7 +365,7 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
       result.model_error
         ? el('div', { class: 'hint' }, `Lookup service unreachable, so this is the offline reference only (${result.model_error}).`)
         : result.notes ? el('div', { class: 'hint' }, result.notes) : null,
-      el('div', { class: 'hint' }, 'Autofilled fields are marked — edit any of them freely.'));
+      el('div', { class: 'hint' }, 'Autofilled fields are marked — edit any of them freely.')));
 
     // Offer the producer's range so the user can name the bottling.
     const bottlings = (result.bottlings || []).filter((b) => b.wine_name);
@@ -385,7 +392,8 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
   async function offlineResult(query, reason) {
     const local = await resolveLocally(query);
     const wine = { ...local.wine, bottle_size_ml: 750 };
-    wine.producer = local.producer_name || query.producer;
+    const confident = local.producer_match === 'exact' || local.producer_match === 'strong';
+    wine.producer = (confident && local.producer_name) || query.producer;
     const found = Boolean(wine.country || wine.region);
     return {
       found, wine, sources: local.sources, bottlings: [], estimated_value: null,
