@@ -237,6 +237,28 @@ python -m scripts.build_reference            # writes data/ and web/data/
 python -m scripts.check_reference_coverage   # regression gate, floor 90%
 ```
 
+**Importing an external list.** `scripts/import_producers.py` folds a merchant
+archive, cellar export or spreadsheet into the reference without retyping it:
+
+```bash
+# A Shopify storefront exposes its catalogue without auth; `vendor` is the
+# producer. Run this where the site is reachable, then bring the file here.
+curl -s 'https://<merchant>/collections/<name>/products.json?limit=250&page=1' > past-1.json
+
+python -m scripts.import_producers past-*.json --dry-run   # what is new
+python -m scripts.import_producers past-*.json             # write it
+python -m scripts.build_reference                          # pick it up
+```
+
+It also reads CSV (`producer`, optional `appellation`), JSON arrays, plain text
+(one name per line) and HTML (tags stripped). Placed producers land in
+`data/producer_additions.json`, which the build reads alongside the curated
+tables. Names it cannot place go to `data/producer_review.txt` for you to fill
+in and re-import — **it will not guess an appellation**, because a wrong one
+silently writes a plausible lie into a cellar record. Lines that look like
+product titles ("2021 Arista Russian River Pinot Noir") are reported and
+skipped rather than imported as producer names.
+
 `build_reference.py` reports **placement disagreements** on every run — where two
 sources put the same producer in different appellations, it keeps the first and
 prints what it ignored. That is how the two shipped `top_rated_*.json` samples

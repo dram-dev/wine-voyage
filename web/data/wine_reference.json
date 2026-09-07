@@ -3306,6 +3306,10 @@
    "appellation": "Carneros",
    "name": "Anaba Wines"
   },
+  "ancien wines": {
+   "appellation": "Carneros",
+   "name": "Ancien Wines"
+  },
   "ancient peaks": {
    "appellation": "Santa Margarita Ranch",
    "name": "Ancient Peaks"
@@ -4097,6 +4101,10 @@
   "ceritas": {
    "appellation": "Sonoma Coast",
    "name": "Ceritas"
+  },
+  "ceritas wines": {
+   "appellation": "Sonoma Coast",
+   "name": "Ceritas Wines"
   },
   "chalk hill estate": {
    "appellation": "Chalk Hill",
@@ -6212,6 +6220,10 @@
    "appellation": "Rutherford",
    "name": "Honig"
   },
+  "hoopes vineyard": {
+   "appellation": "Oakville",
+   "name": "Hoopes Vineyard"
+  },
   "hope family wines": {
    "appellation": "Paso Robles",
    "name": "Hope Family Wines"
@@ -6922,6 +6934,10 @@
    "appellation": "Bekaa Valley",
    "name": "Massaya"
   },
+  "massican": {
+   "appellation": "Napa Valley",
+   "name": "Massican"
+  },
   "massolino": {
    "appellation": "Barolo",
    "name": "Massolino"
@@ -6941,6 +6957,10 @@
   "matthiasson": {
    "appellation": "Napa Valley",
    "name": "Matthiasson"
+  },
+  "matthiasson wines": {
+   "appellation": "Napa Valley",
+   "name": "Matthiasson Wines"
   },
   "mauritson": {
    "appellation": "Dry Creek Valley",
@@ -8405,6 +8425,10 @@
   "soldera case basse": {
    "appellation": "Brunello di Montalcino",
    "name": "Soldera (Case Basse)"
+  },
+  "somnium": {
+   "appellation": "Napa Valley",
+   "name": "Somnium"
   },
   "sonoma cutrer": {
    "appellation": "Russian River Valley",

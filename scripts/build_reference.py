@@ -777,6 +777,24 @@ SAMPLE_CORRECTIONS: dict[str, str] = {
 }
 
 
+def load_additions() -> list[tuple[str, str]]:
+    """Producers imported from an external list by scripts/import_producers.py.
+
+    Kept in data/producer_additions.json rather than in this file so an import
+    of someone's merchant archive or cellar export does not have to be
+    hand-merged into curated Python.
+    """
+    path = DATA / "producer_additions.json"
+    if not path.exists():
+        return []
+    try:
+        rows = json.loads(path.read_text())
+    except ValueError:
+        return []
+    return [(r["producer"], r["appellation"]) for r in rows
+            if r.get("producer") and r.get("appellation")]
+
+
 def load_repo_producers() -> list[tuple[str, str]]:
     """Producers the repository already ships in its top-rated samples."""
     pairs: list[tuple[str, str]] = []
@@ -834,7 +852,9 @@ def build() -> dict:
     # them and print them on every build.
     conflicts: list[tuple[str, str, str]] = []
     # Curated entries are authoritative; repository samples fill the gaps.
-    for producer, appellation in PRODUCERS + CALIFORNIA_PRODUCERS + load_repo_producers():
+    for producer, appellation in (
+        PRODUCERS + CALIFORNIA_PRODUCERS + load_additions() + load_repo_producers()
+    ):
         key = normalize(producer)
         if key in producers:
             if producers[key]["appellation"] != appellation:
