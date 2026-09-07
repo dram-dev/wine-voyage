@@ -84,10 +84,12 @@ function score(query, candidate, noise) {
 
 const DEMOTE = { [EXACT]: STRONG, [STRONG]: PARTIAL, [PARTIAL]: WEAK, [WEAK]: null };
 
-// What an entry claims about a wine's origin. Two producers resolving to the
-// same appellation are interchangeable here; two that do not are a real
-// ambiguity.
-const identity = (entry) => entry.appellation || entry.name || '';
+// What an entry claims. Two producers resolving to the same appellation are
+// interchangeable here; two that do not are a real ambiguity. Bottlings carry
+// neither, and are distinct whenever their names are — a bare "Cabernet
+// Sauvignon" typed against Stag's Leap matches both the S.L.V. and the Fay
+// bottling equally well, and picking one would be a coin toss stated as a fact.
+const identity = (entry) => entry.appellation || entry.name || entry.wine_name || '';
 
 function best(query, table, noise) {
   const key = normalize(query);
@@ -166,8 +168,10 @@ function findBottling(producerEntry, wineName, noise) {
   if (!wineName || !bottlings.length) return null;
   const table = {};
   for (const b of bottlings) if (b.wine_name) table[normalize(b.wine_name)] = b;
-  const [entry] = best(wineName, table, noise);
-  return entry;
+  const [entry, quality] = best(wineName, table, noise);
+  // An uncertain cuvée match would state one wine's grapes for another's.
+  // Saying nothing is better: the grape reader still works on the name.
+  return (quality === EXACT || quality === STRONG) ? entry : null;
 }
 
 // Places whose colour is a fact about the place, not the grape: Champagne is

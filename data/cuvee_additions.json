@@ -1,0 +1,3083 @@
+[
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Beckstoffer Las Amigas Pinot Noir"
+   },
+   {
+    "note": "Reliable appellation Chardonnay.",
+    "wine_name": "Carneros Chardonnay"
+   }
+  ],
+  "producer": "Acacia Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Released only in declared years.",
+    "wine_name": "Barolo Granbussia Riserva"
+   },
+   {
+    "note": "Bussia single block.",
+    "wine_name": "Barolo Cicala"
+   },
+   {
+    "note": "Bussia single block.",
+    "wine_name": "Barolo Romirasco"
+   }
+  ],
+  "producer": "Aldo Conterno"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard Tempranillo; reference.",
+    "wine_name": "Vina El Pison"
+   },
+   {
+    "note": "Single-vineyard cuvee.",
+    "wine_name": "Valdegines"
+   }
+  ],
+  "producer": "Artadi"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard Carneros.",
+    "wine_name": "Larry Hyde & Sons Chardonnay"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Lauren Vineyard Chardonnay"
+   },
+   {
+    "note": "Single-vineyard SL.",
+    "wine_name": "UV-SL Chardonnay"
+   }
+  ],
+  "producer": "Aubert Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block top selection.",
+    "wine_name": "Rattlesnake Hill Cabernet Sauvignon"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Spring Mountain Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Barnett Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cannubi-Rue-San Lorenzo-Rocche blend.",
+    "wine_name": "Barolo"
+   }
+  ],
+  "producer": "Bartolo Mascarello"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic Rutherford Cab reference.",
+    "wine_name": "Georges de Latour Private Reserve"
+   },
+   {
+    "note": "Bordeaux-style blend.",
+    "wine_name": "Tapestry Reserve"
+   }
+  ],
+  "producer": "Beaulieu Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic reference Cab.",
+    "wine_name": "Georges de Latour Private Reserve"
+   },
+   {
+    "note": "Bordeaux blend.",
+    "wine_name": "Tapestry Reserve"
+   }
+  ],
+  "producer": "Beaulieu Vineyard Rutherford"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top single-vineyard.",
+    "wine_name": "Lily Hill Estate Zinfandel"
+   },
+   {
+    "note": "Old-vine single-vineyard.",
+    "wine_name": "Big River Ranch Zinfandel"
+   }
+  ],
+  "producer": "Bella Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Block-specific bottlings.",
+    "wine_name": "Hermitage"
+   }
+  ],
+  "producer": "Bernard Faurie"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate single-vineyard Syrah.",
+    "wine_name": "Rattlesnake Rock Syrah"
+   },
+   {
+    "note": "Top single-vineyard Pinot.",
+    "wine_name": "Coastview Pinot Noir"
+   },
+   {
+    "note": "Estate Rhone variety.",
+    "wine_name": "Old Corral Mourvedre"
+   }
+  ],
+  "producer": "Big Basin Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Brunello di Montalcino Tenuta Greppo"
+   },
+   {
+    "note": "Only in declared years; built to age 50+ years.",
+    "wine_name": "Brunello di Montalcino Riserva"
+   }
+  ],
+  "producer": "Biondi-Santi"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Kite's Rest Pinot Noir"
+   },
+   {
+    "note": "Top single-block selection.",
+    "wine_name": "River Turn Pinot Noir"
+   }
+  ],
+  "producer": "Black Kite Cellars"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine Howell Mountain Zin.",
+    "wine_name": "Estate Zinfandel"
+   },
+   {
+    "note": "Estate Cab.",
+    "wine_name": "Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Black Sears Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Vintage cuvee in barrel.",
+    "wine_name": "La Grande Annee"
+   },
+   {
+    "note": "Late-disgorged Grande Annee with extra autolysis.",
+    "wine_name": "RD"
+   },
+   {
+    "note": "Ungrafted Pinot Noir from three tiny plots.",
+    "wine_name": "Vieilles Vignes Francaises"
+   }
+  ],
+  "producer": "Bollinger"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard Cabernet.",
+    "wine_name": "Vecina"
+   },
+   {
+    "note": "Single-vineyard Cabernet.",
+    "wine_name": "Melbury"
+   },
+   {
+    "note": "Single-vineyard Cabernet.",
+    "wine_name": "St. Eden"
+   }
+  ],
+  "producer": "Bond Estates"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cotes du Rhone-style flagship blend.",
+    "wine_name": "Le Cigare Volant"
+   },
+   {
+    "note": "Provence-style rose.",
+    "wine_name": "Vin Gris de Cigare"
+   }
+  ],
+  "producer": "Bonny Doon Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Mourvedre-based blend.",
+    "wine_name": "Tempted"
+   },
+   {
+    "note": "Top Syrah.",
+    "wine_name": "Fracture Syrah"
+   },
+   {
+    "note": "Grenache-led blend.",
+    "wine_name": "Vertigo"
+   }
+  ],
+  "producer": "Booker Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reliable estate flagship.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Cool-climate Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Bouchaine Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "3D Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "Mt. Carmel Pinot Noir"
+   },
+   {
+    "note": "Appellation blend.",
+    "wine_name": "Sta. Rita Hills Chardonnay"
+   }
+  ],
+  "producer": "Brewer-Clifton"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Only in great years.",
+    "wine_name": "Barolo Falletto Riserva"
+   },
+   {
+    "note": "Cru bottling.",
+    "wine_name": "Barolo Le Rocche del Falletto"
+   }
+  ],
+  "producer": "Bruno Giacosa"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Only in great years.",
+    "wine_name": "Barbaresco Asili Riserva"
+   },
+   {
+    "note": "Cru bottling.",
+    "wine_name": "Barbaresco Rabaja"
+   }
+  ],
+  "producer": "Bruno Giacosa Barbaresco"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Classical Gran Reserva.",
+    "wine_name": "Imperial Gran Reserva"
+   },
+   {
+    "note": "Modern-classical top Reserva.",
+    "wine_name": "Real de Asua"
+   }
+  ],
+  "producer": "CVNE (Compania Vinicola del Norte de Espana)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure cru expression.",
+    "wine_name": "Barbaresco Asili"
+   },
+   {
+    "note": "Cru bottling.",
+    "wine_name": "Barbaresco Vallegrande"
+   }
+  ],
+  "producer": "Ca' del Baio"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Howell Mountain Reserve Cabernet"
+   },
+   {
+    "note": "Hillside flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Cade Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Five-grape estate flagship.",
+    "wine_name": "Cain Five"
+   },
+   {
+    "note": "Mountain-floor blend.",
+    "wine_name": "Cain Concept"
+   },
+   {
+    "note": "Multi-vintage blend.",
+    "wine_name": "Cain Cuvee NV"
+   }
+  ],
+  "producer": "Cain Vineyard & Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Napa Chardonnay.",
+    "wine_name": "Chardonnay"
+   }
+  ],
+  "producer": "Cakebread Cellars"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cru bottling.",
+    "wine_name": "Barbaresco Ovello"
+   }
+  ],
+  "producer": "Cantina del Pino"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate single-vineyard.",
+    "wine_name": "Tenuta Nuova"
+   },
+   {
+    "note": "Single-vineyard top cuvee.",
+    "wine_name": "Cerretalto"
+   }
+  ],
+  "producer": "Casanova di Neri"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Special Selection Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Napa Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Caymus Vineyards Rutherford"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure, traditional style.",
+    "wine_name": "Brunello di Montalcino"
+   }
+  ],
+  "producer": "Cerbaiona"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure Cab character; built to age.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Approachable second wine.",
+    "wine_name": "Lacoste-Borie"
+   }
+  ],
+  "producer": "Chateau Grand-Puy-Lacoste"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Bold, structured Pomerol.",
+    "wine_name": "L'Evangile"
+   }
+  ],
+  "producer": "Chateau L'Evangile"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Floral, elegant Merlot blend.",
+    "wine_name": "La Conseillante"
+   }
+  ],
+  "producer": "Chateau La Conseillante"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Roughly 90% Cabernet Sauvignon; ethereal in great years.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Second wine; earlier-drinking expression.",
+    "wine_name": "Carruades de Lafite"
+   }
+  ],
+  "producer": "Chateau Lafite Rothschild"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Roughly 50/50 Merlot-Cab Franc.",
+    "wine_name": "Lafleur"
+   },
+   {
+    "note": "Second wine of substance.",
+    "wine_name": "Pensees de Lafleur"
+   }
+  ],
+  "producer": "Chateau Lafleur"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-dominant, ex-chateau release program since 2012.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Second wine of substance.",
+    "wine_name": "Les Forts de Latour"
+   },
+   {
+    "note": "Third label; estate-grown.",
+    "wine_name": "Pauillac de Latour"
+   }
+  ],
+  "producer": "Chateau Latour"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Dark-fruited, expressive Cab blend.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Second wine.",
+    "wine_name": "Echo de Lynch-Bages"
+   }
+  ],
+  "producer": "Chateau Lynch-Bages"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Long-lived classical Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "1976 Paris-winning Chardonnay heritage.",
+    "wine_name": "Chardonnay"
+   },
+   {
+    "note": "Old-vine reference.",
+    "wine_name": "Zinfandel"
+   }
+  ],
+  "producer": "Chateau Montelena"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Artist-label release each vintage.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Second wine; expressive, accessible earlier.",
+    "wine_name": "Le Petit Mouton"
+   }
+  ],
+  "producer": "Chateau Mouton Rothschild"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Concentrated, classically Pauillac.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Second wine; Merlot-leaning.",
+    "wine_name": "Les Tourelles de Longueville"
+   }
+  ],
+  "producer": "Chateau Pichon Baron"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Silky, aromatic Cab-Merlot blend.",
+    "wine_name": "Grand Vin"
+   },
+   {
+    "note": "Reliable second label.",
+    "wine_name": "Reserve de la Comtesse"
+   }
+  ],
+  "producer": "Chateau Pichon-Longueville Comtesse de Lalande"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure, mineral, biodynamic Cabernet.",
+    "wine_name": "Grand Vin"
+   }
+  ],
+  "producer": "Chateau Pontet-Canet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pale, perfumed, Burgundian Grenache.",
+    "wine_name": "Chateauneuf-du-Pape Rouge"
+   },
+   {
+    "note": "Sibling cuvee from nearby plot.",
+    "wine_name": "Pignan"
+   }
+  ],
+  "producer": "Chateau Rayas"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Dense, structured Merlot-led blend.",
+    "wine_name": "Trotanoy"
+   }
+  ],
+  "producer": "Chateau Trotanoy"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference blend.",
+    "wine_name": "Beaucastel Rouge"
+   },
+   {
+    "note": "Old-vine white.",
+    "wine_name": "Beaucastel Blanc Roussanne VV"
+   }
+  ],
+  "producer": "Chateau de Beaucastel"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine Merlot with Cab Franc accent.",
+    "wine_name": "L'Eglise-Clinet"
+   },
+   {
+    "note": "Second wine.",
+    "wine_name": "La Petite Eglise"
+   }
+  ],
+  "producer": "Chateau l'Eglise-Clinet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block top selection.",
+    "wine_name": "Tomahawk Vineyard Cabernet"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Stags Leap District Cabernet"
+   },
+   {
+    "note": "Bordeaux-style blend.",
+    "wine_name": "Elevage"
+   }
+  ],
+  "producer": "Chimney Rock Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Poetry Cabernet Sauvignon"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Stags Leap District Cabernet"
+   }
+  ],
+  "producer": "Cliff Lede Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Hirondelle Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Bordeaux-style blend.",
+    "wine_name": "Three Graces"
+   }
+  ],
+  "producer": "Clos Du Val"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Field-blend style.",
+    "wine_name": "Chateauneuf-du-Pape Rouge"
+   },
+   {
+    "note": "Among the appellation's top whites.",
+    "wine_name": "Chateauneuf-du-Pape Blanc"
+   }
+  ],
+  "producer": "Clos des Papes"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Tous Ensemble Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Kiser Vineyard Pinot Noir"
+   },
+   {
+    "note": "Cool-climate AV Syrah.",
+    "wine_name": "Syrah"
+   }
+  ],
+  "producer": "Copain Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Chardonnay"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Reserve Chardonnay"
+   },
+   {
+    "note": "Reliable Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   }
+  ],
+  "producer": "Cuvaison Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-Cab Franc reference.",
+    "wine_name": "Maya"
+   },
+   {
+    "note": "Hillside flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Dalla Valle Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led estate flagship.",
+    "wine_name": "Soul of a Lion"
+   },
+   {
+    "note": "Reliable estate Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Top selection bottling.",
+    "wine_name": "Patrimony Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Daou Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Hillside flagship.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Old-vine reference.",
+    "wine_name": "Old Vine Zinfandel"
+   }
+  ],
+  "producer": "David Bruce Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Goldridge Vineyard Pinot Noir"
+   },
+   {
+    "note": "Old-vine selection.",
+    "wine_name": "Octagon Pinot Noir"
+   },
+   {
+    "note": "Cool-climate California Syrah.",
+    "wine_name": "Estate Syrah"
+   }
+  ],
+  "producer": "Dehlinger Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Rhone-style flagship.",
+    "wine_name": "The Ditch Digger"
+   },
+   {
+    "note": "Mourvedre-led blend.",
+    "wine_name": "Theresa"
+   },
+   {
+    "note": "Estate Cab.",
+    "wine_name": "Mother of Exiles Cabernet"
+   }
+  ],
+  "producer": "Denner Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Roughly 50/50 Chardonnay-Pinot, oak-influenced finesse.",
+    "wine_name": "Vintage Brut"
+   },
+   {
+    "note": "Second-life release after ~16 years on lees.",
+    "wine_name": "P2"
+   },
+   {
+    "note": "Pinot-rich, gastronomic.",
+    "wine_name": "Rose"
+   }
+  ],
+  "producer": "Dom Perignon"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Polished Clos Vougeot.",
+    "wine_name": "Clos Vougeot Le Grand Maupertui Grand Cru"
+   },
+   {
+    "note": "Floral, gentle.",
+    "wine_name": "Echezeaux Grand Cru"
+   }
+  ],
+  "producer": "Domaine Anne Gros"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Solid traditional style.",
+    "wine_name": "Hermitage"
+   }
+  ],
+  "producer": "Domaine Belle"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Whole-bunch fermented classic.",
+    "wine_name": "La Chavaroche"
+   }
+  ],
+  "producer": "Domaine Bernard Levet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Floral premier cru.",
+    "wine_name": "Chambolle-Musigny Les Charmes 1er Cru"
+   }
+  ],
+  "producer": "Domaine Bertheau-Gerbet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Prestige cuvee sparkling.",
+    "wine_name": "Le Reve Blanc de Blancs"
+   },
+   {
+    "note": "Reliable house rose sparkling.",
+    "wine_name": "Brut Rose"
+   },
+   {
+    "note": "Estate still Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   }
+  ],
+  "producer": "Domaine Carneros (by Taittinger)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine lieu-dit.",
+    "wine_name": "Les Grandes Places"
+   }
+  ],
+  "producer": "Domaine Clusel-Roch"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "7.2 ha of old-vine Musigny.",
+    "wine_name": "Musigny Vieilles Vignes Grand Cru"
+   },
+   {
+    "note": "Structured, age-worthy.",
+    "wine_name": "Bonnes-Mares Grand Cru"
+   }
+  ],
+  "producer": "Domaine Comte Georges de Vogue"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Premier cru, grand cru in all but name.",
+    "wine_name": "Vosne-Romanee Cros Parantoux 1er Cru"
+   },
+   {
+    "note": "Powerful, balanced.",
+    "wine_name": "Echezeaux Grand Cru"
+   }
+  ],
+  "producer": "Domaine Emmanuel Rouget"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "0.1 ha; one of the rarest wines on earth.",
+    "wine_name": "Musigny Grand Cru"
+   },
+   {
+    "note": "Reference Bonnes-Mares.",
+    "wine_name": "Bonnes-Mares Grand Cru"
+   },
+   {
+    "note": "Premier cru of Grand Cru caliber.",
+    "wine_name": "Chambolle-Musigny Les Amoureuses 1er Cru"
+   }
+  ],
+  "producer": "Domaine Georges & Christophe Roumier"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Floral, structured.",
+    "wine_name": "Chambolle-Musigny Les Cras 1er Cru"
+   },
+   {
+    "note": "Powerful premier cru.",
+    "wine_name": "Chambolle-Musigny Les Veroilles 1er Cru"
+   }
+  ],
+  "producer": "Domaine Ghislaine Barthod"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Stunning Grand Cru.",
+    "wine_name": "Romanee-Saint-Vivant Grand Cru"
+   },
+   {
+    "note": "Structured.",
+    "wine_name": "Richebourg Grand Cru"
+   }
+  ],
+  "producer": "Domaine Hudelot-Noellat"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Ethereal.",
+    "wine_name": "Musigny Grand Cru"
+   },
+   {
+    "note": "Floral, transparent.",
+    "wine_name": "Chambolle-Musigny Les Amoureuses 1er Cru"
+   },
+   {
+    "note": "Until 2003 only; later sold.",
+    "wine_name": "Bonnes-Mares Grand Cru"
+   }
+  ],
+  "producer": "Domaine Jacques-Frederic Mugnier"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure Cote Brune cuvee.",
+    "wine_name": "Cote-Rotie Cote Brune"
+   },
+   {
+    "note": "Field-blend of all parcels.",
+    "wine_name": "Cote-Rotie"
+   }
+  ],
+  "producer": "Domaine Jamet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Aromatic Syrah-Viognier classic.",
+    "wine_name": "Cote-Rotie"
+   }
+  ],
+  "producer": "Domaine Jasmin"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Tiny production; the rarest red Burgundy.",
+    "wine_name": "Musigny Grand Cru"
+   },
+   {
+    "note": "Concentrated, layered.",
+    "wine_name": "Richebourg Grand Cru"
+   }
+  ],
+  "producer": "Domaine Leroy"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine flagship.",
+    "wine_name": "Hermitage Le Greal"
+   },
+   {
+    "note": "Top old-vine white.",
+    "wine_name": "Hermitage Blanc Les Rocoules"
+   }
+  ],
+  "producer": "Domaine Marc Sorrel"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old vines; aromatically pure.",
+    "wine_name": "Vosne-Romanee Vieilles Vignes"
+   }
+  ],
+  "producer": "Domaine Mejan-Taulier / Mejan"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Spicy, dark-fruited premier cru.",
+    "wine_name": "Vosne-Romanee Aux Brulees 1er Cru"
+   },
+   {
+    "note": "Power and grace combined.",
+    "wine_name": "Richebourg Grand Cru"
+   }
+  ],
+  "producer": "Domaine Meo-Camuzet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Structured, age-worthy.",
+    "wine_name": "Grands-Echezeaux Grand Cru"
+   },
+   {
+    "note": "Polished and consistent.",
+    "wine_name": "Echezeaux Grand Cru"
+   }
+  ],
+  "producer": "Domaine Mongeard-Mugneret"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine flagship.",
+    "wine_name": "Belle Helene"
+   },
+   {
+    "note": "Single-block.",
+    "wine_name": "La Belle Helene Cote Brune"
+   }
+  ],
+  "producer": "Domaine Stephane Ogier"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Among the top premier crus of Vosne.",
+    "wine_name": "Vosne-Romanee Aux Malconsorts 1er Cru"
+   },
+   {
+    "note": "Floral, layered Grand Cru.",
+    "wine_name": "Romanee-Saint-Vivant Grand Cru"
+   }
+  ],
+  "producer": "Domaine Sylvain Cathiard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block reference.",
+    "wine_name": "Bloom's Field Pinot Noir"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "La Cote Pinot Noir"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Memorious Pinot Noir"
+   }
+  ],
+  "producer": "Domaine de la Cote"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine flagship.",
+    "wine_name": "Cuvee XXL"
+   },
+   {
+    "note": "Old-vine cuvee.",
+    "wine_name": "Vieilles Vignes"
+   }
+  ],
+  "producer": "Domaine de la Janasse"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "1.8 ha monopole; ~450 cases/yr.",
+    "wine_name": "Romanee-Conti Grand Cru"
+   },
+   {
+    "note": "6 ha monopole; powerful sibling of RC.",
+    "wine_name": "La Tache Grand Cru"
+   },
+   {
+    "note": "Muscular, perfumed Grand Cru.",
+    "wine_name": "Richebourg Grand Cru"
+   }
+  ],
+  "producer": "Domaine de la Romanee-Conti (DRC)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "0.85 ha monopole; ethereal.",
+    "wine_name": "La Romanee Grand Cru"
+   },
+   {
+    "note": "Premier cru of grand-cru caliber.",
+    "wine_name": "Vosne-Romanee Aux Reignots 1er Cru"
+   }
+  ],
+  "producer": "Domaine du Comte Liger-Belair"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Only declared in great years.",
+    "wine_name": "Cuvee da Capo"
+   },
+   {
+    "note": "Reference traditional CdP.",
+    "wine_name": "Cuvee Reservee"
+   }
+  ],
+  "producer": "Domaine du Pegau"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference traditional CdP.",
+    "wine_name": "La Crau Rouge"
+   }
+  ],
+  "producer": "Domaine du Vieux Telegraphe"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led; classical structure.",
+    "wine_name": "Dominus"
+   },
+   {
+    "note": "Second wine.",
+    "wine_name": "Napanook"
+   }
+  ],
+  "producer": "Dominus Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Field Selections Pinot Noir"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Faite Pinot Noir"
+   },
+   {
+    "note": "Cool-climate Syrah.",
+    "wine_name": "Valenti Vineyard Syrah"
+   }
+  ],
+  "producer": "Drew Family Cellars"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine field-blend.",
+    "wine_name": "Heritage Vines Zinfandel"
+   },
+   {
+    "note": "Reliable oaked SB.",
+    "wine_name": "Fume Blanc"
+   }
+  ],
+  "producer": "Dry Creek Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship; built to age 50+ years.",
+    "wine_name": "Howell Mountain Cabernet Sauvignon"
+   },
+   {
+    "note": "Slightly more accessible bottling.",
+    "wine_name": "Napa Valley Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Dunn Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top cuvee from purchased fruit.",
+    "wine_name": "Hermitage Ex-Voto Rouge"
+   },
+   {
+    "note": "Marsanne-Roussanne blend, age-worthy.",
+    "wine_name": "Hermitage Ex-Voto Blanc"
+   }
+  ],
+  "producer": "E. Guigal Hermitage"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine Pinot Noir from a single plot.",
+    "wine_name": "Les Crayeres VV"
+   },
+   {
+    "note": "Reference NV; long lees aging.",
+    "wine_name": "Brut Tradition Grand Cru"
+   },
+   {
+    "note": "Vintage cuvee, deep and structured.",
+    "wine_name": "Millesime Grand Cru"
+   }
+  ],
+  "producer": "Egly-Ouriet"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship; pre-phylloxera site since 1971.",
+    "wine_name": "Eisele Vineyard Cabernet Sauvignon"
+   },
+   {
+    "note": "Second wine of substance.",
+    "wine_name": "Altagracia"
+   },
+   {
+    "note": "Estate-grown.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Eisele Vineyard Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Heirloom Pinot Noir"
+   },
+   {
+    "note": "Reliable estate Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Grace Benoist Ranch Pinot Noir"
+   }
+  ],
+  "producer": "Etude Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Estate Pinot Noir Hirsch Vineyard"
+   },
+   {
+    "note": "Single-vineyard RRV.",
+    "wine_name": "Estate Pinot Noir Keefer Ranch"
+   },
+   {
+    "note": "Cool-climate Syrah.",
+    "wine_name": "Estate Syrah"
+   }
+  ],
+  "producer": "Failla Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Oakville-Coombsville blend.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Napa Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Far Niente"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate single-vineyard reference.",
+    "wine_name": "Camp Meeting Ridge Chardonnay"
+   },
+   {
+    "note": "Estate Pinot reference.",
+    "wine_name": "Camp Meeting Ridge Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Sea View Ridge Chardonnay"
+   }
+  ],
+  "producer": "Flowers Vineyards & Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Restrained classical Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Among Napa's best Merlots.",
+    "wine_name": "Merlot"
+   },
+   {
+    "note": "Reliable white.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Frog's Leap"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "Sori San Lorenzo"
+   }
+  ],
+  "producer": "Gaja"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Classical, long-aged.",
+    "wine_name": "Barolo Riserva"
+   },
+   {
+    "note": "Single-cru bottling.",
+    "wine_name": "Barolo Liste"
+   }
+  ],
+  "producer": "Giacomo Borgogno"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Brunate blend.",
+    "wine_name": "Barolo Brunate"
+   },
+   {
+    "note": "Ravera-Cannubi-Le Coste blend.",
+    "wine_name": "Barolo Tre Tine"
+   }
+  ],
+  "producer": "Giuseppe Rinaldi"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Ten Degrees Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Confluence Vineyard Pinot Noir"
+   },
+   {
+    "note": "Reliable estate Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   }
+  ],
+  "producer": "Goldeneye (Duckhorn)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Groth Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top reserve.",
+    "wine_name": "Bismark Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable estate Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Hanna Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led Bordeaux blend.",
+    "wine_name": "Harlan Estate Proprietary Red"
+   },
+   {
+    "note": "Second wine of substance.",
+    "wine_name": "The Maiden"
+   }
+  ],
+  "producer": "Harlan Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic Oakville single-vineyard.",
+    "wine_name": "Martha's Vineyard Cabernet Sauvignon"
+   },
+   {
+    "note": "Single-vineyard Rutherford.",
+    "wine_name": "Bella Oaks Vineyard Cabernet"
+   },
+   {
+    "note": "Single-vineyard Rutherford.",
+    "wine_name": "Trailside Vineyard Cabernet"
+   }
+  ],
+  "producer": "Heitz Cellar"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Long-aged in cask before release.",
+    "wine_name": "Reserve des Celestins"
+   },
+   {
+    "note": "Classical bottling.",
+    "wine_name": "Cuvee Marie Beurrier"
+   }
+  ],
+  "producer": "Henri Bonneau"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "Hirsch Estate Pinot Noir"
+   },
+   {
+    "note": "Single-block selection.",
+    "wine_name": "San Andreas Fault Pinot Noir"
+   },
+   {
+    "note": "Cool-climate Chardonnay.",
+    "wine_name": "Reserve Chardonnay"
+   }
+  ],
+  "producer": "Hirsch Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Burgundian collaboration with Aubert de Villaine.",
+    "wine_name": "Hyde de Villaine (HdV) Chardonnay"
+   },
+   {
+    "note": "Estate Pinot collaboration.",
+    "wine_name": "HdV Pinot Noir"
+   },
+   {
+    "note": "Cool-climate Syrah.",
+    "wine_name": "HdV Syrah"
+   }
+  ],
+  "producer": "Hyde Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Classical balance.",
+    "wine_name": "Brunello di Montalcino"
+   },
+   {
+    "note": "Single-vineyard Riserva.",
+    "wine_name": "Riserva Vigna Paganelli"
+   }
+  ],
+  "producer": "Il Poggione"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led Bordeaux blend reference.",
+    "wine_name": "Rubicon"
+   },
+   {
+    "note": "Traditional release.",
+    "wine_name": "Cask Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Inglenook"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Solera started 1986; profound depth.",
+    "wine_name": "Substance"
+   },
+   {
+    "note": "Entry into the Selosse style; oxidative, gastronomic.",
+    "wine_name": "Initial"
+   },
+   {
+    "note": "Six single sites expressing terroir.",
+    "wine_name": "Lieux-Dits"
+   }
+  ],
+  "producer": "Jacques Selosse"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Field-blend across hill's parcels.",
+    "wine_name": "Hermitage Rouge"
+   },
+   {
+    "note": "Marsanne-Roussanne; one of France's great whites.",
+    "wine_name": "Hermitage Blanc"
+   },
+   {
+    "note": "Single-cuvee from old vines, only declared in great years.",
+    "wine_name": "Cuvee Cathelin"
+   }
+  ],
+  "producer": "Jean-Louis Chave"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard old-vine cuvee.",
+    "wine_name": "Les Grandes Places"
+   }
+  ],
+  "producer": "Jean-Michel Gerin"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Refined classical Cab.",
+    "wine_name": "Cabernet Sauvignon"
+   },
+   {
+    "note": "Restrained Russian River Chardonnay.",
+    "wine_name": "Chardonnay"
+   }
+  ],
+  "producer": "Jordan Vineyard & Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led Bordeaux blend; reference Napa wine.",
+    "wine_name": "Insignia"
+   },
+   {
+    "note": "Single-vineyard Oakville.",
+    "wine_name": "Backus Vineyard Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Joseph Phelps Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine single-vineyard.",
+    "wine_name": "Trenton Estate Pinot Noir"
+   },
+   {
+    "note": "Old-vine field-blend Zin.",
+    "wine_name": "Zinfandel Trenton Estate"
+   }
+  ],
+  "producer": "Joseph Swan Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led Bordeaux blend reference.",
+    "wine_name": "Isosceles"
+   },
+   {
+    "note": "Cab Franc-Merlot blend.",
+    "wine_name": "Justification"
+   }
+  ],
+  "producer": "Justin Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "Kistler Vineyard Chardonnay"
+   },
+   {
+    "note": "Old-vine selection.",
+    "wine_name": "Cuvee Cathleen Chardonnay"
+   },
+   {
+    "note": "Top Pinot selection.",
+    "wine_name": "Pinot Noir Cuvee Catherine"
+   }
+  ],
+  "producer": "Kistler Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard RRV.",
+    "wine_name": "Keefer Ranch Pinot Noir"
+   },
+   {
+    "note": "Blended RRV reference.",
+    "wine_name": "Russian River Valley Appellation"
+   },
+   {
+    "note": "Top selection from best lots.",
+    "wine_name": "4-Barrel Pinot Noir"
+   }
+  ],
+  "producer": "Kosta Browne"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-Syrah-Petit Verdot blend.",
+    "wine_name": "Optimus"
+   },
+   {
+    "note": "Top selection from best blocks.",
+    "wine_name": "Estate Cuvee"
+   },
+   {
+    "note": "Rhone-style blend.",
+    "wine_name": "Cote a Cote"
+   }
+  ],
+  "producer": "L'Aventure Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "W.S. Keyes Vineyard Cabernet"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Howell Mountain Cabernet Sauvignon"
+   }
+  ],
+  "producer": "La Jota Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference traditional Gran Reserva.",
+    "wine_name": "Gran Reserva 904"
+   },
+   {
+    "note": "Top cuvee; only in great years.",
+    "wine_name": "Gran Reserva 890"
+   }
+  ],
+  "producer": "La Rioja Alta"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard cru.",
+    "wine_name": "Barbaresco Starderi"
+   },
+   {
+    "note": "Cru bottling.",
+    "wine_name": "Barbaresco Gallina"
+   }
+  ],
+  "producer": "La Spinetta"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led Howell-Yountville blend.",
+    "wine_name": "J. Daniel Cuvee"
+   },
+   {
+    "note": "Single-vineyard Howell Mountain top selection.",
+    "wine_name": "Mole Hill Cabernet Sauvignon"
+   },
+   {
+    "note": "Among Napa's top whites.",
+    "wine_name": "Georgia Sauvignon Blanc"
+   }
+  ],
+  "producer": "Lail Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Bordeaux-style blend.",
+    "wine_name": "Crane Creek Cuvee"
+   },
+   {
+    "note": "Estate flagship Zin.",
+    "wine_name": "Estate Zinfandel"
+   }
+  ],
+  "producer": "Lambert Bridge Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Top selection blend.",
+    "wine_name": "Sophia's Hillside Cuvee"
+   }
+  ],
+  "producer": "Lancaster Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block estate flagship.",
+    "wine_name": "Solari Cabernet Sauvignon"
+   },
+   {
+    "note": "Top selection in great years.",
+    "wine_name": "The Lark Cabernet Sauvignon"
+   },
+   {
+    "note": "Merlot-led Bordeaux blend.",
+    "wine_name": "Firebelle"
+   }
+  ],
+  "producer": "Larkmead Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Tiny production; cult status.",
+    "wine_name": "Le Pin"
+   }
+  ],
+  "producer": "Le Pin"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reliable, classical.",
+    "wine_name": "Chateauneuf-du-Pape Rouge"
+   }
+  ],
+  "producer": "Le Vieux Donjon"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Restrained estate Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Estate sparkling.",
+    "wine_name": "Sparkling Brut Rose"
+   }
+  ],
+  "producer": "Lichen Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Zin-based blend reference.",
+    "wine_name": "Cherry Red"
+   },
+   {
+    "note": "Rhone-based blend.",
+    "wine_name": "Outsider"
+   },
+   {
+    "note": "Mourvedre-based blend.",
+    "wine_name": "Problem Child"
+   }
+  ],
+  "producer": "Linne Calodo"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "White Hill Chardonnay"
+   },
+   {
+    "note": "Estate blend.",
+    "wine_name": "Golden Slope Chardonnay"
+   }
+  ],
+  "producer": "Liquid Farm"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "The Pivot Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Hirsch Vineyard Pinot Noir"
+   },
+   {
+    "note": "RRV reference Chardonnay.",
+    "wine_name": "Mays Canyon Chardonnay"
+   }
+  ],
+  "producer": "Littorai Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pinot-Chardonnay blend, certified biodynamic since 2012.",
+    "wine_name": "Cristal"
+   },
+   {
+    "note": "Saignee method; only made in great years.",
+    "wine_name": "Cristal Rose"
+   },
+   {
+    "note": "Replaced Brut Premier; multi-vintage solera approach.",
+    "wine_name": "Collection"
+   }
+  ],
+  "producer": "Louis Roederer"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine top of the hill.",
+    "wine_name": "Hermitage L'Ermite"
+   },
+   {
+    "note": "Pre-phylloxera plot reference.",
+    "wine_name": "Hermitage Le Pavillon"
+   },
+   {
+    "note": "Concentrated single block.",
+    "wine_name": "Hermitage Le Meal"
+   }
+  ],
+  "producer": "M. Chapoutier"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Perfumed grand cru.",
+    "wine_name": "Musigny Grand Cru"
+   },
+   {
+    "note": "Classic premier cru.",
+    "wine_name": "Chambolle-Musigny Les Amoureuses 1er Cru"
+   }
+  ],
+  "producer": "Maison Joseph Drouhin"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Concentrated, ageworthy.",
+    "wine_name": "Marcassin Vineyard Chardonnay"
+   },
+   {
+    "note": "Single-vineyard cult Pinot.",
+    "wine_name": "Three Sisters Pinot Noir"
+   }
+  ],
+  "producer": "Marcassin"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate Pinot reference.",
+    "wine_name": "Marcassin Vineyard Pinot Noir"
+   },
+   {
+    "note": "Estate Chardonnay reference.",
+    "wine_name": "Marcassin Vineyard Chardonnay"
+   }
+  ],
+  "producer": "Marcassin Sonoma Coast"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard monopole.",
+    "wine_name": "Barbaresco Martinenga"
+   },
+   {
+    "note": "Top of the monopole.",
+    "wine_name": "Camp Gros Martinenga Riserva"
+   }
+  ],
+  "producer": "Marchesi di Gresy"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Long-aged top cuvee.",
+    "wine_name": "Castillo Ygay Gran Reserva Especial"
+   },
+   {
+    "note": "Modern-style top Reserva.",
+    "wine_name": "Dalmau Reserva"
+   }
+  ],
+  "producer": "Marques de Murrieta"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "High-elevation single-vineyard.",
+    "wine_name": "Rockpile Zinfandel"
+   },
+   {
+    "note": "Old-vine single-vineyard.",
+    "wine_name": "Cemetery Vineyard Zinfandel"
+   }
+  ],
+  "producer": "Mauritson Family Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block selection.",
+    "wine_name": "Estate Pinot Noir Block M"
+   },
+   {
+    "note": "Unoaked Chardonnay.",
+    "wine_name": "Estate Chardonnay Inox"
+   },
+   {
+    "note": "Cool-climate Syrah.",
+    "wine_name": "Estate Syrah Donna's"
+   }
+  ],
+  "producer": "Melville Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Meredith Estate Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Klopp Ranch Pinot Noir"
+   },
+   {
+    "note": "Reference oaked California SB.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Merry Edwards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine hillside Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Old-vine reference.",
+    "wine_name": "Estate Chardonnay"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Mount Eden Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference California Gewurz.",
+    "wine_name": "Estate Gewurztraminer"
+   },
+   {
+    "note": "Reference dessert Riesling.",
+    "wine_name": "Cluster Select Late Harvest Riesling"
+   },
+   {
+    "note": "Restrained estate Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   }
+  ],
+  "producer": "Navarro Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference unfiltered California Chardonnay.",
+    "wine_name": "Unfiltered Chardonnay"
+   },
+   {
+    "note": "Top Bordeaux blend.",
+    "wine_name": "Puzzle"
+   },
+   {
+    "note": "Hillside Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Newton Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Howell Mountain Cabernet Sauvignon"
+   },
+   {
+    "note": "Sister vineyard.",
+    "wine_name": "Mount Veeder Cabernet Sauvignon"
+   }
+  ],
+  "producer": "O'Shaughnessy Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard estate flagship.",
+    "wine_name": "True Vineyard Cabernet Sauvignon"
+   },
+   {
+    "note": "Old-vine reference.",
+    "wine_name": "Howell Mountain Zinfandel"
+   }
+  ],
+  "producer": "Outpost Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic top cuvee.",
+    "wine_name": "Hermitage La Chapelle"
+   }
+  ],
+  "producer": "Paul Jaboulet Aine"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship Pinot.",
+    "wine_name": "Pomarium Pinot Noir"
+   },
+   {
+    "note": "Cool-climate reference.",
+    "wine_name": "Estate Chardonnay"
+   },
+   {
+    "note": "Cool-climate California Syrah.",
+    "wine_name": "Les Titans Syrah"
+   }
+  ],
+  "producer": "Peay Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single grand vin; no second wine.",
+    "wine_name": "Petrus"
+   }
+  ],
+  "producer": "Petrus"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection Cab.",
+    "wine_name": "Fortis Stags Leap District"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Stags Leap District Cabernet"
+   }
+  ],
+  "producer": "Pine Ridge Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top estate selection.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Oakville Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Plumpjack Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Polished Brunello reference.",
+    "wine_name": "Brunello di Montalcino"
+   },
+   {
+    "note": "Only in great years.",
+    "wine_name": "Brunello Riserva"
+   }
+  ],
+  "producer": "Poggio di Sotto"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Vintage prestige cuvee, Pinot-dominant.",
+    "wine_name": "Cuvee Sir Winston Churchill"
+   },
+   {
+    "note": "Reliable benchmark vintage Champagne.",
+    "wine_name": "Brut Vintage"
+   },
+   {
+    "note": "House NV with notable consistency.",
+    "wine_name": "Brut Reserve NV"
+   }
+  ],
+  "producer": "Pol Roger"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine field blend.",
+    "wine_name": "Estate Zinfandel"
+   },
+   {
+    "note": "Rhone-style estate white.",
+    "wine_name": "Madam Preston"
+   }
+  ],
+  "producer": "Preston Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection from best blocks.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   },
+   {
+    "note": "Hillside flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Cab Franc-led Bordeaux blend.",
+    "wine_name": "Reserve Claret"
+   }
+  ],
+  "producer": "Pride Mountain Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference cru bottling.",
+    "wine_name": "Barbaresco Riserva Asili"
+   },
+   {
+    "note": "Structured cru.",
+    "wine_name": "Barbaresco Riserva Rabaja"
+   },
+   {
+    "note": "Powerful cru.",
+    "wine_name": "Barbaresco Riserva Montestefano"
+   }
+  ],
+  "producer": "Produttori del Barbaresco"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-cuvee estate flagship.",
+    "wine_name": "Promontory"
+   }
+  ],
+  "producer": "Promontory"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Bordeaux-style estate flagship.",
+    "wine_name": "Quintessa"
+   },
+   {
+    "note": "Among Napa's best whites.",
+    "wine_name": "Illumination Sauvignon Blanc"
+   }
+  ],
+  "producer": "Quintessa"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top reserve Zin.",
+    "wine_name": "Black Boar Zinfandel"
+   },
+   {
+    "note": "Estate-grown reference.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Quivira Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Released only after decade-plus aging.",
+    "wine_name": "Vina Tondonia Gran Reserva"
+   },
+   {
+    "note": "Pinot-Burgundian style.",
+    "wine_name": "Vina Bosconia Reserva"
+   },
+   {
+    "note": "Long-aged white; reference.",
+    "wine_name": "Vina Tondonia Blanco Reserva"
+   }
+  ],
+  "producer": "R. Lopez de Heredia (Vina Tondonia)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top of the range.",
+    "wine_name": "Reserva"
+   },
+   {
+    "note": "Old-vine bottling.",
+    "wine_name": "Trasnocho"
+   }
+  ],
+  "producer": "Remirez de Ganuza"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cote Brune power.",
+    "wine_name": "La Landonne"
+   },
+   {
+    "note": "More aromatic, Viognier-influenced.",
+    "wine_name": "Cote Blonde"
+   }
+  ],
+  "producer": "Rene Rostaing"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship Pinot.",
+    "wine_name": "Alpine Vineyard Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Skyline Vineyard Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard reference Chardonnay.",
+    "wine_name": "Horseshoe Vineyard Chardonnay"
+   }
+  ],
+  "producer": "Rhys Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Zin-led field blend; reference DCV wine.",
+    "wine_name": "Lytton Springs"
+   },
+   {
+    "note": "Alexander Valley sibling field blend.",
+    "wine_name": "Geyserville"
+   }
+  ],
+  "producer": "Ridge Vineyards (Lytton Springs)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard Cab-led blend.",
+    "wine_name": "Monte Bello"
+   },
+   {
+    "note": "Estate-grown old-vine Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   },
+   {
+    "note": "Second-tier estate Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Ridge Vineyards (Monte Bello)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block from Paje cru.",
+    "wine_name": "Barbaresco Crichet Paje"
+   },
+   {
+    "note": "Single-cru.",
+    "wine_name": "Barbaresco Asili"
+   },
+   {
+    "note": "Old-vine cru.",
+    "wine_name": "Barbaresco Paje"
+   }
+  ],
+  "producer": "Roagna"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Bordeaux-style flagship blend.",
+    "wine_name": "Claret"
+   },
+   {
+    "note": "Howell Mountain Cab.",
+    "wine_name": "Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Robert Foley Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic Oakville reference.",
+    "wine_name": "To Kalon Reserve Cabernet Sauvignon"
+   },
+   {
+    "note": "Oaked Sauvignon Blanc pioneer.",
+    "wine_name": "To Kalon Fume Blanc"
+   },
+   {
+    "note": "Top blend selection.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Robert Mondavi Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "Scion Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Alexander Valley Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Robert Young Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "La Morra cru.",
+    "wine_name": "Barolo Cerequio"
+   },
+   {
+    "note": "Concentrated reference.",
+    "wine_name": "Barolo Brunate"
+   }
+  ],
+  "producer": "Roberto Voerzio"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Stags Leap District Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Robinson Family Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine single-block.",
+    "wine_name": "West Block Pinot Noir"
+   },
+   {
+    "note": "Old-vine single-block.",
+    "wine_name": "East Block Pinot Noir"
+   },
+   {
+    "note": "Among California's best SBs.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Rochioli"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine flagship.",
+    "wine_name": "Cirsion"
+   },
+   {
+    "note": "Modern Reserva style.",
+    "wine_name": "Roda I Reserva"
+   }
+  ],
+  "producer": "Roda"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Prestige cuvee sparkling.",
+    "wine_name": "L'Ermitage Brut"
+   },
+   {
+    "note": "Top rose sparkling.",
+    "wine_name": "L'Ermitage Rose"
+   },
+   {
+    "note": "Reliable house NV.",
+    "wine_name": "Brut NV"
+   }
+  ],
+  "producer": "Roederer Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Kith and Kin Cabernet"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Reserve Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Round Pond Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Brown Ranch Pinot Noir"
+   },
+   {
+    "note": "Reliable estate Pinot.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Cool-climate Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Saintsbury"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Released only in declared years; long pre-disgorgement aging.",
+    "wine_name": "Cuvee S"
+   }
+  ],
+  "producer": "Salon"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Traditional, layered.",
+    "wine_name": "Brunello di Montalcino"
+   }
+  ],
+  "producer": "Salvioni La Cerbaiola"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference.",
+    "wine_name": "Sanford & Benedict Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard SRH Chardonnay.",
+    "wine_name": "Bentrock Vineyard Chardonnay"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Romance Pinot Noir"
+   }
+  ],
+  "producer": "Sandhi Wines"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Historic vineyard reference.",
+    "wine_name": "Sanford & Benedict Pinot Noir"
+   },
+   {
+    "note": "Estate single-vineyard.",
+    "wine_name": "La Rinconada Pinot Noir"
+   }
+  ],
+  "producer": "Sanford Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate Rhone blend; reference Paso wine.",
+    "wine_name": "James Berry Vineyard"
+   },
+   {
+    "note": "Single-block old-vine Syrah.",
+    "wine_name": "Bone Rock Syrah"
+   },
+   {
+    "note": "Single-vineyard Rhone blend.",
+    "wine_name": "Heart Stone Vineyard"
+   }
+  ],
+  "producer": "Saxum Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Prestige cuvee.",
+    "wine_name": "J. Schram Sparkling"
+   },
+   {
+    "note": "Chardonnay-led NV.",
+    "wine_name": "Blanc de Blancs"
+   },
+   {
+    "note": "Long-aged top cuvee.",
+    "wine_name": "Reserve Sparkling"
+   }
+  ],
+  "producer": "Schramsberg Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Hillside flagship.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Top selection blend.",
+    "wine_name": "Dedication Reserve"
+   }
+  ],
+  "producer": "Schweiger Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure Oakville Cab; precise and refined.",
+    "wine_name": "Cabernet Sauvignon"
+   },
+   {
+    "note": "Approachable second label.",
+    "wine_name": "The Flight"
+   },
+   {
+    "note": "Tiny estate-grown bottling.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Screaming Eagle"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship Pinot.",
+    "wine_name": "Ten Pinot Noir"
+   },
+   {
+    "note": "Estate selection.",
+    "wine_name": "Southing Pinot Noir"
+   },
+   {
+    "note": "Estate Chardonnay.",
+    "wine_name": "Sea Smoke Chardonnay"
+   }
+  ],
+  "producer": "Sea Smoke"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine estate flagship.",
+    "wine_name": "Home Ranch Zinfandel"
+   },
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "San Lorenzo Zinfandel"
+   },
+   {
+    "note": "Old-vine single-block.",
+    "wine_name": "Cortina Zinfandel"
+   }
+  ],
+  "producer": "Seghesio Family Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top reserve blend.",
+    "wine_name": "Cambium"
+   },
+   {
+    "note": "Reliable Rutherford Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Sequoia Grove"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reliable classical Brunello.",
+    "wine_name": "Brunello di Montalcino"
+   },
+   {
+    "note": "Released only when warranted.",
+    "wine_name": "Phenomena Brunello Riserva"
+   }
+  ],
+  "producer": "Sesti"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard hillside Cab.",
+    "wine_name": "Hillside Select Cabernet Sauvignon"
+   },
+   {
+    "note": "Estate Cab.",
+    "wine_name": "One Point Five Cabernet"
+   },
+   {
+    "note": "Syrah-Petite Sirah blend.",
+    "wine_name": "Relentless"
+   }
+  ],
+  "producer": "Shafer Vineyards (Hillside Select)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Tiny old-vine cuvee.",
+    "wine_name": "El Bosque"
+   },
+   {
+    "note": "Single-vineyard old-vine.",
+    "wine_name": "Amancio"
+   },
+   {
+    "note": "Estate flagship from Tempranillo Peludo.",
+    "wine_name": "San Vicente"
+   }
+  ],
+  "producer": "Sierra Cantabria (Eguren family)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "American oak-aged signature.",
+    "wine_name": "Napa Valley Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Silver Oak (Oakville home)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship; signature American oak.",
+    "wine_name": "Alexander Valley Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Silver Oak Alexander Valley"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "American oak-aged signature.",
+    "wine_name": "Napa Valley Cabernet Sauvignon"
+   },
+   {
+    "note": "Sonoma counterpart.",
+    "wine_name": "Alexander Valley Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Silver Oak Cellars"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "SOLO Cabernet Sauvignon"
+   },
+   {
+    "note": "Reliable Stags Leap Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Silverado Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference dry California Riesling.",
+    "wine_name": "Estate Riesling"
+   },
+   {
+    "note": "Hillside Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Old-vine Chardonnay.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Smith-Madrone Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Pure, old-school Sangiovese.",
+    "wine_name": "Toscana IGT Sangiovese"
+   }
+  ],
+  "producer": "Soldera (Case Basse)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Elegant, layered Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Among Napa's best whites.",
+    "wine_name": "Sauvignon Blanc"
+   }
+  ],
+  "producer": "Spottswoode Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Cab-led estate flagship.",
+    "wine_name": "Elivette"
+   },
+   {
+    "note": "Hillside Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   },
+   {
+    "note": "Mountain-grown Syrah.",
+    "wine_name": "Syrah"
+   }
+  ],
+  "producer": "Spring Mountain Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection from S.L.V. and Fay.",
+    "wine_name": "Cask 23"
+   },
+   {
+    "note": "Historic single-vineyard.",
+    "wine_name": "S.L.V. Cabernet Sauvignon"
+   },
+   {
+    "note": "Adjacent estate single-vineyard.",
+    "wine_name": "Fay Vineyard Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Stag's Leap Wine Cellars"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection from S.L.V. and Fay vineyards.",
+    "wine_name": "Cask 23"
+   },
+   {
+    "note": "Historic single-vineyard.",
+    "wine_name": "S.L.V. Cabernet Sauvignon"
+   },
+   {
+    "note": "Adjacent estate single-vineyard.",
+    "wine_name": "Fay Vineyard Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Stag's Leap Wine Cellars (S.L.V.)"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard top selection.",
+    "wine_name": "Christopher's Cabernet Sauvignon"
+   },
+   {
+    "note": "Single-vineyard top Cab.",
+    "wine_name": "Monument Ridge Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Stonestreet Estate"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Restrained classical Chardonnay reference.",
+    "wine_name": "Estate Chardonnay"
+   },
+   {
+    "note": "Hillside Riesling.",
+    "wine_name": "Estate Riesling"
+   },
+   {
+    "note": "Estate Gewurz.",
+    "wine_name": "Gewurztraminer"
+   }
+  ],
+  "producer": "Stony Hill Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine single-block.",
+    "wine_name": "Eastern Exposures Zinfandel"
+   },
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Mayacamas Range Zinfandel"
+   },
+   {
+    "note": "Top selection.",
+    "wine_name": "Reserve Zinfandel"
+   }
+  ],
+  "producer": "Storybook Mountain Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Mourvedre-led Rhone blend.",
+    "wine_name": "Esprit de Tablas Rouge"
+   },
+   {
+    "note": "Roussanne-led white blend.",
+    "wine_name": "Esprit de Tablas Blanc"
+   },
+   {
+    "note": "Mourvedre-dominant top cuvee.",
+    "wine_name": "Panoplie"
+   }
+  ],
+  "producer": "Tablas Creek Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Old-vine bottling.",
+    "wine_name": "Hermitage Vieilles Vignes"
+   }
+  ],
+  "producer": "Tardieu-Laurent"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Hillside estate flagship.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Estate-grown reference.",
+    "wine_name": "Estate Chardonnay"
+   }
+  ],
+  "producer": "Thomas Fogarty Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Classical Calistoga Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Tom Eddy Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Top selection.",
+    "wine_name": "La Storia Petite Sirah"
+   },
+   {
+    "note": "Old-vine field blend.",
+    "wine_name": "Old Patch Red"
+   }
+  ],
+  "producer": "Trentadue Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate flagship.",
+    "wine_name": "Estate Pinot Noir"
+   },
+   {
+    "note": "Rhone-style Carneros white.",
+    "wine_name": "Estate Roussanne"
+   },
+   {
+    "note": "Hillside Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Truchard Vineyards"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Sanford & Benedict Pinot Noir"
+   },
+   {
+    "note": "Reference SRH Chardonnay.",
+    "wine_name": "Bentrock Vineyard Chardonnay"
+   },
+   {
+    "note": "Single-vineyard.",
+    "wine_name": "Zotovich Vineyard Pinot Noir"
+   }
+  ],
+  "producer": "Tyler Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-block reference.",
+    "wine_name": "Spring Ridge Bee Block Chardonnay"
+   },
+   {
+    "note": "Estate flagship Pinot.",
+    "wine_name": "Spring Ridge Pinot Noir"
+   }
+  ],
+  "producer": "Varner Wine / Foxglove"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Merlot-led Pomerol-style blend.",
+    "wine_name": "La Muse"
+   },
+   {
+    "note": "Cab-led Bordeaux blend.",
+    "wine_name": "La Joie"
+   },
+   {
+    "note": "Cab Franc-led St-Emilion style.",
+    "wine_name": "Le Desir"
+   }
+  ],
+  "producer": "Verite"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-cru reference.",
+    "wine_name": "Barolo Rocche di Castiglione"
+   },
+   {
+    "note": "Serralunga cru.",
+    "wine_name": "Barolo Lazzarito"
+   },
+   {
+    "note": "La Morra cru.",
+    "wine_name": "Barolo Brunate"
+   }
+  ],
+  "producer": "Vietti"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Aromatic, structured Pomerol classic.",
+    "wine_name": "VCC Grand Vin"
+   }
+  ],
+  "producer": "Vieux Chateau Certan"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Reference California Petite.",
+    "wine_name": "Estate Petite Sirah"
+   },
+   {
+    "note": "Reliable estate Cab.",
+    "wine_name": "Estate Cabernet Sauvignon"
+   }
+  ],
+  "producer": "Vincent Arroyo Winery"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Estate single-vineyard.",
+    "wine_name": "Wayfarer Estate Pinot Noir"
+   },
+   {
+    "note": "Top block selection.",
+    "wine_name": "The Traveler Pinot Noir"
+   },
+   {
+    "note": "Estate Chardonnay.",
+    "wine_name": "Wayfarer Chardonnay"
+   }
+  ],
+  "producer": "Wayfarer Vineyard"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard reference Pinot.",
+    "wine_name": "Rochioli Riverblock Pinot Noir"
+   },
+   {
+    "note": "Multi-source RRV bottling.",
+    "wine_name": "Westside Road Neighbors Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard cuvee.",
+    "wine_name": "Bucher Vineyard Pinot Noir"
+   }
+  ],
+  "producer": "Williams Selyem"
+ },
+ {
+  "bottlings": [
+   {
+    "note": "Single-vineyard AV reference.",
+    "wine_name": "Ferrington Vineyard Pinot Noir"
+   },
+   {
+    "note": "Single-vineyard AV.",
+    "wine_name": "Weir Vineyard Pinot Noir"
+   }
+  ],
+  "producer": "Williams Selyem (Anderson Valley)"
+ }
+]

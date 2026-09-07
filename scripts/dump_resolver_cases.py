@@ -74,6 +74,16 @@ CASES: list[dict] = [
     {"producer": "Denner", "vintage": 2021, "wine_name": "Grenache Blanc"},
     # A cuvée that names nothing should not narrow anything.
     {"producer": "Denner", "vintage": 2021, "wine_name": "Reserve"},
+    # Cuvées reconciled in from a rated-wine list.
+    {"producer": "Joseph Phelps Vineyards", "vintage": 2018, "wine_name": "Insignia"},
+    {"producer": "Louis Roederer", "vintage": 2015, "wine_name": "Cristal"},
+    {"producer": "Screaming Eagle", "vintage": 2019, "wine_name": "Sauvignon Blanc"},
+    {"producer": "Gaja", "vintage": 2016, "wine_name": "Sori San Lorenzo"},
+    # Two of a producer's wines match a bare grape equally well, so neither is
+    # picked — the name is still read for its grape.
+    {"producer": "Stag's Leap Wine Cellars", "vintage": 2019, "wine_name": "Cabernet Sauvignon"},
+    {"producer": "Stag's Leap Wine Cellars", "vintage": 2019, "wine_name": "Cask 23"},
+    {"producer": "Stag's Leap Wine Cellars", "vintage": 2019, "wine_name": "Fay"},
 ]
 
 

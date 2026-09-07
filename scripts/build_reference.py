@@ -921,6 +921,30 @@ def load_additions() -> list[tuple[str, str]]:
             if r.get("producer") and r.get("appellation")]
 
 
+def load_cuvee_additions() -> dict[str, list[dict]]:
+    """Cuvées reconciled in from a rated-wine list by scripts/reconcile_cuvees.py.
+
+    Kept out of BOTTLINGS above because these carry a name and a note but no
+    grapes: a name that states its grape is read at resolve time, and one that
+    does not is better saying nothing than saying something plausible. The
+    curated table wins on a conflict, since its entries were checked by hand and
+    carry grapes.
+    """
+    path = DATA / "cuvee_additions.json"
+    if not path.exists():
+        return {}
+    try:
+        rows = json.loads(path.read_text())
+    except ValueError:
+        return {}
+    out: dict[str, list[dict]] = {}
+    for row in rows:
+        producer, bottlings = row.get("producer"), row.get("bottlings")
+        if producer and bottlings:
+            out[producer] = [b for b in bottlings if b.get("wine_name")]
+    return out
+
+
 def load_repo_producers() -> list[tuple[str, str]]:
     """Producers the repository already ships in its top-rated samples."""
     pairs: list[tuple[str, str]] = []
@@ -977,6 +1001,7 @@ def build() -> dict:
     # disagreement is a data bug waiting to be noticed by a user, so collect
     # them and print them on every build.
     conflicts: list[tuple[str, str, str]] = []
+    reconciled = load_cuvee_additions()
     # Curated entries are authoritative; repository samples fill the gaps.
     for producer, appellation in (
         PRODUCERS + CALIFORNIA_PRODUCERS + load_additions() + load_repo_producers()
@@ -991,9 +1016,13 @@ def build() -> dict:
             unknown.append((producer, appellation))
             continue
         record = {"name": producer, "appellation": appellations[resolved]["name"]}
-        cuvees = BOTTLINGS.get(producer)
-        if cuvees:
-            record["bottlings"] = [_bottling(entry) for entry in cuvees]
+        bottlings = [_bottling(entry) for entry in BOTTLINGS.get(producer, ())]
+        held = {normalize(b["wine_name"]) for b in bottlings}
+        for extra in reconciled.get(producer, ()):
+            if normalize(extra["wine_name"]) not in held:
+                bottlings.append(extra)
+        if bottlings:
+            record["bottlings"] = bottlings
         producers[key] = record
 
     return {
