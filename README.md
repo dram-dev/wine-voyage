@@ -224,9 +224,9 @@ the form with no backend configured at all.
   country?, region?, appellation?, refresh?}`
   - Returns `wine`, a `sources` map naming where each field came from
     (`reference` / `reference-typical` / `model` / `user`), `bottlings`,
-    `estimated_value`, `confidence` and per-field `field_confidence`,
-    `reference_match`, `reference_place`, and `model_error` when the model call
-    failed but the reference still answered.
+    `matched_bottling`, `estimated_value`, `confidence` and per-field
+    `field_confidence`, `reference_match`, `reference_place`, and `model_error`
+    when the model call failed but the reference still answered.
   - **The place hints matter.** An unrecognized producer typed alongside "Napa
     Valley" still resolves a country, a typical grape set and a drinking window.
     Naming a region is the way out of the reference's long tail, so the UI offers
@@ -236,10 +236,35 @@ the form with no backend configured at all.
     a region could be established, so nothing is ever invented.
 - `GET /api/wines/reference` — what the offline reference covers.
 
-**Precedence:** the user's own typing > the reference for *place* > the model >
-the reference for *typical* values. The reference is authoritative about where a
-producer works; the model is better on what is in a particular bottle, so grapes,
-type and window are marked "typical" and a confident model answer overrides them.
+**Precedence:** the user's own typing > the reference's *stated facts* > the
+model > the reference's *typical* values. The reference itself decides which of
+its answers fall in which set, and returns that in `typical`, because it depends
+on how much the user has typed.
+
+**Naming the wine narrows it.** An appellation can only say what is typical of
+the place, and a producer's range often is not. Willow Creek District says
+Grenache, Syrah and Mourvèdre — right for Denner's *Ditch Digger*, wrong for its
+*Theresa*, which is a white Rhône blend, and wrong for *Mother of Exiles*, which
+is Bordeaux varieties. So a cuvée sharpens the answer two ways:
+
+- **A curated bottling** states its own grapes and style, and they stop being
+  marked "typical" — they are facts about that wine. `BOTTLINGS` in
+  `scripts/build_reference.py` holds these; entries are `(name, note)`, or with
+  grapes and a style where the name does not say.
+- **A cuvée whose name contains a grape** is read directly. "Silencieux Cabernet
+  Sauvignon" needs no curated entry, and neither does a wine from a producer the
+  reference has never heard of. Matching is whole-word against `grape_words`,
+  longest first, so "Grenache Blanc" never also reports "Grenache".
+
+Where the grapes are stated and the place's style disagrees, the style follows
+the grapes: Denner's Viognier is white even though its appellation is red.
+Sparkling, dessert and fortified places are left alone — Champagne is Chardonnay
+and is not a white wine, and nor is Sauternes or Madeira.
+
+The producer's range comes back in `bottlings` whether or not a cuvée is named,
+so the form can offer it as chips; `matched_bottling` says which one is in force.
+The reference's own bottlings lead the list because they are curated and carry
+grapes, and the model fills out the rest of the range.
 
 **Regenerating the reference:**
 

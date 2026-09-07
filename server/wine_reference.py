@@ -151,6 +151,73 @@ def _best(query: Optional[str], table: dict) -> tuple[Optional[dict], Optional[s
     return tied[0], best_quality
 
 
+@lru_cache(maxsize=1)
+def _grape_words() -> tuple[tuple[str, str], ...]:
+    """(normalized, display) grape names, longest first so "Grenache Blanc"
+    is matched before "Grenache"."""
+    words = [(normalize(g), g) for g in reference().get("grape_words", [])]
+    return tuple(sorted((w for w in words if w[0]), key=lambda w: -len(w[0])))
+
+
+def grapes_in(text: Optional[str]) -> list[str]:
+    """Grapes named in a string, in the order they appear.
+
+    This is reading the label, not guessing: "Silencieux Cabernet Sauvignon"
+    says what it is, and so does a wine from a producer the reference has never
+    heard of. Matching is on whole words against a normalized copy, and a
+    matched grape is blanked out so "Grenache Blanc" cannot also report
+    "Grenache".
+    """
+    haystack = f" {normalize(text)} "
+    if haystack.strip() == "":
+        return []
+    found: list[tuple[int, str]] = []
+    for key, display in _grape_words():
+        position = haystack.find(f" {key} ")
+        if position == -1:
+            continue
+        found.append((position, display))
+        haystack = haystack.replace(f" {key} ", " " + "\u0000" * len(key) + " ")
+    return [display for _, display in sorted(found)]
+
+
+@lru_cache(maxsize=1)
+def _white_grapes() -> frozenset[str]:
+    return frozenset(normalize(g) for g in reference().get("white_grapes", []))
+
+
+# Places whose colour is a fact about the place, not about the grape: Champagne
+# is Chardonnay and is not a white wine; nor is Sauternes or Madeira.
+_COLOUR_FROM_GRAPE = {"red", "white", "rose"}
+
+
+def colour_of(grapes: list[str]) -> Optional[str]:
+    """"white" or "red" when every named grape agrees, else None."""
+    if not grapes:
+        return None
+    whites = _white_grapes()
+    keys = [normalize(g) for g in grapes]
+    if not whites or any(not k for k in keys):
+        return None
+    if all(k in whites for k in keys):
+        return "white"
+    if all(k not in whites for k in keys):
+        return "red"
+    return None
+
+
+def find_bottling(producer_entry: Optional[dict], wine_name: Optional[str]) -> Optional[dict]:
+    """The producer's own wine that the typed cuvée names, if any."""
+    if not producer_entry or not wine_name:
+        return None
+    bottlings = producer_entry.get("bottlings") or []
+    if not bottlings:
+        return None
+    table = {normalize(b["wine_name"]): b for b in bottlings if b.get("wine_name")}
+    entry, _ = _best(wine_name, table)
+    return entry
+
+
 def find_producer(name: Optional[str]) -> tuple[Optional[dict], Optional[str]]:
     return _best(name, reference().get("producers", {}))
 
@@ -185,6 +252,7 @@ def resolve(
     *,
     producer: Optional[str] = None,
     vintage: Optional[int] = None,
+    wine_name: Optional[str] = None,
     appellation: Optional[str] = None,
     region: Optional[str] = None,
     country: Optional[str] = None,
@@ -199,7 +267,15 @@ def resolve(
           "place":    the appellation/region entry that drove it, if any,
           "typical":  fields that are the *place's* norm rather than this
                       wine's fact — the model may override these.
+          "bottlings": the producer's known wines, so the form can offer them.
+          "bottling": the one the typed cuvée matched, if any.
         }
+
+    Naming a cuvée narrows the answer. An appellation can only say what is
+    typical of the place: Willow Creek District says Grenache, Syrah and
+    Mourvedre, which is right for Denner's Ditch Digger, wrong for its Theresa
+    and wrong for its Mother of Exiles. A matched bottling states its own
+    grapes, and a cuvée whose name contains a grape states it too.
     """
     wine: dict[str, Any] = {}
     typical: set[str] = set()
@@ -264,6 +340,25 @@ def resolve(
         if entry:
             wine["country"] = entry["name"]
 
+    # Naming the wine beats naming the place. A matched bottling knows its own
+    # grapes; failing that, a cuvée whose name contains a grape has told us.
+    # Either way these stop being "typical" — they are about this bottle.
+    bottling = find_bottling(producer_entry, wine_name) if producer_entry else None
+    stated = list(bottling.get("varietals") or []) if bottling else []
+    if not stated:
+        stated = grapes_in(wine_name)
+    if stated:
+        wine["varietals"] = stated
+        typical.discard("varietals")
+    if bottling and bottling.get("wine_type"):
+        wine["wine_type"] = bottling["wine_type"]
+        typical.discard("wine_type")
+    elif stated and wine.get("wine_type") in _COLOUR_FROM_GRAPE:
+        colour = colour_of(stated)
+        if colour and colour != wine["wine_type"]:
+            wine["wine_type"] = colour
+            typical.discard("wine_type")
+
     return {
         "wine": wine,
         "sources": {key: "reference" for key in wine},
@@ -271,6 +366,10 @@ def resolve(
         "producer_name": producer_entry["name"] if producer_entry else None,
         "place": {"kind": place_kind, "name": place["name"]} if place else None,
         "typical": sorted(typical),
+        # Offered to the user as "which one?", and echoed back as a cuvée.
+        "bottlings": list((producer_entry or {}).get("bottlings") or [])
+        if producer_match in (EXACT, STRONG) else [],
+        "bottling": bottling["wine_name"] if bottling else None,
     }
 
 

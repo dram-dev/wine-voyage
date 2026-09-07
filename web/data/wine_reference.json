@@ -3144,6 +3144,105 @@
    "name": "United States"
   }
  },
+ "grape_words": [
+  "Agiorgitiko",
+  "Aglianico",
+  "Albarino",
+  "Aligote",
+  "Alvarinho",
+  "Assyrtiko",
+  "Auxerrois",
+  "Barbera",
+  "Blaufrankisch",
+  "Bonarda",
+  "Bual",
+  "Cabernet Franc",
+  "Cabernet Pfeffer",
+  "Cabernet Sauvignon",
+  "Carignan",
+  "Carinena",
+  "Carmenere",
+  "Carricante",
+  "Charbono",
+  "Chardonnay",
+  "Chenin Blanc",
+  "Cinsault",
+  "Colombard",
+  "Cortese",
+  "Corvina",
+  "Counoise",
+  "Dolcetto",
+  "Fiano",
+  "Friulano",
+  "Furmint",
+  "Gamay",
+  "Garganega",
+  "Garnacha",
+  "Gewurztraminer",
+  "Glera",
+  "Godello",
+  "Graciano",
+  "Grenache",
+  "Grenache Blanc",
+  "Grillo",
+  "Gruner Veltliner",
+  "Harslevelu",
+  "Loureiro",
+  "Macabeo",
+  "Malbec",
+  "Malmsey",
+  "Marsanne",
+  "Mazuelo",
+  "Melon de Bourgogne",
+  "Mencia",
+  "Merlot",
+  "Merwah",
+  "Montepulciano",
+  "Mourvedre",
+  "Muscat",
+  "Nebbiolo",
+  "Nerello Cappuccio",
+  "Nerello Mascalese",
+  "Nero d'Avola",
+  "Obaideh",
+  "Palomino",
+  "Parellada",
+  "Petit Manseng",
+  "Petit Verdot",
+  "Petite Sirah",
+  "Picpoul",
+  "Pinot Grigio",
+  "Pinot Gris",
+  "Pinot Meunier",
+  "Pinot Noir",
+  "Pinotage",
+  "Ribolla Gialla",
+  "Riesling",
+  "Rondinella",
+  "Roussanne",
+  "Sagrantino",
+  "Sangiovese",
+  "Sauvignon Blanc",
+  "Savagnin",
+  "Semillon",
+  "Sercial",
+  "Shiraz",
+  "Syrah",
+  "Tannat",
+  "Tempranillo",
+  "Tinta Roriz",
+  "Torrontes",
+  "Touriga Franca",
+  "Touriga Nacional",
+  "Trousseau",
+  "Verdejo",
+  "Verdelho",
+  "Vermentino",
+  "Viognier",
+  "Xarel-lo",
+  "Zinfandel",
+  "Zweigelt"
+ ],
  "noise_words": [
   "and",
   "bodega",
@@ -3355,15 +3454,31 @@
    "bottlings": [
     {
      "note": "The Super Tuscan.",
-     "wine_name": "Tignanello"
+     "varietals": [
+      "Sangiovese",
+      "Cabernet Sauvignon",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Tignanello",
+     "wine_type": "red"
     },
     {
      "note": "Cabernet-led Super Tuscan.",
-     "wine_name": "Solaia"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Sangiovese",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Solaia",
+     "wine_type": "red"
     },
     {
      "note": "Estate Chianti.",
-     "wine_name": "Peppoli Chianti Classico"
+     "varietals": [
+      "Sangiovese"
+     ],
+     "wine_name": "Peppoli Chianti Classico",
+     "wine_type": "red"
     }
    ],
    "name": "Antinori"
@@ -3394,6 +3509,32 @@
   },
   "arista": {
    "appellation": "Russian River Valley",
+   "bottlings": [
+    {
+     "note": "The appellation blend.",
+     "wine_name": "Russian River Valley Pinot Noir"
+    },
+    {
+     "note": "The appellation Chardonnay.",
+     "wine_name": "Russian River Valley Chardonnay"
+    },
+    {
+     "note": "Anderson Valley fruit.",
+     "wine_name": "Ferrington Vineyard Pinot Noir"
+    },
+    {
+     "note": "Single vineyard.",
+     "wine_name": "Banfield Vineyard Pinot Noir"
+    },
+    {
+     "note": "Single vineyard.",
+     "wine_name": "UV Lucky Well Pinot Noir"
+    },
+    {
+     "note": "Estate selection.",
+     "wine_name": "Longbow Pinot Noir"
+    }
+   ],
    "name": "Arista"
   },
   "arista winery": {
@@ -3717,15 +3858,31 @@
    "bottlings": [
     {
      "note": "The classic Rioja Reserva.",
-     "wine_name": "Reserva"
+     "varietals": [
+      "Tempranillo",
+      "Garnacha"
+     ],
+     "wine_name": "Reserva",
+     "wine_type": "red"
     },
     {
      "note": "Long-aged Gran Reserva.",
-     "wine_name": "Prado Enea Gran Reserva"
+     "varietals": [
+      "Tempranillo",
+      "Garnacha"
+     ],
+     "wine_name": "Prado Enea Gran Reserva",
+     "wine_type": "red"
     },
     {
      "note": "Modern-styled cuvée.",
-     "wine_name": "Torre Muga"
+     "varietals": [
+      "Tempranillo",
+      "Mazuelo",
+      "Graciano"
+     ],
+     "wine_name": "Torre Muga",
+     "wine_type": "red"
     }
    ],
    "name": "Bodegas Muga"
@@ -4263,15 +4420,32 @@
    "bottlings": [
     {
      "note": "The estate red.",
-     "wine_name": "Chateauneuf-du-Pape"
+     "varietals": [
+      "Grenache",
+      "Mourvedre",
+      "Syrah"
+     ],
+     "wine_name": "Chateauneuf-du-Pape",
+     "wine_type": "red"
     },
     {
      "note": "Mourvedre-led tete de cuvee.",
-     "wine_name": "Hommage a Jacques Perrin"
+     "varietals": [
+      "Mourvedre",
+      "Grenache",
+      "Syrah"
+     ],
+     "wine_name": "Hommage a Jacques Perrin",
+     "wine_type": "red"
     },
     {
      "note": "The white.",
-     "wine_name": "Chateauneuf-du-Pape Blanc"
+     "varietals": [
+      "Roussanne",
+      "Grenache Blanc"
+     ],
+     "wine_name": "Chateauneuf-du-Pape Blanc",
+     "wine_type": "white"
     }
    ],
    "name": "Chateau de Beaucastel"
@@ -4405,15 +4579,31 @@
    "bottlings": [
     {
      "note": "The first wine.",
-     "wine_name": "Grand Vin"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Petit Verdot",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Grand Vin",
+     "wine_type": "red"
     },
     {
      "note": "Second wine.",
-     "wine_name": "Pavillon Rouge"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot"
+     ],
+     "wine_name": "Pavillon Rouge",
+     "wine_type": "red"
     },
     {
-     "note": "Sauvignon Blanc.",
-     "wine_name": "Pavillon Blanc"
+     "note": "The estate white.",
+     "varietals": [
+      "Sauvignon Blanc"
+     ],
+     "wine_name": "Pavillon Blanc",
+     "wine_type": "white"
     }
    ],
    "name": "Chateau Margaux"
@@ -4439,11 +4629,22 @@
    "bottlings": [
     {
      "note": "The Bekaa red.",
-     "wine_name": "Red"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Cinsault",
+      "Carignan"
+     ],
+     "wine_name": "Red",
+     "wine_type": "red"
     },
     {
      "note": "Obaideh and Merwah.",
-     "wine_name": "White"
+     "varietals": [
+      "Obaideh",
+      "Merwah"
+     ],
+     "wine_name": "White",
+     "wine_type": "white"
     },
     {
      "note": "Younger, unoaked range.",
@@ -4914,6 +5115,63 @@
   },
   "denner": {
    "appellation": "Willow Creek District",
+   "bottlings": [
+    {
+     "note": "Rhone-style red blend.",
+     "varietals": [
+      "Grenache",
+      "Syrah",
+      "Mourvedre"
+     ],
+     "wine_name": "Ditch Digger",
+     "wine_type": "red"
+    },
+    {
+     "note": "Syrah, co-fermented with Viognier.",
+     "varietals": [
+      "Syrah",
+      "Viognier"
+     ],
+     "wine_name": "The Dirt Worshipper",
+     "wine_type": "red"
+    },
+    {
+     "note": "Bordeaux-style red.",
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Petit Verdot"
+     ],
+     "wine_name": "Mother of Exiles",
+     "wine_type": "red"
+    },
+    {
+     "note": "White Rhone blend.",
+     "varietals": [
+      "Roussanne",
+      "Grenache Blanc",
+      "Viognier"
+     ],
+     "wine_name": "Theresa",
+     "wine_type": "white"
+    },
+    {
+     "note": "Estate Syrah.",
+     "wine_name": "Syrah"
+    },
+    {
+     "note": "Estate Grenache.",
+     "wine_name": "Grenache"
+    },
+    {
+     "note": "Estate Viognier.",
+     "wine_name": "Viognier"
+    },
+    {
+     "note": "Estate Cabernet.",
+     "wine_name": "Cabernet Sauvignon"
+    }
+   ],
    "name": "Denner"
   },
   "denner vineyards": {
@@ -5201,15 +5459,27 @@
    "bottlings": [
     {
      "note": "Village white.",
-     "wine_name": "Puligny-Montrachet"
+     "varietals": [
+      "Chardonnay"
+     ],
+     "wine_name": "Puligny-Montrachet",
+     "wine_type": "white"
     },
     {
      "note": "1er Cru.",
-     "wine_name": "Les Pucelles"
+     "varietals": [
+      "Chardonnay"
+     ],
+     "wine_name": "Les Pucelles",
+     "wine_type": "white"
     },
     {
      "note": "Grand Cru.",
-     "wine_name": "Chevalier-Montrachet"
+     "varietals": [
+      "Chardonnay"
+     ],
+     "wine_name": "Chevalier-Montrachet",
+     "wine_type": "white"
     }
    ],
    "name": "Domaine Leflaive"
@@ -5495,19 +5765,38 @@
    "bottlings": [
     {
      "note": "Cote-Rotie cuvee.",
-     "wine_name": "Chateau d'Ampuis"
+     "varietals": [
+      "Syrah",
+      "Viognier"
+     ],
+     "wine_name": "Chateau d'Ampuis",
+     "wine_type": "red"
     },
     {
      "note": "La La single vineyard.",
-     "wine_name": "La Mouline"
+     "varietals": [
+      "Syrah",
+      "Viognier"
+     ],
+     "wine_name": "La Mouline",
+     "wine_type": "red"
     },
     {
      "note": "La La single vineyard.",
-     "wine_name": "La Turque"
+     "varietals": [
+      "Syrah",
+      "Viognier"
+     ],
+     "wine_name": "La Turque",
+     "wine_type": "red"
     },
     {
      "note": "La La single vineyard.",
-     "wine_name": "La Landonne"
+     "varietals": [
+      "Syrah"
+     ],
+     "wine_name": "La Landonne",
+     "wine_type": "red"
     }
    ],
    "name": "E. Guigal"
@@ -5875,19 +6164,35 @@
    "bottlings": [
     {
      "note": "The classic Barbaresco.",
-     "wine_name": "Barbaresco"
+     "varietals": [
+      "Nebbiolo"
+     ],
+     "wine_name": "Barbaresco",
+     "wine_type": "red"
     },
     {
      "note": "Single vineyard.",
-     "wine_name": "Sori Tildin"
+     "varietals": [
+      "Nebbiolo"
+     ],
+     "wine_name": "Sori Tildin",
+     "wine_type": "red"
     },
     {
      "note": "Single vineyard.",
-     "wine_name": "Costa Russi"
+     "varietals": [
+      "Nebbiolo"
+     ],
+     "wine_name": "Costa Russi",
+     "wine_type": "red"
     },
     {
      "note": "Barolo-sourced.",
-     "wine_name": "Sperss"
+     "varietals": [
+      "Nebbiolo"
+     ],
+     "wine_name": "Sperss",
+     "wine_type": "red"
     }
    ],
    "name": "Gaja"
@@ -6167,11 +6472,19 @@
    "bottlings": [
     {
      "note": "Old-vine Shiraz.",
-     "wine_name": "Hill of Grace"
+     "varietals": [
+      "Shiraz"
+     ],
+     "wine_name": "Hill of Grace",
+     "wine_type": "red"
     },
     {
      "note": "Single-vineyard Shiraz.",
-     "wine_name": "Mount Edelstone"
+     "varietals": [
+      "Shiraz"
+     ],
+     "wine_name": "Mount Edelstone",
+     "wine_type": "red"
     }
    ],
    "name": "Henschke"
@@ -6521,15 +6834,31 @@
    "bottlings": [
     {
      "note": "The multi-vintage blend.",
-     "wine_name": "Grande Cuvee"
+     "varietals": [
+      "Chardonnay",
+      "Pinot Noir",
+      "Pinot Meunier"
+     ],
+     "wine_name": "Grande Cuvee",
+     "wine_type": "sparkling"
     },
     {
      "note": "The rosé bottling.",
-     "wine_name": "Rose"
+     "varietals": [
+      "Pinot Noir",
+      "Chardonnay",
+      "Pinot Meunier"
+     ],
+     "wine_name": "Rose",
+     "wine_type": "sparkling"
     },
     {
      "note": "Single-vineyard Blanc de Blancs.",
-     "wine_name": "Clos du Mesnil"
+     "varietals": [
+      "Chardonnay"
+     ],
+     "wine_name": "Clos du Mesnil",
+     "wine_type": "sparkling"
     }
    ],
    "name": "Krug"
@@ -7279,11 +7608,24 @@
    "bottlings": [
     {
      "note": "The single grand vin.",
-     "wine_name": "Opus One"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Cabernet Franc",
+      "Petit Verdot"
+     ],
+     "wine_name": "Opus One",
+     "wine_type": "red"
     },
     {
      "note": "Non-vintage second wine.",
-     "wine_name": "Overture"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Overture",
+     "wine_type": "red"
     }
    ],
    "name": "Opus One"
@@ -7293,19 +7635,42 @@
    "bottlings": [
     {
      "note": "Bordeaux blend.",
-     "wine_name": "Papillon"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Cabernet Franc",
+      "Petit Verdot"
+     ],
+     "wine_name": "Papillon",
+     "wine_type": "red"
     },
     {
      "note": "Grenache-led red.",
-     "wine_name": "Abstract"
+     "varietals": [
+      "Grenache",
+      "Syrah",
+      "Petite Sirah"
+     ],
+     "wine_name": "Abstract",
+     "wine_type": "red"
     },
     {
      "note": "Syrah-led red.",
-     "wine_name": "Machete"
+     "varietals": [
+      "Syrah",
+      "Grenache",
+      "Petite Sirah"
+     ],
+     "wine_name": "Machete",
+     "wine_type": "red"
     },
     {
      "note": "Napa Cabernet.",
-     "wine_name": "Mercury Head"
+     "varietals": [
+      "Cabernet Sauvignon"
+     ],
+     "wine_name": "Mercury Head",
+     "wine_type": "red"
     }
    ],
    "name": "Orin Swift"
@@ -7451,19 +7816,36 @@
    "bottlings": [
     {
      "note": "The flagship Shiraz.",
-     "wine_name": "Grange"
+     "varietals": [
+      "Shiraz"
+     ],
+     "wine_name": "Grange",
+     "wine_type": "red"
     },
     {
-     "note": "Cabernet Sauvignon.",
-     "wine_name": "Bin 707"
+     "note": "The Cabernet.",
+     "varietals": [
+      "Cabernet Sauvignon"
+     ],
+     "wine_name": "Bin 707",
+     "wine_type": "red"
     },
     {
      "note": "Shiraz, no new oak.",
-     "wine_name": "St Henri"
+     "varietals": [
+      "Shiraz"
+     ],
+     "wine_name": "St Henri",
+     "wine_type": "red"
     },
     {
      "note": "Cabernet Shiraz.",
-     "wine_name": "Bin 389"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Shiraz"
+     ],
+     "wine_name": "Bin 389",
+     "wine_type": "red"
     }
    ],
    "name": "Penfolds"
@@ -7665,15 +8047,30 @@
    "bottlings": [
     {
      "note": "Declared vintage.",
-     "wine_name": "Vintage Port"
+     "varietals": [
+      "Touriga Nacional",
+      "Touriga Franca"
+     ],
+     "wine_name": "Vintage Port",
+     "wine_type": "fortified"
     },
     {
      "note": "Ungrafted vines.",
-     "wine_name": "Nacional"
+     "varietals": [
+      "Touriga Nacional",
+      "Touriga Franca"
+     ],
+     "wine_name": "Nacional",
+     "wine_type": "fortified"
     },
     {
      "note": "Late bottled vintage.",
-     "wine_name": "LBV"
+     "varietals": [
+      "Touriga Nacional",
+      "Touriga Franca"
+     ],
+     "wine_name": "LBV",
+     "wine_type": "fortified"
     }
    ],
    "name": "Quinta do Noval"
@@ -7875,15 +8272,34 @@
    "bottlings": [
     {
      "note": "The flagship Cabernet.",
-     "wine_name": "Monte Bello"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot",
+      "Petit Verdot",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Monte Bello",
+     "wine_type": "red"
     },
     {
      "note": "Zinfandel blend, Dry Creek.",
-     "wine_name": "Lytton Springs"
+     "varietals": [
+      "Zinfandel",
+      "Petite Sirah",
+      "Carignan"
+     ],
+     "wine_name": "Lytton Springs",
+     "wine_type": "red"
     },
     {
      "note": "Zinfandel blend, Alexander Valley.",
-     "wine_name": "Geyserville"
+     "varietals": [
+      "Zinfandel",
+      "Carignan",
+      "Petite Sirah"
+     ],
+     "wine_name": "Geyserville",
+     "wine_type": "red"
     },
     {
      "note": "Santa Cruz Mountains estate.",
@@ -8146,6 +8562,58 @@
   },
   "saxum": {
    "appellation": "Willow Creek District",
+   "bottlings": [
+    {
+     "note": "The home vineyard blend.",
+     "varietals": [
+      "Grenache",
+      "Syrah",
+      "Mourvedre"
+     ],
+     "wine_name": "James Berry Vineyard",
+     "wine_type": "red"
+    },
+    {
+     "note": "Syrah-led, James Berry.",
+     "varietals": [
+      "Syrah",
+      "Grenache",
+      "Mourvedre"
+     ],
+     "wine_name": "Bone Rock",
+     "wine_type": "red"
+    },
+    {
+     "note": "Single-vineyard Rhone blend.",
+     "varietals": [
+      "Grenache",
+      "Syrah",
+      "Mourvedre"
+     ],
+     "wine_name": "Heart Stone Vineyard",
+     "wine_type": "red"
+    },
+    {
+     "note": "Single-vineyard Rhone blend.",
+     "varietals": [
+      "Grenache",
+      "Syrah",
+      "Mourvedre"
+     ],
+     "wine_name": "Terry Hoage Vineyard",
+     "wine_type": "red"
+    },
+    {
+     "note": "Single-vineyard Rhone blend.",
+     "varietals": [
+      "Syrah",
+      "Grenache",
+      "Mourvedre"
+     ],
+     "wine_name": "Paderewski Vineyard",
+     "wine_type": "red"
+    }
+   ],
    "name": "Saxum"
   },
   "saxum vineyards": {
@@ -8647,15 +9115,30 @@
    "bottlings": [
     {
      "note": "The original Super Tuscan.",
-     "wine_name": "Sassicaia"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Cabernet Franc"
+     ],
+     "wine_name": "Sassicaia",
+     "wine_type": "red"
     },
     {
      "note": "Second wine.",
-     "wine_name": "Guidalberto"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Merlot"
+     ],
+     "wine_name": "Guidalberto",
+     "wine_type": "red"
     },
     {
      "note": "Entry bottling.",
-     "wine_name": "Le Difese"
+     "varietals": [
+      "Cabernet Sauvignon",
+      "Sangiovese"
+     ],
+     "wine_name": "Le Difese",
+     "wine_type": "red"
     }
    ],
    "name": "Tenuta San Guido"
@@ -8714,6 +9197,28 @@
   },
   "three sticks": {
    "appellation": "Sonoma Coast",
+   "bottlings": [
+    {
+     "note": "Sonoma Coast Chardonnay.",
+     "wine_name": "Durell Vineyard Chardonnay"
+    },
+    {
+     "note": "Sonoma Coast Pinot.",
+     "wine_name": "Durell Vineyard Pinot Noir"
+    },
+    {
+     "note": "Petaluma Gap fruit.",
+     "wine_name": "Gap's Crown Vineyard Pinot Noir"
+    },
+    {
+     "note": "The estate blend.",
+     "wine_name": "Origin Pinot Noir"
+    },
+    {
+     "note": "Estate Chardonnay.",
+     "wine_name": "Price Family Vineyards Chardonnay"
+    }
+   ],
    "name": "Three Sticks"
   },
   "timber crest": {
@@ -8921,11 +9426,21 @@
    "bottlings": [
     {
      "note": "The flagship.",
-     "wine_name": "Unico"
+     "varietals": [
+      "Tempranillo",
+      "Cabernet Sauvignon"
+     ],
+     "wine_name": "Unico",
+     "wine_type": "red"
     },
     {
      "note": "Younger release.",
-     "wine_name": "Valbuena 5"
+     "varietals": [
+      "Tempranillo",
+      "Merlot"
+     ],
+     "wine_name": "Valbuena 5",
+     "wine_type": "red"
     }
    ],
    "name": "Vega Sicilia"
@@ -8938,8 +9453,15 @@
    "appellation": "Calistoga",
    "bottlings": [
     {
-     "note": "Proprietary red blend.",
-     "wine_name": "Scout's Honor"
+     "note": "Zinfandel-led proprietary red.",
+     "varietals": [
+      "Zinfandel",
+      "Petite Sirah",
+      "Syrah",
+      "Charbono"
+     ],
+     "wine_name": "Scout's Honor",
+     "wine_type": "red"
     },
     {
      "note": "Napa Valley Cabernet.",
@@ -10126,5 +10648,52 @@
    "type": "red"
   }
  },
- "unmatched_sample_appellations": []
+ "unmatched_sample_appellations": [],
+ "white_grapes": [
+  "Albarino",
+  "Aligote",
+  "Alvarinho",
+  "Assyrtiko",
+  "Auxerrois",
+  "Carricante",
+  "Chardonnay",
+  "Chenin Blanc",
+  "Colombard",
+  "Cortese",
+  "Fiano",
+  "Friulano",
+  "Furmint",
+  "Garganega",
+  "Gewurztraminer",
+  "Glera",
+  "Godello",
+  "Grenache Blanc",
+  "Grillo",
+  "Gruner Veltliner",
+  "Harslevelu",
+  "Loureiro",
+  "Macabeo",
+  "Marsanne",
+  "Melon de Bourgogne",
+  "Merwah",
+  "Muscat",
+  "Obaideh",
+  "Parellada",
+  "Petit Manseng",
+  "Picpoul",
+  "Pinot Grigio",
+  "Pinot Gris",
+  "Ribolla Gialla",
+  "Riesling",
+  "Roussanne",
+  "Sauvignon Blanc",
+  "Savagnin",
+  "Semillon",
+  "Torrontes",
+  "Verdejo",
+  "Verdelho",
+  "Vermentino",
+  "Viognier",
+  "Xarel-lo"
+ ]
 }

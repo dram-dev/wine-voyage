@@ -679,69 +679,182 @@ ALIASES: dict[str, str] = {
 
 # Cuvées for houses whose range people actually choose between. Offline this
 # powers the "which bottling?" picker; with a backend the model supplies more.
-BOTTLINGS: dict[str, list[tuple[str, str]]] = {
-    "Chateau Margaux": [("Grand Vin", "The first wine."),
-                        ("Pavillon Rouge", "Second wine."),
-                        ("Pavillon Blanc", "Sauvignon Blanc.")],
-    "Ridge Vineyards": [("Monte Bello", "The flagship Cabernet."),
-                        ("Lytton Springs", "Zinfandel blend, Dry Creek."),
-                        ("Geyserville", "Zinfandel blend, Alexander Valley."),
+# A producer's own wines. The point is narrowing: Denner's appellation says
+# "Grenache, Syrah, Mourvedre", but "The Dirt Worshipper" is Syrah and "Theresa"
+# is a white. Entries are (name, note) — which fills nothing but the name — or
+# (name, note, grapes) / (name, note, grapes, type) where the grapes are known
+# and not already stated in the cuvée name. A name that says its own grape
+# ("Silencieux Cabernet Sauvignon") needs no list: resolve() reads the label.
+BOTTLINGS: dict[str, list[tuple]] = {
+    "Chateau Margaux": [("Grand Vin", "The first wine.",
+                         ["Cabernet Sauvignon", "Merlot", "Petit Verdot", "Cabernet Franc"], "red"),
+                        ("Pavillon Rouge", "Second wine.",
+                         ["Cabernet Sauvignon", "Merlot"], "red"),
+                        ("Pavillon Blanc", "The estate white.", ["Sauvignon Blanc"], "white")],
+    "Ridge Vineyards": [("Monte Bello", "The flagship Cabernet.",
+                         ["Cabernet Sauvignon", "Merlot", "Petit Verdot", "Cabernet Franc"], "red"),
+                        ("Lytton Springs", "Zinfandel blend, Dry Creek.",
+                         ["Zinfandel", "Petite Sirah", "Carignan"], "red"),
+                        ("Geyserville", "Zinfandel blend, Alexander Valley.",
+                         ["Zinfandel", "Carignan", "Petite Sirah"], "red"),
                         ("Estate Cabernet Sauvignon", "Santa Cruz Mountains estate.")],
     "Giacomo Conterno": [("Barolo Cascina Francia", "Estate Barolo."),
                          ("Barolo Monfortino Riserva", "The long-aged riserva."),
                          ("Barbera d'Alba Cascina Francia", "Estate Barbera.")],
     "Caymus Vineyards": [("Napa Valley Cabernet Sauvignon", "The core bottling."),
                          ("Special Selection", "Reserve Cabernet.")],
-    "Penfolds": [("Grange", "The flagship Shiraz."), ("Bin 707", "Cabernet Sauvignon."),
-                 ("St Henri", "Shiraz, no new oak."), ("Bin 389", "Cabernet Shiraz.")],
-    "Krug": [("Grande Cuvee", "The multi-vintage blend."), ("Rose", "The rosé bottling."),
-             ("Clos du Mesnil", "Single-vineyard Blanc de Blancs.")],
+    "Penfolds": [("Grange", "The flagship Shiraz.", ["Shiraz"], "red"),
+                 ("Bin 707", "The Cabernet.", ["Cabernet Sauvignon"], "red"),
+                 ("St Henri", "Shiraz, no new oak.", ["Shiraz"], "red"),
+                 ("Bin 389", "Cabernet Shiraz.", ["Cabernet Sauvignon", "Shiraz"], "red")],
+    "Krug": [("Grande Cuvee", "The multi-vintage blend.",
+              ["Chardonnay", "Pinot Noir", "Pinot Meunier"], "sparkling"),
+             ("Rose", "The rosé bottling.", ["Pinot Noir", "Chardonnay", "Pinot Meunier"], "sparkling"),
+             ("Clos du Mesnil", "Single-vineyard Blanc de Blancs.", ["Chardonnay"], "sparkling")],
     "Dr. Loosen": [("Wehlener Sonnenuhr Riesling Kabinett", "Classic off-dry Kabinett."),
                    ("Urziger Wurzgarten Riesling Spatlese", "Red-slate site, spicier."),
                    ("Blue Slate Riesling Kabinett", "Estate entry Riesling.")],
     "Cloudy Bay": [("Sauvignon Blanc", "The Marlborough benchmark."),
                    ("Te Koko", "Barrel-fermented Sauvignon."), ("Chardonnay", "Estate Chardonnay.")],
-    "Opus One": [("Opus One", "The single grand vin."), ("Overture", "Non-vintage second wine.")],
+    "Opus One": [("Opus One", "The single grand vin.",
+                  ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"], "red"),
+                 ("Overture", "Non-vintage second wine.",
+                  ["Cabernet Sauvignon", "Merlot", "Cabernet Franc"], "red")],
     "Silver Oak": [("Alexander Valley Cabernet Sauvignon", "The Sonoma bottling."),
                    ("Napa Valley Cabernet Sauvignon", "The Napa bottling.")],
     "Duckhorn Vineyards": [("Napa Valley Merlot", "The signature Merlot."),
                            ("Three Palms Vineyard Merlot", "Single-vineyard Merlot."),
                            ("Napa Valley Cabernet Sauvignon", "Estate Cabernet.")],
-    "Bodegas Muga": [("Reserva", "The classic Rioja Reserva."),
-                     ("Prado Enea Gran Reserva", "Long-aged Gran Reserva."),
-                     ("Torre Muga", "Modern-styled cuvée.")],
-    "Vega Sicilia": [("Unico", "The flagship."), ("Valbuena 5", "Younger release.")],
-    "Antinori": [("Tignanello", "The Super Tuscan."), ("Solaia", "Cabernet-led Super Tuscan."),
-                 ("Peppoli Chianti Classico", "Estate Chianti.")],
-    "Gaja": [("Barbaresco", "The classic Barbaresco."), ("Sori Tildin", "Single vineyard."),
-             ("Costa Russi", "Single vineyard."), ("Sperss", "Barolo-sourced.")],
-    "Tenuta San Guido": [("Sassicaia", "The original Super Tuscan."),
-                         ("Guidalberto", "Second wine."), ("Le Difese", "Entry bottling.")],
-    "E. Guigal": [("Chateau d'Ampuis", "Cote-Rotie cuvee."), ("La Mouline", "La La single vineyard."),
-                  ("La Turque", "La La single vineyard."), ("La Landonne", "La La single vineyard.")],
-    "Chateau de Beaucastel": [("Chateauneuf-du-Pape", "The estate red."),
-                              ("Hommage a Jacques Perrin", "Mourvedre-led tete de cuvee."),
-                              ("Chateauneuf-du-Pape Blanc", "The white.")],
-    "Domaine Leflaive": [("Puligny-Montrachet", "Village white."),
-                         ("Les Pucelles", "1er Cru."), ("Chevalier-Montrachet", "Grand Cru.")],
-    "Quinta do Noval": [("Vintage Port", "Declared vintage."), ("Nacional", "Ungrafted vines."),
-                        ("LBV", "Late bottled vintage.")],
+    "Bodegas Muga": [("Reserva", "The classic Rioja Reserva.",
+                      ["Tempranillo", "Garnacha"], "red"),
+                     ("Prado Enea Gran Reserva", "Long-aged Gran Reserva.",
+                      ["Tempranillo", "Garnacha"], "red"),
+                     ("Torre Muga", "Modern-styled cuvée.",
+                      ["Tempranillo", "Mazuelo", "Graciano"], "red")],
+    "Vega Sicilia": [("Unico", "The flagship.", ["Tempranillo", "Cabernet Sauvignon"], "red"),
+                     ("Valbuena 5", "Younger release.", ["Tempranillo", "Merlot"], "red")],
+    "Antinori": [("Tignanello", "The Super Tuscan.",
+                  ["Sangiovese", "Cabernet Sauvignon", "Cabernet Franc"], "red"),
+                 ("Solaia", "Cabernet-led Super Tuscan.",
+                  ["Cabernet Sauvignon", "Sangiovese", "Cabernet Franc"], "red"),
+                 ("Peppoli Chianti Classico", "Estate Chianti.", ["Sangiovese"], "red")],
+    "Gaja": [("Barbaresco", "The classic Barbaresco.", ["Nebbiolo"], "red"),
+             ("Sori Tildin", "Single vineyard.", ["Nebbiolo"], "red"),
+             ("Costa Russi", "Single vineyard.", ["Nebbiolo"], "red"),
+             ("Sperss", "Barolo-sourced.", ["Nebbiolo"], "red")],
+    "Tenuta San Guido": [("Sassicaia", "The original Super Tuscan.",
+                          ["Cabernet Sauvignon", "Cabernet Franc"], "red"),
+                         ("Guidalberto", "Second wine.", ["Cabernet Sauvignon", "Merlot"], "red"),
+                         ("Le Difese", "Entry bottling.", ["Cabernet Sauvignon", "Sangiovese"], "red")],
+    "E. Guigal": [("Chateau d'Ampuis", "Cote-Rotie cuvee.", ["Syrah", "Viognier"], "red"),
+                  ("La Mouline", "La La single vineyard.", ["Syrah", "Viognier"], "red"),
+                  ("La Turque", "La La single vineyard.", ["Syrah", "Viognier"], "red"),
+                  ("La Landonne", "La La single vineyard.", ["Syrah"], "red")],
+    "Chateau de Beaucastel": [("Chateauneuf-du-Pape", "The estate red.",
+                               ["Grenache", "Mourvedre", "Syrah"], "red"),
+                              ("Hommage a Jacques Perrin", "Mourvedre-led tete de cuvee.",
+                               ["Mourvedre", "Grenache", "Syrah"], "red"),
+                              ("Chateauneuf-du-Pape Blanc", "The white.",
+                               ["Roussanne", "Grenache Blanc"], "white")],
+    "Domaine Leflaive": [("Puligny-Montrachet", "Village white.", ["Chardonnay"], "white"),
+                         ("Les Pucelles", "1er Cru.", ["Chardonnay"], "white"),
+                         ("Chevalier-Montrachet", "Grand Cru.", ["Chardonnay"], "white")],
+    "Quinta do Noval": [("Vintage Port", "Declared vintage.",
+                         ["Touriga Nacional", "Touriga Franca"], "fortified"),
+                        ("Nacional", "Ungrafted vines.",
+                         ["Touriga Nacional", "Touriga Franca"], "fortified"),
+                        ("LBV", "Late bottled vintage.",
+                         ["Touriga Nacional", "Touriga Franca"], "fortified")],
     "Catena Zapata": [("Malbec Argentino", "Flagship Malbec."),
                       ("Nicolas Catena Zapata", "Cabernet-Malbec."), ("Alta Malbec", "Estate Malbec.")],
-    "Chateau Musar": [("Red", "The Bekaa red."), ("White", "Obaideh and Merwah."),
-                      ("Jeune", "Younger, unoaked range.")],
-    "Henschke": [("Hill of Grace", "Old-vine Shiraz."), ("Mount Edelstone", "Single-vineyard Shiraz.")],
+    "Chateau Musar": [("Red", "The Bekaa red.",
+                       ["Cabernet Sauvignon", "Cinsault", "Carignan"], "red"),
+                      ("White", "Obaideh and Merwah.", ["Obaideh", "Merwah"], "white"),
+                      ("Jeune", "Younger, unoaked range.", [], None)],
+    "Henschke": [("Hill of Grace", "Old-vine Shiraz.", ["Shiraz"], "red"),
+                 ("Mount Edelstone", "Single-vineyard Shiraz.", ["Shiraz"], "red")],
     "Felton Road": [("Bannockburn Pinot Noir", "Estate blend."), ("Block 3 Pinot Noir", "Single block."),
                     ("Block 5 Pinot Noir", "Single block.")],
-    "Venge Vineyards": [("Scout's Honor", "Proprietary red blend."),
+    "Venge Vineyards": [("Scout's Honor", "Zinfandel-led proprietary red.",
+                         ["Zinfandel", "Petite Sirah", "Syrah", "Charbono"], "red"),
                         ("Silencieux Cabernet Sauvignon", "Napa Valley Cabernet."),
                         ("Bone Ash Cabernet Sauvignon", "Estate Cabernet."),
                         ("Family Reserve Cabernet Sauvignon", "Top Cabernet bottling.")],
-    "Orin Swift": [("Papillon", "Bordeaux blend."), ("Abstract", "Grenache-led red."),
-                   ("Machete", "Syrah-led red."), ("Mercury Head", "Napa Cabernet.")],
+    "Orin Swift": [("Papillon", "Bordeaux blend.",
+                    ["Cabernet Sauvignon", "Merlot", "Cabernet Franc", "Petit Verdot"], "red"),
+                   ("Abstract", "Grenache-led red.", ["Grenache", "Syrah", "Petite Sirah"], "red"),
+                   ("Machete", "Syrah-led red.", ["Syrah", "Grenache", "Petite Sirah"], "red"),
+                   ("Mercury Head", "Napa Cabernet.", ["Cabernet Sauvignon"], "red")],
     "Chateau Ste. Michelle": [("Columbia Valley Riesling", "The volume Riesling."),
                               ("Indian Wells Cabernet Sauvignon", "Warm-site Cabernet."),
                               ("Cold Creek Vineyard Cabernet", "Single vineyard.")],
+
+    # California producers whose range spans grapes the appellation's typical
+    # set cannot predict. Denner is the case that prompted this: Willow Creek
+    # District says "Grenache, Syrah, Mourvedre", which is right for Ditch
+    # Digger, wrong for Theresa, and wrong for Mother of Exiles.
+    "Denner": [("Ditch Digger", "Rhone-style red blend.",
+                ["Grenache", "Syrah", "Mourvedre"], "red"),
+               ("The Dirt Worshipper", "Syrah, co-fermented with Viognier.",
+                ["Syrah", "Viognier"], "red"),
+               ("Mother of Exiles", "Bordeaux-style red.",
+                ["Cabernet Sauvignon", "Merlot", "Petit Verdot"], "red"),
+               ("Theresa", "White Rhone blend.",
+                ["Roussanne", "Grenache Blanc", "Viognier"], "white"),
+               ("Syrah", "Estate Syrah."),
+               ("Grenache", "Estate Grenache."),
+               ("Viognier", "Estate Viognier."),
+               ("Cabernet Sauvignon", "Estate Cabernet.")],
+    "Saxum": [("James Berry Vineyard", "The home vineyard blend.",
+               ["Grenache", "Syrah", "Mourvedre"], "red"),
+              ("Bone Rock", "Syrah-led, James Berry.",
+               ["Syrah", "Grenache", "Mourvedre"], "red"),
+              ("Heart Stone Vineyard", "Single-vineyard Rhone blend.",
+               ["Grenache", "Syrah", "Mourvedre"], "red"),
+              ("Terry Hoage Vineyard", "Single-vineyard Rhone blend.",
+               ["Grenache", "Syrah", "Mourvedre"], "red"),
+              ("Paderewski Vineyard", "Single-vineyard Rhone blend.",
+               ["Syrah", "Grenache", "Mourvedre"], "red")],
+    "Three Sticks": [("Durell Vineyard Chardonnay", "Sonoma Coast Chardonnay."),
+                     ("Durell Vineyard Pinot Noir", "Sonoma Coast Pinot."),
+                     ("Gap's Crown Vineyard Pinot Noir", "Petaluma Gap fruit."),
+                     ("Origin Pinot Noir", "The estate blend."),
+                     ("Price Family Vineyards Chardonnay", "Estate Chardonnay.")],
+    "Arista": [("Russian River Valley Pinot Noir", "The appellation blend."),
+               ("Russian River Valley Chardonnay", "The appellation Chardonnay."),
+               ("Ferrington Vineyard Pinot Noir", "Anderson Valley fruit."),
+               ("Banfield Vineyard Pinot Noir", "Single vineyard."),
+               ("UV Lucky Well Pinot Noir", "Single vineyard."),
+               ("Longbow Pinot Noir", "Estate selection.")],
+}
+
+# Grape names the appellation tables do not happen to list, but that turn up in
+# cuvée names. The resolver reads the label: "Silencieux Cabernet Sauvignon"
+# needs no curated grape list, and neither does a wine the reference has never
+# heard of, as long as its name says what is in it.
+# Which grapes make white wine. Used only to correct a colour the appellation
+# got right for itself and wrong for this bottle: Willow Creek District is a red
+# appellation, so Denner's Viognier came out "red" until the grape said
+# otherwise. Sparkling, dessert and fortified places are left alone — Champagne
+# is Chardonnay and is not a white wine, and nor is Sauternes or Madeira.
+WHITE_GRAPES = {
+    "Albarino", "Aligote", "Alvarinho", "Assyrtiko", "Auxerrois", "Carricante",
+    "Chardonnay", "Chenin Blanc", "Colombard", "Cortese", "Fiano", "Friulano",
+    "Furmint", "Garganega", "Gewurztraminer", "Glera", "Godello", "Grenache Blanc",
+    "Grillo", "Gruner Veltliner", "Harslevelu", "Loureiro", "Macabeo", "Marsanne",
+    "Melon de Bourgogne", "Merwah", "Muscat", "Obaideh", "Parellada", "Petit Manseng",
+    "Picpoul", "Pinot Grigio", "Pinot Gris", "Ribolla Gialla", "Riesling",
+    "Roussanne", "Sauvignon Blanc", "Savagnin", "Semillon", "Torrontes", "Verdejo",
+    "Verdelho", "Vermentino", "Viognier", "Xarel-lo",
+}
+
+GRAPE_SUPPLEMENT = {
+    "Aligote", "Auxerrois", "Bonarda", "Cabernet Franc", "Carricante", "Charbono",
+    "Colombard", "Counoise", "Fiano", "Godello", "Graciano", "Grenache Blanc",
+    "Grillo", "Marsanne", "Mazuelo", "Mencia", "Muscat", "Nerello Cappuccio",
+    "Petit Manseng", "Picpoul", "Pinotage", "Ribolla Gialla", "Roussanne",
+    "Sagrantino", "Savagnin", "Tinta Roriz", "Torrontes", "Trousseau", "Vermentino",
+    "Zweigelt",
 }
 
 _PUNCT = re.compile(r"[^\w\s]", re.UNICODE)
@@ -754,6 +867,19 @@ NOISE = {
     "estate", "estates", "wines", "wine", "the", "and", "et", "di", "de", "del",
     "della", "du", "des", "la", "le", "el", "y", "cie", "co", "company", "family",
 }
+
+
+def _bottling(entry: tuple) -> dict:
+    """(name, note) — or with grapes, or with grapes and a type."""
+    name, note = entry[0], entry[1]
+    grapes = list(entry[2]) if len(entry) > 2 and entry[2] else []
+    wine_type = entry[3] if len(entry) > 3 else None
+    record = {"wine_name": name, "note": note}
+    if grapes:
+        record["varietals"] = grapes
+    if wine_type:
+        record["wine_type"] = wine_type
+    return record
 
 
 def normalize(text: str) -> str:
@@ -867,7 +993,7 @@ def build() -> dict:
         record = {"name": producer, "appellation": appellations[resolved]["name"]}
         cuvees = BOTTLINGS.get(producer)
         if cuvees:
-            record["bottlings"] = [{"wine_name": n, "note": note} for n, note in cuvees]
+            record["bottlings"] = [_bottling(entry) for entry in cuvees]
         producers[key] = record
 
     return {
@@ -882,6 +1008,14 @@ def build() -> dict:
         "countries": countries,
         "producers": producers,
         "noise_words": sorted(NOISE),
+        "grape_words": sorted(
+            {g for a in appellations.values() for g in a.get("grapes", [])}
+            | {g for r in regions.values() for g in r.get("grapes", [])}
+            | {g for record in producers.values()
+                 for b in record.get("bottlings", []) for g in b.get("varietals", [])}
+            | GRAPE_SUPPLEMENT
+        ),
+        "white_grapes": sorted(WHITE_GRAPES),
         "unmatched_sample_appellations": sorted({a for _, a in unknown}),
         "_conflicts": [
             {"producer": p, "kept": kept, "ignored": ignored} for p, kept, ignored in conflicts
