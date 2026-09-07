@@ -12,6 +12,7 @@ from fastapi import APIRouter, HTTPException, Query
 from pydantic import BaseModel, Field
 
 from server.db import get_pool
+from server.valuation import VALUATION_ORDER
 from server.wine_identity import to_float
 
 router = APIRouter(tags=["cellars"])
@@ -186,7 +187,7 @@ async def cellar_stats(
               JOIN LATERAL (
                     SELECT mid FROM wine_valuations
                      WHERE wine_id = b.wine_id AND mid IS NOT NULL
-                     ORDER BY (source_kind = 'market') DESC, fetched_at DESC
+                     ORDER BY """ + VALUATION_ORDER + """
                      LIMIT 1
               ) v ON TRUE
              WHERE b.cellar_id = $1 AND b.status = 'in_cellar'

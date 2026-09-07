@@ -16,6 +16,7 @@ from server.routes import (
     taste,
     top_rated,
     trips,
+    value,
     votes,
     wine_intel,
     wineries,
@@ -60,3 +61,4 @@ app.include_router(cellars.router, prefix="/api")
 app.include_router(bottles.router, prefix="/api")
 app.include_router(labels.router, prefix="/api")
 app.include_router(wine_intel.router, prefix="/api")
+app.include_router(value.router, prefix="/api")

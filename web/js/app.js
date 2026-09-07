@@ -12,10 +12,12 @@ import { cellarsView } from './views/cellars.js';
 import { scanView } from './views/scan.js';
 import { discoverView } from './views/discover.js';
 import { settingsView } from './views/settings.js';
+import { valueView } from './views/value.js';
 
 const ROUTES = {
   dashboard: dashboardView,
   inventory: inventoryView,
+  value: valueView,
   cellars: cellarsView,
   scan: scanView,
   discover: discoverView,

@@ -22,6 +22,7 @@ from server.score_providers import (
     has_live_valuations,
 )
 from server.sommelier_client import cache_get, cache_set, call_sommelier
+from server.valuation import VALUATION_ORDER, store_valuations
 from server.wine_identity import WINE_COLUMNS, display_name, serialize_wine, to_float
 
 router = APIRouter(tags=["wine-intel"])
@@ -76,9 +77,9 @@ async def wine_valuation(
     if stored and not refresh:
         return _valuation_response(wine, stored)
 
-    fetched = await _fetch_valuations(wine)
+    fetched = await fetch_valuations(wine)
     if fetched:
-        await _store_valuations(pool, wine_id, fetched)
+        await store_valuations(pool, wine_id, fetched)
     return _valuation_response(wine, await _stored_valuations(pool, wine_id))
 
 
@@ -261,8 +262,8 @@ async def _stored_valuations(pool, wine_id: int) -> list:
         SELECT source, source_kind, low, mid, high, currency, note, confidence, fetched_at
           FROM wine_valuations
          WHERE wine_id = $1
-         ORDER BY (source_kind = 'market') DESC, fetched_at DESC
-        """,
+         ORDER BY {VALUATION_ORDER}
+        """.format(VALUATION_ORDER=VALUATION_ORDER),
         wine_id,
     )
 
@@ -305,7 +306,7 @@ async def _fetch_scores(wine) -> list[dict]:
     ]
 
 
-async def _fetch_valuations(wine) -> list[dict]:
+async def fetch_valuations(wine) -> list[dict]:
     w = serialize_wine(wine)
     if VALUATION_PROVIDERS:
         results = await asyncio.gather(
@@ -354,26 +355,6 @@ async def _store_scores(pool, wine_id: int, rows: list[dict]) -> None:
             (
                 wine_id, r["source"], r["source_kind"], r.get("score"), r.get("scale", "100"),
                 r.get("reviewer"), r.get("review"), r.get("url"), r.get("confidence"),
-            )
-            for r in rows
-        ],
-    )
-
-
-async def _store_valuations(pool, wine_id: int, rows: list[dict]) -> None:
-    await pool.executemany(
-        """
-        INSERT INTO wine_valuations (wine_id, source, source_kind, low, mid, high, currency, note, confidence)
-        VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
-        ON CONFLICT (wine_id, source) DO UPDATE SET
-            source_kind = EXCLUDED.source_kind, low = EXCLUDED.low, mid = EXCLUDED.mid,
-            high = EXCLUDED.high, currency = EXCLUDED.currency, note = EXCLUDED.note,
-            confidence = EXCLUDED.confidence, fetched_at = NOW()
-        """,
-        [
-            (
-                wine_id, r["source"], r["source_kind"], r.get("low"), r.get("mid"), r.get("high"),
-                r.get("currency", "USD"), r.get("note"), r.get("confidence"),
             )
             for r in rows
         ],

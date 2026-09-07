@@ -20,6 +20,7 @@ from pydantic import BaseModel, Field, model_validator
 
 from server.db import get_pool
 from server.routes.cellars import _owned_cellar
+from server.valuation import BEST_VALUE_CTE
 from server.wine_identity import WINE_COLUMNS, serialize_wine, to_float, upsert_wine
 
 router = APIRouter(tags=["bottles"])
@@ -64,17 +65,6 @@ BEST_SCORE_CTE = """
                   fetched_at DESC
     )
 """
-BEST_VALUE_CTE = """
-    best_values AS (
-        SELECT DISTINCT ON (wine_id)
-               wine_id, low, mid, high, currency, source AS value_source, source_kind AS value_kind
-          FROM wine_valuations
-         WHERE mid IS NOT NULL
-         ORDER BY wine_id, (source_kind = 'market') DESC, fetched_at DESC
-    )
-"""
-
-
 class WineIn(BaseModel):
     producer: str = Field(..., min_length=1, max_length=300)
     wine_name: Optional[str] = Field(default=None, max_length=300)

@@ -44,8 +44,10 @@ const WINES = [
 const SCORES = {
   1: 98, 2: 95, 3: 96, 4: 97, 5: 91, 6: 96, 7: 92, 8: 90, 9: 90, 10: 97,
 };
+// Sample market prices per bottle. A couple sit below what the sample cellar
+// "paid" so the movers chart shows losses as well as gains.
 const VALUES = {
-  1: 850, 2: 320, 3: 210, 4: 260, 5: 24, 6: 195, 7: 28, 8: 65, 9: 32, 10: 120,
+  1: 850, 2: 320, 3: 210, 4: 260, 5: 18, 6: 195, 7: 28, 8: 30, 9: 24, 10: 120,
 };
 
 const CELLARS = [
@@ -203,6 +205,16 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
     };
     cellars.push(cellar);
     return cellar;
+  }
+
+  const valueMatch = path.match(/^\/api\/cellars\/(\d+)\/(value|revalue)$/);
+  if (valueMatch) {
+    const id = Number(valueMatch[1]);
+    if (valueMatch[2] === 'revalue') {
+      return { priced: 0, failed: 0, attempted: 0, wines_in_cellar: bottles.length,
+               message: 'Demo mode: the sample cellar is already priced.' };
+    }
+    return demoValueReport(id);
   }
 
   const cellarMatch = path.match(/^\/api\/cellars\/(\d+)(\/stats)?$/);
@@ -371,6 +383,22 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
     return { wine: w, suggestions: DEMO_SUGGESTIONS.map((s) => ({ ...s, already_owned: false })) };
   }
 
+  const manualValue = path.match(/^\/api\/wines\/(\d+)\/valuation$/);
+  if (manualValue && method === 'PUT') {
+    const wineId = Number(manualValue[1]);
+    VALUES[wineId] = body.mid;
+    for (const bottle of bottles) {
+      if (bottle.wine.id === wineId) {
+        bottle.value = { low: body.low ?? body.mid * 0.8, mid: body.mid, high: body.high ?? body.mid * 1.3,
+                         currency: 'USD', source: 'Owner', source_kind: 'manual', estimated: false };
+        bottle.lot_value = body.mid * bottle.quantity;
+      }
+    }
+    return { wine_id: wineId, valuations: [{ source: 'Owner', source_kind: 'manual',
+             low: body.low, mid: body.mid, high: body.high, currency: 'USD',
+             estimated: false, fetched_at: new Date().toISOString() }] };
+  }
+
   if (path === '/api/recommendations') {
     return {
       based_on: { bottle_lots: bottles.length, top_varietals: ['Cabernet Sauvignon', 'Nebbiolo', 'Chardonnay'], taste_profile_entries: 0 },
@@ -380,6 +408,84 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
 
   throw new Error(`Demo mode does not implement ${method} ${path}`);
 }
+
+/** Value report over the sample cellar, including a synthesised 90-day history
+ *  so the value chart has something real-shaped to draw. */
+function demoValueReport(cellarId) {
+  const inside = bottles.filter((b) => b.cellar_id === cellarId && b.status === 'in_cellar' && b.quantity > 0);
+  const lots = inside.map((b) => {
+    const lotValue = round2((b.value?.mid || 0) * b.quantity);
+    const costBasis = b.purchase_price === null ? null : round2(b.purchase_price * b.quantity);
+    return {
+      bottle_id: b.id, wine_id: b.wine.id, display_name: b.wine.display_name,
+      region: b.wine.region, country: b.wine.country, varietals: b.wine.varietals,
+      bin: b.bin, quantity: b.quantity,
+      unit_value: b.value?.mid ?? null, unit_cost: b.purchase_price,
+      lot_value: lotValue, cost_basis: costBasis,
+      gain: costBasis === null ? 0 : round2(lotValue - costBasis),
+      gain_pct: costBasis ? Math.round((1000 * (lotValue - costBasis)) / costBasis) / 10 : null,
+      value_kind: b.value?.source_kind || 'market', value_source: b.value?.source || 'Sample data',
+      estimated: b.value?.source_kind === 'ai_estimate',
+      valued_at: new Date().toISOString(),
+    };
+  });
+
+  const marketValue = round2(lots.reduce((sum, l) => sum + l.lot_value, 0));
+  const costBasis = round2(inside.reduce((sum, b) => sum + (b.purchase_price || 0) * b.quantity, 0));
+  const bottleCount = inside.reduce((sum, b) => sum + b.quantity, 0);
+  const movable = lots.filter((l) => l.cost_basis !== null).sort((a, b) => b.gain - a.gain);
+
+  // A gently rising series with a wobble, so the chart shows a real shape.
+  const history = [];
+  for (let daysAgo = 90; daysAgo >= 0; daysAgo -= 10) {
+    const point = new Date();
+    point.setDate(point.getDate() - daysAgo);
+    const progress = (90 - daysAgo) / 90;
+    const wobble = 1 + Math.sin(daysAgo / 11) * 0.015;
+    history.push({
+      date: point.toISOString().slice(0, 10),
+      bottle_count: bottleCount,
+      cost_basis: costBasis,
+      market_value: round2(marketValue * (0.86 + 0.14 * progress) * wobble),
+      valued_bottles: bottleCount,
+    });
+  }
+  history[history.length - 1].market_value = marketValue;
+
+  const group = (keyFn) => {
+    const map = new Map();
+    for (const lot of lots) {
+      const key = keyFn(lot);
+      const bucket = map.get(key) || { key, value: 0, bottles: 0 };
+      bucket.value = round2(bucket.value + lot.lot_value);
+      bucket.bottles += lot.quantity;
+      map.set(key, bucket);
+    }
+    return [...map.values()].sort((a, b) => b.value - a.value).slice(0, 15);
+  };
+
+  const cellar = cellars.find((c) => c.id === cellarId);
+  return {
+    cellar: { id: cellarId, name: cellar?.name || 'Cellar' },
+    currency: 'USD',
+    bottle_count: bottleCount, lot_count: lots.length,
+    valued_bottles: bottleCount, valued_lots: lots.length, coverage_pct: 100,
+    cost_basis: costBasis, cost_basis_priced: costBasis,
+    market_value: marketValue, market_value_all: marketValue,
+    market_low: round2(marketValue * 0.8), market_high: round2(marketValue * 1.3),
+    estimated_share_pct: 0,
+    unrealized_gain: round2(marketValue - costBasis),
+    unrealized_gain_pct: costBasis ? Math.round((1000 * (marketValue - costBasis)) / costBasis) / 10 : null,
+    top_gainers: movable.filter((l) => l.gain > 0).slice(0, 8),
+    top_losers: movable.filter((l) => l.gain < 0).reverse().slice(0, 8),
+    most_valuable: [...lots].sort((a, b) => b.lot_value - a.lot_value).slice(0, 8),
+    by_region: group((l) => l.region || l.country || 'Unknown'),
+    by_varietal: group((l) => l.varietals[0] || 'Unspecified'),
+    history,
+  };
+}
+
+function round2(value) { return Math.round(value * 100) / 100; }
 
 /** Reset the sample cellar to its starting state (used by Settings). */
 export function resetDemo() {

@@ -90,6 +90,12 @@ export const api = {
     timeout: 90000,
   }),
 
+  // -- value tracker --
+  cellarValue: (id) => request('GET', `/api/cellars/${id}/value`, { query: { account_id: account() } }),
+  revalue: (id, data) => request('POST', `/api/cellars/${id}/revalue`, { body: { account_id: account(), ...data }, timeout: 240000 }),
+  setValuation: (wineId, data) => request('PUT', `/api/wines/${wineId}/valuation`, { body: { account_id: account(), ...data } }),
+  valuationHistory: (wineId) => request('GET', `/api/wines/${wineId}/valuation/history`),
+
   // -- scores, value, recommendations --
   scores: (wineId, refresh = false) => request('GET', `/api/wines/${wineId}/scores`, { query: { refresh: refresh || '' }, timeout: 90000 }),
   valuation: (wineId, refresh = false) => request('GET', `/api/wines/${wineId}/valuation`, { query: { refresh: refresh || '' }, timeout: 90000 }),

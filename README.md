@@ -44,6 +44,7 @@ psql winevoyage -f sql/003_top_rated.sql
 psql winevoyage -f sql/004_votes.sql
 psql winevoyage -f sql/005_geo.sql
 psql winevoyage -f sql/006_cellars.sql
+psql winevoyage -f sql/007_value_tracking.sql
 
 # 5. Seed appellations (after editing data/appellations.json)
 python -m scripts.seed_appellations
@@ -223,6 +224,49 @@ fallback. Until then, scores and valuations are **model estimates**, stored with
 disclaimer everywhere they appear. They are a starting point, not a citation,
 and should not be used to insure or sell a bottle.
 
+### Value tracker
+
+Cellar value is worth nothing if nothing populates it, so this is the piece that
+does. `006` gave each wine a valuation slot but filled it one wine at a time from
+the detail sheet, and upserted in place — so a fresh cellar was worth "—", and
+last month's price was gone the moment a new one landed. `007` adds the history
+tables and these endpoints.
+
+- `GET  /api/cellars/{id}/value?account_id=&movers=8` — the whole picture:
+  - `market_value_all` (every priced lot) and `cost_basis` (everything you paid).
+  - `market_value` / `cost_basis_priced` — the **intersection**: lots that have
+    both a price and a cost. `unrealized_gain` compares those two, so the gain is
+    never one population measured against a different one.
+  - `market_low` / `market_high` — the same total at the bottom and top of each
+    wine's range.
+  - `coverage_pct` — how much of the cellar actually has a price. A total built
+    from half the bottles says so.
+  - `estimated_share_pct` — how much of the total rests on model estimates rather
+    than real prices.
+  - `top_gainers`, `top_losers` (disjoint), `most_valuable`, `by_region`,
+    `by_varietal`, and the `history` series.
+- `POST /api/cellars/{id}/revalue` — body: `{account_id, force?, stale_days?, limit?}`
+  - Prices every wine in the cellar that lacks a recent valuation, four at a time,
+    up to 60 per call. Skips wines valued inside `stale_days` (default 30) unless
+    `force`. Returns `{priced, failed, attempted, wines_in_cellar}`.
+- `PUT  /api/wines/{id}/valuation` — body: `{account_id, mid, low?, high?, currency?, note?}`
+  - Your own price for a wine. **Outranks every other source** everywhere the
+    cellar is valued. Requires that you actually hold the wine (403 otherwise),
+    since `wines` rows are shared across accounts.
+- `GET  /api/wines/{id}/valuation/history?limit=` — every price ever recorded for
+  one wine, oldest first, with `change` and `change_pct`.
+
+**Source ranking.** `manual` > `market` > `ai_estimate`, ties broken on recency.
+The ordering lives in `server/valuation.py` and every query that picks a single
+best price imports it, so the dashboard, the inventory sort, and the value report
+can never disagree about what a bottle is worth.
+
+**How history accumulates.** Opening the value page writes that day's snapshot
+(`cellar_value_snapshots`, one row per cellar per day, upserted). There is no cron
+job and no worker — using the app is what builds the chart. Every price written
+also appends to `wine_valuation_history`, so per-wine price history is complete
+even for wines whose current valuation has since been replaced.
+
 ## The cellar frontend (GitHub Pages)
 
 `web/` is a static site — plain HTML, CSS, and ES modules, no build step, no
@@ -262,6 +306,15 @@ is a browser rule, not something the app can work around.
 **Account ids are bearer tokens.** Anyone with the id can read and change that
 account's cellars. Share the setup link only with people you want in your cellar.
 
+**Chart colours are validated, not chosen by eye.** The two data hues — `#2f9fd0`
+for value and gains, `#e2624a` for losses — pass the lightness band, chroma floor,
+CVD separation (ΔE 19.7 under simulated protanopia), the normal-vision floor
+(ΔE 28.2), and 3:1 contrast against both chart surfaces. Blue rather than green
+for "gain" is deliberate: a red/green pair tops out near ΔE 6 and is precisely the
+pair red-green colourblind readers cannot separate. Gains and losses also carry a
+sign and an arrow, so colour is never the only channel. The brand crimson stays on
+buttons and navigation and never encodes data.
+
 ### What the frontend does
 
 - **Dashboard** — bottle and lot counts, amount paid vs. estimated value,
@@ -278,6 +331,11 @@ account's cellars. Share the setup link only with people you want in your cellar
   viewfinder on desktop). The image is downscaled in-browser to a 1600px JPEG
   before upload, then the add-bottle form arrives pre-filled with confidence
   shown for anything shaky. Nothing is saved until you confirm.
+- **Value** — total cellar value against what you paid, unrealized gain, and how
+  much of the total is priced at all. A line chart of value over time, biggest
+  movers as a diverging bar, most valuable lots, and value by region and varietal.
+  One button revalues the whole cellar; any bottle's price can be overridden by
+  hand from its detail sheet.
 - **Discover** — buy-next suggestions reasoned over the whole cellar.
 - **Cellars** — create, edit, delete, and set the default.
 
@@ -361,7 +419,18 @@ pip install httpx                     # test-only dependency
 DATABASE_URL=postgresql://localhost/winevoyage python -m scripts.smoke_cellar
 ```
 
-It prints a PASS/FAIL line per check and exits non-zero if any fail.
+### Value tracker smoke test
+
+`scripts/smoke_value.py` covers the accounting: bulk revaluation and its
+skip-if-fresh rule, the cost/value intersection, coverage, movers, snapshots, and
+manual price overrides. The pricing call is stubbed with a deterministic fake, so
+it costs nothing and needs no Anthropic key.
+
+```bash
+DATABASE_URL=postgresql://localhost/winevoyage python -m scripts.smoke_value
+```
+
+Both scripts print a PASS/FAIL line per check and exit non-zero if any fail.
 
 ## Troubleshooting
 

@@ -135,13 +135,17 @@ export function drinkWindowTag(status) {
   return el('span', { class: `tag ${status || 'unknown'}` }, DRINK_WINDOW_LABELS[status] || 'No window');
 }
 
-export function bars(rows, { limit = 8, label = (r) => r.key } = {}) {
+export function bars(rows, { limit = 8, label = (r) => r.key, color = null } = {}) {
   const shown = rows.slice(0, limit);
   const max = Math.max(1, ...shown.map((r) => r.bottles));
   return el('div', { class: 'bars' }, ...shown.map((row) =>
     el('div', { class: 'bar-row' },
       el('span', { class: 'label', title: String(label(row)) }, String(label(row))),
-      el('span', { class: 'bar-track' }, el('span', { class: 'bar-fill', style: `width:${(row.bottles / max) * 100}%` })),
+      el('span', { class: 'bar-track' },
+        el('span', {
+          class: 'bar-fill',
+          style: `width:${(row.bottles / max) * 100}%` + (color ? `;background:${color}` : ''),
+        })),
       el('span', { class: 'n' }, count(row.bottles)))));
 }
 

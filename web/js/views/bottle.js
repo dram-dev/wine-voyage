@@ -6,6 +6,7 @@ import { state } from '../state.js';
 import {
   confirmAction, date, drinkWindowTag, el, field, loading, modal, money, plural, select, toast,
 } from '../ui.js';
+import { CHART } from '../charts.js';
 
 export async function bottleSheet(bottleId, onChange = () => {}) {
   const body = el('div', {}, loading('Loading bottle…'));
@@ -36,13 +37,17 @@ export async function bottleSheet(bottleId, onChange = () => {}) {
     bottle.purchase_date ? row('Purchased', date(bottle.purchase_date)) : null,
     bottle.purchase_source ? row('From', bottle.purchase_source) : null,
     bottle.my_rating ? row('My rating', `${bottle.my_rating}/100`) : null,
-    bottle.value ? row('Est. value',
-      `${money(bottle.value.mid, bottle.value.currency)} each · ${money(bottle.value.mid * bottle.quantity, bottle.value.currency)} for the lot`) : null);
+    bottle.value ? row('Value',
+      `${money(bottle.value.mid, bottle.value.currency)} each · ${money(bottle.value.mid * bottle.quantity, bottle.value.currency)} for the lot`,
+      bottle.value.estimated ? el('span', { class: 'tag estimate', style: 'margin-left:.4rem' }, 'estimate') : null) : null,
+    bottle.value && bottle.purchase_price ? row('Gain',
+      valueDelta(bottle, bottle.value.currency)) : null);
 
   const actions = el('div', { class: 'btn-row', style: 'margin:1rem 0' },
     el('button', { class: 'btn-primary', type: 'button', onClick: () => drinkForm(bottle, refresh) }, '🍷 Drink'),
     el('button', { type: 'button', onClick: () => moveForm(bottle, refresh) }, '↔ Move'),
     el('button', { type: 'button', onClick: () => editForm(bottle, refresh) }, '✎ Edit'),
+    el('button', { type: 'button', onClick: () => priceForm(bottle, refresh) }, '💰 Set price'),
     el('button', {
       class: 'btn-danger', type: 'button',
       onClick: async () => {
@@ -75,6 +80,52 @@ export async function bottleSheet(bottleId, onChange = () => {}) {
 
   loadScores(wine.id, scoresBox);
   loadSimilar(wine.id, similarBox);
+}
+
+/** Gain on this lot, with the sign and arrow carrying direction, not colour alone. */
+function valueDelta(bottle, currency) {
+  const delta = (bottle.value.mid - bottle.purchase_price) * bottle.quantity;
+  const pct = Math.round((100 * (bottle.value.mid - bottle.purchase_price)) / bottle.purchase_price);
+  const up = delta >= 0;
+  return el('span', { style: `color:${up ? CHART.value : CHART.loss};font-weight:600` },
+    `${up ? '▲' : '▼'} ${up ? '+' : '−'}${money(Math.abs(delta), currency)}`,
+    el('small', { style: 'opacity:.8;font-weight:400' }, ` ${up ? '+' : '−'}${Math.abs(pct)}%`));
+}
+
+/** Enter a price you know. A manual price outranks the model's estimate. */
+function priceForm(bottle, refresh) {
+  const mid = el('input', { type: 'number', step: '0.01', min: '0', required: true,
+    value: bottle.value?.mid ?? '', placeholder: 'What one bottle is worth now' });
+  const low = el('input', { type: 'number', step: '0.01', min: '0', value: bottle.value?.low ?? '' });
+  const high = el('input', { type: 'number', step: '0.01', min: '0', value: bottle.value?.high ?? '' });
+  const note = el('input', { placeholder: 'Where the price came from' });
+  const save = el('button', { class: 'btn-primary', type: 'submit' }, 'Save price');
+
+  const close = modal(`Price ${bottle.wine.display_name}`, el('form', {
+    onSubmit: async (event) => {
+      event.preventDefault();
+      if (!mid.value) { toast('A per-bottle value is required', 'error'); return; }
+      save.disabled = true;
+      try {
+        await api.setValuation(bottle.wine.id, {
+          mid: Number(mid.value),
+          low: low.value ? Number(low.value) : null,
+          high: high.value ? Number(high.value) : null,
+          note: note.value.trim() || null,
+        });
+        toast('Price saved', 'ok');
+        close();
+        await refresh();
+      } catch (error) { toast(error.message, 'error'); save.disabled = false; }
+    },
+  },
+    el('p', { class: 'hint' },
+      'Your own price wins over a market feed and over the model\u2019s estimate, everywhere the cellar is valued.'),
+    el('div', { class: 'field-grid' },
+      field('Per bottle *', mid), field('Low', low), field('High', high)),
+    field('Note', note),
+    el('div', { class: 'btn-row' }, save,
+      el('button', { class: 'btn-ghost', type: 'button', onClick: () => close() }, 'Cancel'))));
 }
 
 function row(key, ...value) {
