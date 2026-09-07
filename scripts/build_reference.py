@@ -28,6 +28,8 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from scripts.reference_california import CALIFORNIA_AVAS, CALIFORNIA_PRODUCERS
+
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = DATA / "wine_reference.json"
@@ -213,7 +215,7 @@ PRODUCERS: list[tuple[str, str]] = [
     ("Caymus Vineyards", "Napa Valley"), ("Silver Oak", "Alexander Valley"),
     ("Duckhorn Vineyards", "Napa Valley"), ("Rombauer Vineyards", "Napa Valley"),
     ("Opus One", "Oakville"), ("Stag's Leap Wine Cellars", "Stags Leap District"),
-    ("Cakebread Cellars", "Napa Valley"), ("Far Niente", "Oakville"),
+    ("Cakebread Cellars", "Rutherford"), ("Far Niente", "Oakville"),
     ("Beringer", "Napa Valley"), ("Robert Mondavi Winery", "Oakville"),
     ("Heitz Cellar", "Napa Valley"), ("Chateau Montelena", "Calistoga"),
     ("Shafer Vineyards", "Stags Leap District"), ("Joseph Phelps", "Napa Valley"),
@@ -240,8 +242,8 @@ PRODUCERS: list[tuple[str, str]] = [
     # -- Central Coast / other US --
     ("Au Bon Climat", "Santa Barbara County"), ("Sanford", "Sta. Rita Hills"),
     ("Bonny Doon", "Santa Cruz Mountains"), ("Mount Eden Vineyards", "Santa Cruz Mountains"),
-    ("Tablas Creek", "Paso Robles"), ("Justin Vineyards", "Paso Robles"),
-    ("Saxum", "Paso Robles"), ("Alban Vineyards", "Edna Valley"),
+    ("Tablas Creek", "Adelaida District"), ("Justin Vineyards", "Adelaida District"),
+    ("Saxum", "Willow Creek District"), ("Alban Vineyards", "Edna Valley"),
     ("Domaine de la Cote", "Sta. Rita Hills"), ("Sandhi", "Sta. Rita Hills"),
     ("Talley Vineyards", "Edna Valley"), ("Ceritas", "Sonoma Coast"),
     ("Domaine Drouhin Oregon", "Dundee Hills"), ("Ponzi Vineyards", "Willamette Valley"),
@@ -378,7 +380,7 @@ PRODUCERS: list[tuple[str, str]] = [
 # scores well. Napa and Sonoma dominate because US cellars do.
 PRODUCERS += [
     # -- Napa --
-    ("Venge Vineyards", "Napa Valley"), ("Saddleback Cellars", "Oakville"),
+    ("Venge Vineyards", "Calistoga"), ("Saddleback Cellars", "Oakville"),
     ("Hundred Acre", "Napa Valley"), ("Schrader Cellars", "Oakville"),
     ("Colgin", "Napa Valley"), ("Bryant Family", "Napa Valley"),
     ("Bond Estates", "Napa Valley"), ("Promontory", "Oakville"),
@@ -460,9 +462,9 @@ PRODUCERS += [
     ("Hilliard Bruce", "Sta. Rita Hills"), ("Liquid Farm", "Sta. Rita Hills"),
     ("Lucia", "Santa Lucia Highlands"), ("Pisoni", "Santa Lucia Highlands"),
     ("Hahn", "Santa Lucia Highlands"), ("Morgan", "Santa Lucia Highlands"),
-    ("Booker", "Paso Robles"), ("Denner", "Paso Robles"),
-    ("L'Aventure", "Paso Robles"), ("Daou", "Paso Robles"),
-    ("Halter Ranch", "Paso Robles"), ("Epoch Estate", "Paso Robles"),
+    ("Booker", "Willow Creek District"), ("Denner", "Willow Creek District"),
+    ("L'Aventure", "Willow Creek District"), ("Daou", "Adelaida District"),
+    ("Halter Ranch", "Adelaida District"), ("Epoch Estate", "Willow Creek District"),
     ("Ridge Paso", "Paso Robles"), ("Eberle", "Paso Robles"),
     ("Wild Horse", "Paso Robles"), ("Sextant", "Paso Robles"),
     ("Chamisal", "Edna Valley"), ("Center of Effort", "Edna Valley"),
@@ -764,6 +766,17 @@ def tokens(text: str) -> list[str]:
     return [t for t in normalize(text).split() if t and t not in NOISE]
 
 
+# The repository's two samples disagree with each other on a handful of wines,
+# and top_rated_sample.json is the wrong one: it files Ridge's Monte Bello under
+# Napa Valley (it is Santa Cruz Mountains) and Shafer's Hillside Select under
+# Napa Valley (Stags Leap District is both correct and more precise). Corrected
+# here rather than by editing the seed files, which are the user's to curate.
+SAMPLE_CORRECTIONS: dict[str, str] = {
+    "Ridge Vineyards (Monte Bello)": "Santa Cruz Mountains",
+    "Shafer Vineyards (Hillside Select)": "Stags Leap District",
+}
+
+
 def load_repo_producers() -> list[tuple[str, str]]:
     """Producers the repository already ships in its top-rated samples."""
     pairs: list[tuple[str, str]] = []
@@ -774,14 +787,17 @@ def load_repo_producers() -> list[tuple[str, str]]:
         payload = json.loads(path.read_text())
         for appellation in payload.get("appellations", []):
             for winery in appellation.get("top_wineries", []):
-                if winery.get("name"):
-                    pairs.append((winery["name"], appellation["name"]))
+                name = winery.get("name")
+                if name:
+                    pairs.append((name, SAMPLE_CORRECTIONS.get(name, appellation["name"])))
     return pairs
 
 
 def build() -> dict:
     appellations = {}
-    for name, region, country, wine_type, grapes, age in APPELLATIONS:
+    # California carries most of the dataset's weight, so it lives in its own
+    # module; it is folded in here on equal terms with the base table.
+    for name, region, country, wine_type, grapes, age in APPELLATIONS + CALIFORNIA_AVAS:
         appellations[normalize(name)] = {
             "name": name, "region": region, "country": country,
             "type": wine_type, "grapes": grapes, "age": list(age),
@@ -813,10 +829,16 @@ def build() -> dict:
 
     producers: dict[str, dict] = {}
     unknown: list[tuple[str, str]] = []
+    # Sources disagree occasionally. First-wins is fine, but a silent
+    # disagreement is a data bug waiting to be noticed by a user, so collect
+    # them and print them on every build.
+    conflicts: list[tuple[str, str, str]] = []
     # Curated entries are authoritative; repository samples fill the gaps.
-    for producer, appellation in PRODUCERS + load_repo_producers():
+    for producer, appellation in PRODUCERS + CALIFORNIA_PRODUCERS + load_repo_producers():
         key = normalize(producer)
         if key in producers:
+            if producers[key]["appellation"] != appellation:
+                conflicts.append((producer, producers[key]["appellation"], appellation))
             continue
         resolved = resolve_appellation(appellation)
         if resolved is None:
@@ -841,6 +863,9 @@ def build() -> dict:
         "producers": producers,
         "noise_words": sorted(NOISE),
         "unmatched_sample_appellations": sorted({a for _, a in unknown}),
+        "_conflicts": [
+            {"producer": p, "kept": kept, "ignored": ignored} for p, kept, ignored in conflicts
+        ],
     }
 
 
@@ -860,6 +885,10 @@ def main() -> int:
     missing = [n for n in BOTTLINGS if normalize(n) not in reference["producers"]]
     if missing:
         print("  BOTTLINGS entries with no producer row:", missing)
+    if reference["_conflicts"]:
+        print(f"\nplacement disagreements ({len(reference['_conflicts'])}) — first entry kept:")
+        for row in reference["_conflicts"]:
+            print(f"  {row['producer']:28} kept {row['kept']:26} over {row['ignored']}")
     if reference["unmatched_sample_appellations"]:
         print("sample appellations with no curated entry (producers skipped):")
         for name in reference["unmatched_sample_appellations"]:
