@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Template. scripts/install_launchd.sh substitutes the repository and home
+  paths and installs the result into ~/Library/LaunchAgents/.
+  Edit the installed copy, not this one.
+-->
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.winevoyage.api</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>__REPO__/run.sh</string>
+    </array>
+
+    <key>WorkingDirectory</key>
+    <string>__REPO__</string>
+
+    <key>EnvironmentVariables</key>
+    <dict>
+        <!-- A file watcher restarting the server under you is a development
+             convenience, not a service. -->
+        <key>WV_RELOAD</key>
+        <string>0</string>
+        <key>PATH</key>
+        <string>/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>KeepAlive</key>
+    <dict>
+        <key>SuccessfulExit</key>
+        <false/>
+    </dict>
+
+    <!-- Postgres may not be accepting connections the instant we are loaded;
+         asyncpg retries with backoff, and launchd throttles restarts anyway. -->
+    <key>ThrottleInterval</key>
+    <integer>10</integer>
+
+    <key>StandardOutPath</key>
+    <string>__HOME__/Library/Logs/winevoyage.log</string>
+    <key>StandardErrorPath</key>
+    <string>__HOME__/Library/Logs/winevoyage.log</string>
+</dict>
+</plist>

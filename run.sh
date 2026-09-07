@@ -12,4 +12,11 @@ elif [ -d "venv" ]; then
 fi
 
 PORT="${PORT:-8420}"
-exec uvicorn server.main:app --host 0.0.0.0 --port "$PORT" --reload
+
+# Reload-on-change is right at a terminal and wrong for a service that should
+# just stay up. WV_RELOAD=0 turns it off; the launchd job sets that.
+if [ "${WV_RELOAD:-1}" = "0" ]; then
+  exec uvicorn server.main:app --host 0.0.0.0 --port "$PORT"
+else
+  exec uvicorn server.main:app --host 0.0.0.0 --port "$PORT" --reload
+fi

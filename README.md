@@ -559,9 +559,31 @@ password and share it only with people you want in there.
 
 ### Autostart
 
-For the server to be up when you reach for your phone, keep it running: a launchd plist
-that runs `./run.sh`, or `pm2 start ./run.sh --name winevoyage`. `tailscale serve --bg`
-already persists across reboots.
+For the API to be up whenever you reach for your phone, install it as a launchd job:
+
+```bash
+./scripts/install_launchd.sh
+```
+
+It renders `deploy/com.winevoyage.api.plist` with this checkout's paths into
+`~/Library/LaunchAgents/`, starts it, waits for `/health`, and then reminds you of the
+`tailscale serve` line. `--print` renders the plist without installing anything so you
+can read it first; `--uninstall` removes it. Logs land in
+`~/Library/Logs/winevoyage.log`.
+
+The job sets `WV_RELOAD=0`, which drops uvicorn's `--reload`. Watching files and
+restarting is right at a terminal and wrong for something that should just stay up.
+
+Two caveats worth knowing:
+
+- This is a **LaunchAgent**, so it starts when you log in, not at boot. On a Mac mini
+  that reboots unattended, turn on automatic login or the API stays down until someone
+  logs in. A LaunchDaemon would start at boot but runs as root, which this app has no
+  reason to do.
+- Postgres needs to come up too: `brew services start postgresql@16` registers it, and
+  the API retries with backoff if it wins the race at boot.
+
+`tailscale serve --bg` already persists across reboots on its own.
 
 ## Verification
 
