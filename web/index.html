@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Wine Voyage — Cellar</title>
+<meta name="description" content="Cellar inventory, label scanning, and score comparison for Wine Voyage.">
+<meta name="theme-color" content="#2a0f1b">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#/dashboard"><span aria-hidden="true">🍷</span> Wine&nbsp;Voyage</a>
+
+    <label class="cellar-switch">
+      <span class="sr-only">Active cellar</span>
+      <select id="cellar-switcher"></select>
+    </label>
+
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="#/dashboard" data-nav="dashboard">Dashboard</a>
+      <a href="#/inventory" data-nav="inventory">Inventory</a>
+      <a href="#/scan" data-nav="scan">Scan</a>
+      <a href="#/discover" data-nav="discover">Discover</a>
+      <a href="#/cellars" data-nav="cellars">Cellars</a>
+      <a href="#/settings" data-nav="settings">Settings</a>
+    </nav>
+
+    <button id="conn-status" class="conn" type="button" title="Connection status">
+      <span class="dot" aria-hidden="true"></span><span class="conn-label">…</span>
+    </button>
+  </div>
+</header>
+
+<main id="main" tabindex="-1"></main>
+
+<nav class="nav-mobile" aria-label="Main">
+  <a href="#/dashboard" data-nav="dashboard"><span aria-hidden="true">📊</span>Home</a>
+  <a href="#/inventory" data-nav="inventory"><span aria-hidden="true">🗄️</span>Cellar</a>
+  <a href="#/scan" data-nav="scan" class="scan-tab"><span aria-hidden="true">📷</span>Scan</a>
+  <a href="#/discover" data-nav="discover"><span aria-hidden="true">✨</span>Discover</a>
+  <a href="#/settings" data-nav="settings"><span aria-hidden="true">⚙️</span>More</a>
+</nav>
+
+<div id="toasts" class="toasts" role="status" aria-live="polite"></div>
+<div id="modal-root"></div>
+
+<script type="module" src="./js/app.js"></script>
+</body>
+</html>

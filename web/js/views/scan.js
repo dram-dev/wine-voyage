@@ -1,0 +1,284 @@
+// Photograph a label, get the fields filled in.
+//
+// The photo is downscaled in the browser before upload: phone cameras produce
+// 4-12MB images and the API caps at 5MB, so a 1600px long edge at JPEG 0.85 is
+// both well under the ceiling and more than the model needs to read a label.
+//
+// The result is never saved silently. It lands in the add-bottle form for the
+// user to confirm, with per-field confidence shown for anything shaky.
+
+import { api } from '../api.js';
+import { config } from '../config.js';
+import { state } from '../state.js';
+import { el, empty, field, loading, money, mount, select, toast } from '../ui.js';
+import { routeQuery, navigate } from '../app.js';
+
+const MAX_EDGE = 1600;
+const JPEG_QUALITY = 0.85;
+
+export async function scanView() {
+  const params = routeQuery();
+  const cellars = await state.cellars();
+
+  if (!cellars.length) {
+    return mount(empty('🗄️', 'Create a cellar first',
+      el('p', {}, 'Bottles go into a cellar, so there needs to be one.'),
+      el('a', { class: 'btn btn-primary', href: '#/cellars' }, 'Create a cellar')));
+  }
+
+  if (params.manual) return mount(...manualPage(cellars));
+
+  const output = el('div', {});
+  const preview = el('div', {});
+
+  const fileInput = el('input', {
+    type: 'file', accept: 'image/*', capture: 'environment',
+    style: 'display:none',
+    onChange: (event) => {
+      const file = event.target.files?.[0];
+      if (file) handleFile(file, preview, output, cellars);
+      event.target.value = '';
+    },
+  });
+
+  const drop = el('div', {
+    class: 'scan-drop',
+    onDragOver: (event) => { event.preventDefault(); drop.classList.add('dragging'); },
+    onDragLeave: () => drop.classList.remove('dragging'),
+    onDrop: (event) => {
+      event.preventDefault();
+      drop.classList.remove('dragging');
+      const file = event.dataTransfer?.files?.[0];
+      if (file) handleFile(file, preview, output, cellars);
+    },
+  },
+    el('div', { style: 'font-size:2.4rem' }, '📷'),
+    el('h2', {}, 'Scan a wine label'),
+    el('p', { class: 'hint' }, 'Take a photo of the front label. Producer, vintage, varietals, region, drink window, and a value estimate come back filled in.'),
+    el('div', { class: 'btn-row', style: 'justify-content:center' },
+      el('button', { class: 'btn-primary', type: 'button', onClick: () => fileInput.click() }, 'Take / choose photo'),
+      navigator.mediaDevices?.getUserMedia
+        ? el('button', { type: 'button', onClick: () => liveCamera(preview, output, cellars) }, 'Use live camera')
+        : null,
+      el('a', { class: 'btn btn-ghost', href: '#/scan?manual=1' }, 'Enter by hand')),
+    fileInput);
+
+  return mount(
+    el('div', { class: 'page-head' },
+      el('div', {}, el('h1', {}, 'Scan'),
+        el('p', {}, 'One photo instead of eight form fields.'))),
+    config.usingDemo
+      ? el('div', { class: 'banner warn' }, 'Demo mode returns a fixed sample result. Connect your API in Settings to read real labels.')
+      : null,
+    drop, preview, output);
+}
+
+/** Downscale and re-encode, so a 12MB phone photo becomes a ~300KB JPEG. */
+function shrink(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(new Error('Could not read that file.'));
+    reader.onload = () => {
+      const image = new Image();
+      image.onerror = () => reject(new Error('That file is not an image we can read.'));
+      image.onload = () => {
+        const scale = Math.min(1, MAX_EDGE / Math.max(image.width, image.height));
+        const canvas = el('canvas');
+        canvas.width = Math.round(image.width * scale);
+        canvas.height = Math.round(image.height * scale);
+        canvas.getContext('2d').drawImage(image, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', JPEG_QUALITY));
+      };
+      image.src = reader.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+async function handleFile(file, previewBox, output, cellars) {
+  if (!file.type.startsWith('image/')) { toast('That is not an image', 'error'); return; }
+
+  let dataUrl;
+  try {
+    dataUrl = await shrink(file);
+  } catch (error) { toast(error.message, 'error'); return; }
+
+  previewBox.replaceChildren(el('img', { class: 'scan-preview', src: dataUrl, alt: 'The label you photographed' }));
+  await identify(dataUrl, output, cellars);
+}
+
+async function identify(dataUrl, output, cellars) {
+  output.replaceChildren(el('div', { class: 'card' }, loading('Reading the label…')));
+  try {
+    const result = await api.identifyLabel(dataUrl, 'image/jpeg');
+    if (!result.readable) {
+      output.replaceChildren(el('div', { class: 'banner warn' },
+        result.notes || 'That photo was not readable. Try again with the front label filling the frame, in even light.'));
+      return;
+    }
+    output.replaceChildren(...resultPanel(result, cellars, dataUrl));
+    output.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  } catch (error) {
+    output.replaceChildren(el('div', { class: 'banner error' }, error.message));
+  }
+}
+
+function resultPanel(result, cellars, dataUrl) {
+  const confidence = result.confidence ?? 0;
+  const level = confidence >= 0.75 ? '' : confidence >= 0.45 ? 'low' : 'vlow';
+  const shaky = Object.entries(result.field_confidence || {})
+    .filter(([, value]) => Number(value) < 0.6)
+    .map(([key]) => key);
+
+  return [
+    el('section', { class: 'card' },
+      el('h2', {}, 'What we read'),
+      el('div', { class: `confidence ${level}` }, el('i', { style: `width:${Math.round(confidence * 100)}%` })),
+      el('p', { class: 'hint', style: 'margin-top:.4rem' },
+        `${Math.round(confidence * 100)}% confident overall.`
+        + (shaky.length ? ` Double-check: ${shaky.join(', ')}.` : '')),
+      result.notes ? el('p', { class: 'hint' }, result.notes) : null,
+      result.estimated_value
+        ? el('p', { class: 'hint' },
+            `Estimated value ${money(result.estimated_value.low, result.estimated_value.currency)}–${money(result.estimated_value.high, result.estimated_value.currency)} per bottle. `,
+            el('span', { class: 'tag estimate' }, 'estimate'))
+        : null),
+    ...manualPage(cellars, result.wine, result.estimated_value, dataUrl),
+  ];
+}
+
+/** The add-bottle form. Shared by the scan flow (pre-filled) and manual entry. */
+function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = null) {
+  const producer = el('input', { value: prefill.producer || '', required: true, placeholder: 'Château Margaux' });
+  const wineName = el('input', { value: prefill.wine_name || '', placeholder: 'Grand Vin' });
+  const vintage = el('input', { type: 'number', min: '1800', max: '2100', value: prefill.vintage ?? '', placeholder: 'blank = NV' });
+  const varietals = el('input', { value: (prefill.varietals || []).join(', '), placeholder: 'Cabernet Sauvignon, Merlot' });
+  const wineType = select(
+    [['', '—'], ['red', 'Red'], ['white', 'White'], ['rose', 'Rosé'], ['sparkling', 'Sparkling'],
+     ['dessert', 'Dessert'], ['fortified', 'Fortified'], ['other', 'Other']],
+    prefill.wine_type || '');
+  const country = el('input', { value: prefill.country || '', placeholder: 'France' });
+  const region = el('input', { value: prefill.region || '', placeholder: 'Bordeaux' });
+  const appellation = el('input', { value: prefill.appellation || '', placeholder: 'Margaux' });
+  const sizeMl = el('input', { type: 'number', min: '50', max: '30000', value: prefill.bottle_size_ml || 750 });
+  const abv = el('input', { type: 'number', step: '0.1', min: '0', max: '100', value: prefill.abv ?? '' });
+  const drinkFrom = el('input', { type: 'number', min: '1800', max: '2200', value: prefill.drink_from ?? '' });
+  const drinkTo = el('input', { type: 'number', min: '1800', max: '2200', value: prefill.drink_to ?? '' });
+
+  const cellarSelect = select(cellars.map((c) => [c.id, c.name]),
+    cellars.find((c) => c.id === config.activeCellarId)?.id ?? cellars[0].id);
+  const quantity = el('input', { type: 'number', min: '1', value: '1' });
+  const bin = el('input', { placeholder: 'A-04' });
+  const price = el('input', {
+    type: 'number', step: '0.01', min: '0',
+    value: estimatedValue?.mid ? String(estimatedValue.mid) : '',
+    placeholder: 'What you paid per bottle',
+  });
+  const purchased = el('input', { type: 'date', value: new Date().toISOString().slice(0, 10) });
+  const source = el('input', { placeholder: 'Merchant, auction, gift…' });
+  const notes = el('textarea', { placeholder: 'Anything worth remembering.' });
+
+  const save = el('button', { class: 'btn-primary', type: 'submit' }, 'Add to cellar');
+
+  const form = el('form', {
+    onSubmit: async (event) => {
+      event.preventDefault();
+      if (!producer.value.trim()) { toast('A producer is required', 'error'); producer.focus(); return; }
+      save.disabled = true;
+      try {
+        const created = await api.addBottle({
+          cellar_id: Number(cellarSelect.value),
+          quantity: Number(quantity.value) || 1,
+          bin: bin.value.trim() || null,
+          purchase_price: price.value ? Number(price.value) : null,
+          purchase_date: purchased.value || null,
+          purchase_source: source.value.trim() || null,
+          notes: notes.value.trim() || null,
+          wine: {
+            producer: producer.value.trim(),
+            wine_name: wineName.value.trim() || null,
+            vintage: vintage.value ? Number(vintage.value) : null,
+            varietals: varietals.value.split(',').map((v) => v.trim()).filter(Boolean),
+            wine_type: wineType.value || null,
+            country: country.value.trim() || null,
+            region: region.value.trim() || null,
+            appellation: appellation.value.trim() || null,
+            bottle_size_ml: Number(sizeMl.value) || 750,
+            abv: abv.value ? Number(abv.value) : null,
+            drink_from: drinkFrom.value ? Number(drinkFrom.value) : null,
+            drink_to: drinkTo.value ? Number(drinkTo.value) : null,
+            label_image_url: labelImage && labelImage.length < 200 ? labelImage : null,
+          },
+        });
+        config.activeCellarId = Number(cellarSelect.value);
+        state.invalidate();
+        toast(`Added ${created.wine?.display_name || producer.value.trim()}`, 'ok');
+        navigate('#/inventory', {});
+      } catch (error) {
+        toast(error.message, 'error');
+        save.disabled = false;
+      }
+    },
+  },
+    el('h2', {}, prefill.producer ? 'Confirm and save' : 'Add a bottle'),
+    el('p', { class: 'hint' }, prefill.producer
+      ? 'Read off the label — correct anything that looks wrong before saving.'
+      : 'Everything except the producer is optional.'),
+    el('div', { class: 'field-grid' },
+      field('Producer *', producer),
+      field('Cuvée / name', wineName),
+      field('Vintage', vintage),
+      field('Type', wineType)),
+    field('Varietals', varietals, 'Comma-separated.'),
+    el('div', { class: 'field-grid' },
+      field('Country', country), field('Region', region), field('Appellation', appellation)),
+    el('div', { class: 'field-grid' },
+      field('Size (ml)', sizeMl), field('ABV %', abv),
+      field('Drink from', drinkFrom), field('Drink to', drinkTo)),
+    el('hr', { style: 'border:none;border-top:1px solid var(--line-soft);margin:1rem 0' }),
+    el('div', { class: 'field-grid' },
+      field('Cellar', cellarSelect), field('Quantity', quantity), field('Bin', bin)),
+    el('div', { class: 'field-grid' },
+      field('Price each', price), field('Purchased', purchased)),
+    field('Bought from', source),
+    field('Notes', notes),
+    el('div', { class: 'btn-row' }, save,
+      el('a', { class: 'btn btn-ghost', href: '#/inventory' }, 'Cancel')));
+
+  return [el('section', { class: 'card', style: 'margin-top:.8rem' }, form)];
+}
+
+/** Live viewfinder for desktops, where the file input won't open a camera. */
+async function liveCamera(previewBox, output, cellars) {
+  let stream;
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' } });
+  } catch {
+    toast('Could not open the camera. Use "Take / choose photo" instead.', 'error');
+    return;
+  }
+
+  const video = el('video', { id: 'scan-video', autoplay: true, playsinline: true, muted: true });
+  video.srcObject = stream;
+
+  const stop = () => { stream.getTracks().forEach((track) => track.stop()); previewBox.replaceChildren(); };
+
+  const capture = el('button', {
+    class: 'btn-primary', type: 'button',
+    onClick: async () => {
+      const canvas = el('canvas');
+      const scale = Math.min(1, MAX_EDGE / Math.max(video.videoWidth, video.videoHeight));
+      canvas.width = Math.round(video.videoWidth * scale);
+      canvas.height = Math.round(video.videoHeight * scale);
+      canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+      const dataUrl = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
+      stop();
+      previewBox.replaceChildren(el('img', { class: 'scan-preview', src: dataUrl, alt: 'The label you captured' }));
+      await identify(dataUrl, output, cellars);
+    },
+  }, 'Capture');
+
+  previewBox.replaceChildren(el('div', { class: 'card' }, video,
+    el('div', { class: 'btn-row', style: 'margin-top:.6rem' }, capture,
+      el('button', { class: 'btn-ghost', type: 'button', onClick: stop }, 'Cancel'))));
+}

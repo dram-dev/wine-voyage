@@ -7,13 +7,17 @@ from fastapi.middleware.cors import CORSMiddleware
 from server.db import close_pool, init_pool
 from server.routes import (
     appellations,
+    bottles,
+    cellars,
     geo,
     journal,
+    labels,
     sommelier,
     taste,
     top_rated,
     trips,
     votes,
+    wine_intel,
     wineries,
 )
 
@@ -52,3 +56,7 @@ app.include_router(wineries.router, prefix="/api")
 app.include_router(top_rated.router, prefix="/api")
 app.include_router(votes.router, prefix="/api")
 app.include_router(geo.router, prefix="/api")
+app.include_router(cellars.router, prefix="/api")
+app.include_router(bottles.router, prefix="/api")
+app.include_router(labels.router, prefix="/api")
+app.include_router(wine_intel.router, prefix="/api")

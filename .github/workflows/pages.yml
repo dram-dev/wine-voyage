@@ -1,0 +1,52 @@
+# Publish the static cellar frontend (web/) to GitHub Pages.
+#
+# Nothing is built: web/ is plain HTML, CSS, and ES modules, so the job is a
+# copy. The backend is not deployed here — the site talks to whatever API the
+# user configures in Settings.
+#
+# One-time setup in the repository: Settings → Pages → Build and deployment →
+# Source: "GitHub Actions".
+
+name: Deploy Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'web/**'
+      - '.github/workflows/pages.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the frontend parses
+        run: |
+          for file in $(find web/js -name '*.js'); do
+            node --input-type=module --check < "$file" || exit 1
+          done
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: web
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
