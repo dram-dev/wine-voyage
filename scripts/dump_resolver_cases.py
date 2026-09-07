@@ -53,6 +53,27 @@ CASES: list[dict] = [
     {"producer": "Totally Unknown Winery", "country": "France"},
     {"producer": "Totally Unknown Winery"},
     {},
+    # Naming the cuvée narrows what the appellation could only guess at.
+    {"producer": "Denner", "vintage": 2021},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Ditch Digger"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "The Dirt Worshipper"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Theresa"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Mother of Exiles"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Viognier"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "dirt worshipper"},
+    {"producer": "Ridge Vineyards", "vintage": 2018, "wine_name": "Lytton Springs"},
+    {"producer": "Ridge Vineyards", "vintage": 2018, "wine_name": "Monte Bello"},
+    {"producer": "Venge Vineyards", "vintage": 2023, "wine_name": "Scout's Honor"},
+    {"producer": "Krug", "wine_name": "Clos du Mesnil"},
+    {"producer": "Chateau Margaux", "vintage": 2015, "wine_name": "Pavillon Blanc"},
+    # A cuvée whose name states its grape, from a producer with no curated list.
+    {"producer": "Three Sticks", "vintage": 2021, "wine_name": "Durell Vineyard Chardonnay"},
+    {"producer": "Arista", "vintage": 2022, "wine_name": "Ferrington Vineyard Pinot Noir"},
+    {"producer": "Nobody At All", "region": "Napa Valley", "wine_name": "Old Vine Zinfandel"},
+    {"producer": "Nobody At All", "region": "Napa Valley", "wine_name": "Sauvignon Blanc"},
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Grenache Blanc"},
+    # A cuvée that names nothing should not narrow anything.
+    {"producer": "Denner", "vintage": 2021, "wine_name": "Reserve"},
 ]
 
 

@@ -101,6 +101,56 @@ const second = await (await label('Varietals')).inputValue();
 ok(first.includes(',') , `the reference resolved a blend (${first})`);
 ok(first === second, `the blend survived the second lookup (${second})`);
 
+const go = async () => { await pg.goto(`${SITE}#/scan?manual=1`); await pg.reload(); await pg.waitForTimeout(1300); };
+
+console.log('=== naming the wine narrows what the place could only guess ===');
+await go();
+await (await label('Producer')).fill('Denner');
+await (await label('Vintage')).fill('2021');
+await pg.waitForTimeout(2600);
+const broad = await (await label('Varietals')).inputValue();
+ok(/Grenache/.test(broad) && /Syrah/.test(broad), `starts with the appellation's set (${broad})`);
+const chips = await pg.locator('.chip-row .chip').allTextContents();
+ok(chips.includes('Theresa') && chips.includes('Ditch Digger'), `offers the range (${chips.length} chips)`);
+
+console.log('=== picking a chip narrows grapes and style ===');
+await pg.click('.chip:has-text("Theresa")');
+await pg.waitForTimeout(2600);
+ok((await (await label('Cuvée / name')).inputValue()) === 'Theresa', 'the cuvée is filled in');
+const white = await (await label('Varietals')).inputValue();
+ok(/Roussanne/.test(white) && !/Syrah/.test(white), `grapes narrowed to the white blend (${white})`);
+ok((await (await label('Type')).inputValue()) === 'white', 'and the style flipped to white');
+ok(await pg.locator('.chip.on:has-text("Theresa")').count() === 1, 'the chip in force is marked');
+
+console.log('=== tapping it again clears it, and the form widens back ===');
+await pg.click('.chip.on:has-text("Theresa")');
+await pg.waitForTimeout(2600);
+ok((await (await label('Cuvée / name')).inputValue()) === '', 'the cuvée is cleared');
+const again = await (await label('Varietals')).inputValue();
+ok(/Grenache/.test(again), `back to the appellation's set (${again})`);
+
+console.log('=== typing a cuvée re-asks without any chip ===');
+await go();
+await (await label('Producer')).fill('Denner');
+await (await label('Vintage')).fill('2021');
+await pg.waitForTimeout(2600);
+await (await label('Cuvée / name')).fill('The Dirt Worshipper');
+await pg.waitForTimeout(2600);
+const syrah = await (await label('Varietals')).inputValue();
+ok(/Syrah/.test(syrah) && /Viognier/.test(syrah) && !/Mourvedre/.test(syrah), `narrowed by typing (${syrah})`);
+
+console.log('=== a cuvée that states its own grape works for any producer ===');
+await go();
+await (await label('Producer')).fill('Three Sticks');
+await (await label('Vintage')).fill('2021');
+await pg.waitForTimeout(2600);
+await (await label('Cuvée / name')).fill('Durell Vineyard Chardonnay');
+await pg.waitForTimeout(2600);
+const chard = await (await label('Varietals')).inputValue();
+ok(chard === 'Chardonnay', `read off the label (${chard})`);
+ok((await (await label('Type')).inputValue()) === 'white', 'and the style follows the grape');
+
+
 await browser.close();
 console.log(errors.length ? `\nconsole errors:\n${errors.join('\n')}` : '\nno console errors');
 if (errors.length) fails++;

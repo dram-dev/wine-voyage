@@ -89,8 +89,8 @@ async def lookup_wine(req: LookupRequest) -> dict:
     # Cheap, deterministic, and always available — do it first so there is
     # something to return even if the model call goes wrong.
     local = resolve_local(
-        producer=req.producer, vintage=req.vintage, appellation=req.appellation,
-        region=req.region, country=req.country,
+        producer=req.producer, vintage=req.vintage, wine_name=req.wine_name,
+        appellation=req.appellation, region=req.region, country=req.country,
     )
 
     digest = hashlib.sha256(
@@ -150,14 +150,13 @@ def _prompt(req: LookupRequest, local: dict) -> str:
             " Correct it only if you are confident it is wrong.)"
         )
 
-    # With no cuvée named, the producer's range is the useful answer: the user
-    # picks a bottling and the form re-asks with it.
+    # The producer's range is offered as chips whether or not a cuvée is already
+    # named, because changing your mind about which bottle this is should not
+    # mean retyping it.
     bottlings_instruction = (
         f"List up to {MAX_BOTTLINGS} of this producer's bottlings"
         + (f" made in {req.vintage}" if req.vintage else "")
-        + ", most significant first, in `bottlings`. "
-        if not req.wine_name
-        else "The cuvée is known, so return `bottlings` as an empty array. "
+        + ", most significant first, in `bottlings`, each with its own grapes. "
     )
 
     return (
@@ -207,12 +206,12 @@ def _prompt(req: LookupRequest, local: dict) -> str:
     )
 
 
-# Fields the reference states as the *place's* norm rather than this wine's
-# fact. A specific cuvée can differ — Ridge's Lytton Springs is Zinfandel from a
-# Cabernet appellation — so a confident model answer wins on these. Place is the
-# other way round: the reference is authoritative about where a producer works.
-TYPICAL_FIELDS = {"varietals", "wine_type", "drink_from", "drink_to"}
-PLACE_FIELDS = {"country", "region", "appellation"}
+# The reference marks which of its own answers are the *place's* norm rather
+# than facts about this bottle — Ridge's Lytton Springs is Zinfandel from a
+# Cabernet appellation — and a confident model answer wins on those. Everything
+# else it returns is a stated fact: where the producer works, and what a named
+# cuvée actually is. Which fields fall in which set depends on how much the user
+# has typed, so it comes from the resolver rather than a constant here.
 
 
 def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optional[str]) -> dict:
@@ -232,17 +231,20 @@ def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optiona
         wine[field] = value
         sources[field] = source
 
-    # 1. The reference owns the place when it recognized the producer or the
-    #    user named somewhere real.
-    for field in PLACE_FIELDS:
-        put(field, local_wine.get(field), "reference")
+    typical = set(local.get("typical") or ())
+
+    # 1. The reference owns what it states as fact: where the producer works,
+    #    and — once a cuvée is named — what that wine actually is.
+    for field, value in local_wine.items():
+        if field not in typical:
+            put(field, value, "reference")
     # 2. The model owns the specifics, and fills any place the reference missed.
     for field, value in model_wine.items():
         if field in ("producer", "wine_name", "vintage"):
             continue
         put(field, value, "model")
     # 3. The reference's typical values are the floor.
-    for field in TYPICAL_FIELDS:
+    for field in typical:
         put(field, local_wine.get(field), "reference-typical")
     # 4. Anything left the model knows.
     for field, value in model_wine.items():
@@ -278,19 +280,27 @@ def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optiona
     if wine.get("drink_from") and wine.get("drink_to") and wine["drink_from"] > wine["drink_to"]:
         wine["drink_from"], wine["drink_to"] = wine["drink_to"], wine["drink_from"]
 
+    # The producer's range, so the form can offer "which one?" instead of asking
+    # the user to remember it. The reference's are curated and carry grapes, so
+    # they lead; the model fills out the rest of the range.
     bottlings = []
-    for entry in (response.get("bottlings") or [])[:MAX_BOTTLINGS]:
+    seen: set[str] = set()
+    for entry in list(local.get("bottlings") or []) + list(response.get("bottlings") or []):
         if not isinstance(entry, dict):
             continue
         name = as_str(entry.get("wine_name"))
-        if not name:
+        key = normalize(name)
+        if not name or key in seen:
             continue
+        seen.add(key)
         bottlings.append({
             "wine_name": name,
             "varietals": as_str_list(entry.get("varietals"))[:12],
             "wine_type": as_enum(entry.get("wine_type"), WINE_TYPES),
             "note": as_str(entry.get("note")),
         })
+        if len(bottlings) >= MAX_BOTTLINGS:
+            break
 
     field_confidence = response.get("field_confidence")
     filled = [k for k, v in wine.items() if v not in (None, [], "") and k != "bottle_size_ml"]
@@ -312,6 +322,8 @@ def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optiona
         "filled_fields": filled,
         "reference_match": local.get("producer_match"),
         "reference_place": local.get("place"),
+        # Which offered bottling the typed cuvée matched, so the form can mark it.
+        "matched_bottling": local.get("bottling"),
         # Model or reference, this is still derived data: the form is pre-filled
         # for the user to confirm, never saved on its own.
         "needs_review": True,

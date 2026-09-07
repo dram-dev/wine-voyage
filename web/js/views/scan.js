@@ -367,22 +367,45 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
         : result.notes ? el('div', { class: 'hint' }, result.notes) : null,
       el('div', { class: 'hint' }, 'Autofilled fields are marked — edit any of them freely.')));
 
-    // Offer the producer's range so the user can name the bottling.
+    // Offer the producer's range. It stays on screen after a pick, because
+    // changing your mind about which bottle this is should be one tap, not a
+    // retype — and the one in force is marked so the form says what it assumed.
     const bottlings = (result.bottlings || []).filter((b) => b.wine_name);
-    if (bottlings.length && !wineName.value.trim()) {
+    const active = (result.matched_bottling || '').toLowerCase()
+      || wineName.value.trim().toLowerCase();
+
+    if (bottlings.length) {
       bottlingRow.hidden = false;
       bottlingRow.replaceChildren(
-        el('div', { class: 'hint' }, 'Which bottling? Picking one sharpens the rest.'),
-        el('div', { class: 'chip-row' }, ...bottlings.map((bottling) => el('button', {
-          class: 'chip', type: 'button', title: bottling.note || '',
-          onClick: () => {
-            wineName.value = bottling.wine_name;
-            wineName.dataset.autofilled = '1';
-            wineName.classList.add('autofilled');
-            bottlingRow.hidden = true;
-            runLookup({ manual: true });
-          },
-        }, bottling.wine_name))));
+        el('div', { class: 'hint' },
+          active
+            ? 'Filled for this bottling. Tap another to switch, or the same one to clear it.'
+            : 'Which bottling? Picking one narrows the grapes, the style and the window.'),
+        el('div', { class: 'chip-row' }, ...bottlings.map((bottling) => {
+          const on = bottling.wine_name.toLowerCase() === active;
+          // The grapes go in the tooltip so the chips stay scannable.
+          const detail = [bottling.note, (bottling.varietals || []).join(', ')]
+            .filter(Boolean).join(' — ');
+          return el('button', {
+            class: on ? 'chip on' : 'chip', type: 'button', title: detail,
+            onClick: () => {
+              const clearing = on;
+              wineName.value = clearing ? '' : bottling.wine_name;
+              if (clearing) {
+                delete wineName.dataset.autofilled;
+                wineName.classList.remove('autofilled');
+                userEdited.delete('wine_name');
+                // Grapes and style came from the cuvée; let them be re-derived.
+                for (const key of ['varietals', 'wine_type']) userEdited.delete(key);
+              } else {
+                wineName.dataset.autofilled = '1';
+                wineName.classList.add('autofilled');
+              }
+              lastQuery = '';
+              runLookup({ manual: true });
+            },
+          }, bottling.wine_name);
+        })));
     } else {
       bottlingRow.hidden = true;
     }
@@ -396,7 +419,15 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
     wine.producer = (confident && local.producer_name) || query.producer;
     const found = Boolean(wine.country || wine.region);
     return {
-      found, wine, sources: local.sources, bottlings: [], estimated_value: null,
+      found,
+      wine,
+      sources: local.sources,
+      bottlings: (local.bottlings || []).map((b) => ({
+        wine_name: b.wine_name, varietals: b.varietals || [],
+        wine_type: b.wine_type || null, note: b.note || null,
+      })),
+      matched_bottling: local.bottling || null,
+      estimated_value: null,
       confidence: null,
       field_confidence: Object.fromEntries((local.typical || []).map((f) => [f, 0.55])),
       vintage_note: null,
@@ -409,6 +440,9 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
   const scheduleLookup = debounce(() => runLookup(), 700);
   producer.addEventListener('input', scheduleLookup);
   vintage.addEventListener('input', scheduleLookup);
+  // Naming the wine is the strongest narrowing there is: an appellation can only
+  // say what is typical of the place, and "Theresa" is a white from a red one.
+  wineName.addEventListener('input', scheduleLookup);
   // Typing a region is new evidence, so re-ask — that is how an unrecognized
   // producer still gets a country, a grape set and a drinking window.
   for (const input of [region, appellation]) {
@@ -494,9 +528,11 @@ function manualPage(cellars, prefill = {}, estimatedValue = null, labelImage = n
       field('Cuvée / name', wineName),
       field('Vintage', vintage),
       field('Type', wineType)),
+    // The producer's range belongs beside the box it fills, not below the
+    // result — it is how you answer "which one?", not a footnote to the answer.
+    bottlingRow,
     el('div', { class: 'btn-row', style: 'margin:-.2rem 0 .6rem' }, lookupButton),
     status,
-    bottlingRow,
     field('Varietals', varietals, 'Comma-separated.'),
     el('div', { class: 'field-grid' },
       field('Country', country), field('Region', region), field('Appellation', appellation)),

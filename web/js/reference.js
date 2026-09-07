@@ -119,6 +119,61 @@ function best(query, table, noise) {
   return [tied[0], bestQuality];
 }
 
+// Grape names, longest first, so "Grenache Blanc" is matched before "Grenache".
+function grapeWords(data) {
+  return (data.grape_words || [])
+    .map((g) => [normalize(g), g])
+    .filter(([key]) => key)
+    .sort((a, b) => b[0].length - a[0].length);
+}
+
+/**
+ * Grapes named in a string, in the order they appear. This is reading the
+ * label, not guessing: "Silencieux Cabernet Sauvignon" says what it is, and so
+ * does a wine from a producer the reference has never heard of. A matched grape
+ * is blanked so "Grenache Blanc" cannot also report "Grenache".
+ * Mirrors server/wine_reference.py `grapes_in`.
+ */
+export function grapesIn(text, data) {
+  let haystack = ` ${normalize(text)} `;
+  if (!haystack.trim()) return [];
+  const found = [];
+  for (const [key, display] of grapeWords(data)) {
+    const needle = ` ${key} `;
+    const at = haystack.indexOf(needle);
+    if (at === -1) continue;
+    found.push([at, display]);
+    haystack = haystack.replace(needle, ` ${'\u0000'.repeat(key.length)} `);
+  }
+  return found.sort((a, b) => a[0] - b[0]).map(([, display]) => display);
+}
+
+/** "white" or "red" when every named grape agrees, else null. */
+function colourOf(grapes, data) {
+  if (!grapes.length) return null;
+  const whites = new Set((data.white_grapes || []).map(normalize));
+  if (!whites.size) return null;
+  const keys = grapes.map(normalize);
+  if (keys.some((k) => !k)) return null;
+  if (keys.every((k) => whites.has(k))) return 'white';
+  if (keys.every((k) => !whites.has(k))) return 'red';
+  return null;
+}
+
+/** The producer's own wine that the typed cuvée names, if any. */
+function findBottling(producerEntry, wineName, noise) {
+  const bottlings = producerEntry?.bottlings || [];
+  if (!wineName || !bottlings.length) return null;
+  const table = {};
+  for (const b of bottlings) if (b.wine_name) table[normalize(b.wine_name)] = b;
+  const [entry] = best(wineName, table, noise);
+  return entry;
+}
+
+// Places whose colour is a fact about the place, not the grape: Champagne is
+// Chardonnay and is not a white wine, and nor is Sauternes or Madeira.
+const COLOUR_FROM_GRAPE = new Set(['red', 'white', 'rose']);
+
 function findAppellation(name, data, noise) {
   const key = normalize(name);
   if (!key) return [null, null];
@@ -131,7 +186,7 @@ function findAppellation(name, data, noise) {
  * Resolve everything the reference can from whatever was supplied.
  * Mirrors server/wine_reference.py `resolve`.
  */
-export async function resolveLocally({ producer, vintage, appellation, region, country } = {}) {
+export async function resolveLocally({ producer, vintage, wine_name: wineName, appellation, region, country } = {}) {
   const data = await loadReference();
   const noise = new Set(data.noise_words || []);
 
@@ -202,6 +257,27 @@ export async function resolveLocally({ producer, vintage, appellation, region, c
     if (entry) wine.country = entry.name;
   }
 
+  // Naming the wine beats naming the place. A matched bottling knows its own
+  // grapes; failing that, a cuvée whose name contains a grape has told us.
+  // Either way these stop being "typical" — they are about this bottle.
+  const confidentProducer = producerMatch === EXACT || producerMatch === STRONG;
+  const bottling = confidentProducer ? findBottling(producerEntry, wineName, noise) : null;
+  const stated = (bottling?.varietals?.length ? [...bottling.varietals] : grapesIn(wineName, data));
+  if (stated.length) {
+    wine.varietals = stated;
+    typical.delete('varietals');
+  }
+  if (bottling?.wine_type) {
+    wine.wine_type = bottling.wine_type;
+    typical.delete('wine_type');
+  } else if (stated.length && COLOUR_FROM_GRAPE.has(wine.wine_type)) {
+    const colour = colourOf(stated, data);
+    if (colour && colour !== wine.wine_type) {
+      wine.wine_type = colour;
+      typical.delete('wine_type');
+    }
+  }
+
   return {
     wine,
     sources: Object.fromEntries(Object.keys(wine).map((key) => [key, 'reference'])),
@@ -209,6 +285,9 @@ export async function resolveLocally({ producer, vintage, appellation, region, c
     producer_name: producerEntry ? producerEntry.name : null,
     place: place ? { kind: placeKind, name: place.name } : null,
     typical: [...typical],
+    // Offered to the user as "which one?", and echoed back as a cuvée.
+    bottlings: confidentProducer ? [...(producerEntry?.bottlings || [])] : [],
+    bottling: bottling ? bottling.wine_name : null,
   };
 }
 

@@ -131,6 +131,30 @@ async def main():
             check("no appellation is invented", not w.get("appellation"), str(w.get("appellation")))
             check("the weak match is reported", d.get("reference_match")=="partial", str(d.get("reference_match")))
 
+            print("\n== naming the cuvée narrows what the place could only guess ==")
+            wl.call_sommelier = lambda *a, **k: _empty()
+            r = await c.post("/api/wines/lookup", json={"producer":"Denner","vintage":2021,"refresh":True})
+            d=r.json(); w=d["wine"]
+            check("starts from the appellation's set", set(w["varietals"])=={"Grenache","Syrah","Mourvedre"}, str(w["varietals"]))
+            check("marked as the place's norm", d["sources"]["varietals"]=="reference-typical", str(d["sources"]["varietals"]))
+            offered = [b["wine_name"] for b in d["bottlings"]]
+            check("the producer's range is offered", "Theresa" in offered and "Ditch Digger" in offered, str(offered))
+
+            r = await c.post("/api/wines/lookup", json={"producer":"Denner","vintage":2021,
+                                                        "wine_name":"Theresa","refresh":True})
+            d=r.json(); w=d["wine"]
+            check("the cuvée's own grapes win", w["varietals"]==["Roussanne","Grenache Blanc","Viognier"], str(w["varietals"]))
+            check("and are a fact, not a norm", d["sources"]["varietals"]=="reference", str(d["sources"]["varietals"]))
+            check("the style follows the cuvée", w["wine_type"]=="white", str(w["wine_type"]))
+            check("the match is reported back", d["matched_bottling"]=="Theresa", str(d.get("matched_bottling")))
+            check("the range is still offered", len(d["bottlings"])>1, str(len(d["bottlings"])))
+
+            # A name that states its grape needs no curated entry anywhere.
+            r = await c.post("/api/wines/lookup", json={"producer":"Nobody's Winery","region":"Napa Valley",
+                                                        "wine_name":"Old Vine Zinfandel","refresh":True})
+            d=r.json(); w=d["wine"]
+            check("an unknown producer's label still reads", w["varietals"]==["Zinfandel"], str(w.get("varietals")))
+
             print("\n== reference endpoint ==")
             r = await c.get("/api/wines/reference")
             check("reports coverage", r.json()["reference"]["producers"]>400, r.text[:150])

@@ -419,7 +419,7 @@ export async function demoRequest(method, path, { query = {}, body = null } = {}
  *  This is why autofill works on the published site with no API configured. */
 async function demoLookup(body) {
   const local = await resolveLocally({
-    producer: body.producer, vintage: body.vintage,
+    producer: body.producer, vintage: body.vintage, wine_name: body.wine_name,
     appellation: body.appellation, region: body.region, country: body.country,
   });
 
@@ -435,12 +435,14 @@ async function demoLookup(body) {
   if (body.varietal && !wine.varietals?.length) wine.varietals = [String(body.varietal).trim()];
 
   const found = Boolean(wine.country || wine.region);
-  const entry = await producerEntry(body.producer);
-  const bottlings = (!body.wine_name && entry?.bottlings)
-    ? entry.bottlings.map((b) => ({
-        wine_name: b.wine_name, varietals: wine.varietals || [],
-        wine_type: wine.wine_type || null, note: b.note }))
-    : [];
+  // The producer's range, offered whether or not a cuvée is already named —
+  // changing your mind about which bottle this is should not mean retyping it.
+  const bottlings = (local.bottlings || []).map((b) => ({
+    wine_name: b.wine_name,
+    varietals: b.varietals || [],
+    wine_type: b.wine_type || null,
+    note: b.note || null,
+  }));
 
   return {
     cached: false,
@@ -454,13 +456,14 @@ async function demoLookup(body) {
     field_confidence: Object.fromEntries((local.typical || []).map((f) => [f, 0.55])),
     vintage_note: null,
     notes: found
-      ? 'Filled from the built-in reference. Connect your API in Settings for the specific cuvée, ABV and a value estimate.'
+      ? 'Filled from the built-in reference. Connect your server in Settings for ABV, a value estimate, and cuvées the reference has not been taught.'
       : 'Not in the built-in reference, which covers around a thousand producers. '
         + 'Naming a region fills the country, grapes and drinking window anyway — '
         + 'or connect your API in Settings, which can look up any wine.',
     filled_fields: Object.keys(wine).filter((k) => k !== 'bottle_size_ml'),
     reference_match: local.producer_match,
     reference_place: local.place,
+    matched_bottling: local.bottling || null,
     needs_review: true,
     model_error: null,
     offline: true,
