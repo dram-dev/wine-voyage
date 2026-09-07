@@ -116,7 +116,7 @@ export async function refreshConnection() {
   if (config.usingDemo) {
     button.classList.add('demo');
     label.textContent = 'Sample data';
-    button.title = 'No API configured — showing the sample cellar. Click to configure.';
+    button.title = 'Showing sample wines. Tap to connect your own cellar.';
     return;
   }
   label.textContent = 'Connecting…';

@@ -252,19 +252,27 @@ def _merge(local: dict, response: dict, req: LookupRequest, model_error: Optiona
 
     # The user's own typing always wins, and the reference's spelling of a
     # producer beats the model's.
-    wine["producer"] = (
-        local.get("producer_name")
-        if local.get("producer_match") in ("exact", "strong")
-        else model_wine.get("producer") or req.producer.strip()
-    )
-    sources["producer"] = "reference" if local.get("producer_match") in ("exact", "strong") else "user"
+    if local.get("producer_match") in ("exact", "strong"):
+        wine["producer"] = local.get("producer_name")
+        sources["producer"] = "reference"
+    elif model_wine.get("producer"):
+        wine["producer"] = model_wine["producer"]
+        sources["producer"] = "model"
+    else:
+        wine["producer"] = req.producer.strip()
+        sources["producer"] = "user"
     if req.wine_name:
         wine["wine_name"] = req.wine_name.strip(); sources["wine_name"] = "user"
     elif model_wine.get("wine_name"):
         wine["wine_name"] = model_wine["wine_name"]; sources["wine_name"] = "model"
     if req.vintage:
         wine["vintage"] = req.vintage; sources["vintage"] = "user"
-    if req.varietal:
+    # `varietal` is one grape offered as a hint for the search, and the form
+    # sends the first entry of its own Varietals box — which autofill may have
+    # filled with a blend. Letting it overwrite would quietly collapse
+    # "Cabernet Sauvignon, Merlot, Petit Verdot" to "Cabernet Sauvignon" on the
+    # next lookup. It only fills a gap.
+    if req.varietal and not wine.get("varietals"):
         wine["varietals"] = [req.varietal.strip()]; sources["varietals"] = "user"
 
     if wine.get("drink_from") and wine.get("drink_to") and wine["drink_from"] > wine["drink_to"]:

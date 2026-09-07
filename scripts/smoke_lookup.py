@@ -103,10 +103,33 @@ async def main():
             print("\n== user input still wins over both ==")
             r = await c.post("/api/wines/lookup", json={"producer":"Caymus","vintage":2021,
                                                         "wine_name":"My Bottling","varietal":"Merlot","refresh":True})
-            w=r.json()["wine"]
+            d=r.json(); w=d["wine"]
             check("user vintage", w["vintage"]==2021, str(w["vintage"]))
             check("user cuvée", w["wine_name"]=="My Bottling", str(w["wine_name"]))
-            check("user varietal", w["varietals"]==["Merlot"], str(w["varietals"]))
+
+            print("\n== `varietal` is a search hint, not a statement ==")
+            # The form sends the first entry of its own Varietals box, which
+            # autofill may have written. Letting it overwrite collapsed a blend
+            # to one grape on every re-lookup, so it may only fill a gap.
+            check("a blend survives its own lead grape coming back",
+                  len(w["varietals"])>1 or w["varietals"]!=["Merlot"], str(w["varietals"]))
+            wl.call_sommelier = lambda *a, **k: _empty()   # no help from the model
+            # A bare country resolves no grapes, so nothing else can answer.
+            r = await c.post("/api/wines/lookup", json={"producer":"Nobody's Winery","country":"Italy",
+                                                        "varietal":"Aglianico","refresh":True})
+            d=r.json()
+            check("but it still fills a real gap", d["wine"].get("varietals")==["Aglianico"], str(d["wine"].get("varietals")))
+            check("and is marked as the user's", d["sources"].get("varietals")=="user", str(d["sources"].get("varietals")))
+
+            print("\n== an uncertain producer match never renames or relocates ==")
+            r = await c.post("/api/wines/lookup", json={"producer":"Smith Family Vineyards",
+                                                        "region":"Oregon","refresh":True})
+            d=r.json(); w=d["wine"]
+            check("the typed name is kept", w["producer"]=="Smith Family Vineyards", str(w.get("producer")))
+            check("not stamped as reference", d["sources"].get("producer")!="reference", str(d["sources"].get("producer")))
+            check("the typed region wins", w.get("region")=="Oregon", str(w.get("region")))
+            check("no appellation is invented", not w.get("appellation"), str(w.get("appellation")))
+            check("the weak match is reported", d.get("reference_match")=="partial", str(d.get("reference_match")))
 
             print("\n== reference endpoint ==")
             r = await c.get("/api/wines/reference")

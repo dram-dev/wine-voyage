@@ -652,12 +652,32 @@ different fields from identical input. Check them against each other after
 touching either:
 
 ```bash
-node --input-type=module --check < web/js/reference.js
-# then compare a spread of queries through both — see the parity harness
-# described in the autofill section
+python -m scripts.dump_resolver_cases > /tmp/py.json
+node scripts/check_resolver_parity.mjs /tmp/py.json
 ```
 
-All three smoke scripts print a PASS/FAIL line per check and exit non-zero if any
+The cases in `scripts/dump_resolver_cases.py` cover the shapes that have actually
+gone wrong: producers sharing a common word with a real one, a typed place that
+contradicts the producer index, a coarse region the producer can refine, and
+queries with no producer at all. Add to them when you touch either resolver.
+
+### Browser suite
+
+`scripts/smoke_browser.mjs` drives the published frontend against a running API —
+the first-run path from sample wines through connecting, cellar creation, autofill
+and saving, plus the caveats the form is supposed to show when a match is shaky.
+
+```bash
+npx --yes http-server web -p 8099 -s &
+./run.sh &
+node scripts/smoke_browser.mjs http://127.0.0.1:8099/index.html http://127.0.0.1:8420
+```
+
+It needs Playwright on the machine running it (not a dependency of the app); set
+`PLAYWRIGHT_MODULE` if `playwright` does not resolve from the project. A console
+error counts as a failure.
+
+All the smoke scripts print a PASS/FAIL line per check and exit non-zero if any
 fail.
 
 ## Troubleshooting
