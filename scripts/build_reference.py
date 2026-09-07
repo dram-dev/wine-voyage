@@ -869,6 +869,72 @@ NOISE = {
 }
 
 
+def merge_duplicate_producers(producers: dict) -> list[tuple[str, str]]:
+    """Collapse spellings of one winery onto a single record, in place.
+
+    "Arista" and "Arista Winery", "Bodegas Muga" and "Muga", "Denner" and
+    "Denner Vineyards" were separate entries with separate cuvées, so a price
+    read off a shop that says one and a bottle filed under the other never met.
+    Entries merge only when their significant words are identical *and* they
+    agree on the appellation — "Chateau Batailley" and "Chateau Haut-Batailley"
+    share neither, and are two estates in Pauillac, not one.
+
+    Returns the merges made, so the build can report them.
+    """
+    # Grouping on significant words alone is not safe. "Wine Cellars" and
+    # "Winery" are both noise, which makes Stag's Leap Wine Cellars and Stags'
+    # Leap Winery look identical — two different Napa wineries, famously so.
+    # The safe case is narrower: one full name is a word-for-word prefix of the
+    # other, so the longer merely adds a suffix ("Denner" / "Denner Vineyards").
+    # That leaves some real duplicates apart, which is the right way to be wrong.
+    # Names differing only by a noise suffix are the same business wherever the
+    # two rows happened to place it — "Joseph Phelps" and "Joseph Phelps
+    # Vineyards" landed in St. Helena and Napa Valley respectively, and are one
+    # winery. So the grouping ignores appellation; the placement disagreement is
+    # already reported separately.
+    groups: dict[str, list[str]] = {}
+    for key in sorted(producers, key=lambda k: (len(k.split()), k)):
+        words = key.split()
+        root = None
+        for length in range(1, len(words)):
+            prefix = " ".join(words[:length])
+            # Every extra word has to be one that carries no identity.
+            # "Denner Vineyards" is Denner; "Duckhorn Decoy" is a second label
+            # and "Silver Oak Alexander Valley" is a bottling, and neither is
+            # the producer whose name they start with.
+            if prefix in groups and all(w in NOISE for w in words[length:]):
+                root = prefix
+                break
+        groups.setdefault(root or key, []).append(key)
+
+    merged: list[tuple[str, str]] = []
+    for keys in groups.values():
+        if len(keys) < 2:
+            continue
+        # The shortest name is the one a shop or a person is likeliest to write.
+        canonical_key = min(keys, key=lambda k: (len(producers[k]["name"]), k))
+        canonical = producers[canonical_key]
+        bottlings = list(canonical.get("bottlings") or [])
+        held = {normalize(b["wine_name"]) for b in bottlings}
+        for key in keys:
+            if key == canonical_key:
+                continue
+            for bottling in producers[key].get("bottlings") or []:
+                if normalize(bottling["wine_name"]) not in held:
+                    bottlings.append(bottling)
+                    held.add(normalize(bottling["wine_name"]))
+            merged.append((producers[key]["name"], canonical["name"]))
+            producers[key] = canonical
+        if bottlings:
+            canonical["bottlings"] = bottlings
+    return merged
+
+
+def significant(text: str) -> list[str]:
+    """Words that identify a producer — the build's copy of the resolver's rule."""
+    return [w for w in normalize(text).split() if w and w not in NOISE]
+
+
 def _bottling(entry: tuple) -> dict:
     """(name, note) — or with grapes, or with grapes and a type."""
     name, note = entry[0], entry[1]
@@ -1024,6 +1090,14 @@ def build() -> dict:
         if bottlings:
             record["bottlings"] = bottlings
         producers[key] = record
+
+    merged = merge_duplicate_producers(producers)
+    if merged:
+        print(f"\nmerged {len(merged)} duplicate producer spellings:")
+        for other, canonical in merged[:12]:
+            print(f"  {other:42} -> {canonical}")
+        if len(merged) > 12:
+            print(f"  … and {len(merged) - 12} more")
 
     return {
         "_comment": (
