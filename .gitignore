@@ -17,3 +17,6 @@ data/cache/
 *.swo
 .idea/
 .vscode/
+
+# Scratch output of scripts/import_producers.py (producer_additions.json is data and IS tracked)
+data/producer_review.txt

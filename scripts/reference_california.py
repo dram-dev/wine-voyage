@@ -363,5 +363,9 @@ CALIFORNIA_PRODUCERS: list[tuple[str, str]] = [
     ("Apothic", "California"), ("Bogle", "Clarksburg"),
     ("Cameron Hughes", "California"), ("Charles Krug Winery", "St. Helena"),
     ("Trinitas", "Carneros"), ("Angels Ink", "California"),
+    ("Massican", "Napa Valley"), ("Matthiasson Wines", "Napa Valley"),
+    ("Hoopes Vineyard", "Oakville"), ("Ancien Wines", "Carneros"),
+    ("Somnium", "Napa Valley"), ("Failla Wines", "Sonoma Coast"),
+    ("Ceritas Wines", "Sonoma Coast"),
 ]
 # fmt: on
